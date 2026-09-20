@@ -907,7 +907,7 @@ function toggleAllTestimonials() {
     card.style.display = testimonialsExpanded ? 'block' : 'none';
   });
   if (btn) {
-    btn.innerHTML = testimonialsExpanded ? 'Show Fewer Testimonials ↑' : 'View All 22 Video Testimonials &amp; Scripts ↓';
+    btn.innerHTML = testimonialsExpanded ? 'Show Fewer Testimonials ↑' : 'View All Video Testimonials &amp; Scripts ↓';
   }
 }
 
