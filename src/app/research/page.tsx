@@ -38,8 +38,6 @@ export default function Research() {
             <Link href="/research/02" className="btn-white">Read Full Abstract</Link>
           </div>
         </div>
-
-        </div>
       </div>
     </section>
   );
