@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="Media Files/Headshot.png">
+<link rel="icon" type="image/png" sizes="32x32" href="Media Files/Headshot.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Media Files/Headshot.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Media Files/Headshot.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideas &amp; Frameworks | Dr. Joshua A. Oparachukwu</title>
+<meta name="description" content="Applied Performance Psychology frameworks, position papers, conceptual models, and articles by Dr. Joshua A. Oparachukwu.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.framework-card {
+  background: var(--white);
+  border: 1px solid var(--cream-border, #E0DDD4);
+  border-radius: 12px;
+  padding: 36px 32px;
+  margin-bottom: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.framework-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.06);
+}
+.framework-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold, #C8A830);
+  background: rgba(200,168,48,0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.framework-title {
+  font-family: var(--font-display, serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy, #00102A);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.framework-desc {
+  font-size: 15px;
+  color: var(--ink3, #555);
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+.framework-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.framework-points li {
+  font-size: 14px;
+  color: var(--ink, #1A1A16);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.framework-points li::before {
+  content: "—";
+  color: var(--gold, #C8A830);
+  font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <a href="index.html" style="text-decoration:none;color:inherit;">Dr. Joshua A. Oparachukwu</a>
+  </div>
+  <div class="nav-links">
+    <a href="research.html" class="nav-gold ">Research</a>
+
+    <!-- CASE STUDIES DROPDOWN -->
+    <div class="nav-dropdown-wrap">
+      <a href="case-studies.html" class="nav-dropdown-trigger ">Case Studies ▾</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-section-label">Individual Performance</div>
+        <a class="nav-dropdown-item" href="case-studies/cs01.html">Case 01: The Mistake That Lingered for Three Games</a>
+        <a class="nav-dropdown-item" href="case-studies/cs02.html">Case 02: Great in Training, Absent on Match Day</a>
+        <a class="nav-dropdown-item" href="case-studies/cs03.html">Case 03: The Penalty Spot and the Disappearing Target</a>
+        <a class="nav-dropdown-item" href="case-studies/cs04.html">Case 04: The Player Who Stopped Wanting the Ball</a>
+        <a class="nav-dropdown-item" href="case-studies/cs05.html">Case 05: Fast Start, Slow Collapse</a>
+        <a class="nav-dropdown-item" href="case-studies/cs06.html">Case 06: The Bench Became a Sentence</a>
+        <div class="nav-dropdown-section-label">Team Performance &amp; Culture</div>
+        <a class="nav-dropdown-item" href="case-studies/cs07.html">Case 07: When Talent Became a Collection of Individuals</a>
+        <a class="nav-dropdown-item" href="case-studies/cs08.html">Case 08: When Standards Became Personal</a>
+        <a class="nav-dropdown-item" href="case-studies/cs09.html">Case 09: When the Team Could Start Fast but Could Not Respond Well</a>
+        <a class="nav-dropdown-item" href="case-studies/cs10.html">Case 10: When the Dressing Room Had Its Own Coach</a>
+        <div class="nav-dropdown-section-label">Sport Governance Strategy</div>
+        <a class="nav-dropdown-item" href="case-studies/cs11.html">Case 11: When a Football Program Had Activity but No Operating System</a>
+        <a class="nav-dropdown-item" href="case-studies/cs12.html">Case 12: When Authority Was Concentrated but Accountability Was Diffused</a>
+        <a class="nav-dropdown-item" href="case-studies/cs13.html">Case 13: When Policy Existed but Enforcement Had No Spine</a>
+        <div class="nav-dropdown-section-label">Executive / High-Pressure Performance</div>
+        <a class="nav-dropdown-item" href="case-studies/cs14.html">Case 14: When Decision Speed Became Decision Fatigue</a>
+        <a class="nav-dropdown-item" href="case-studies/cs15.html">Case 15: When Public Confidence Hid Private Overextension</a>
+        <a class="nav-dropdown-item" href="case-studies/cs16.html">Case 16: When Urgency Became the Operating Culture</a>
+      </div>
+    </div>
+
+    <a href="index.html#results">Results</a>
+
+    <!-- SERVICES DROPDOWN -->
+    <div class="nav-dropdown-wrap">
+      <a href="services.html" class="nav-dropdown-trigger ">Services ▾</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-section-label">Consultations</div>
+        <a href="services.html#service-A" class="nav-dropdown-item">1-on-1 Individual Performance Discovery Consultation</a>
+        <a href="services.html#service-B" class="nav-dropdown-item">Team &amp; Organization Discovery Consultation</a>
+        <a href="services.html#service-C" class="nav-dropdown-item">Executive / High-Pressure Performance Discovery Consultation</a>
+        <a href="services.html#service-D" class="nav-dropdown-item">Sport Governance &amp; Strategic Discovery Consultation</a>
+      </div>
+    </div>
+
+    <a href="ideas-frameworks.html" class="active">Ideas &amp; Frameworks</a>
+    <a href="about.html" class="">About</a>
+  </div>
+  <a href="services.html" class="nav-cta">Book a Consultation Call</a>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-header">
+    <span class="mobile-nav-logo">Dr. Joshua A. Oparachukwu</span>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="research.html" class="mobile-nav-item gold" onclick="closeMobileNav()">Research</a>
+    <a href="case-studies.html" class="mobile-nav-item" onclick="closeMobileNav()">Case Studies</a>
+    <a href="index.html#results" class="mobile-nav-item" onclick="closeMobileNav()">Results</a>
+    <a href="services.html" class="mobile-nav-item" onclick="closeMobileNav()">Services</a>
+    <a href="ideas-frameworks.html" class="mobile-nav-item" onclick="closeMobileNav()">Ideas &amp; Frameworks</a>
+    <a href="about.html" class="mobile-nav-item" onclick="closeMobileNav()">About</a>
+    <a href="services.html" class="mobile-nav-cta" onclick="closeMobileNav()">Book a Consultation Call</a>
+  </div>
+</div>
+
+<main>
+  <div class="cs-page-hero">
+    <div class="cs-page-hero-inner" style="max-width:900px;">
+      <span class="cs-eyebrow" style="color:var(--gold);">Thought Leadership · Models · Position Papers</span>
+      <h1 class="cs-page-title">Ideas &amp; Frameworks</h1>
+      <p class="cs-page-sub">
+        Conceptual frameworks, applied methodologies, position papers, and summaries addressing psychological skills, error recovery, team culture architecture, and executive governance.
+      </p>
+    </div>
+  </div>
+
+  <div style="background:var(--cream, #FAFAF7);padding:70px 24px 100px;">
+    <div style="max-width:900px;margin:0 auto;">
+
+      <!-- Framework 1 -->
+      <div class="framework-card">
+        <span class="framework-badge">Cognitive &amp; Emotional Intervention</span>
+        <h2 class="framework-title">The Opportunity Growth Performance Enhancement Protocol (TOGPEP)</h2>
+        <p class="framework-desc">
+          A multi-dimensional psychological intervention system engineered to transform how competitive athletes, technical leaders, and squads interpret mistakes under pressure. Rather than allowing an in-game error to cascade into emotional deflation or risk-avoidance, TOGPEP establishes a 5-second cognitive reset window.
+        </p>
+        <ul class="framework-points">
+          <li><strong>Cognitive Reframing (CR):</strong> Rapidly neutralizing catastrophizing thoughts and re-orienting attentional resources toward immediate tactical cues.</li>
+          <li><strong>Verbal Affirmation (VA):</strong> Scripted self-talk mechanisms that anchor nervous system composure and stabilize motor execution.</li>
+          <li><strong>Situational Recovery Drillsets:</strong> High-fidelity simulation drills linking mental reset protocols to physical in-game scenarios.</li>
+        </ul>
+      </div>
+
+      <!-- Framework 2 -->
+      <div class="framework-card">
+        <span class="framework-badge">Foundational Methodology</span>
+        <h2 class="framework-title">The 3-Pillar Performance Method</h2>
+        <p class="framework-desc">
+          Excellence in high-stakes environments is not an accident of talent; it is the systematic integration of three interdependent psychological competencies:
+        </p>
+        <ul class="framework-points">
+          <li><strong>Mental Clarity:</strong> Systematic pre-performance mental routines, elimination of internal cognitive noise, and laser-focused task allocation.</li>
+          <li><strong>Emotional Control:</strong> Regulating physiological arousal, preventing frustration accumulation, and mastering composure when referee or opponent friction escalates.</li>
+          <li><strong>Execution Under Pressure:</strong> Decisive decision speed, commitment to tactical execution without hesitation, and unwavering clutch confidence.</li>
+        </ul>
+      </div>
+
+      <!-- Framework 3 -->
+      <div class="framework-card">
+        <span class="framework-badge">Sport Administration &amp; Systems</span>
+        <h2 class="framework-title">Dual-Lens Performance Systems Architecture</h2>
+        <p class="framework-desc">
+          High-performance outcomes cannot survive within dysfunctional organizational ecosystems. The Dual-Lens Framework bridges athlete micro-psychology with macro-governance structures.
+        </p>
+        <ul class="framework-points">
+          <li><strong>Board-to-Pitch Operating System:</strong> Aligning administrative policy, executive decision speed, and technical team operating reality.</li>
+          <li><strong>Accountability Without Friction:</strong> Clarifying executive authority, contract structures, and transparent performance expectations.</li>
+          <li><strong>Long-term Pathway Governance:</strong> Protecting athlete welfare, talent development continuity, and institutional stability.</li>
+        </ul>
+      </div>
+
+      <!-- Framework 4 -->
+      <div class="framework-card">
+        <span class="framework-badge">Educational Knowledge Hub</span>
+        <h2 class="framework-title">#AskDrJoshuaOparachukwu &amp; Foundational Masterclasses</h2>
+        <p class="framework-desc">
+          Direct inquiry deconstructions answering critical real-world questions submitted by competitive athletes, coaches, and leaders around the globe.
+        </p>
+        <ul class="framework-points">
+          <li><strong>Attribution Theory in Practice:</strong> Rewiring how individuals assign causality to triumphs and defeats to build permanent self-efficacy.</li>
+          <li><strong>The Psychology of Slumps:</strong> Deconstructing the biomechanical and cognitive roots of prolonged performance dips.</li>
+          <li><strong>Leadership Composure:</strong> Managing executive burnout, high-visibility decision fatigue, and team confidence transmission.</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div style="background:var(--navy, #00102A);border-radius:12px;padding:44px 36px;text-align:center;color:#fff;margin-top:48px;">
+        <h3 style="font-family:var(--font-display);font-size:26px;color:#fff;margin-bottom:12px;">Apply These Frameworks to Your Environment</h3>
+        <p style="color:var(--navy-muted, #C5C7CA);font-size:15px;max-width:540px;margin:0 auto 28px;line-height:1.7;">
+          Book a discovery consultation to evaluate how these applied models can be customized for your squad, club, executive team, or individual career.
+        </p>
+        <a href="services.html" class="btn-navy-solid" style="display:inline-block;padding:14px 32px;background:var(--gold);color:var(--navy);text-decoration:none;border-radius:6px;font-weight:700;font-size:15px;">Book a Discovery Consultation →</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-left">
+      <div class="footer-name">Dr. Joshua A. Oparachukwu</div>
+      <div class="footer-sub">Performance Strategist · Applied Performance Scientist</div>
+      <div class="footer-socials">
+        <!-- LinkedIn (Item 13) -->
+        <a href="https://www.linkedin.com/in/joshua-oparachukwu-7707b4397/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.46 1.46 0 1 0 0-2.92 1.46 1.46 0 0 0 0 2.92M7.86 18.5V10.13H5.06v8.37h2.8z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@dr.joshuaoparachukwu" target="_blank" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/thedrjoshuaoparachukwu" target="_blank" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@thedrjoshuaoparachukwu" target="_blank" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/people/Dr-Joshua-Oparachukwu/61564682447955/" target="_blank" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://x.com/thedrjoshuaOp" target="_blank" aria-label="X / Twitter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <a href="index.html#results">Results</a>
+      <a href="research.html" class="footer-gold">Research</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="services.html">Services</a>
+      <a href="ideas-frameworks.html" class="footer-gold">Ideas &amp; Frameworks</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Book a Consultation</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+
+    <div class="footer-orgs">
+      <!-- Visible MindGame Africa and SportLead Africa (Item 14) -->
+      <a href="about.html#mindgame-africa" id="link-mindgame" style="display:inline-block;padding:4px 10px;background:rgba(200,168,48,0.12);color:var(--gold);border:1px solid rgba(200,168,48,0.3);border-radius:4px;text-decoration:none;font-size:12px;font-weight:600;margin-right:8px;">MindGame Africa</a>
+      <a href="about.html#sportlead-africa" id="link-sportlead" style="display:inline-block;padding:4px 10px;background:rgba(200,168,48,0.12);color:var(--gold);border:1px solid rgba(200,168,48,0.3);border-radius:4px;text-decoration:none;font-size:12px;font-weight:600;margin-right:8px;">SportLead Africa</a>
+      <a href="https://youtube.com/@dr.joshuaoparachukwu?si=CVys0jY24-cUPbRy" target="_blank" rel="noopener">#AskDrJoshuaOparachukwu</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Dr. Joshua A. Oparachukwu. All rights reserved. &nbsp;·&nbsp; MindGame Africa · SportLead Africa · MySpeakTree LLC &nbsp;·&nbsp; <a href="privacy-policy.html" style="color:inherit;text-decoration:underline;">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html" style="color:inherit;text-decoration:underline;">Terms of Use</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -81,6 +81,7 @@ const MEDIA = {
 
  /* ── SOCIAL LINKS ─────────────────────────────────────*/
  social: {
+ linkedin: "https://www.linkedin.com/in/joshua-oparachukwu-7707b4397/",
  youtube: "https://www.youtube.com/@dr.joshuaoparachukwu",
  instagram: "https://www.instagram.com/thedrjoshuaoparachukwu",
  tiktok: "https://www.tiktok.com/@thedrjoshuaoparachukwu",
@@ -742,4 +743,49 @@ function openPub02() {
 function closePub02() {
   var p = document.getElementById('pub02-page');
   if (p) closeOverlay(p);
+}
+
+/* ── TESTIMONIALS (22 Items) ── */
+var testimonialsExpanded = false;
+function toggleAllTestimonials() {
+  testimonialsExpanded = !testimonialsExpanded;
+  var extras = document.querySelectorAll('.vid-card-extra');
+  var btn = document.getElementById('btn-toggle-testimonials');
+  extras.forEach(function(card) {
+    card.style.display = testimonialsExpanded ? 'block' : 'none';
+  });
+  if (btn) {
+    btn.innerHTML = testimonialsExpanded ? 'Show Fewer Testimonials ↑' : 'View All 22 Video Testimonials &amp; Scripts ↓';
+  }
+}
+
+function filterTestimonials(category, btn) {
+  document.querySelectorAll('.vid-filter-btn').forEach(function(b) {
+    b.classList.remove('active');
+    b.style.background = 'var(--white)';
+    b.style.color = 'var(--ink)';
+    b.style.borderColor = 'var(--border)';
+  });
+  if (btn) {
+    btn.classList.add('active');
+    btn.style.background = 'var(--navy)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--gold)';
+  }
+  var cards = document.querySelectorAll('#testimonials-grid .vid-card');
+  var count = 0;
+  cards.forEach(function(card) {
+    var cardCat = card.getAttribute('data-category');
+    var match = (category === 'all' || cardCat === category);
+    if (match) {
+      count++;
+      if (testimonialsExpanded || count <= 6) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    } else {
+      card.style.display = 'none';
+    }
+  });
 }
