@@ -2,9 +2,5 @@
   "name": "joshuaoparachukwu",
   "version": "1.0.0",
   "private": true,
-  "description": "Dr. Joshua A. Oparachukwu - Performance Psychologist",
-  "scripts": {
-    "build": "node -e \"console.log('Static site ready')\"",
-    "vercel-build": "node -e \"console.log('Static site ready')\""
-  }
+  "description": "Dr. Joshua A. Oparachukwu - Performance Psychologist"
 }
