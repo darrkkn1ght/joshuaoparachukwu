@@ -334,25 +334,177 @@ window.addEventListener('popstate', function() {
 });
 
 
-/* ── RESULTS SLIDER ── */
+/* ── RESULTS SLIDER (Seamless Infinite Endless Loop) ── */
 (function(){
- var track = document.getElementById('resultsTrack');
- if(!track) return;
- var dots = document.querySelectorAll('.res-dot');
- var cur = 0, total = 3;
+  var track = document.getElementById('resultsTrack');
+  if (!track) return;
 
- function goTo(n){
-   cur = (n + total) % total;
-   track.style.transform = 'translateX(-' + (cur * 100) + '%)';
-   dots.forEach(function(d,i){ d.classList.toggle('active', i===cur); });
- }
+  var originalSlides = Array.from(track.querySelectorAll('.results-slide'));
+  var totalReal = originalSlides.length;
+  if (totalReal < 2) return;
 
- var prev = document.getElementById('resPrev');
- var next = document.getElementById('resNext');
- if(prev) prev.addEventListener('click', function(){ goTo(cur-1); });
- if(next) next.addEventListener('click', function(){ goTo(cur+1); });
- dots.forEach(function(d,i){ d.addEventListener('click', function(){ goTo(i); }); });
-})();;
+  var wrap = track.parentElement;
+  var dots = document.querySelectorAll('.res-dot');
+  var prev = document.getElementById('resPrev');
+  var next = document.getElementById('resNext');
+  var outer = document.querySelector('.results-slider-outer');
+
+  var transitionCss = 'transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  var isAnimating = false;
+  var currentIndex = 1; // Start at first real slide (after prepended clone)
+
+  // Clone first and last slides for seamless infinite loop
+  var firstClone = originalSlides[0].cloneNode(true);
+  firstClone.classList.add('clone-slide');
+  firstClone.setAttribute('aria-hidden', 'true');
+
+  var lastClone = originalSlides[totalReal - 1].cloneNode(true);
+  lastClone.classList.add('clone-slide');
+  lastClone.setAttribute('aria-hidden', 'true');
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, track.firstChild);
+
+  function getSlideWidth() {
+    return wrap ? wrap.clientWidth : track.clientWidth;
+  }
+
+  function updateDots() {
+    var realIndex = (currentIndex - 1 + totalReal) % totalReal;
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i === realIndex);
+    });
+  }
+
+  function moveTo(index, withAnimation) {
+    var slideW = getSlideWidth();
+    if (withAnimation) {
+      track.style.transition = transitionCss;
+      isAnimating = true;
+    } else {
+      track.style.transition = 'none';
+      isAnimating = false;
+    }
+    currentIndex = index;
+    track.style.transform = 'translateX(-' + (currentIndex * slideW) + 'px)';
+    updateDots();
+  }
+
+  // Set initial position
+  moveTo(1, false);
+
+  function slideNext() {
+    if (isAnimating) return;
+    moveTo(currentIndex + 1, true);
+  }
+
+  function slidePrev() {
+    if (isAnimating) return;
+    moveTo(currentIndex - 1, true);
+  }
+
+  // Handle seamless wrap when animation finishes
+  track.addEventListener('transitionend', function(e) {
+    if (e.target !== track) return;
+    isAnimating = false;
+
+    // Reached clone of first slide (past the end) -> snap silently to real slide 1
+    if (currentIndex >= totalReal + 1) {
+      moveTo(1, false);
+    }
+    // Reached clone of last slide (before the beginning) -> snap silently to real last slide
+    else if (currentIndex <= 0) {
+      moveTo(totalReal, false);
+    }
+    updateDots();
+  });
+
+  // Window resize recalculates exact pixel offset
+  window.addEventListener('resize', function() {
+    moveTo(currentIndex, false);
+  });
+
+  if (next) {
+    next.addEventListener('click', function(e) {
+      e.preventDefault();
+      slideNext();
+      resetAutoPlay();
+    });
+  }
+
+  if (prev) {
+    prev.addEventListener('click', function(e) {
+      e.preventDefault();
+      slidePrev();
+      resetAutoPlay();
+    });
+  }
+
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (isAnimating) return;
+      moveTo(i + 1, true);
+      resetAutoPlay();
+    });
+  });
+
+  // Auto-advance every 5.5 seconds for continuous endless movement
+  var autoPlayTimer = null;
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(slideNext, 5500);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+    }
+  }
+
+  function resetAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+  }
+
+  if (outer) {
+    outer.addEventListener('mouseenter', stopAutoPlay);
+    outer.addEventListener('mouseleave', startAutoPlay);
+  }
+
+  // Touch / swipe support
+  var startX = 0;
+  var currentX = 0;
+  var isSwiping = false;
+
+  track.addEventListener('touchstart', function(e) {
+    if (isAnimating || e.touches.length > 1) return;
+    stopAutoPlay();
+    startX = e.touches[0].clientX;
+    currentX = startX;
+    isSwiping = true;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function(e) {
+    if (!isSwiping) return;
+    currentX = e.touches[0].clientX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function() {
+    if (!isSwiping) return;
+    isSwiping = false;
+    var diffX = currentX - startX;
+    if (diffX < -50) {
+      slideNext();
+    } else if (diffX > 50) {
+      slidePrev();
+    }
+    startAutoPlay();
+  });
+
+  startAutoPlay();
+})();
 
 
 /* ── NAV DROPDOWN HELPERS ── */
