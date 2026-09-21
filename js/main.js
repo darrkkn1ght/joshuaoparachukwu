@@ -505,6 +505,80 @@ window.addEventListener('popstate', function() {
 
   startAutoPlay();
 })();
+/* ── VIDEOS SLIDER ── */
+(function(){
+  var track = document.getElementById('vidTrack');
+  if (!track) return;
+
+  var originalSlides = Array.from(track.querySelectorAll('.vid-slide'));
+  var totalReal = originalSlides.length;
+  if (totalReal < 2) return;
+
+  var prev = document.getElementById('vidPrev');
+  var next = document.getElementById('vidNext');
+  
+  var firstClone = originalSlides[0].cloneNode(true);
+  var lastClone = originalSlides[totalReal - 1].cloneNode(true);
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+  
+  var currentIndex = 1;
+  var isAnimating = false;
+
+  function moveTo(index, animate) {
+    var slideWidth = track.parentElement.offsetWidth;
+    track.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
+    track.style.transform = 'translateX(-' + (index * slideWidth) + 'px)';
+    currentIndex = index;
+  }
+
+  // Initial setup
+  setTimeout(function() { moveTo(1, false); }, 50);
+
+  function slideNext() {
+    if (isAnimating) return;
+    isAnimating = true;
+    moveTo(currentIndex + 1, true);
+  }
+
+  function slidePrev() {
+    if (isAnimating) return;
+    isAnimating = true;
+    moveTo(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', function(e) {
+    if (e.target !== track) return;
+    isAnimating = false;
+
+    if (currentIndex >= totalReal + 1) {
+      moveTo(1, false);
+    }
+    else if (currentIndex <= 0) {
+      moveTo(totalReal, false);
+    }
+  });
+
+  window.addEventListener('resize', function() {
+    moveTo(currentIndex, false);
+  });
+
+  if (next) {
+    next.addEventListener('click', function(e) {
+      e.preventDefault();
+      slideNext();
+    });
+  }
+
+  if (prev) {
+    prev.addEventListener('click', function(e) {
+      e.preventDefault();
+      slidePrev();
+    });
+  }
+
+})();
 
 
 /* ── NAV DROPDOWN HELPERS ── */

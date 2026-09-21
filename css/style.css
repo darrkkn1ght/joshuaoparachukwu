@@ -4691,3 +4691,18 @@ footer {
     grid-column: span 1 !important;
   }
 }
+
+/* ── VIDEO SLIDER RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .vid-slide {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 768px) {
+  .vid-slide {
+    grid-template-columns: 1fr !important;
+  }
+  .vid-btn {
+    display: none !important; /* Hide arrows on small screens, rely on swipe if possible or just stack */
+  }
+}
