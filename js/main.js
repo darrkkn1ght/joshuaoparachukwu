@@ -366,8 +366,9 @@ window.addEventListener('popstate', function() {
   track.insertBefore(lastClone, track.firstChild);
 
   function getSlideWidth() {
-    return wrap ? wrap.clientWidth : track.clientWidth;
+    return originalSlides[0].offsetWidth;
   }
+
 
   function updateDots() {
     var realIndex = (currentIndex - 1 + totalReal) % totalReal;
@@ -527,7 +528,7 @@ window.addEventListener('popstate', function() {
   var isAnimating = false;
 
   function moveTo(index, animate) {
-    var slideWidth = track.parentElement.offsetWidth;
+    var slideWidth = originalSlides[0].offsetWidth;
     track.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
     track.style.transform = 'translateX(-' + (index * slideWidth) + 'px)';
     currentIndex = index;

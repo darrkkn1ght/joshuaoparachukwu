@@ -2901,6 +2901,7 @@ footer {
   color: var(--ink, #1A1A16) !important;
   text-decoration: none;
   line-height: 1.5;
+  white-space: normal;
   transition: background .15s;
   cursor: pointer;
 }
