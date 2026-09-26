@@ -92,9 +92,9 @@ const MEDIA = {
  /* ── BOOKING / CALENDLY LINKS ─────────────────────────
  Replace with real Calendly or booking page URLs */
  booking: {
- discovery: "https://selar.com/15minuteindividualperformanceconsultation", // Form A - Individual
- individual: "https://selar.com/30minuteteamorganisationperformanceconsultation", // Form B - Team & Org
- executive: "https://selar.com/30minuteexecutivehigh-pressureperformanceconsulting", // Form C - Executive
+ discovery: "https://calendly.com/mailjoshuaoparachukwu/1-on-1-individual-performance-coaching", // Form A - Individual
+ individual: "https://calendly.com/mailjoshuaoparachukwu/team-and-organisation-consultation", // Form B - Team & Org
+ executive: "https://calendly.com/mailjoshuaoparachukwu/executive-high-pressure-performance-consultation", // Form C - Executive
  },
 
  /* ── PARTNER / ORG LINKS ──────────────────────────────*/
@@ -213,7 +213,7 @@ function submitFormA(e) {
  document.getElementById('confirm-title').textContent = 'Request Received';
  document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to book your 15-minute consultation slot and complete the $30 payment. Please check your email for confirmation.';
  showBkPage('booking-confirm');
- setTimeout(function() { window.open('https://selar.com/15minuteindividualperformanceconsultation', '_blank'); }, 800);
+ setTimeout(function() { window.open('https://calendly.com/mailjoshuaoparachukwu/1-on-1-individual-performance-coaching', '_blank'); }, 800);
 }
 
 function submitFormB(e) {
@@ -234,7 +234,7 @@ function submitFormB(e) {
  document.getElementById('confirm-title').textContent = 'Request Received';
  document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to complete the $75 payment and book your 30-minute team consultation slot.';
  showBkPage('booking-confirm');
- setTimeout(function() { window.open('https://selar.com/30minuteteamorganisationperformanceconsultation', '_blank'); }, 800);
+ setTimeout(function() { window.open('https://calendly.com/mailjoshuaoparachukwu/team-and-organisation-consultation', '_blank'); }, 800);
 }
 
 function submitFormC(e) {
@@ -254,7 +254,7 @@ function submitFormC(e) {
  document.getElementById('confirm-title').textContent = 'Request Received';
  document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to book your 30-minute executive consultation slot and complete the $100 payment. Please check your email for confirmation.';
  showBkPage('booking-confirm');
- setTimeout(function() { window.open('https://selar.com/30minuteexecutivehigh-pressureperformanceconsulting', '_blank'); }, 800);
+ setTimeout(function() { window.open('https://calendly.com/mailjoshuaoparachukwu/executive-high-pressure-performance-consultation', '_blank'); }, 800);
 }
 
 function submitFormD(e) {
@@ -1014,5 +1014,29 @@ function filterTestimonials(category, btn) {
     } else {
       card.style.display = 'none';
     }
+  });
+}
+
+// Newsletter Signup
+var newsletterBtn = document.getElementById('newsletter-submit');
+if (newsletterBtn) {
+  newsletterBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var emailInput = document.getElementById('newsletter-email');
+    var email = emailInput ? emailInput.value : '';
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    sendToSheets({
+      form: 'Newsletter Signup',
+      email: email
+    });
+    var msg = document.getElementById('newsletter-msg');
+    if (msg) msg.style.display = 'block';
+    if (emailInput) emailInput.value = '';
+    setTimeout(function() {
+      if (msg) msg.style.display = 'none';
+    }, 5000);
   });
 }
