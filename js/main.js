@@ -29,16 +29,17 @@
  }
  ─────────────────────────────────────── */
 
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwsStYis7kBxhw_gZ-lYXfpj3Htvja8UIruZ6BeKlIM9DG3SDacOYLcPzAfIK95m6enSA/exec";
+const EMAIL_SUBMIT_URL = "https://formsubmit.co/ajax/mailjoshuaoparachukwu@gmail.com";
 
 function sendToSheets(data) {
- if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === "PASTE_YOUR_APPS_SCRIPT_URL_HERE") return;
- fetch(GOOGLE_SHEET_URL, {
+ fetch(EMAIL_SUBMIT_URL, {
  method: "POST",
- headers: { "Content-Type": "application/json" },
- body: JSON.stringify(data),
- mode: "no-cors"
- }).catch(function() {});
+ headers: { 
+     "Content-Type": "application/json",
+     "Accept": "application/json"
+ },
+ body: JSON.stringify(data)
+ }).catch(function(err) { console.error('Error sending email:', err); });
 }
 
 function getVal(id) {
