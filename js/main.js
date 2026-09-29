@@ -29,9 +29,10 @@
  }
  ─────────────────────────────────────── */
 
-const EMAIL_SUBMIT_URL = "https://formsubmit.co/ajax/mailjoshuaoparachukwu@gmail.com";
+const EMAIL_SUBMIT_URL = "https://api.web3forms.com/submit";
 
 function sendToSheets(data) {
+ data.access_key = "663324ff-ac8f-4bac-b201-6e644da267fe";
  fetch(EMAIL_SUBMIT_URL, {
  method: "POST",
  headers: { 
