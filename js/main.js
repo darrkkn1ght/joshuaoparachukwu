@@ -62,22 +62,22 @@ const MEDIA = {
  {
  title: "How to Avoid Performance Misdiagnosis in Sport",
  url: "https://www.youtube.com/watch?v=UxnKseVsEBo",
- thumb: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80"
+ thumb: "https://img.youtube.com/vi/UxnKseVsEBo/maxresdefault.jpg"
  },
  {
  title: "Why Great Performers Look Great Under Pressure - How Preparation Helps You Perform Under Pressure",
  url: "https://www.youtube.com/watch?v=Mzxw21P0oiA",
- thumb: "https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80"
+ thumb: "https://img.youtube.com/vi/Mzxw21P0oiA/maxresdefault.jpg"
  },
  {
  title: "Confidence is NOT a Feeling It's a Decision",
  url: "https://www.youtube.com/watch?v=7PGG2EBvYug",
- thumb: "https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=400&q=80"
+ thumb: "https://img.youtube.com/vi/7PGG2EBvYug/maxresdefault.jpg"
  },
  {
  title: "What Happens 3 seconds After a Mistake - How to Recover Quickly After a Mistake in Sport",
  url: "https://www.youtube.com/watch?v=i3RnpYW147A",
- thumb: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80"
+ thumb: "https://img.youtube.com/vi/i3RnpYW147A/maxresdefault.jpg"
  },
  ],
 
