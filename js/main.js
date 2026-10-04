@@ -60,23 +60,23 @@ const MEDIA = {
  Add real YouTube URLs and thumbnail images */
  youtube: [
  {
- title: "The Reset Protocol: How Elite Players Bounce Back Fast",
- url: "#", // e.g. https://youtu.be/XXXXXXXXXX
+ title: "How to Avoid Performance Misdiagnosis in Sport",
+ url: "https://www.youtube.com/watch?v=UxnKseVsEBo",
  thumb: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80"
  },
  {
- title: "Why Your Mind is the Last Frontier in Sport Performance",
- url: "#",
+ title: "Why Great Performers Look Great Under Pressure - How Preparation Helps You Perform Under Pressure",
+ url: "https://www.youtube.com/watch?v=Mzxw21P0oiA",
  thumb: "https://images.unsplash.com/photo-1576858574144-9ae1ebcf5ae5?w=400&q=80"
  },
  {
- title: "Confidence Is Not a Feeling It Is a Decision",
- url: "#",
+ title: "Confidence is NOT a Feeling It's a Decision",
+ url: "https://www.youtube.com/watch?v=7PGG2EBvYug",
  thumb: "https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?w=400&q=80"
  },
  {
- title: "What Happens in the Brain 3 Seconds After a Mistake",
- url: "#",
+ title: "What Happens 3 seconds After a Mistake - How to Recover Quickly After a Mistake in Sport",
+ url: "https://www.youtube.com/watch?v=i3RnpYW147A",
  thumb: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80"
  },
  ],
