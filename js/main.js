@@ -65,7 +65,7 @@ const MEDIA = {
  thumb: "https://img.youtube.com/vi/UxnKseVsEBo/maxresdefault.jpg"
  },
  {
- title: "Why Great Performers Look Great Under Pressure - How Preparation Helps You Perform Under Pressure",
+ title: "Why Great Performers Look Great Under Pressure",
  url: "https://www.youtube.com/watch?v=Mzxw21P0oiA",
  thumb: "https://img.youtube.com/vi/Mzxw21P0oiA/maxresdefault.jpg"
  },
@@ -75,7 +75,7 @@ const MEDIA = {
  thumb: "https://img.youtube.com/vi/7PGG2EBvYug/maxresdefault.jpg"
  },
  {
- title: "What Happens 3 seconds After a Mistake - How to Recover Quickly After a Mistake in Sport",
+ title: "What Happens 3 seconds After a Mistake",
  url: "https://www.youtube.com/watch?v=i3RnpYW147A",
  thumb: "https://img.youtube.com/vi/i3RnpYW147A/maxresdefault.jpg"
  },
