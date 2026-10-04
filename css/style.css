@@ -4787,3 +4787,10 @@ footer {
     justify-content: center !important;
   }
 }
+
+.yt-card-body h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
