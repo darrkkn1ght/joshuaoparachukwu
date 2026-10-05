@@ -94,9 +94,10 @@ const MEDIA = {
  /* ── BOOKING / CALENDLY LINKS ─────────────────────────
  Replace with real Calendly or booking page URLs */
  booking: {
- discovery: "https://calendly.com/mailjoshuaoparachukwu/1-on-1-individual-performance-coaching", // Form A - Individual
- individual: "https://calendly.com/mailjoshuaoparachukwu/team-and-organisation-consultation", // Form B - Team & Org
- executive: "https://calendly.com/mailjoshuaoparachukwu/executive-high-pressure-performance-consultation", // Form C - Executive
+ discovery: "https://calendly.com/drjoshuaoparachukwu/1-on-1-individual-performance-coaching", // Form A - Individual
+ individual: "https://calendly.com/drjoshuaoparachukwu/team-and-organisation-consultation", // Form B - Team & Org
+ executive: "https://calendly.com/drjoshuaoparachukwu/executive-high-pressure-performance-consultation", // Form C - Executive
+ sportAdvisory: "https://selar.com/sportgovernancestrategicdiscoveryconsultation", // Form D - Sport Advisory (Selar)
  },
 
  /* ── PARTNER / ORG LINKS ──────────────────────────────*/
@@ -215,7 +216,7 @@ function submitFormA(e) {
  document.getElementById('confirm-title').textContent = 'Request Received';
  document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to book your 15-minute consultation slot and complete the $30 payment. Please check your email for confirmation.';
  showBkPage('booking-confirm');
- setTimeout(function() { window.open('https://calendly.com/mailjoshuaoparachukwu/1-on-1-individual-performance-coaching', '_blank'); }, 800);
+ setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/1-on-1-individual-performance-coaching', '_blank'); }, 800);
 }
 
 function submitFormB(e) {
@@ -236,7 +237,7 @@ function submitFormB(e) {
  document.getElementById('confirm-title').textContent = 'Request Received';
  document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to complete the $75 payment and book your 30-minute team consultation slot.';
  showBkPage('booking-confirm');
- setTimeout(function() { window.open('https://calendly.com/mailjoshuaoparachukwu/team-and-organisation-consultation', '_blank'); }, 800);
+ setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/team-and-organisation-consultation', '_blank'); }, 800);
 }
 
 function submitFormC(e) {
@@ -256,7 +257,7 @@ function submitFormC(e) {
  document.getElementById('confirm-title').textContent = 'Request Received';
  document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to book your 30-minute executive consultation slot and complete the $100 payment. Please check your email for confirmation.';
  showBkPage('booking-confirm');
- setTimeout(function() { window.open('https://calendly.com/mailjoshuaoparachukwu/executive-high-pressure-performance-consultation', '_blank'); }, 800);
+ setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/executive-high-pressure-performance-consultation', '_blank'); }, 800);
 }
 
 function submitFormD(e) {
@@ -273,8 +274,9 @@ function submitFormD(e) {
  role: getVal('fD-role')
  });
  document.getElementById('confirm-title').textContent = 'Advisory Request Received';
- document.getElementById('confirm-msg').textContent = "Thank you. Advisory requests are reviewed before a discovery call is scheduled. We'll be in touch shortly.";
+ document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to complete the $150 payment and book your 30-minute sport governance consultation slot.';
  showBkPage('booking-confirm');
+ setTimeout(function() { window.open('https://selar.com/sportgovernancestrategicdiscoveryconsultation', '_blank'); }, 800);
 }
 
 // Book a Consultation buttons now scroll directly to the services section
@@ -660,19 +662,19 @@ function initMedia() {
  const ytGrid = document.getElementById('yt-grid');
  if (ytGrid) {
  ytGrid.innerHTML = MEDIA.youtube.map((v, i) => `
- <div class="yt-card reveal" style="transition-delay:${i * 0.1}s">
+ <a href="${v.url}" target="_blank" rel="noopener" class="yt-card reveal" style="transition-delay:${i * 0.1}s; text-decoration:none; color:inherit;">
  <div class="yt-thumb">
  <img src="${v.thumb}" alt="${v.title}" loading="lazy">
  <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
  </div>
  <div class="yt-card-body">
  <h4>${v.title}</h4>
- <a href="${v.url}" target="_blank" class="yt-watch" rel="noopener">
+ <span class="yt-watch">
  <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
  Watch on YouTube
- </a>
+ </span>
  </div>
- </div>`).join('');
+ </a>`).join('');
  // Make cards visible immediately (already in/near viewport)
  setTimeout(() => {
  ytGrid.querySelectorAll('.reveal').forEach(el => {
