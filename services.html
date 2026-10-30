@@ -117,9 +117,49 @@
       <div class="section-rule"></div>
       <h2 style="font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--ink);margin-bottom:12px;">
         Work With Me</h2>
-      <p style="font-size:15px;color:var(--ink3);margin-bottom:44px;max-width:560px;line-height:1.7;">Choose the service
+      <p id="services-intro-text" style="font-size:15px;color:var(--ink3);margin-bottom:32px;max-width:560px;line-height:1.7;">Choose the service
         that best describes your situation. Each consultation begins with a short booking form, then routes you to
         schedule your call.</p>
+
+      <!-- 48-HOUR FREE PROMO BANNER (Controlled via /promo-switch.html) -->
+      <div id="promo-48h-banner" style="display:none;background:linear-gradient(135deg, #00102A 0%, #0A2246 100%);border:1.5px solid rgba(200,168,48,0.55);border-radius:14px;padding:28px 32px;margin-bottom:40px;color:#fff;box-shadow:0 16px 40px rgba(0,16,42,0.14);position:relative;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+          <div style="flex:1;min-width:260px;">
+            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,48,0.16);border:1px solid rgba(200,168,48,0.45);color:#E5C658;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:5px 12px;border-radius:99px;margin-bottom:12px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;display:inline-block;"></span>
+              48-Hour Special Access · Complimentary Discovery Calls
+            </div>
+            <h3 style="font-family:var(--font-display);font-size:28px;font-weight:700;color:#fff;margin:0 0 8px 0;line-height:1.25;">
+              All Discovery Consultations Are <span style="color:var(--gold);">100% FREE ($0)</span> For 48 Hours
+            </h3>
+            <p style="font-size:14.5px;color:rgba(255,255,255,0.82);margin:0;line-height:1.65;max-width:600px;">
+              Standard consultation fees ($30 – $150) are waived while this countdown is active. Select your category below to reserve your session at zero cost before the window closes.
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(200,168,48,0.35);border-radius:12px;padding:16px 22px;text-align:center;min-width:230px;">
+            <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.7);margin-bottom:8px;font-weight:600;">
+              Free Booking Window Closes In
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-display);">
+              <div>
+                <div id="promo-cd-hours" style="font-size:32px;font-weight:700;color:var(--gold);line-height:1;">48</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);margin-top:4px;font-family:var(--font-body);">Hours</div>
+              </div>
+              <div style="font-size:26px;font-weight:700;color:rgba(200,168,48,0.6);margin-top:-12px;">:</div>
+              <div>
+                <div id="promo-cd-mins" style="font-size:32px;font-weight:700;color:var(--gold);line-height:1;">00</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);margin-top:4px;font-family:var(--font-body);">Mins</div>
+              </div>
+              <div style="font-size:26px;font-weight:700;color:rgba(200,168,48,0.6);margin-top:-12px;">:</div>
+              <div>
+                <div id="promo-cd-secs" style="font-size:32px;font-weight:700;color:var(--gold);line-height:1;">00</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);margin-top:4px;font-family:var(--font-body);">Secs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="services-grid">
 
         <div class="service-card reveal">
@@ -132,7 +172,7 @@
               appropriate scope of support. Engagements are proposed separately.</p>
             <p class="service-cta-line">This consultation is where we identify what is disrupting your performance and
               determine actionable pathways forward.</p>
-            <div class="service-meta">15 min · $30</div>
+            <div class="service-meta" data-duration="15 min" data-price="$30">15 min · $30</div>
             <a href="https://calendly.com/drjoshuaoparachukwu/1-on-1-individual-performance-coaching" target="_blank" rel="noopener" class="service-btn" style="display:block;text-align:center;text-decoration:none;">Book a Discovery Consultation →</a>
           </div>
         </div>
@@ -147,7 +187,7 @@
               needs and determine the appropriate scope of support. Engagements are proposed separately.</p>
             <p class="service-cta-line">This consultation is where we identify what is disrupting collective performance
               across your environment.</p>
-            <div class="service-meta">30 min · $75</div>
+            <div class="service-meta" data-duration="30 min" data-price="$75">30 min · $75</div>
             <a href="https://calendly.com/drjoshuaoparachukwu/team-and-organisation-consultation" target="_blank" rel="noopener" class="service-btn" style="display:block;text-align:center;text-decoration:none;">Book a Discovery Consultation →</a>
           </div>
         </div>
@@ -162,7 +202,7 @@
               environments and determine the appropriate scope of support. Engagements are proposed separately.</p>
             <p class="service-cta-line">This consultation is where we identify what is eroding mental clarity and
               performance stamina under sustained pressure.</p>
-            <div class="service-meta">30 min · $100</div>
+            <div class="service-meta" data-duration="30 min" data-price="$100">30 min · $100</div>
             <a href="https://calendly.com/drjoshuaoparachukwu/executive-high-pressure-performance-consultation" target="_blank" rel="noopener" class="service-btn" style="display:block;text-align:center;text-decoration:none;">Book a Discovery Consultation →</a>
           </div>
         </div>
@@ -178,7 +218,7 @@
               separately.</p>
             <p class="service-cta-line">This consultation is where we evaluate systemic friction, board-to-pitch
               alignment, and policy structures.</p>
-            <div class="service-meta">30 min · $150</div>
+            <div class="service-meta" data-duration="30 min" data-price="$150">30 min · $150</div>
             <a href="https://selar.com/sportgovernancestrategicdiscoveryconsultation" target="_blank" rel="noopener" class="service-btn" style="display:block;text-align:center;text-decoration:none;">Book a Discovery Consultation →</a>
           </div>
         </div>

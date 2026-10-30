@@ -213,8 +213,11 @@ function submitFormA(e) {
  role: getVal('fA-role'),
  challenge: getVal('fA-challenge')
  });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
  document.getElementById('confirm-title').textContent = 'Request Received';
- document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to book your 15-minute consultation slot and complete the $30 payment. Please check your email for confirmation.';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 15-minute consultation slot ($0). Please check your email for confirmation.'
+   : 'Thank you. You will now be redirected to book your 15-minute consultation slot and complete the $30 payment. Please check your email for confirmation.';
  showBkPage('booking-confirm');
  setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/1-on-1-individual-performance-coaching', '_blank'); }, 800);
 }
@@ -234,8 +237,11 @@ function submitFormB(e) {
   challenge: getVal('fB-challenge-type'),
   extra: 'Team size: ' + getVal('fB-size') + ' | Tried: ' + getVal('fB-tried') + ' | Outcome: ' + getVal('fB-outcome') + ' | Seeking: ' + getVal('fB-seeking') + ' | Source: ' + getVal('fB-source') + ' | Extra: ' + getVal('fB-extra')
  });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
  document.getElementById('confirm-title').textContent = 'Request Received';
- document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to complete the $75 payment and book your 30-minute team consultation slot.';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 30-minute team consultation slot ($0).'
+   : 'Thank you. You will now be redirected to complete the $75 payment and book your 30-minute team consultation slot.';
  showBkPage('booking-confirm');
  setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/team-and-organisation-consultation', '_blank'); }, 800);
 }
@@ -254,8 +260,11 @@ function submitFormC(e) {
  role: getVal('fC-role'),
  challenge: getVal('fC-challenge')
  });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
  document.getElementById('confirm-title').textContent = 'Request Received';
- document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to book your 30-minute executive consultation slot and complete the $100 payment. Please check your email for confirmation.';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 30-minute executive consultation slot ($0). Please check your email for confirmation.'
+   : 'Thank you. You will now be redirected to book your 30-minute executive consultation slot and complete the $100 payment. Please check your email for confirmation.';
  showBkPage('booking-confirm');
  setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/executive-high-pressure-performance-consultation', '_blank'); }, 800);
 }
@@ -273,8 +282,11 @@ function submitFormD(e) {
  org: getVal('fD-org'),
  role: getVal('fD-role')
  });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
  document.getElementById('confirm-title').textContent = 'Advisory Request Received';
- document.getElementById('confirm-msg').textContent = 'Thank you. You will now be redirected to complete the $150 payment and book your 30-minute sport governance consultation slot.';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 30-minute sport governance consultation slot ($0).'
+   : 'Thank you. You will now be redirected to complete the $150 payment and book your 30-minute sport governance consultation slot.';
  showBkPage('booking-confirm');
  setTimeout(function() { window.open('https://selar.com/sportgovernancestrategicdiscoveryconsultation', '_blank'); }, 800);
 }
@@ -1044,3 +1056,200 @@ if (newsletterBtn) {
     }, 5000);
   });
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   48-HOUR FREE CONSULTATION PROMO ENGINE
+   Controlled via /promo-switch.html (Password-Protected Switch)
+   ═══════════════════════════════════════════════════════════════ */
+(function() {
+  var PROMO_STORAGE_KEY = 'drjoshua_promo_state';
+  var KV_APP_KEY = 'jz4p0798';
+  var KV_KEY = 'promo_state';
+  var promoTimerInterval = null;
+
+  function getLocalPromoState() {
+    try {
+      var raw = localStorage.getItem(PROMO_STORAGE_KEY);
+      if (!raw) return { active: false, startTime: null, endTime: null };
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.active && parsed.endTime && Date.now() < Number(parsed.endTime)) {
+        return {
+          active: true,
+          startTime: Number(parsed.startTime) || Date.now(),
+          endTime: Number(parsed.endTime)
+        };
+      }
+    } catch (e) {}
+    return { active: false, startTime: null, endTime: null };
+  }
+
+  function saveLocalPromoState(state) {
+    try {
+      localStorage.setItem(PROMO_STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {}
+  }
+
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function renderServicesPromoUI(state) {
+    var isActive = Boolean(state && state.active && state.endTime && Date.now() < state.endTime);
+    var banner = document.getElementById('promo-48h-banner');
+    var introText = document.getElementById('services-intro-text');
+    var metas = document.querySelectorAll('.service-meta[data-price]');
+    var btns = document.querySelectorAll('#services .service-btn');
+
+    if (banner) {
+      banner.style.display = isActive ? 'block' : 'none';
+    }
+
+    if (introText) {
+      if (!introText.getAttribute('data-default-text')) {
+        introText.setAttribute('data-default-text', introText.innerHTML);
+      }
+      if (isActive) {
+        introText.innerHTML = 'Choose the service that best describes your situation. <strong style="color:var(--navy);">48-Hour Free Consultation Promo Active:</strong> All discovery consultations are complimentary (<strong style="color:#15803d;">$0 / ₦0</strong>) while the timer below is running.';
+      } else {
+        introText.innerHTML = introText.getAttribute('data-default-text');
+      }
+    }
+
+    metas.forEach(function(meta) {
+      var dur = meta.getAttribute('data-duration') || '30 min';
+      var origPrice = meta.getAttribute('data-price') || '$30';
+      if (isActive) {
+        meta.innerHTML = dur + ' · <span style="text-decoration:line-through;opacity:0.45;font-weight:500;margin-right:4px;">' + origPrice + '</span> <span style="background:rgba(22,163,74,0.12);color:#15803d;border:1px solid rgba(22,163,74,0.35);padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:0.04em;display:inline-block;">FREE ($0)</span>';
+      } else {
+        meta.textContent = dur + ' · ' + origPrice;
+      }
+    });
+
+    btns.forEach(function(btn) {
+      if (isActive) {
+        btn.textContent = 'Book Your Free Consultation ($0) →';
+      } else {
+        btn.textContent = 'Book a Discovery Consultation →';
+      }
+    });
+
+    if (promoTimerInterval) {
+      clearInterval(promoTimerInterval);
+      promoTimerInterval = null;
+    }
+
+    if (isActive && state.endTime) {
+      function tick() {
+        var remainingMs = state.endTime - Date.now();
+        if (remainingMs <= 0) {
+          clearInterval(promoTimerInterval);
+          promoTimerInterval = null;
+          var expiredState = { active: false, startTime: null, endTime: null };
+          saveLocalPromoState(expiredState);
+          renderServicesPromoUI(expiredState);
+          return;
+        }
+        var totalSecs = Math.floor(remainingMs / 1000);
+        var hrs = Math.floor(totalSecs / 3600);
+        var mins = Math.floor((totalSecs % 3600) / 60);
+        var secs = totalSecs % 60;
+
+        var elH = document.getElementById('promo-cd-hours');
+        var elM = document.getElementById('promo-cd-mins');
+        var elS = document.getElementById('promo-cd-secs');
+        if (elH) elH.textContent = pad2(hrs);
+        if (elM) elM.textContent = pad2(mins);
+        if (elS) elS.textContent = pad2(secs);
+      }
+      tick();
+      promoTimerInterval = setInterval(tick, 1000);
+    }
+  }
+
+  async function fetchRemotePromoState() {
+    // Check URL override first (?promo=free or ?promo=off)
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var p = (params.get('promo') || '').toLowerCase();
+      if (p === 'free' || p === 'on' || p === '1') {
+        var cur = getLocalPromoState();
+        if (!cur.active) {
+          var now = Date.now();
+          cur = { active: true, startTime: now, endTime: now + 48 * 3600 * 1000 };
+          saveLocalPromoState(cur);
+        }
+        renderServicesPromoUI(cur);
+        return cur;
+      } else if (p === 'off' || p === '0') {
+        var offState = { active: false, startTime: null, endTime: null };
+        saveLocalPromoState(offState);
+        renderServicesPromoUI(offState);
+        return offState;
+      }
+    } catch (e) {}
+
+    // 1. Try /api/promo endpoint
+    try {
+      var r = await fetch('/api/promo?t=' + Date.now(), { cache: 'no-store' });
+      if (r.ok) {
+        var data = await r.json();
+        if (data && data.ok) {
+          var valid = Boolean(data.active && data.endTime && Date.now() < Number(data.endTime));
+          var synced = {
+            active: valid,
+            startTime: valid ? Number(data.startTime) : null,
+            endTime: valid ? Number(data.endTime) : null
+          };
+          saveLocalPromoState(synced);
+          renderServicesPromoUI(synced);
+          return synced;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Fallback to direct cloud KV lookup
+    try {
+      var r2 = await fetch('https://keyvalue.immanuel.co/api/KeyVal/GetValue/' + KV_APP_KEY + '/' + KV_KEY + '?t=' + Date.now(), { cache: 'no-store' });
+      if (r2.ok) {
+        var raw = (await r2.text()).replace(/"/g, '').trim();
+        var parts = raw.split('_');
+        var isAct = parts[0] === 'ACTIVE';
+        var st = Number(parts[1]) || null;
+        var et = Number(parts[2]) || null;
+        var stillValid = Boolean(isAct && et && Date.now() < et);
+        var kvState = {
+          active: stillValid,
+          startTime: stillValid ? st : null,
+          endTime: stillValid ? et : null
+        };
+        saveLocalPromoState(kvState);
+        renderServicesPromoUI(kvState);
+        return kvState;
+      }
+    } catch (e) {}
+
+    var fallback = getLocalPromoState();
+    renderServicesPromoUI(fallback);
+    return fallback;
+  }
+
+  // Expose helper globally for thank-you.html and promo-switch.html
+  window.DRJOSHUA_PROMO = {
+    getState: getLocalPromoState,
+    saveLocal: saveLocalPromoState,
+    syncFromCloud: fetchRemotePromoState,
+    renderServices: renderServicesPromoUI
+  };
+
+  // Initial immediate render from localStorage, then sync from cloud
+  var initial = getLocalPromoState();
+  renderServicesPromoUI(initial);
+  fetchRemotePromoState();
+
+  // Listen for cross-tab storage updates (e.g. toggling switch in another tab)
+  window.addEventListener('storage', function(e) {
+    if (e.key === PROMO_STORAGE_KEY) {
+      renderServicesPromoUI(getLocalPromoState());
+    }
+  });
+})();

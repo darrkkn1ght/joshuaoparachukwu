@@ -817,7 +817,46 @@
         matchedCategory = 'governance';
       }
 
-      applyCategory(matchedCategory);
+      function applyPromoToThankYou(isPromo) {
+        const subEl = document.getElementById('page-hero-sub');
+        if (subEl) {
+          subEl.textContent = isPromo
+            ? 'Thank you for scheduling your session with Dr. Joshua A. Oparachukwu. Your complimentary discovery consultation booking ($0) has been received and logged into the calendar system.'
+            : 'Thank you for scheduling your session with Dr. Joshua A. Oparachukwu. Your booking and payment have been received and logged into the calendar system.';
+        }
+        CATEGORY_DATA.individual.duration = isPromo ? '15 Minutes · FREE ($0) · Live Video Call' : '15 Minutes · $30 · Live Video Call';
+        CATEGORY_DATA.team.duration = isPromo ? '30 Minutes · FREE ($0) · Live Video Call' : '30 Minutes · $75 · Live Video Call';
+        CATEGORY_DATA.executive.duration = isPromo ? '30 Minutes · FREE ($0) · Live Video Call' : '30 Minutes · $100 · Live Video Call';
+        CATEGORY_DATA.governance.duration = isPromo ? '30 Minutes · FREE ($0) · Live Video Call' : '30 Minutes · $150 · Live Video Call';
+
+        const tabBtns = document.querySelectorAll('#category-tabs .category-tab-btn');
+        if (tabBtns.length >= 5) {
+          tabBtns[1].textContent = isPromo ? '1-on-1 Individual (FREE · 15m)' : '1-on-1 Individual ($30 · 15m)';
+          tabBtns[2].textContent = isPromo ? 'Team & Organization (FREE · 30m)' : 'Team & Organization ($75 · 30m)';
+          tabBtns[3].textContent = isPromo ? 'Executive / High-Pressure (FREE · 30m)' : 'Executive / High-Pressure ($100 · 30m)';
+          tabBtns[4].textContent = isPromo ? 'Sport Governance & Strategy (FREE · 30m)' : 'Sport Governance & Strategy ($150 · 30m)';
+        }
+        applyCategory(matchedCategory);
+      }
+
+      // Check local promo state first, then sync with cloud KV
+      try {
+        const raw = localStorage.getItem('drjoshua_promo_state');
+        const parsed = raw ? JSON.parse(raw) : null;
+        const localActive = Boolean(parsed && parsed.active && parsed.endTime && Date.now() < Number(parsed.endTime));
+        applyPromoToThankYou(localActive);
+      } catch (e) {
+        applyCategory(matchedCategory);
+      }
+
+      fetch('https://keyvalue.immanuel.co/api/KeyVal/GetValue/jz4p0798/promo_state?t=' + Date.now(), { cache: 'no-store' })
+        .then(r => r.text())
+        .then(raw => {
+          const parts = raw.replace(/"/g, '').trim().split('_');
+          const stillValid = parts[0] === 'ACTIVE' && Number(parts[2]) && Date.now() < Number(parts[2]);
+          applyPromoToThankYou(Boolean(stillValid));
+        })
+        .catch(() => {});
 
       // Check if client name is in query params (Calendly automatically passes invitee_full_name)
       const clientName = params.get('invitee_full_name') || params.get('name') || params.get('first_name');
