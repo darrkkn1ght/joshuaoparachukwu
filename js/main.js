@@ -1253,3 +1253,33 @@ if (newsletterBtn) {
     }
   });
 })();
+
+/* ═══ FILTER FOR WRITTEN CLIENT TESTIMONIALS ═══ */
+window.filterCR = function(cat, btn) {
+  var cards = document.querySelectorAll('.cr-card');
+  var btns = document.querySelectorAll('.cr-filter-btn');
+  if (btns) {
+    btns.forEach(function(b) {
+      b.classList.remove('active');
+      b.style.background = '#fff';
+      b.style.color = 'var(--ink, #1F2421)';
+      b.style.border = '1px solid var(--border, #E4E0D8)';
+    });
+  }
+  if (btn) {
+    btn.classList.add('active');
+    btn.style.background = 'var(--navy, #0B2545)';
+    btn.style.color = '#fff';
+    btn.style.border = '1px solid var(--gold, #C8A830)';
+  }
+  if (cards) {
+    cards.forEach(function(card) {
+      if (cat === 'all' || card.getAttribute('data-category') === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+};
+
