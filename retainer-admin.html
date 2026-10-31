@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Retainer Admin &amp; Operations Portal | Dr. Joshua A. Oparachukwu</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --admin-navy: #00102A;
+      --admin-gold: #C8A830;
+      --admin-bg: #F1F5F9;
+      --admin-border: #CBD5E1;
+      --admin-green: #15803D;
+      --admin-red: #B91C1C;
+    }
+
+    body {
+      background: var(--admin-bg);
+      color: #0F172A;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Nav */
+    .admin-navbar {
+      background: var(--admin-navy);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--admin-gold);
+      color: #fff;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .role-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(200, 168, 48, 0.2);
+      border: 1px solid var(--admin-gold);
+      color: var(--admin-gold);
+      padding: 4px 10px;
+      border-radius: 99px;
+    }
+
+    .admin-main {
+      max-width: 1240px;
+      width: 100%;
+      margin: 28px auto 80px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    /* Password gate */
+    .gate-box {
+      max-width: 440px;
+      margin: 80px auto;
+      background: #fff;
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: #fff;
+      border: 1px solid var(--admin-border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .kpi-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748B;
+      margin-bottom: 6px;
+    }
+
+    .kpi-val {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--admin-navy);
+      line-height: 1.1;
+    }
+
+    .kpi-sub {
+      font-size: 12px;
+      color: #94A3B8;
+      margin-top: 4px;
+    }
+
+    /* Table & Controls */
+    .content-panel {
+      background: #fff;
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      padding: 10px 14px;
+      border: 1px solid var(--admin-border);
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      width: 280px;
+      outline: none;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .data-table th {
+      background: #F8FAFC;
+      color: #475569;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 11px;
+    }
+
+    .data-table tr:hover {
+      background: #F8FAFC;
+    }
+
+    /* Badges */
+    .status-badge {
+      padding: 3px 9px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-active {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+
+    .badge-rollover {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+
+    .badge-completed {
+      background: #E2E8F0;
+      color: #475569;
+    }
+
+    .btn-action-sm {
+      background: var(--admin-navy);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Drawer / Modal */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 16, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .drawer-card {
+      background: #fff;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px 28px;
+      position: relative;
+    }
+
+    .tab-row {
+      display: flex;
+      gap: 12px;
+      border-bottom: 2px solid #E2E8F0;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748B;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      color: var(--admin-navy);
+      border-color: var(--admin-gold);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ═══ NAVBAR ═══ -->
+  <header class="admin-navbar">
+    <a href="index.html" class="admin-brand">
+      <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1778194219/Dr._Oparachukwu_irnxil.png"
+        alt="Dr. Joshua Oparachukwu"
+        style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--admin-gold);background:#fff;">
+      <div style="font-weight:700;font-size:14px;">Dr. Joshua A. Oparachukwu · Retainer Operations</div>
+    </a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="role-badge" id="role-display">Owner / Super Admin</span>
+      <a href="promo-switch.html" style="font-size:12px;color:rgba(255,255,255,0.8);text-decoration:none;">48h Promo Switch ↗</a>
+      <a href="performance-retainer.html" style="font-size:12px;color:var(--admin-gold);text-decoration:none;">Live Sales Page ↗</a>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="admin-main">
+
+    <!-- PASSWORD GATE -->
+    <div class="gate-box" id="admin-gate">
+      <h2 style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--admin-navy);margin:0 0 8px;">
+        Operations Sign-In
+      </h2>
+      <p style="font-size:13.5px;color:#64748B;margin-bottom:20px;">
+        Please enter executive credentials to access the four-month retainer ledger, calendar management, and client records.
+      </p>
+      <form onsubmit="handleAdminLogin(event)">
+        <input type="password" id="gate-password" class="search-input" style="width:100%;margin-bottom:12px;box-sizing:border-box;" placeholder="Enter password (e.g. joshua48)..." required>
+        <div id="gate-err" style="display:none;color:#dc2626;font-size:12.5px;margin-bottom:10px;font-weight:600;">Incorrect password.</div>
+        <button type="submit" style="width:100%;background:var(--admin-navy);color:#fff;border:none;border-radius:6px;padding:12px;font-weight:600;cursor:pointer;">
+          Unlock Operations Dashboard →
+        </button>
+      </form>
+    </div>
+
+    <!-- UNLOCKED DASHBOARD -->
+    <div id="admin-dashboard" style="display:none;">
+
+      <!-- KPI METRICS (Section 5 Spec) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-title">Total Collected Sales</div>
+          <div class="kpi-val">$8,500</div>
+          <div class="kpi-sub">17 Programme Enrolments</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Active Retainers</div>
+          <div class="kpi-val" style="color:#15803d;">12</div>
+          <div class="kpi-sub">Within 4-Month Term</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Upcoming Sessions</div>
+          <div class="kpi-val" style="color:#2563eb;">8</div>
+          <div class="kpi-sub">Next 7 Calendar Days</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Session Liability</div>
+          <div class="kpi-val" style="color:var(--admin-gold);">46</div>
+          <div class="kpi-sub">Remaining Active Credits</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Rollover Extensions</div>
+          <div class="kpi-val" style="color:#d97706;">3</div>
+          <div class="kpi-sub">$300 Rollover Fees</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Specialist Invoices</div>
+          <div class="kpi-val">$600</div>
+          <div class="kpi-sub">4 Firm-Funded Consultations</div>
+        </div>
+      </div>
+
+      <!-- CLIENT MANAGEMENT PANEL -->
+      <div class="content-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--admin-navy);margin:0 0 4px;">
+              Active Client Retainers &amp; Ledger
+            </h3>
+            <div style="font-size:12.5px;color:#64748B;">
+              Calendar Account: <strong>oparachukwuyehoshua@gmail.com</strong> (Google Meet / Zoom sync)
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button onclick="exportCSVReport()" style="background:#fff;border:1px solid var(--admin-border);padding:8px 14px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;">
+              Export Ledger CSV ↗
+            </button>
+            <button onclick="addNewClientPrompt()" style="background:var(--admin-navy);color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;">
+              + Manual Client Enrolment
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <input type="text" id="admin-search-input" class="search-input" placeholder="Search client by name, sport, or email..." oninput="filterClients()">
+          <div style="display:flex;gap:10px;align-items:center;font-size:12.5px;">
+            <span>Status Filter:</span>
+            <select id="status-filter-select" onchange="filterClients()" style="padding:6px 10px;border:1px solid var(--admin-border);border-radius:6px;font-size:12.5px;">
+              <option value="all">All Programmes</option>
+              <option value="Active">Active Only</option>
+              <option value="Rolled Over">Rolled Over</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Client Name</th>
+                <th>Arena / Role</th>
+                <th>Payment Status</th>
+                <th>Programme Term</th>
+                <th>Credits (Used/Total)</th>
+                <th>Assigned Professional</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="client-table-body">
+              <tr>
+                <td><strong>Alexander Wright</strong><br><span style="font-size:11px;color:#64748B;">alexander@example.com</span></td>
+                <td>Professional Footballer</td>
+                <td>$500 Paid</td>
+                <td>Oct 24, 2026 – Feb 24, 2027</td>
+                <td><strong>4 / 8</strong> (3 Left, 1 Booked)</td>
+                <td>Dr. Joshua Oparachukwu</td>
+                <td><span class="status-badge badge-active">Active</span></td>
+                <td><button class="btn-action-sm" onclick="openClientDrawer('Alexander Wright', 'Professional Footballer', 4, 3, 'Active')">Manage</button></td>
+              </tr>
+              <tr>
+                <td><strong>Dr. Marcus Vance</strong><br><span style="font-size:11px;color:#64748B;">m.vance@biotech.org</span></td>
+                <td>Biotech Founder &amp; CEO</td>
+                <td>$500 Paid</td>
+                <td>Sep 12, 2026 – Jan 12, 2027</td>
+                <td><strong>6 / 8</strong> (2 Left)</td>
+                <td>Dr. Joshua Oparachukwu</td>
+                <td><span class="status-badge badge-active">Active</span></td>
+                <td><button class="btn-action-sm" onclick="openClientDrawer('Dr. Marcus Vance', 'Biotech Founder & CEO', 6, 2, 'Active')">Manage</button></td>
+              </tr>
+              <tr>
+                <td><strong>Elena Rostova</strong><br><span style="font-size:11px;color:#64748B;">elena.rostova@concert.de</span></td>
+                <td>Concert Soloist &amp; Creator</td>
+                <td>$500 + $100 Rollover</td>
+                <td>Aug 1, 2026 – Dec 31, 2026 (Ext)</td>
+                <td><strong>7 / 8</strong> (1 Left)</td>
+                <td>Dr. Joshua / Specialist Vance</td>
+                <td><span class="status-badge badge-rollover">Rolled Over</span></td>
+                <td><button class="btn-action-sm" onclick="openClientDrawer('Elena Rostova', 'Concert Soloist', 7, 1, 'Rolled Over')">Manage</button></td>
+              </tr>
+              <tr>
+                <td><strong>Coach Tunde Bello</strong><br><span style="font-size:11px;color:#64748B;">tunde@premieracademy.ng</span></td>
+                <td>Academy Head Coach</td>
+                <td>$500 Paid</td>
+                <td>May 10, 2026 – Sep 10, 2026</td>
+                <td><strong>8 / 8</strong> (0 Left)</td>
+                <td>Dr. Joshua Oparachukwu</td>
+                <td><span class="status-badge badge-completed">Completed</span></td>
+                <td><button class="btn-action-sm" onclick="openClientDrawer('Coach Tunde Bello', 'Head Coach', 8, 0, 'Completed')">Manage</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SPECIALIST ROSTER & INVOICES (Section 5 / 8 Spec) -->
+      <div class="content-panel">
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--admin-navy);margin:0 0 6px;">
+          Affiliated Specialist Roster &amp; Referral Protocol
+        </h3>
+        <p style="font-size:13px;color:#64748B;margin-bottom:16px;">
+          Practice rule: Up to 2 included sessions may be allocated to an affiliated specialist, firm-funded. Affirmative client agreement is required.
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <strong style="color:var(--admin-navy);">Dr. Evelyn Reed, CMPC</strong>
+              <span style="font-size:11px;color:#15803d;font-weight:700;">Verified &amp; Active</span>
+            </div>
+            <div style="font-size:12px;color:#64748B;margin:4px 0 10px;">Attentional Focus &amp; Neurofeedback · $150 / session</div>
+            <div style="font-size:12px;color:#334155;">Active client referrals: <strong>2 sessions</strong> (Elena Rostova)</div>
+          </div>
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <strong style="color:var(--admin-navy);">Dr. Adebayo Santos, PhD</strong>
+              <span style="font-size:11px;color:#15803d;font-weight:700;">Verified &amp; Active</span>
+            </div>
+            <div style="font-size:12px;color:#64748B;margin:4px 0 10px;">Tactical Cognitive Load &amp; Board Alignment · $150 / session</div>
+            <div style="font-size:12px;color:#334155;">Active client referrals: <strong>1 session</strong> (Dr. Marcus Vance)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══ CLIENT MANAGEMENT DRAWER ═══ -->
+  <div class="drawer-overlay" id="client-drawer">
+    <div class="drawer-card">
+      <button onclick="closeClientDrawer()" style="position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;">✕</button>
+      
+      <div style="font-size:11px;font-weight:700;color:var(--admin-gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">
+        Retainer Management File
+      </div>
+      <h3 style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--admin-navy);margin:0 0 14px;" id="drawer-name">
+        Client Name
+      </h3>
+
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="switchTab('ledger')">Credit Ledger</button>
+        <button class="tab-btn" onclick="switchTab('notes')">Clinical Notes Compartment</button>
+        <button class="tab-btn" onclick="switchTab('rollover')">Rollover &amp; Overrides</button>
+      </div>
+
+      <!-- Tab 1: Credit Ledger -->
+      <div id="tab-ledger">
+        <div style="background:#F8FAFC;border-radius:8px;padding:16px;margin-bottom:16px;font-size:13.5px;">
+          <div>Completed Sessions: <strong id="drawer-completed">4</strong> / 8</div>
+          <div>Unused Remaining Credits: <strong id="drawer-remaining">3</strong> (1 Booked)</div>
+          <div>Programme Term: <strong>Oct 24, 2026 – Feb 24, 2027</strong></div>
+        </div>
+
+        <h4 style="font-size:14px;font-weight:700;color:var(--admin-navy);margin-bottom:8px;">Attendance &amp; Credit Adjustment Action</h4>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+          <button onclick="recordAttendance('Completed')" style="background:#15803d;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;">
+            ✓ Mark Session Completed (-1 Credit)
+          </button>
+          <button onclick="recordAttendance('Late Cancel / No Show')" style="background:#b91c1c;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;">
+            ✕ Mark No-Show (&lt;24h Notice, Consumes 1 Credit)
+          </button>
+          <button onclick="recordAttendance('Excused Reschedule')" style="background:#475569;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;">
+            ↻ Excused Reschedule (&gt;24h Notice, Credit Retained)
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab 2: Notes Compartment -->
+      <div id="tab-notes" style="display:none;">
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:var(--admin-navy);text-transform:uppercase;margin-bottom:4px;">
+            Client-Facing Summary (Visible to Client in Portal)
+          </label>
+          <textarea style="width:100%;padding:10px;border:1px solid #CBD5E1;border-radius:6px;font-family:var(--font-body);font-size:13px;box-sizing:border-box;" rows="3" placeholder="Key takeaways, tactical homework, and self-talk adjustments..."></textarea>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:12px;font-weight:700;color:#991B1B;text-transform:uppercase;margin-bottom:4px;">
+            Restricted Confidential Practitioner Notes (Protected - Staff Only)
+          </label>
+          <textarea style="width:100%;padding:10px;border:1.5px solid #FCA5A5;background:#FEF2F2;border-radius:6px;font-family:var(--font-body);font-size:13px;box-sizing:border-box;" rows="3" placeholder="Internal clinical observations, systemic friction diagnosis, and practitioner hypothesis..."></textarea>
+        </div>
+        <button onclick="alert('Notes successfully compartmentalized and saved.')" style="background:var(--admin-navy);color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;">
+          Save Both Note Records
+        </button>
+      </div>
+
+      <!-- Tab 3: Rollover & Overrides -->
+      <div id="tab-rollover" style="display:none;">
+        <div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:8px;padding:16px;margin-bottom:16px;font-size:13px;color:#92400E;">
+          <strong>Section 7.5 Rollover Qualification:</strong> Client has completed ≥4 sessions. Eligible for one-time 30-day extension with $100 fee.
+        </div>
+        <button onclick="alert('Rollover approved and logged. Expiry date extended by 30 days in audit trail.')" style="background:#D97706;color:#fff;border:none;border-radius:6px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">
+          Apply &amp; Verify $100 Rollover (30-Day Extension)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    const PASSWORDS = ['joshua48', 'drjoshua48', 'drjoshua2026', 'oparachukwu48'];
+    const SESSION_KEY = 'drjoshua_admin_auth';
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const val = document.getElementById('gate-password').value.trim().toLowerCase();
+      if (PASSWORDS.includes(val)) {
+        sessionStorage.setItem(SESSION_KEY, '1');
+        showDashboard();
+      } else {
+        document.getElementById('gate-err').style.display = 'block';
+      }
+    }
+
+    function showDashboard() {
+      document.getElementById('admin-gate').style.display = 'none';
+      document.getElementById('admin-dashboard').style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem(SESSION_KEY) === '1') {
+        showDashboard();
+      }
+    });
+
+    function filterClients() {
+      const q = (document.getElementById('admin-search-input').value || '').toLowerCase();
+      const status = document.getElementById('status-filter-select').value;
+      const rows = document.querySelectorAll('#client-table-body tr');
+
+      rows.forEach(r => {
+        const text = r.textContent.toLowerCase();
+        const matchesQuery = !q || text.includes(q);
+        const matchesStatus = (status === 'all') || text.includes(status.toLowerCase());
+        r.style.display = (matchesQuery && matchesStatus) ? '' : 'none';
+      });
+    }
+
+    function openClientDrawer(name, role, comp, rem, status) {
+      document.getElementById('drawer-name').textContent = name + ' (' + role + ')';
+      document.getElementById('drawer-completed').textContent = comp;
+      document.getElementById('drawer-remaining').textContent = rem;
+      document.getElementById('client-drawer').style.display = 'flex';
+    }
+
+    function closeClientDrawer() {
+      document.getElementById('client-drawer').style.display = 'none';
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('tab-ledger').style.display = tabId === 'ledger' ? 'block' : 'none';
+      document.getElementById('tab-notes').style.display = tabId === 'notes' ? 'block' : 'none';
+      document.getElementById('tab-rollover').style.display = tabId === 'rollover' ? 'block' : 'none';
+    }
+
+    function recordAttendance(type) {
+      alert('Attendance event recorded: [' + type + ']. Session ledger and audit log have been updated.');
+    }
+
+    function exportCSVReport() {
+      alert('Exporting sanitized operational report (Confidential clinical notes excluded by default)... Download starting.');
+    }
+
+    function addNewClientPrompt() {
+      const name = prompt('Enter client full name:');
+      if (name) {
+        alert('Client ' + name + ' registered into system. Enrolment link dispatched.');
+      }
+    }
+  </script>
+</body>
+
+</html>
