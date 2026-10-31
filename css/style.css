@@ -4794,3 +4794,24 @@ footer {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ═══ REVIEWS 3-COLUMN STATIC GRID ═══ */
+.reviews-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .reviews-grid-3col {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 680px) {
+  .reviews-grid-3col {
+    grid-template-columns: 1fr !important;
+  }
+  #reviews {
+    padding: 60px 20px !important;
+  }
+}
+
