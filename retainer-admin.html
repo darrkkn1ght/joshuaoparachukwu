@@ -293,7 +293,7 @@
         Please enter executive credentials to access the four-month retainer ledger, calendar management, and client records.
       </p>
       <form onsubmit="handleAdminLogin(event)">
-        <input type="password" id="gate-password" class="search-input" style="width:100%;margin-bottom:12px;box-sizing:border-box;" placeholder="Enter password (e.g. joshua48)..." required>
+        <input type="password" id="gate-password" class="search-input" style="width:100%;margin-bottom:12px;box-sizing:border-box;" placeholder="Enter password..." required>
         <div id="gate-err" style="display:none;color:#dc2626;font-size:12.5px;margin-bottom:10px;font-weight:600;">Incorrect password.</div>
         <button type="submit" style="width:100%;background:var(--admin-navy);color:#fff;border:none;border-radius:6px;padding:12px;font-weight:600;cursor:pointer;">
           Unlock Operations Dashboard →
@@ -304,37 +304,37 @@
     <!-- UNLOCKED DASHBOARD -->
     <div id="admin-dashboard" style="display:none;">
 
-      <!-- KPI METRICS (Section 5 Spec) -->
+      <!-- KPI METRICS (computed live from enrolment records) -->
       <div class="kpi-grid">
         <div class="kpi-card">
           <div class="kpi-title">Total Collected Sales</div>
-          <div class="kpi-val">$8,500</div>
-          <div class="kpi-sub">17 Program Enrolments</div>
+          <div class="kpi-val" id="kpi-sales">$0</div>
+          <div class="kpi-sub" id="kpi-sales-sub">0 Program Enrolments</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-title">Active Retainers</div>
-          <div class="kpi-val" style="color:#15803d;">12</div>
+          <div class="kpi-val" id="kpi-active" style="color:#15803d;">0</div>
           <div class="kpi-sub">Within 4-Month Term</div>
         </div>
         <div class="kpi-card">
-          <div class="kpi-title">Upcoming Sessions</div>
-          <div class="kpi-val" style="color:#2563eb;">8</div>
-          <div class="kpi-sub">Next 7 Calendar Days</div>
+          <div class="kpi-title">Booked Sessions</div>
+          <div class="kpi-val" id="kpi-booked" style="color:#2563eb;">0</div>
+          <div class="kpi-sub">Scheduled, Not Yet Held</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-title">Session Liability</div>
-          <div class="kpi-val" style="color:var(--admin-gold);">46</div>
+          <div class="kpi-val" id="kpi-liability" style="color:var(--admin-gold);">0</div>
           <div class="kpi-sub">Remaining Active Credits</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-title">Rollover Extensions</div>
-          <div class="kpi-val" style="color:#d97706;">3</div>
-          <div class="kpi-sub">$300 Rollover Fees</div>
+          <div class="kpi-val" id="kpi-rollover" style="color:#d97706;">0</div>
+          <div class="kpi-sub" id="kpi-rollover-sub">$0 Rollover Fees</div>
         </div>
         <div class="kpi-card">
           <div class="kpi-title">Specialist Invoices</div>
-          <div class="kpi-val">$600</div>
-          <div class="kpi-sub">4 Firm-Funded Consultations</div>
+          <div class="kpi-val" id="kpi-spec">$0</div>
+          <div class="kpi-sub" id="kpi-spec-sub">0 Firm-Funded Consultations</div>
         </div>
       </div>
 
@@ -361,10 +361,10 @@
 
         <!-- Filter bar -->
         <div class="filter-bar">
-          <input type="text" id="admin-search-input" class="search-input" placeholder="Search client by name, sport, or email..." oninput="filterClients()">
+          <input type="text" id="admin-search-input" class="search-input" placeholder="Search client by name, sport, or email..." oninput="renderClients()">
           <div style="display:flex;gap:10px;align-items:center;font-size:12.5px;">
             <span>Status Filter:</span>
-            <select id="status-filter-select" onchange="filterClients()" style="padding:6px 10px;border:1px solid var(--admin-border);border-radius:6px;font-size:12.5px;">
+            <select id="status-filter-select" onchange="renderClients()" style="padding:6px 10px;border:1px solid var(--admin-border);border-radius:6px;font-size:12.5px;">
               <option value="all">All Programs</option>
               <option value="Active">Active Only</option>
               <option value="Rolled Over">Rolled Over</option>
@@ -388,78 +388,35 @@
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody id="client-table-body">
-              <tr>
-                <td><strong>Alexander Wright</strong><br><span style="font-size:11px;color:#64748B;">alexander@example.com</span></td>
-                <td>Professional Footballer</td>
-                <td>$500 Paid</td>
-                <td>Oct 24, 2026 – Feb 24, 2027</td>
-                <td><strong>4 / 8</strong> (3 Left, 1 Booked)</td>
-                <td>Dr. Joshua Oparachukwu</td>
-                <td><span class="status-badge badge-active">Active</span></td>
-                <td><button class="btn-action-sm" onclick="openClientDrawer('Alexander Wright', 'Professional Footballer', 4, 3, 'Active')">Manage</button></td>
-              </tr>
-              <tr>
-                <td><strong>Dr. Marcus Vance</strong><br><span style="font-size:11px;color:#64748B;">m.vance@biotech.org</span></td>
-                <td>Biotech Founder &amp; CEO</td>
-                <td>$500 Paid</td>
-                <td>Sep 12, 2026 – Jan 12, 2027</td>
-                <td><strong>6 / 8</strong> (2 Left)</td>
-                <td>Dr. Joshua Oparachukwu</td>
-                <td><span class="status-badge badge-active">Active</span></td>
-                <td><button class="btn-action-sm" onclick="openClientDrawer('Dr. Marcus Vance', 'Biotech Founder & CEO', 6, 2, 'Active')">Manage</button></td>
-              </tr>
-              <tr>
-                <td><strong>Elena Rostova</strong><br><span style="font-size:11px;color:#64748B;">elena.rostova@concert.de</span></td>
-                <td>Concert Soloist &amp; Creator</td>
-                <td>$500 + $100 Rollover</td>
-                <td>Aug 1, 2026 – Dec 31, 2026 (Ext)</td>
-                <td><strong>7 / 8</strong> (1 Left)</td>
-                <td>Dr. Joshua / Specialist Vance</td>
-                <td><span class="status-badge badge-rollover">Rolled Over</span></td>
-                <td><button class="btn-action-sm" onclick="openClientDrawer('Elena Rostova', 'Concert Soloist', 7, 1, 'Rolled Over')">Manage</button></td>
-              </tr>
-              <tr>
-                <td><strong>Coach Tunde Bello</strong><br><span style="font-size:11px;color:#64748B;">tunde@premieracademy.ng</span></td>
-                <td>Academy Head Coach</td>
-                <td>$500 Paid</td>
-                <td>May 10, 2026 – Sep 10, 2026</td>
-                <td><strong>8 / 8</strong> (0 Left)</td>
-                <td>Dr. Joshua Oparachukwu</td>
-                <td><span class="status-badge badge-completed">Completed</span></td>
-                <td><button class="btn-action-sm" onclick="openClientDrawer('Coach Tunde Bello', 'Head Coach', 8, 0, 'Completed')">Manage</button></td>
-              </tr>
-            </tbody>
+            <tbody id="client-table-body"></tbody>
           </table>
+        </div>
+        <div id="clients-empty" style="display:none;text-align:center;padding:40px 20px;color:#64748B;font-size:13.5px;">
+          <div style="font-size:30px;margin-bottom:8px;">📋</div>
+          <strong style="color:var(--admin-navy);font-size:15px;">No clients enrolled yet.</strong><br>
+          Enrolments from the Retainer Program page and manual enrolments will appear here.
         </div>
       </div>
 
-      <!-- SPECIALIST ROSTER & INVOICES (Section 5 / 8 Spec) -->
+      <!-- SPECIALIST ROSTER & INVOICES -->
       <div class="content-panel">
-        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--admin-navy);margin:0 0 6px;">
-          Affiliated Specialist Roster &amp; Referral Protocol
-        </h3>
-        <p style="font-size:13px;color:#64748B;margin-bottom:16px;">
-          Practice rule: Up to 2 included sessions may be allocated to an affiliated specialist, firm-funded. Affirmative client agreement is required.
-        </p>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--admin-navy);margin:0 0 6px;">
+              Affiliated Specialist Roster &amp; Referral Protocol
+            </h3>
+            <p style="font-size:13px;color:#64748B;margin:0;">
+              Practice rule: Up to 2 included sessions may be allocated to an affiliated specialist, firm-funded. Affirmative client agreement is required.
+            </p>
+          </div>
+          <button onclick="addSpecialistPrompt()" style="background:var(--admin-navy);color:#fff;border:none;padding:8px 16px;border-radius:6px;font-size:12.5px;font-weight:600;cursor:pointer;">
+            + Add Specialist
+          </button>
+        </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
-          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px;">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;">
-              <strong style="color:var(--admin-navy);">Dr. Evelyn Reed, CMPC</strong>
-              <span style="font-size:11px;color:#15803d;font-weight:700;">Verified &amp; Active</span>
-            </div>
-            <div style="font-size:12px;color:#64748B;margin:4px 0 10px;">Attentional Focus &amp; Neurofeedback · $150 / session</div>
-            <div style="font-size:12px;color:#334155;">Active client referrals: <strong>2 sessions</strong> (Elena Rostova)</div>
-          </div>
-          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px;">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;">
-              <strong style="color:var(--admin-navy);">Dr. Adebayo Santos, PhD</strong>
-              <span style="font-size:11px;color:#15803d;font-weight:700;">Verified &amp; Active</span>
-            </div>
-            <div style="font-size:12px;color:#64748B;margin:4px 0 10px;">Tactical Cognitive Load &amp; Board Alignment · $150 / session</div>
-            <div style="font-size:12px;color:#334155;">Active client referrals: <strong>1 session</strong> (Dr. Marcus Vance)</div>
-          </div>
+        <div id="specialist-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;"></div>
+        <div id="specialists-empty" style="display:none;text-align:center;padding:30px 20px;color:#64748B;font-size:13.5px;border:1px dashed #CBD5E1;border-radius:8px;">
+          No affiliated specialists added yet.
         </div>
       </div>
 
@@ -487,12 +444,18 @@
       <!-- Tab 1: Credit Ledger -->
       <div id="tab-ledger">
         <div style="background:#F8FAFC;border-radius:8px;padding:16px;margin-bottom:16px;font-size:13.5px;">
-          <div>Completed Sessions: <strong id="drawer-completed">4</strong> / 8</div>
-          <div>Unused Remaining Credits: <strong id="drawer-remaining">3</strong> (1 Booked)</div>
-          <div>Program Term: <strong>Oct 24, 2026 – Feb 24, 2027</strong></div>
+          <div>Completed Sessions: <strong id="drawer-completed">0</strong> / 8</div>
+          <div>Unused Remaining Credits: <strong id="drawer-remaining">0</strong> (<span id="drawer-booked">0</span> Booked)</div>
+          <div>Program Term: <strong id="drawer-term">—</strong></div>
+          <div>Email: <strong id="drawer-email">—</strong></div>
         </div>
 
         <h4 style="font-size:14px;font-weight:700;color:var(--admin-navy);margin-bottom:8px;">Attendance &amp; Credit Adjustment Action</h4>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+          <button onclick="recordAttendance('Booked')" style="background:#2563eb;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;">
+            + Mark Session Booked
+          </button>
+        </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
           <button onclick="recordAttendance('Completed')" style="background:#15803d;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;">
             ✓ Mark Session Completed (-1 Credit)
@@ -512,25 +475,23 @@
           <label style="display:block;font-size:12px;font-weight:700;color:var(--admin-navy);text-transform:uppercase;margin-bottom:4px;">
             Client-Facing Summary (Visible to Client in Portal)
           </label>
-          <textarea style="width:100%;padding:10px;border:1px solid #CBD5E1;border-radius:6px;font-family:var(--font-body);font-size:13px;box-sizing:border-box;" rows="3" placeholder="Key takeaways, tactical homework, and self-talk adjustments..."></textarea>
+          <textarea id="note-client" style="width:100%;padding:10px;border:1px solid #CBD5E1;border-radius:6px;font-family:var(--font-body);font-size:13px;box-sizing:border-box;" rows="3" placeholder="Key takeaways, tactical homework, and self-talk adjustments..."></textarea>
         </div>
         <div style="margin-bottom:16px;">
           <label style="display:block;font-size:12px;font-weight:700;color:#991B1B;text-transform:uppercase;margin-bottom:4px;">
             Restricted Confidential Practitioner Notes (Protected - Staff Only)
           </label>
-          <textarea style="width:100%;padding:10px;border:1.5px solid #FCA5A5;background:#FEF2F2;border-radius:6px;font-family:var(--font-body);font-size:13px;box-sizing:border-box;" rows="3" placeholder="Internal clinical observations, systemic friction diagnosis, and practitioner hypothesis..."></textarea>
+          <textarea id="note-private" style="width:100%;padding:10px;border:1.5px solid #FCA5A5;background:#FEF2F2;border-radius:6px;font-family:var(--font-body);font-size:13px;box-sizing:border-box;" rows="3" placeholder="Internal clinical observations, systemic friction diagnosis, and practitioner hypothesis..."></textarea>
         </div>
-        <button onclick="alert('Notes successfully compartmentalized and saved.')" style="background:var(--admin-navy);color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;">
+        <button onclick="saveNotes()" style="background:var(--admin-navy);color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;">
           Save Both Note Records
         </button>
       </div>
 
       <!-- Tab 3: Rollover & Overrides -->
       <div id="tab-rollover" style="display:none;">
-        <div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:8px;padding:16px;margin-bottom:16px;font-size:13px;color:#92400E;">
-          <strong>Section 7.5 Rollover Qualification:</strong> Client has completed ≥4 sessions. Eligible for one-time 30-day extension with $100 fee.
-        </div>
-        <button onclick="alert('Rollover approved and logged. Expiry date extended by 30 days in audit trail.')" style="background:#D97706;color:#fff;border:none;border-radius:6px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">
+        <div id="rollover-status" style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:8px;padding:16px;margin-bottom:16px;font-size:13px;color:#92400E;"></div>
+        <button id="btn-apply-rollover" onclick="applyRollover()" style="background:#D97706;color:#fff;border:none;border-radius:6px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;">
           Apply &amp; Verify $100 Rollover (30-Day Extension)
         </button>
       </div>
@@ -542,7 +503,43 @@
   <script>
     const PASSWORDS = ['joshua48', 'drjoshua48', 'drjoshua2026', 'oparachukwu48'];
     const SESSION_KEY = 'drjoshua_admin_auth';
+    const CLIENTS_KEY = 'drjoshua_retainer_clients';
+    const ACTIVE_KEY = 'drjoshua_active_retainer_client';
+    const SPEC_KEY = 'drjoshua_specialists';
+    const SPEC_FEE = 150;
+    let currentClientId = null;
 
+    /* ── Storage helpers ── */
+    function loadJSON(key, fallback) {
+      try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch (e) { return fallback; }
+    }
+    function saveJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
+    function getClients() { return loadJSON(CLIENTS_KEY, []); }
+    function saveClients(list) { saveJSON(CLIENTS_KEY, list); }
+    function getSpecialists() { return loadJSON(SPEC_KEY, []); }
+
+    function updateClient(id, mutate) {
+      const list = getClients();
+      const c = list.find(x => x.id === id);
+      if (!c) return null;
+      mutate(c);
+      c.availableCredits = Math.max(0, (c.totalCredits || 8) - (c.usedCredits || 0) - (c.bookedCredits || 0));
+      if ((c.usedCredits || 0) >= (c.totalCredits || 8)) c.status = 'Completed';
+      saveClients(list);
+      // keep the client's own portal view in sync (same browser)
+      const active = loadJSON(ACTIVE_KEY, null);
+      if (active && active.id === id) saveJSON(ACTIVE_KEY, c);
+      return c;
+    }
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    }
+    function fmtDate(ts) {
+      return ts ? new Date(ts).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+    }
+
+    /* ── Auth ── */
     function handleAdminLogin(e) {
       e.preventDefault();
       const val = document.getElementById('gate-password').value.trim().toLowerCase();
@@ -557,36 +554,104 @@
     function showDashboard() {
       document.getElementById('admin-gate').style.display = 'none';
       document.getElementById('admin-dashboard').style.display = 'block';
+      renderAll();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      if (sessionStorage.getItem(SESSION_KEY) === '1') {
-        showDashboard();
-      }
+      if (sessionStorage.getItem(SESSION_KEY) === '1') showDashboard();
     });
 
-    function filterClients() {
-      const q = (document.getElementById('admin-search-input').value || '').toLowerCase();
-      const status = document.getElementById('status-filter-select').value;
-      const rows = document.querySelectorAll('#client-table-body tr');
+    /* ── Rendering ── */
+    function renderAll() { renderKPIs(); renderClients(); renderSpecialists(); }
 
-      rows.forEach(r => {
-        const text = r.textContent.toLowerCase();
-        const matchesQuery = !q || text.includes(q);
-        const matchesStatus = (status === 'all') || text.includes(status.toLowerCase());
-        r.style.display = (matchesQuery && matchesStatus) ? '' : 'none';
-      });
+    function renderKPIs() {
+      const clients = getClients();
+      const specs = getSpecialists();
+      const sales = clients.reduce((sum, c) => sum + (c.paid ? (c.amount || 0) : 0), 0);
+      const rolled = clients.filter(c => c.rolloverUsed).length;
+      const specSessions = specs.reduce((sum, s) => sum + (s.sessions || 0), 0);
+      const live = clients.filter(c => c.status !== 'Completed');
+      document.getElementById('kpi-sales').textContent = '$' + (sales + rolled * 100).toLocaleString();
+      document.getElementById('kpi-sales-sub').textContent = clients.length + ' Program Enrolment' + (clients.length === 1 ? '' : 's');
+      document.getElementById('kpi-active').textContent = live.length;
+      document.getElementById('kpi-booked').textContent = clients.reduce((s, c) => s + (c.bookedCredits || 0), 0);
+      document.getElementById('kpi-liability').textContent = live.reduce((s, c) => s + (c.availableCredits || 0) + (c.bookedCredits || 0), 0);
+      document.getElementById('kpi-rollover').textContent = rolled;
+      document.getElementById('kpi-rollover-sub').textContent = '$' + (rolled * 100) + ' Rollover Fees';
+      document.getElementById('kpi-spec').textContent = '$' + (specSessions * SPEC_FEE).toLocaleString();
+      document.getElementById('kpi-spec-sub').textContent = specSessions + ' Firm-Funded Consultation' + (specSessions === 1 ? '' : 's');
     }
 
-    function openClientDrawer(name, role, comp, rem, status) {
-      document.getElementById('drawer-name').textContent = name + ' (' + role + ')';
-      document.getElementById('drawer-completed').textContent = comp;
-      document.getElementById('drawer-remaining').textContent = rem;
+    function renderClients() {
+      const q = (document.getElementById('admin-search-input').value || '').toLowerCase();
+      const status = document.getElementById('status-filter-select').value;
+      const all = getClients();
+      const rows = all.filter(c => {
+        const text = [c.name, c.email, c.role].join(' ').toLowerCase();
+        return (!q || text.includes(q)) && (status === 'all' || c.status === status);
+      });
+      const badge = { 'Active': 'badge-active', 'Rolled Over': 'badge-rollover', 'Completed': 'badge-completed' };
+      document.getElementById('client-table-body').innerHTML = rows.map(c => `
+        <tr>
+          <td><strong>${esc(c.name)}</strong><br><span style="font-size:11px;color:#64748B;">${esc(c.email)}</span></td>
+          <td>${esc(c.role || '—')}</td>
+          <td>${c.paid ? '$' + (c.amount || 0) + ' Paid' : 'Unpaid'}${c.rolloverUsed ? ' + $100 Rollover' : ''}</td>
+          <td>${fmtDate(c.programStart)} – ${fmtDate(c.programEnd)}${c.rolloverUsed ? ' (Ext)' : ''}</td>
+          <td><strong>${c.usedCredits || 0} / ${c.totalCredits || 8}</strong> (${c.availableCredits || 0} Left${c.bookedCredits ? ', ' + c.bookedCredits + ' Booked' : ''})</td>
+          <td>${esc(c.assigned || 'Dr. Joshua Oparachukwu')}</td>
+          <td><span class="status-badge ${badge[c.status] || 'badge-active'}">${esc(c.status || 'Active')}</span></td>
+          <td><button class="btn-action-sm" onclick="openClientDrawer('${esc(c.id)}')">Manage</button></td>
+        </tr>`).join('');
+      const empty = document.getElementById('clients-empty');
+      empty.style.display = rows.length ? 'none' : 'block';
+      empty.innerHTML = all.length
+        ? 'No clients match the current search / filter.'
+        : '<div style="font-size:30px;margin-bottom:8px;">📋</div><strong style="color:var(--admin-navy);font-size:15px;">No clients enrolled yet.</strong><br>Enrolments from the Retainer Program page and manual enrolments will appear here.';
+    }
+
+    function renderSpecialists() {
+      const specs = getSpecialists();
+      document.getElementById('specialist-grid').innerHTML = specs.map((s, i) => `
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
+            <strong style="color:var(--admin-navy);">${esc(s.name)}</strong>
+            <button onclick="removeSpecialist(${i})" style="background:none;border:none;color:#b91c1c;font-size:11px;cursor:pointer;">Remove</button>
+          </div>
+          <div style="font-size:12px;color:#64748B;margin:4px 0 10px;">${esc(s.focus || 'Specialist')} · $${SPEC_FEE} / session</div>
+          <div style="font-size:12px;color:#334155;">Firm-funded sessions logged: <strong>${s.sessions || 0}</strong>
+            <button onclick="logSpecialistSession(${i})" style="margin-left:6px;background:#fff;border:1px solid #CBD5E1;border-radius:4px;font-size:11px;padding:2px 8px;cursor:pointer;">+ Log Session</button>
+          </div>
+        </div>`).join('');
+      document.getElementById('specialists-empty').style.display = specs.length ? 'none' : 'block';
+    }
+
+    /* ── Client drawer ── */
+    function openClientDrawer(id) {
+      const c = getClients().find(x => x.id === id);
+      if (!c) return;
+      currentClientId = id;
+      document.getElementById('drawer-name').textContent = c.name + (c.role ? ' (' + c.role + ')' : '');
+      document.getElementById('drawer-completed').textContent = c.usedCredits || 0;
+      document.getElementById('drawer-remaining').textContent = c.availableCredits || 0;
+      document.getElementById('drawer-booked').textContent = c.bookedCredits || 0;
+      document.getElementById('drawer-term').textContent = fmtDate(c.programStart) + ' – ' + fmtDate(c.programEnd);
+      document.getElementById('drawer-email').textContent = c.email || '—';
+      document.getElementById('note-client').value = c.clientNote || '';
+      document.getElementById('note-private').value = c.privateNote || '';
+      const eligible = (c.usedCredits || 0) >= 4 && !c.rolloverUsed;
+      document.getElementById('rollover-status').innerHTML = c.rolloverUsed
+        ? '<strong>Rollover already applied.</strong> Program extended to ' + fmtDate(c.programEnd) + '.'
+        : eligible
+          ? '<strong>Section 7.5 Rollover Qualification:</strong> Client has completed ≥4 sessions. Eligible for one-time 30-day extension with $100 fee.'
+          : '<strong>Not yet eligible.</strong> Section 7.5 requires at least 4 completed sessions (currently ' + (c.usedCredits || 0) + ').';
+      document.getElementById('btn-apply-rollover').disabled = !eligible;
+      document.getElementById('btn-apply-rollover').style.opacity = eligible ? '1' : '0.5';
       document.getElementById('client-drawer').style.display = 'flex';
     }
 
     function closeClientDrawer() {
       document.getElementById('client-drawer').style.display = 'none';
+      currentClientId = null;
     }
 
     function switchTab(tabId) {
@@ -598,19 +663,118 @@
     }
 
     function recordAttendance(type) {
-      alert('Attendance event recorded: [' + type + ']. Session ledger and audit log have been updated.');
+      if (!currentClientId) return;
+      const c = getClients().find(x => x.id === currentClientId);
+      if (!c) return;
+      if (type === 'Booked') {
+        if ((c.availableCredits || 0) <= 0) return alert('No available credits left to book.');
+      } else if (type !== 'Excused Reschedule') {
+        if ((c.usedCredits || 0) >= (c.totalCredits || 8)) return alert('All credits have already been used.');
+      }
+      updateClient(currentClientId, cl => {
+        cl.history = cl.history || [];
+        cl.history.push({ type, at: Date.now() });
+        if (type === 'Booked') {
+          cl.bookedCredits = (cl.bookedCredits || 0) + 1;
+        } else if (type !== 'Excused Reschedule') {
+          // a held or no-show session consumes a credit; release a booking if one exists
+          if ((cl.bookedCredits || 0) > 0) cl.bookedCredits -= 1;
+          cl.usedCredits = (cl.usedCredits || 0) + 1;
+          if (!cl.firstSessionDate) cl.firstSessionDate = Date.now();
+        }
+      });
+      renderAll();
+      openClientDrawer(currentClientId);
     }
 
+    function saveNotes() {
+      if (!currentClientId) return;
+      updateClient(currentClientId, cl => {
+        cl.clientNote = document.getElementById('note-client').value.trim();
+        cl.privateNote = document.getElementById('note-private').value.trim();
+      });
+      alert('Both note records saved.');
+    }
+
+    function applyRollover() {
+      if (!currentClientId) return;
+      if (!confirm('Confirm $100 rollover payment received? This extends the program by 30 days.')) return;
+      updateClient(currentClientId, cl => {
+        cl.rolloverUsed = true;
+        cl.status = 'Rolled Over';
+        cl.programEnd = (cl.programEnd || Date.now()) + 30 * 24 * 3600 * 1000;
+      });
+      renderAll();
+      openClientDrawer(currentClientId);
+    }
+
+    /* ── Actions ── */
     function exportCSVReport() {
-      alert('Exporting sanitized operational report (Confidential clinical notes excluded by default)... Download starting.');
+      const clients = getClients();
+      if (!clients.length) return alert('There are no client records to export yet.');
+      const cols = ['name', 'email', 'phone', 'role', 'timezone', 'status', 'amount', 'usedCredits', 'bookedCredits', 'availableCredits', 'rolloverUsed'];
+      const head = cols.concat(['programStart', 'programEnd']);
+      const lines = [head.join(',')].concat(clients.map(c =>
+        cols.map(k => '"' + String(c[k] == null ? '' : c[k]).replace(/"/g, '""') + '"')
+          .concat(['"' + fmtDate(c.programStart) + '"', '"' + fmtDate(c.programEnd) + '"']).join(',')
+      ));
+      // confidential practitioner notes are intentionally excluded
+      const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'retainer-ledger-' + new Date().toISOString().slice(0, 10) + '.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
     }
 
     function addNewClientPrompt() {
-      const name = prompt('Enter client full name:');
-      if (name) {
-        alert('Client ' + name + ' registered into system. Enrolment link dispatched.');
-      }
+      const name = (prompt('Client full name:') || '').trim();
+      if (!name) return;
+      const email = (prompt('Client email:') || '').trim();
+      const role = (prompt('Sport / role (e.g. Footballer, Sprinter, Executive):') || '').trim();
+      const now = Date.now();
+      const list = getClients();
+      list.unshift({
+        id: 'cl_' + now.toString(36), name, email, phone: '', timezone: '', role, challenge: '',
+        registeredAt: now, paid: true, amount: 500, status: 'Active',
+        totalCredits: 8, usedCredits: 0, bookedCredits: 0, availableCredits: 8,
+        firstSessionDate: null, programStart: now, programEnd: now + 122 * 24 * 3600 * 1000,
+        rolloverUsed: false, manual: true
+      });
+      saveClients(list);
+      renderAll();
     }
+
+    function addSpecialistPrompt() {
+      const name = (prompt('Specialist full name & credentials:') || '').trim();
+      if (!name) return;
+      const focus = (prompt('Area of specialism:') || '').trim();
+      const specs = getSpecialists();
+      specs.push({ name, focus, sessions: 0 });
+      saveJSON(SPEC_KEY, specs);
+      renderAll();
+    }
+
+    function logSpecialistSession(i) {
+      const specs = getSpecialists();
+      if (!specs[i]) return;
+      specs[i].sessions = (specs[i].sessions || 0) + 1;
+      saveJSON(SPEC_KEY, specs);
+      renderAll();
+    }
+
+    function removeSpecialist(i) {
+      const specs = getSpecialists();
+      if (!specs[i] || !confirm('Remove ' + specs[i].name + ' from the roster?')) return;
+      specs.splice(i, 1);
+      saveJSON(SPEC_KEY, specs);
+      renderAll();
+    }
+
+    // refresh if another tab (e.g. a new enrolment) changes the data
+    window.addEventListener('storage', e => {
+      if ([CLIENTS_KEY, SPEC_KEY].includes(e.key) && sessionStorage.getItem(SESSION_KEY) === '1') renderAll();
+    });
   </script>
 </body>
 

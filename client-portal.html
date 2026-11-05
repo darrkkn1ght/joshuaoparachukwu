@@ -343,23 +343,38 @@
     </a>
     <div class="portal-user-badge">
       <div style="text-align:right;">
-        <div id="portal-user-name" style="font-weight:600;font-size:13.5px;color:#fff;">Alexander Wright</div>
-        <div id="portal-user-role" style="font-size:11px;color:var(--portal-gold);">Professional Footballer · 4-Month Retainer</div>
+        <div id="portal-user-name" style="font-weight:600;font-size:13.5px;color:#fff;">Guest</div>
+        <div id="portal-user-role" style="font-size:11px;color:var(--portal-gold);">Not enrolled</div>
       </div>
-      <div class="user-avatar" id="portal-avatar">AW</div>
+      <div class="user-avatar" id="portal-avatar">—</div>
     </div>
   </nav>
 
   <!-- ═══ PORTAL BODY ═══ -->
   <main class="portal-container">
 
+    <!-- NOT-ENROLLED STATE -->
+    <div id="portal-empty" class="p-card" style="display:none;text-align:center;padding:60px 24px;max-width:640px;margin:40px auto;">
+      <div style="font-size:36px;margin-bottom:10px;">🔒</div>
+      <h1 class="prog-title" style="margin-bottom:10px;">No Active Program Found</h1>
+      <p style="font-size:14px;color:#64748B;line-height:1.7;margin:0 0 22px;">
+        Your dashboard becomes available once you enrol in the Four-Month Individual Performance Development Retainer Program.
+      </p>
+      <a href="performance-retainer.html" style="display:inline-block;background:var(--portal-navy);color:#fff;border-radius:8px;padding:12px 22px;font-size:13.5px;font-weight:600;text-decoration:none;">
+        View the Retainer Program →
+      </a>
+      <div style="font-size:12.5px;color:#64748B;margin-top:18px;">
+        Already enrolled? Contact <a href="mailto:mailjoshuaoparachukwu@gmail.com" style="color:var(--portal-navy);">mailjoshuaoparachukwu@gmail.com</a>
+      </div>
+    </div>
+
+    <div id="portal-dashboard" style="display:none;">
+
     <!-- Header bar -->
     <div class="client-header-bar">
       <div>
         <h1 class="prog-title">Individual Performance Development Dashboard</h1>
-        <div class="prog-meta-sub" id="prog-dates-sub">
-          Program Start: <strong>Oct 24, 2026</strong> · Four-Month Expiry: <strong>Feb 24, 2027</strong> · Status: <span style="color:#15803d;font-weight:700;">ACTIVE ($500 PAID)</span>
-        </div>
+        <div class="prog-meta-sub" id="prog-dates-sub"></div>
       </div>
       <div style="display:flex;gap:10px;">
         <button onclick="openBookingModal()" style="background:var(--portal-navy);color:#fff;border:none;border-radius:8px;padding:12px 20px;font-size:13px;font-weight:600;cursor:pointer;">
@@ -375,22 +390,22 @@
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-label">Total Credits</div>
-        <div class="stat-val">8</div>
+        <div class="stat-val" id="stat-total">8</div>
         <div class="stat-sub">45-Minute Consultations</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Completed Sessions</div>
-        <div class="stat-val" id="stat-completed" style="color:#15803d;">4</div>
-        <div class="stat-sub">Recorded &amp; Diagnosed</div>
+        <div class="stat-val" id="stat-completed" style="color:#15803d;">0</div>
+        <div class="stat-sub">Held Consultations</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Scheduled / Booked</div>
-        <div class="stat-val" id="stat-scheduled" style="color:#2563eb;">1</div>
-        <div class="stat-sub">Upcoming Appointment</div>
+        <div class="stat-val" id="stat-scheduled" style="color:#2563eb;">0</div>
+        <div class="stat-sub">Upcoming Appointments</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Credits Remaining</div>
-        <div class="stat-val" id="stat-remaining" style="color:var(--portal-gold);">3</div>
+        <div class="stat-val" id="stat-remaining" style="color:var(--portal-gold);">8</div>
         <div class="stat-sub">Available to Schedule</div>
       </div>
     </div>
@@ -401,47 +416,23 @@
       <!-- LEFT COLUMN -->
       <div>
 
-        <!-- NEXT SCHEDULED APPOINTMENT CARD -->
+        <!-- NEXT STEP CARD -->
         <div class="next-appt-box" id="next-appt-card">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--portal-gold);">
-              Next Scheduled Consultation · Session 5 of 8
-            </div>
-            <span class="badge-status badge-scheduled">Confirmed</span>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--portal-gold);margin-bottom:12px;" id="next-appt-label">
+            Next Step
           </div>
-
-          <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin:0 0 4px;">
-            Focus: High-Stakes Pressure Regulation &amp; Clutch Execution
+          <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin:0 0 6px;" id="next-appt-title">
+            Book your first consultation
           </h3>
-          <div style="font-size:13.5px;color:rgba(255,255,255,0.75);">
-            Practitioner: <strong>Dr. Joshua A. Oparachukwu</strong> (45 Minutes)
+          <div style="font-size:13.5px;color:rgba(255,255,255,0.75);line-height:1.6;" id="next-appt-text">
+            Your first session should be scheduled within 30 calendar days of enrolment. Dr. Joshua's office will confirm the time and send your meeting link by email.
           </div>
-
-          <!-- Dual Timezone Comparison -->
-          <div class="tz-comparison">
-            <div>
-              <div class="tz-label">Your Local Time (London / GMT)</div>
-              <div class="tz-time" id="tz-client-time">Friday, Nov 6, 2026 at 3:00 PM</div>
-            </div>
-            <div>
-              <div class="tz-label">Practitioner Time (WAT / GMT+1)</div>
-              <div class="tz-time" id="tz-pract-time">Friday, Nov 6, 2026 at 4:00 PM</div>
-            </div>
-          </div>
-
           <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;">
-            <a href="https://meet.google.com" target="_blank" class="btn-meet">
-              Join Video Room (Google Meet) ↗
-            </a>
-            <button onclick="handleRescheduleRequest()" class="btn-action-outline">
-              Reschedule Session (24h Notice)
-            </button>
-            <button onclick="handleCancelRequest()" class="btn-action-outline" style="color:#FCA5A5;border-color:rgba(252,165,165,0.4);">
-              Cancel Appointment
-            </button>
+            <button onclick="openBookingModal()" class="btn-meet" style="border:none;cursor:pointer;">Request a Session Time →</button>
+            <button onclick="handleRescheduleRequest()" class="btn-action-outline">Reschedule / Cancel (24h Notice)</button>
           </div>
           <div style="font-size:11.5px;color:rgba(255,255,255,0.6);margin-top:12px;">
-            * Reminder: Cancellations or reschedules must be submitted at least 24 hours in advance under Section 7.4.
+            * Cancellations or reschedules must be submitted at least 24 hours in advance under Section 7.4.
           </div>
         </div>
 
@@ -449,7 +440,6 @@
         <div class="p-card">
           <div class="p-card-title">
             <span>Pre-Session Update &amp; Context</span>
-            <span style="font-size:12px;font-family:var(--font-body);color:#64748B;">For Session 5</span>
           </div>
           <p style="font-size:13.5px;color:#64748B;margin-bottom:14px;line-height:1.6;">
             Submitting a 2-minute update on recent matches or performance situations helps us dive straight into actionable mental strategies.
@@ -465,66 +455,9 @@
         <div class="p-card">
           <div class="p-card-title">
             <span>Retainer Consultation Ledger</span>
-            <span style="font-size:13px;font-family:var(--font-body);color:var(--portal-gold);font-weight:600;">8 Total Sessions</span>
+            <span style="font-size:13px;font-family:var(--font-body);color:var(--portal-gold);font-weight:600;" id="ledger-total-label">8 Total Sessions</span>
           </div>
-          <div id="session-ledger-list">
-            <div class="session-item">
-              <div>
-                <strong>Session 1: Initial Performance Intake &amp; Mental Diagnostic</strong>
-                <div style="font-size:12px;color:#64748B;">Oct 24, 2026 · Dr. Joshua Oparachukwu</div>
-              </div>
-              <span class="badge-status badge-completed">Completed</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 2: Attentional Calibration &amp; Self-Talk Restructuring</strong>
-                <div style="font-size:12px;color:#64748B;">Nov 7, 2026 · Dr. Joshua Oparachukwu</div>
-              </div>
-              <span class="badge-status badge-completed">Completed</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 3: High-Pressure Breathing &amp; Somatic Regulation</strong>
-                <div style="font-size:12px;color:#64748B;">Nov 21, 2026 · Dr. Joshua Oparachukwu</div>
-              </div>
-              <span class="badge-status badge-completed">Completed</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 4: Mid-Program Progress Review &amp; Tactical Adaptation</strong>
-                <div style="font-size:12px;color:#64748B;">Dec 5, 2026 · Dr. Joshua Oparachukwu</div>
-              </div>
-              <span class="badge-status badge-completed">Completed</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 5: High-Stakes Pressure Regulation &amp; Clutch Execution</strong>
-                <div style="font-size:12px;color:#64748B;">Nov 6, 2026 (Upcoming) · Dr. Joshua Oparachukwu</div>
-              </div>
-              <span class="badge-status badge-scheduled">Scheduled</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 6: Available Credit</strong>
-                <div style="font-size:12px;color:#64748B;">45-Minute Consultation Credit</div>
-              </div>
-              <span class="badge-status badge-available">Available</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 7: Available Credit</strong>
-                <div style="font-size:12px;color:#64748B;">45-Minute Consultation Credit</div>
-              </div>
-              <span class="badge-status badge-available">Available</span>
-            </div>
-            <div class="session-item">
-              <div>
-                <strong>Session 8: Final Retainer Review &amp; Long-Term Protocol</strong>
-                <div style="font-size:12px;color:#64748B;">45-Minute Consultation Credit</div>
-              </div>
-              <span class="badge-status badge-available">Available</span>
-            </div>
-          </div>
+          <div id="session-ledger-list"></div>
         </div>
 
       </div>
@@ -532,24 +465,20 @@
       <!-- RIGHT COLUMN -->
       <div>
 
-        <!-- ONE-TIME $100 ROLLOVER EXTENSION MODULE -->
-        <div class="rollover-promo-card" id="rollover-card">
+        <!-- ROLLOVER MODULE (shown only when eligible) -->
+        <div class="rollover-promo-card" id="rollover-card" style="display:none;">
           <span class="rollover-badge">Section 7.5 Rollover Option</span>
           <h4 style="font-size:16px;font-weight:700;color:#92400E;margin:0 0 6px;">
             Eligible for 30-Day Extension ($100)
           </h4>
-          <p style="font-size:13px;color:#B45309;line-height:1.6;margin:0 0 10px;">
-            You have completed 4+ consultations! If you have up to 4 unused session credits before your February 24 expiry, you can activate a single <strong>30-day rollover extension</strong> for a one-time $100 fee.
-          </p>
-          <div style="font-size:12px;color:#78350F;background:#FEF3C7;padding:8px 12px;border-radius:6px;">
-            Carried-forward credits: <strong>3 sessions</strong> · Extended expiry: <strong>March 26, 2027</strong>
-          </div>
-          <button onclick="handleRolloverPayment()" class="btn-rollover-pay" id="btn-rollover">
-            ⚡ Pay $100 &amp; Extend Program by 30 Days
-          </button>
+          <p style="font-size:13px;color:#B45309;line-height:1.6;margin:0 0 10px;" id="rollover-text"></p>
+          <a id="btn-rollover" class="btn-rollover-pay" style="display:block;text-align:center;text-decoration:none;"
+             href="mailto:mailjoshuaoparachukwu@gmail.com?subject=Rollover%20Extension%20Request">
+            Request $100 30-Day Extension →
+          </a>
         </div>
 
-        <!-- SPECIALIST ALLOCATION & CONSENT MODULE -->
+        <!-- SPECIALIST ALLOCATION MODULE -->
         <div class="p-card">
           <div class="p-card-title">Affiliated Specialist Allocation</div>
           <div class="consent-banner">
@@ -560,29 +489,20 @@
               Under Section 7.6, Dr. Joshua may recommend an affiliated qualified specialist for specific clinical or tactical performance areas. Fees are fully covered by the firm.
             </p>
             <div style="font-size:12.5px;color:#1E293B;background:#fff;padding:10px 14px;border-radius:6px;border:1px solid #BBF7D0;">
-              Currently assigned: <strong>Dr. Joshua A. Oparachukwu (Primary)</strong>. No pending specialist transfers.
+              Currently assigned: <strong id="assigned-practitioner">Dr. Joshua A. Oparachukwu (Primary)</strong>. No pending specialist transfers.
             </div>
           </div>
         </div>
 
-        <!-- SHARED RESOURCES & SUMMARY NOTES -->
+        <!-- SHARED NOTES FROM DR. JOSHUA -->
         <div class="p-card">
-          <div class="p-card-title">Shared Frameworks &amp; Notes</div>
-          <div style="font-size:13.5px;display:flex;flex-direction:column;gap:12px;">
-            <div style="border-bottom:1px solid var(--portal-border);padding-bottom:10px;">
-              <strong style="color:var(--portal-navy);">Pressure Inoculation Protocol v2</strong><br>
-              <span style="font-size:12px;color:#64748B;">Assigned after Session 3 · Tactical mental checklist</span><br>
-              <a href="ideas-frameworks.html" target="_blank" style="color:var(--portal-gold);font-size:12.5px;text-decoration:underline;">View Framework Notes →</a>
-            </div>
-            <div style="border-bottom:1px solid var(--portal-border);padding-bottom:10px;">
-              <strong style="color:var(--portal-navy);">Attentional Focus Matrix</strong><br>
-              <span style="font-size:12px;color:#64748B;">Assigned after Session 2 · Broad-internal to narrow-external switch</span><br>
-              <a href="case-studies.html" target="_blank" style="color:var(--portal-gold);font-size:12.5px;text-decoration:underline;">Read Companion Case Studies →</a>
-            </div>
+          <div class="p-card-title">Session Notes from Dr. Joshua</div>
+          <div id="shared-notes" style="font-size:13.5px;color:#64748B;line-height:1.6;">
+            Notes and frameworks shared after your sessions will appear here.
           </div>
         </div>
 
-        <!-- SUPPORT & DISPUTE CONTACT -->
+        <!-- SUPPORT CONTACT -->
         <div class="p-card" style="background:#F8FAFC;">
           <div style="font-size:14px;font-weight:700;color:var(--portal-navy);margin-bottom:4px;">Need Assistance?</div>
           <p style="font-size:12.5px;color:#64748B;line-height:1.6;margin:0 0 10px;">
@@ -596,65 +516,148 @@
       </div>
 
     </div>
+    </div>
   </main>
 
   <script src="js/main.js"></script>
   <script>
-    // Initialize or load client from localStorage
-    document.addEventListener('DOMContentLoaded', () => {
-      try {
-        const raw = localStorage.getItem('drjoshua_active_retainer_client');
-        if (raw) {
-          const client = JSON.parse(raw);
-          if (client && client.name) {
-            document.getElementById('portal-user-name').textContent = client.name;
-            document.getElementById('portal-user-role').textContent = (client.role || 'Client') + ' · 4-Month Retainer';
-            const initials = client.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-            document.getElementById('portal-avatar').textContent = initials;
-          }
-        }
-      } catch (e) {}
-    });
+    const ACTIVE_KEY = 'drjoshua_active_retainer_client';
+    const CLIENTS_KEY = 'drjoshua_retainer_clients';
+    const SUPPORT_EMAIL = 'mailjoshuaoparachukwu@gmail.com';
+    let client = null;
 
-    function handleRescheduleRequest() {
-      const confirmResched = confirm('Under Section 7.4 of your program terms, reschedules require at least 24 hours advance notice. Would you like to select a new 45-minute slot?');
-      if (confirmResched) {
-        alert('Please select your preferred replacement date & time. Our scheduling system has updated your calendar.');
-      }
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    }
+    function fmtDate(ts) {
+      return ts ? new Date(ts).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
     }
 
-    function handleCancelRequest() {
-      const confirmCancel = confirm('Warning: Cancellations with less than 24 hours notice consume one session credit. Are you sure you wish to cancel this appointment?');
-      if (confirmCancel) {
-        alert('Your appointment has been cancelled. If cancelled more than 24 hours in advance, your session credit has been returned to your ledger.');
+    function loadClient() {
+      try {
+        const active = JSON.parse(localStorage.getItem(ACTIVE_KEY) || 'null');
+        if (!active || !active.id) return active;
+        // prefer the latest copy from the ledger (admin updates)
+        const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+        return list.find(c => c.id === active.id) || active;
+      } catch (e) { return null; }
+    }
+
+    function render() {
+      client = loadClient();
+      if (!client || !client.name) {
+        document.getElementById('portal-empty').style.display = 'block';
+        document.getElementById('portal-dashboard').style.display = 'none';
+        return;
       }
+      document.getElementById('portal-empty').style.display = 'none';
+      document.getElementById('portal-dashboard').style.display = 'block';
+
+      const total = client.totalCredits || 8;
+      const used = client.usedCredits || 0;
+      const booked = client.bookedCredits || 0;
+      const remaining = Math.max(0, total - used - booked);
+
+      document.getElementById('portal-user-name').textContent = client.name;
+      document.getElementById('portal-user-role').textContent = (client.role || 'Client') + ' · 4-Month Retainer';
+      document.getElementById('portal-avatar').textContent = client.name.split(' ').filter(Boolean).map(n => n[0]).join('').toUpperCase().substring(0, 2);
+
+      const statusColor = client.status === 'Completed' ? '#64748B' : '#15803d';
+      document.getElementById('prog-dates-sub').innerHTML =
+        'Program Start: <strong>' + fmtDate(client.programStart) + '</strong> · Four-Month Expiry: <strong>' + fmtDate(client.programEnd) + '</strong>' +
+        ' · Status: <span style="color:' + statusColor + ';font-weight:700;">' + esc((client.status || 'Active').toUpperCase()) + (client.paid ? ' ($' + (client.amount || 500) + ' PAID)' : '') + '</span>';
+
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-completed').textContent = used;
+      document.getElementById('stat-scheduled').textContent = booked;
+      document.getElementById('stat-remaining').textContent = remaining;
+      document.getElementById('ledger-total-label').textContent = total + ' Total Sessions';
+
+      // Next-step card
+      const label = document.getElementById('next-appt-label');
+      const title = document.getElementById('next-appt-title');
+      const text = document.getElementById('next-appt-text');
+      if (used >= total) {
+        label.textContent = 'Program Complete';
+        title.textContent = 'All ' + total + ' consultations completed';
+        text.textContent = 'Thank you for completing the program. Contact Dr. Joshua\'s office to discuss continued support.';
+      } else if (booked > 0) {
+        label.textContent = 'Upcoming · Session ' + (used + 1) + ' of ' + total;
+        title.textContent = booked + ' session' + (booked > 1 ? 's' : '') + ' booked';
+        text.textContent = 'Your meeting link and confirmed time are sent to ' + (client.email || 'your email') + '.';
+      } else if (used === 0) {
+        label.textContent = 'Next Step';
+        title.textContent = 'Book your first consultation';
+        text.textContent = 'Your first session should be scheduled within 30 calendar days of enrolment. Dr. Joshua\'s office will confirm the time and send your meeting link by email.';
+      } else {
+        label.textContent = 'Next Step · Session ' + (used + 1) + ' of ' + total;
+        title.textContent = 'Book your next consultation';
+        text.textContent = remaining + ' credit' + (remaining === 1 ? '' : 's') + ' remaining before ' + fmtDate(client.programEnd) + '.';
+      }
+
+      // Ledger
+      let html = '';
+      for (let i = 1; i <= total; i++) {
+        let state = 'available', badge = 'badge-available', label2 = 'Available';
+        if (i <= used) { state = 'completed'; badge = 'badge-completed'; label2 = 'Completed'; }
+        else if (i <= used + booked) { state = 'scheduled'; badge = 'badge-scheduled'; label2 = 'Booked'; }
+        html += '<div class="session-item"><div><strong>Session ' + i + '</strong>' +
+          '<div style="font-size:12px;color:#64748B;">45-Minute Consultation' + (state === 'available' ? ' Credit' : ' · Dr. Joshua Oparachukwu') + '</div></div>' +
+          '<span class="badge-status ' + badge + '">' + label2 + '</span></div>';
+      }
+      document.getElementById('session-ledger-list').innerHTML = html;
+
+      // Rollover (Section 7.5): ≥4 completed, not yet used
+      const eligible = used >= 4 && !client.rolloverUsed && remaining + booked > 0;
+      document.getElementById('rollover-card').style.display = eligible ? 'block' : 'none';
+      if (eligible) {
+        document.getElementById('rollover-text').innerHTML =
+          'You have completed ' + used + ' consultations. Before your ' + fmtDate(client.programEnd) +
+          ' expiry you can activate a single <strong>30-day rollover extension</strong> for up to 4 unused credits for a one-time $100 fee.';
+      }
+
+      // Notes shared by Dr. Joshua (client-facing only)
+      document.getElementById('shared-notes').innerHTML = client.clientNote
+        ? '<div style="color:#1E293B;white-space:pre-wrap;">' + esc(client.clientNote) + '</div>'
+        : 'Notes and frameworks shared after your sessions will appear here.';
+    }
+
+    document.addEventListener('DOMContentLoaded', render);
+    window.addEventListener('storage', e => { if ([ACTIVE_KEY, CLIENTS_KEY].includes(e.key)) render(); });
+
+    function mailOffice(subject, body) {
+      window.location.href = 'mailto:' + SUPPORT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+
+    function openBookingModal() {
+      if (!client) return;
+      mailOffice('Session Booking Request – ' + client.name,
+        'Hello Dr. Joshua,\n\nI would like to book my next 45-minute consultation.\n\nPreferred days/times:\nMy timezone: ' + (client.timezone || '') + '\n\nThank you,\n' + client.name);
+    }
+
+    function handleRescheduleRequest() {
+      if (!client) return;
+      if (!confirm('Under Section 7.4, reschedules and cancellations require at least 24 hours notice. Changes with less notice consume one session credit. Continue?')) return;
+      mailOffice('Reschedule / Cancellation Request – ' + client.name,
+        'Hello Dr. Joshua,\n\nI need to reschedule / cancel my upcoming session.\n\nCurrent session date:\nNew preferred time:\n\nThank you,\n' + client.name);
     }
 
     function submitPreSessionNotes() {
       const notes = document.getElementById('client-pre-notes').value.trim();
-      if (!notes) {
-        alert('Please enter a brief note or update before saving.');
-        return;
-      }
+      if (!notes) return alert('Please enter a brief note or update before saving.');
+      try {
+        const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+        const c = list.find(x => client && x.id === client.id);
+        if (c) {
+          c.preSessionNotes = c.preSessionNotes || [];
+          c.preSessionNotes.push({ text: notes, at: Date.now() });
+          localStorage.setItem(CLIENTS_KEY, JSON.stringify(list));
+        }
+      } catch (e) {}
+      mailOffice('Pre-Session Update – ' + client.name, notes);
+      document.getElementById('client-pre-notes').value = '';
       document.getElementById('notes-saved-msg').style.display = 'inline';
-      setTimeout(() => {
-        document.getElementById('notes-saved-msg').style.display = 'none';
-      }, 4000);
-    }
-
-    function handleRolloverPayment() {
-      const confirmRollover = confirm('Confirm $100 one-time rollover payment to extend up to 4 unused sessions for an additional 30 calendar days?');
-      if (confirmRollover) {
-        alert('Payment successful! Your program expiry has been extended by 30 days to March 26, 2027.');
-        const btn = document.getElementById('btn-rollover');
-        btn.textContent = '✓ Rollover Active (Extended 30 Days)';
-        btn.style.background = '#15803d';
-        btn.disabled = true;
-      }
-    }
-
-    function openBookingModal() {
-      alert('Available 45-minute slots: Wednesdays & Fridays at 2:00 PM, 3:00 PM, and 4:00 PM WAT. Booking confirmed into Dr. Joshua\'s executive calendar.');
+      setTimeout(() => { document.getElementById('notes-saved-msg').style.display = 'none'; }, 4000);
     }
   </script>
 </body>
