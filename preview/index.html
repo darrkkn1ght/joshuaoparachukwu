@@ -25,7 +25,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/style.css?v=10">
 </head>
 
 <body>
@@ -113,11 +113,9 @@
     <section id="hero">
       <div class="hero-orb-glow"></div>
 
-      <div style="display:flex;justify-content:center;position:relative;z-index:2;">
-        <span class="hero-pill-badge">
-          <span class="pulse-dot"></span>
-          <span>PhD Performance Psychology &nbsp;·&nbsp; 219+ Performers &amp; Organizations Supported</span>
-        </span>
+      <div class="hero-editorial-kicker">
+        <span class="hero-kicker-text">Applied Performance Science &nbsp;·&nbsp; Sport, Executive Leadership &amp; Governance</span>
+        <div class="hero-gold-rule"></div>
       </div>
 
       <h1 class="hero-headline">
@@ -130,38 +128,23 @@
         Performance Psychology, Executive Performance, Team Development and Sport Governance for high-pressure environments where decisions, leadership, confidence and performance matter.
       </p>
 
-      <!-- VEEFLY-STYLE INTERACTIVE PILL LAUNCHER BAR -->
-      <div class="vf-hero-action-bar">
-        <div class="vf-arena-select-wrap">
-          <span class="vf-arena-icon">🎯</span>
-          <select id="vf-hero-arena-select" class="vf-arena-select" aria-label="Select Your Performance Pathway">
-            <option value="performance-retainer.html">⚽ Individual Athlete · 4-Month Performance Retainer ($500)</option>
-            <option value="services.html">🧠 Individual Athlete · Single Discovery Consultation ($30)</option>
-            <option value="services.html">🏆 Coach, Club or Team Performance Strategy ($50–$100)</option>
-            <option value="services.html">🏛️ Sport Federation &amp; Governance Advisory ($150)</option>
-            <option value="services.html">💼 Executive &amp; High-Stakes Leadership Performance ($100)</option>
-          </select>
-          <span style="color:var(--gold,#C8A830);font-size:12px;pointer-events:none;">▾</span>
-        </div>
-        <button type="button" class="vf-hero-launch-btn" onclick="var sel=document.getElementById('vf-hero-arena-select');window.location.href=sel?sel.value:'performance-retainer.html';">
-          <span>Start Performance Plan</span>
-          <span class="btn-arrow">→</span>
-        </button>
+      <!-- CLEAN, AUTHORITATIVE HERO CTA ROW (Zero Gimmicks, High Contrast) -->
+      <div class="vf-hero-cta-group">
+        <a href="performance-retainer.html" class="vf-btn-primary-gold">
+          <span>Enrol in 4-Month Retainer ($500)</span>
+          <span class="vf-btn-arrow">→</span>
+        </a>
+        <a href="services.html" class="vf-btn-secondary-glass">
+          <span>Book a Discovery Consultation</span>
+        </a>
       </div>
 
-      <!-- SECONDARY PILL SHORTCUTS & VEEFLY TRUSTPILOT-STYLE RATING STRIP -->
-      <div class="vf-hero-quick-row">
-        <a href="performance-retainer.html" class="vf-quick-pill">
-          <span>⚡</span> 4-Month Retainer ($500 · 8 Sessions)
-        </a>
-        <a href="services.html" class="vf-quick-pill">
-          <span>📅</span> Book 1-on-1 Discovery Call
-        </a>
-        <a href="#reviews" class="vf-trust-strip" title="Jump to Verified Client Reviews">
-          <span style="font-weight:700;color:#fff;">Excellent</span>
-          <span class="vf-trust-stars">★★★★★</span>
-          <span>40+ Verified Client Reviews · Read Below ↓</span>
-        </a>
+      <!-- EDITORIAL SOCIAL PROOF LINE -->
+      <div class="vf-hero-proof-line">
+        <span class="vf-proof-stars">★★★★★</span>
+        <span class="vf-proof-copy">Trusted by <strong>219+ Athletes, Coaches &amp; Leaders</strong> across 6 continents</span>
+        <span class="vf-proof-sep">·</span>
+        <a href="#reviews" class="vf-proof-link">Read 40+ Client Reviews ↓</a>
       </div>
 
       <!-- CINEMA-FRAMED INTRODUCTION VIDEO -->
@@ -175,7 +158,7 @@
       </div>
     </section>
 
-    <!-- ═══ VEEFLY-STYLE FLOATING 3-CARD KPI TRIO (Overlaps Hero Bottom) ═══ -->
+    <!-- ═══ FLOATING 3-CARD KPI TRIO (Overlaps Hero Bottom) ═══ -->
     <div class="vf-kpi-trio-section">
       <div class="vf-kpi-trio-grid">
         <div class="vf-kpi-card">
@@ -213,17 +196,18 @@
       </div>
     </div>
 
-    <!-- ═══ HOW IT WORKS + 3-PILLAR METHOD (VeeFly Interactive 2-Column Showcase + 6-Card Bento Grid) ═══ -->
+    <!-- ═══ HOW IT WORKS + 3-PILLAR METHOD (Interactive 2-Column Showcase + 6-Card Bento Grid) ═══ -->
     <section id="pillars">
       <div class="vf-section-head">
-        <span class="vf-eyebrow-pill">⚡ How It Works · 3-Step Execution System</span>
+        <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:8px;">How It Works · 3-Step Execution System</span>
         <h2 class="section-title">How We Engineer Peak Performance</h2>
+        <div class="section-gold-rule"></div>
         <p class="vf-section-sub">
-          Just like elite physical conditioning, mental performance is built through a structured, repeatable 3-step system—not generic pep talks. Click any step below to inspect the live workflow.
+          Just like elite physical conditioning, mental performance is built through a structured, repeatable 3-step system—not generic pep talks. Select any phase below to inspect the methodology.
         </p>
       </div>
 
-      <!-- VEEFLY INTERACTIVE 2-COLUMN PROCESS SHOWCASE -->
+      <!-- INTERACTIVE 2-COLUMN PROCESS SHOWCASE -->
       <div class="vf-process-showcase" id="vf-process-showcase">
         <div class="vf-process-steps">
           <div class="vf-step-tab active" data-step="0" onclick="selectVfProcessStep(0)">
@@ -275,7 +259,7 @@
           <div class="vf-stage-panel active" id="vf-stage-panel-0">
             <div>
               <div class="vf-stage-top-bar">
-                <span class="vf-stage-badge"><span style="width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block;"></span> Step 01 · Diagnostic Profile</span>
+                <span class="vf-stage-badge"><span class="vf-stage-dot"></span> Phase 01 · Diagnostic Profile</span>
                 <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
               </div>
               <h4 class="vf-stage-card-title">Baseline Psychological Pressure Map</h4>
@@ -315,7 +299,7 @@
           <div class="vf-stage-panel" id="vf-stage-panel-1">
             <div>
               <div class="vf-stage-top-bar">
-                <span class="vf-stage-badge"><span style="width:7px;height:7px;border-radius:50%;background:#C8A830;display:inline-block;"></span> Step 02 · System Architecture</span>
+                <span class="vf-stage-badge"><span class="vf-stage-dot"></span> Phase 02 · System Architecture</span>
                 <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
               </div>
               <h4 class="vf-stage-card-title">The 3R Mistake-Reset &amp; Focus Protocol</h4>
@@ -355,7 +339,7 @@
           <div class="vf-stage-panel" id="vf-stage-panel-2">
             <div>
               <div class="vf-stage-top-bar">
-                <span class="vf-stage-badge"><span style="width:7px;height:7px;border-radius:50%;background:#38BDF8;display:inline-block;"></span> Step 03 · Live Client Portal</span>
+                <span class="vf-stage-badge"><span class="vf-stage-dot"></span> Phase 03 · Live Client Portal</span>
                 <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
               </div>
               <h4 class="vf-stage-card-title">8-Session Retainer &amp; Calendar Sync</h4>
@@ -393,12 +377,13 @@
         </div>
       </div>
 
-      <!-- VEEFLY 6-CARD BENTO GRID: THE 3 CORE PILLARS + 3 STRATEGIC ADVANTAGES -->
+      <!-- 6-CARD BENTO GRID: THE 3 CORE PILLARS + 3 STRATEGIC ADVANTAGES -->
       <div class="vf-section-head" style="margin-top:20px;margin-bottom:36px;">
-        <span class="vf-eyebrow-pill">🏛️ The 3-Pillar Method &amp; Strategic Advantage</span>
-        <h3 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:8px 0 10px;">
+        <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:8px;">The 3-Pillar Method &amp; Strategic Advantage</span>
+        <h3 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:4px 0 10px;">
           Why Elite Performers &amp; Organizations Choose Dr. Joshua
         </h3>
+        <div class="section-gold-rule"></div>
       </div>
 
       <div class="vf-bento-grid">
@@ -506,11 +491,12 @@
       </div>
     </section>
 
-    <!-- ═══ WHO IS IT FOR? (VeeFly Infinite Auto-Scrolling Horizontal Marquee Carousel) ═══ -->
+    <!-- ═══ WHO IS IT FOR? (Infinite Auto-Scrolling Horizontal Marquee Carousel) ═══ -->
     <section class="vf-marquee-section">
       <div class="vf-marquee-header">
-        <span class="vf-eyebrow-pill" style="background:rgba(200,168,48,0.14);border-color:rgba(200,168,48,0.4);color:var(--gold,#C8A830);">🌍 Built For High-Consequence Arenas</span>
+        <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:8px;">Built For High-Consequence Arenas</span>
         <h2>Who Dr. Joshua Works With</h2>
+        <div class="section-gold-rule" style="margin:12px auto 16px;"></div>
         <p>Hover over any card to pause and explore how applied performance science adapts to your specific competitive environment.</p>
       </div>
 
@@ -518,7 +504,7 @@
         <!-- SET 1 (6 Arenas) -->
         <div class="vf-arena-card">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">⚽</div>
+            <div class="vf-arena-num">01</div>
             <span class="vf-arena-pill">Individual Performers</span>
           </div>
           <h3>Competitive Footballers &amp; Team Sport Athletes</h3>
@@ -528,7 +514,7 @@
 
         <div class="vf-arena-card">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">🏃</div>
+            <div class="vf-arena-num">02</div>
             <span class="vf-arena-pill">Track, Field &amp; Combat</span>
           </div>
           <h3>Athletics, Track &amp; Individual Competitors</h3>
@@ -538,7 +524,7 @@
 
         <div class="vf-arena-card">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">📋</div>
+            <div class="vf-arena-num">03</div>
             <span class="vf-arena-pill">Tactical Leadership</span>
           </div>
           <h3>Head Coaches, Managers &amp; Technical Directors</h3>
@@ -548,7 +534,7 @@
 
         <div class="vf-arena-card">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">🏆</div>
+            <div class="vf-arena-num">04</div>
             <span class="vf-arena-pill">Collective Culture</span>
           </div>
           <h3>Football Clubs, Academies &amp; High-Performance Teams</h3>
@@ -558,7 +544,7 @@
 
         <div class="vf-arena-card">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">🏛️</div>
+            <div class="vf-arena-num">05</div>
             <span class="vf-arena-pill">Institutional Strategy</span>
           </div>
           <h3>Sport Federations, Boards &amp; Governance Bodies</h3>
@@ -568,7 +554,7 @@
 
         <div class="vf-arena-card">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">💼</div>
+            <div class="vf-arena-num">06</div>
             <span class="vf-arena-pill">C-Suite &amp; Founders</span>
           </div>
           <h3>Executives, Sport Managers &amp; High-Stakes Leaders</h3>
@@ -579,7 +565,7 @@
         <!-- SET 2 (Duplicate for Seamless Infinite Loop) -->
         <div class="vf-arena-card" aria-hidden="true">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">⚽</div>
+            <div class="vf-arena-num">01</div>
             <span class="vf-arena-pill">Individual Performers</span>
           </div>
           <h3>Competitive Footballers &amp; Team Sport Athletes</h3>
@@ -589,7 +575,7 @@
 
         <div class="vf-arena-card" aria-hidden="true">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">🏃</div>
+            <div class="vf-arena-num">02</div>
             <span class="vf-arena-pill">Track, Field &amp; Combat</span>
           </div>
           <h3>Athletics, Track &amp; Individual Competitors</h3>
@@ -599,7 +585,7 @@
 
         <div class="vf-arena-card" aria-hidden="true">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">📋</div>
+            <div class="vf-arena-num">03</div>
             <span class="vf-arena-pill">Tactical Leadership</span>
           </div>
           <h3>Head Coaches, Managers &amp; Technical Directors</h3>
@@ -609,7 +595,7 @@
 
         <div class="vf-arena-card" aria-hidden="true">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">🏆</div>
+            <div class="vf-arena-num">04</div>
             <span class="vf-arena-pill">Collective Culture</span>
           </div>
           <h3>Football Clubs, Academies &amp; High-Performance Teams</h3>
@@ -619,7 +605,7 @@
 
         <div class="vf-arena-card" aria-hidden="true">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">🏛️</div>
+            <div class="vf-arena-num">05</div>
             <span class="vf-arena-pill">Institutional Strategy</span>
           </div>
           <h3>Sport Federations, Boards &amp; Governance Bodies</h3>
@@ -629,7 +615,7 @@
 
         <div class="vf-arena-card" aria-hidden="true">
           <div class="vf-arena-card-top">
-            <div class="vf-arena-emoji">💼</div>
+            <div class="vf-arena-num">06</div>
             <span class="vf-arena-pill">C-Suite &amp; Founders</span>
           </div>
           <h3>Executives, Sport Managers &amp; High-Stakes Leaders</h3>
@@ -2652,25 +2638,24 @@
       </div>
     </section>
 
-    <!-- ═══ FINAL CTA (VeeFly Floating Mesh-Gradient Banner with Animated Orbital Rings) ═══ -->
+    <!-- ═══ FINAL CTA (Floating Mesh-Gradient Banner with Animated Orbital Rings) ═══ -->
     <section id="final-cta">
       <div class="vf-final-cta-card">
         <div class="vf-final-cta-rings"></div>
-        <div style="display:flex;justify-content:center;position:relative;z-index:2;margin-bottom:16px;">
-          <span class="vf-eyebrow-pill" style="background:rgba(200,168,48,0.16);border-color:rgba(200,168,48,0.45);color:var(--gold,#C8A830);">
-            ⚡ Ready To Lock In Consistent High Performance?
-          </span>
-        </div>
+        <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:10px;position:relative;z-index:2;">
+          Start Your Performance Roadmap
+        </span>
         <h2>If you are serious about hitting optimum performance consistently,<br>you should speak to me immediately.</h2>
         <p class="vf-final-cta-sub">
           Join 219+ international athletes, coaches, and high-stakes leaders who have replaced hesitation and pressure drops with a repeatable psychological operating system.
         </p>
         <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;position:relative;z-index:2;">
-          <a href="performance-retainer.html" class="btn-navy" style="background:linear-gradient(135deg,#C8A830 0%,#E5C54F 100%);color:#00102A;border-color:transparent;box-shadow:0 12px 28px rgba(200,168,48,0.32);">
-            Enrol in 4-Month Retainer ($500) →
+          <a href="performance-retainer.html" class="vf-btn-primary-gold">
+            <span>Enrol in 4-Month Retainer ($500)</span>
+            <span class="vf-btn-arrow">→</span>
           </a>
-          <a href="services.html" class="btn-navy">
-            Book a Discovery Consultation Call →
+          <a href="services.html" class="vf-btn-secondary-glass">
+            <span>Book a Discovery Consultation Call</span>
           </a>
         </div>
       </div>
