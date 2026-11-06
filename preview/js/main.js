@@ -1,0 +1,1292 @@
+/* ═══════════════════════════════════════════════════════════════
+ GOOGLE SHEETS CONFIG
+ 1. Create a Google Sheet
+ 2. Go to Extensions → Apps Script → paste the Apps Script below
+ 3. Deploy as Web App → copy the URL
+ 4. Paste that URL as the value of GOOGLE_SHEET_URL below
+ ═══════════════════════════════════════════════════════════════
+ 
+ APPS SCRIPT TO PASTE IN GOOGLE SHEETS:
+ ───────────────────────────────────────
+ function doPost(e) {
+ var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+ var data = JSON.parse(e.postData.contents);
+ sheet.appendRow([
+ new Date(),
+ data.form || '',
+ data.name || '',
+ data.email || '',
+ data.phone || '',
+ data.country || '',
+ data.timezone || '',
+ data.org || '',
+ data.role || '',
+ data.challenge || '',
+ data.extra || ''
+ ]);
+ return ContentService.createTextOutput(JSON.stringify({status:'ok'}))
+ .setMimeType(ContentService.MimeType.JSON);
+ }
+ ─────────────────────────────────────── */
+
+const EMAIL_SUBMIT_URL = "https://api.web3forms.com/submit";
+
+function sendToSheets(data) {
+ data.access_key = "663324ff-ac8f-4bac-b201-6e644da267fe";
+ fetch(EMAIL_SUBMIT_URL, {
+ method: "POST",
+ headers: { 
+     "Content-Type": "application/json",
+     "Accept": "application/json"
+ },
+ body: JSON.stringify(data)
+ }).catch(function(err) { console.error('Error sending email:', err); });
+}
+
+function getVal(id) {
+ var el = document.getElementById(id);
+ return el ? el.value || '' : '';
+}
+/* ═══════════════════════════════════════════════════════
+ MEDIA CONFIG Update all your links & media here only
+ ═══════════════════════════════════════════════════════ */
+const MEDIA = {
+
+ /* ── HERO ─────────────────────────────────────────────
+ Replace with a real photo of Dr. Joshua */
+ heroThumb: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1200&q=80",
+
+ /* ── YOUTUBE VIDEOS ───────────────────────────────────
+ Add real YouTube URLs and thumbnail images */
+ youtube: [
+ {
+ title: "How to Avoid Performance Misdiagnosis in Sport",
+ url: "https://www.youtube.com/watch?v=UxnKseVsEBo",
+ thumb: "https://img.youtube.com/vi/UxnKseVsEBo/maxresdefault.jpg"
+ },
+ {
+ title: "What Happens 3 seconds After a Mistake - How to Recover Quickly After a Mistake in Sport",
+ url: "https://www.youtube.com/watch?v=i3RnpYW147A",
+ thumb: "https://img.youtube.com/vi/i3RnpYW147A/maxresdefault.jpg"
+ },
+ {
+ title: "Why Great Performers Look Great Under Pressure - How Preparation Helps You Perform Under Pressure",
+ url: "https://www.youtube.com/watch?v=Mzxw21P0oiA",
+ thumb: "https://img.youtube.com/vi/Mzxw21P0oiA/maxresdefault.jpg"
+ },
+ {
+ title: "Confidence is NOT a Feeling It's a Decision",
+ url: "https://www.youtube.com/watch?v=7PGG2EBvYug",
+ thumb: "https://img.youtube.com/vi/7PGG2EBvYug/maxresdefault.jpg"
+ },
+ ],
+
+ /* ── SOCIAL LINKS ─────────────────────────────────────*/
+ social: {
+ linkedin: "https://www.linkedin.com/in/joshua-oparachukwu-7707b4397/",
+ youtube: "https://www.youtube.com/@dr.joshuaoparachukwu",
+ instagram: "https://www.instagram.com/thedrjoshuaoparachukwu",
+ tiktok: "https://www.tiktok.com/@thedrjoshuaoparachukwu",
+ facebook: "https://www.facebook.com/people/Dr-Joshua-Oparachukwu/61564682447955/",
+ twitter: "https://x.com/thedrjoshuaOp",
+ },
+
+ /* ── BOOKING / CALENDLY LINKS ─────────────────────────
+ Replace with real Calendly or booking page URLs */
+ booking: {
+ discovery: "https://calendly.com/drjoshuaoparachukwu/1-on-1-individual-performance-coaching", // Form A - Individual
+ individual: "https://calendly.com/drjoshuaoparachukwu/team-and-organisation-consultation", // Form B - Team & Org
+ executive: "https://calendly.com/drjoshuaoparachukwu/executive-high-pressure-performance-consultation", // Form C - Executive
+ sportAdvisory: "https://selar.com/sportgovernancestrategicdiscoveryconsultation", // Form D - Sport Advisory (Selar)
+ },
+
+ /* ── PARTNER / ORG LINKS ──────────────────────────────*/
+ partners: {
+ mindgame: "#", // e.g. https://mindgameafrica.com
+ sportlead: "#", // e.g. https://sportleadafrica.com
+ },
+
+};
+/* ══════════════════════════════════════════════════════ */
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+ entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── PUB ABSTRACT TOGGLE ── */
+function openAbstract(id) {
+ const el = document.getElementById(id);
+ if (!el) return;
+ const isOpen = el.style.display !== 'none';
+ el.style.display = isOpen ? 'none' : 'block';
+ // Update button text
+ const btn = el.previousElementSibling ? el.previousElementSibling.querySelector('button') : null;
+}
+/* Publication download links keyed by title */
+const PUB_DOWNLOAD_LINKS = {
+ "Effect of taekwondo mental toughness skill training on assertive behaviour among University of Ibadan football players": "https://drive.google.com/file/d/1hXP4n8q04uRSZSKbDSwjz9izhdqf7oa0/view?usp=drive_link",
+ "The effect of martial arts training on the performance of football skills among football players in University of Ibadan": "https://drive.google.com/file/d/1T_3QbMf4sZtbNJW-qLVCdqjjvD5EpgMt/view?usp=drive_link",
+};
+
+function openManuscriptModal(title) {
+ document.getElementById('ms-modal-title').textContent = title;
+ // Store download url on modal for submit to use
+ const url = PUB_DOWNLOAD_LINKS[title] || null;
+ document.getElementById('manuscript-modal').setAttribute('data-url', url || '');
+ document.getElementById('manuscript-modal').style.display = 'flex';
+ document.body.style.overflow = 'hidden';
+}
+
+
+/* ── CASE STUDY ACCORDION ── */
+function toggleAccordion(btn) {
+ const body = btn.nextElementSibling;
+ const isOpen = body.classList.contains('open');
+ body.classList.toggle('open', !isOpen);
+ btn.classList.toggle('open', !isOpen);
+}
+
+
+/* ── CASE STUDY 01 FULL PAGE ── */
+
+
+
+
+/* ── CASE STUDY 01 PAGE ── */
+function openCaseStudy01() {
+ document.getElementById('main-page').style.display = 'none';
+ document.getElementById('cs01-page').style.display = 'block';
+ window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function closeCaseStudy01() {
+ document.getElementById('cs01-page').style.display = 'none';
+ document.getElementById('main-page').style.display = 'block';
+ // Scroll back to case studies section
+ setTimeout(function() {
+ const el = document.getElementById('case-studies');
+ if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ }, 50);
+}
+
+
+/* ═══ BOOKING FLOW JS ═══ */
+const bkPages = ['booking-selector','booking-form-A','booking-form-B','booking-form-C','booking-form-D','booking-confirm'];
+
+function showBkPage(id) {
+ bkPages.forEach(p => document.getElementById(p).style.display = 'none');
+ document.getElementById(id).style.display = 'block';
+ window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function openBooking(service) {
+ if (service) {
+ goToForm(service);
+ } else {
+ showBkPage('booking-selector');
+ }
+}
+
+function goToSelector() {
+ showBkPage('booking-selector');
+}
+
+function goToForm(service) {
+ showBkPage('booking-form-' + service);
+}
+
+function closeBooking() {
+ bkPages.forEach(p => document.getElementById(p).style.display = 'none');
+}
+
+function submitFormA(e) {
+ e.preventDefault();
+ if (!validateForm(e.target)) return;
+ sendToSheets({
+ form: '1-on-1 Individual Consultation',
+ name: getVal('fA-fname') + ' ' + getVal('fA-lname'),
+ email: getVal('fA-email'),
+ phone: getVal('fA-phone'),
+ country: getVal('fA-country'),
+ timezone: getVal('fA-timezone'),
+ role: getVal('fA-role'),
+ challenge: getVal('fA-challenge')
+ });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
+ document.getElementById('confirm-title').textContent = 'Request Received';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 15-minute consultation slot ($0). Please check your email for confirmation.'
+   : 'Thank you. You will now be redirected to book your 15-minute consultation slot and complete the $30 payment. Please check your email for confirmation.';
+ showBkPage('booking-confirm');
+ setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/1-on-1-individual-performance-coaching', '_blank'); }, 800);
+}
+
+function submitFormB(e) {
+ e.preventDefault();
+ if (!validateForm(e.target)) return;
+ sendToSheets({
+  form: 'Team & Organization Consultation',
+  name: getVal('fB-fname') + ' ' + getVal('fB-lname'),
+  email: getVal('fB-email'),
+  phone: getVal('fB-phone'),
+  country: getVal('fB-country'),
+  timezone: getVal('fB-timezone'),
+  org: getVal('fB-org'),
+  role: getVal('fB-role'),
+  challenge: getVal('fB-challenge-type'),
+  extra: 'Team size: ' + getVal('fB-size') + ' | Tried: ' + getVal('fB-tried') + ' | Outcome: ' + getVal('fB-outcome') + ' | Seeking: ' + getVal('fB-seeking') + ' | Source: ' + getVal('fB-source') + ' | Extra: ' + getVal('fB-extra')
+ });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
+ document.getElementById('confirm-title').textContent = 'Request Received';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 30-minute team consultation slot ($0).'
+   : 'Thank you. You will now be redirected to complete the $75 payment and book your 30-minute team consultation slot.';
+ showBkPage('booking-confirm');
+ setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/team-and-organisation-consultation', '_blank'); }, 800);
+}
+
+function submitFormC(e) {
+ e.preventDefault();
+ if (!validateForm(e.target)) return;
+ sendToSheets({
+ form: 'Executive / High-Pressure Consulting',
+ name: getVal('fC-fname') + ' ' + getVal('fC-lname'),
+ email: getVal('fC-email'),
+ phone: getVal('fC-phone'),
+ country: getVal('fC-country'),
+ timezone: getVal('fC-timezone'),
+ org: getVal('fC-org'),
+ role: getVal('fC-role'),
+ challenge: getVal('fC-challenge')
+ });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
+ document.getElementById('confirm-title').textContent = 'Request Received';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 30-minute executive consultation slot ($0). Please check your email for confirmation.'
+   : 'Thank you. You will now be redirected to book your 30-minute executive consultation slot and complete the $100 payment. Please check your email for confirmation.';
+ showBkPage('booking-confirm');
+ setTimeout(function() { window.open('https://calendly.com/drjoshuaoparachukwu/executive-high-pressure-performance-consultation', '_blank'); }, 800);
+}
+
+function submitFormD(e) {
+ e.preventDefault();
+ if (!validateForm(e.target)) return;
+ sendToSheets({
+ form: 'Sport Governance & Strategic Advisory',
+ name: getVal('fD-fname') + ' ' + getVal('fD-lname'),
+ email: getVal('fD-email'),
+ phone: getVal('fD-phone'),
+ country: getVal('fD-country'),
+ timezone: getVal('fD-timezone'),
+ org: getVal('fD-org'),
+ role: getVal('fD-role')
+ });
+ var isPromo = window.DRJOSHUA_PROMO && window.DRJOSHUA_PROMO.getState().active;
+ document.getElementById('confirm-title').textContent = 'Advisory Request Received';
+ document.getElementById('confirm-msg').textContent = isPromo
+   ? 'Thank you. You will now be redirected to book your complimentary 30-minute sport governance consultation slot ($0).'
+   : 'Thank you. You will now be redirected to complete the $150 payment and book your 30-minute sport governance consultation slot.';
+ showBkPage('booking-confirm');
+ setTimeout(function() { window.open('https://selar.com/sportgovernancestrategicdiscoveryconsultation', '_blank'); }, 800);
+}
+
+// Book a Consultation buttons now scroll directly to the services section
+
+
+/* ── CASE STUDY 02 ── */
+
+
+
+
+/* ── CASE STUDY 03 ── */
+
+
+
+
+/* ══ CASE STUDY PAGE ROUTER ══ */
+var allCasePageIds = ['cs-page-01','cs-page-02','cs-page-03'];
+
+function openCasePage(num) {
+  // Hide main page content
+  var mainPage = document.getElementById('main-page');
+  if(mainPage) mainPage.style.display = 'none';
+  // Hide booking pages
+  var bkIds = ['booking-selector','booking-form-A','booking-form-B','booking-form-C','booking-form-D','booking-confirm'];
+  bkIds.forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
+  // Hide other case pages
+  allCasePageIds.forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
+  // Show requested case page
+  var page = document.getElementById('cs-page-' + num);
+  if(page) { page.style.display = 'block'; window.scrollTo({top:0,behavior:'instant'}); }
+  // Update URL hash
+  window.history.pushState(null, '', '#case-' + num);
+}
+
+function closeCasePage(num) {
+ var page = document.getElementById('cs-page-' + num);
+ if(page) page.style.display = 'none';
+ document.getElementById('main-page').style.display = 'block';
+ window.history.pushState(null, '', '#case-studies');
+ setTimeout(function() {
+ var el = document.getElementById('case-studies');
+ if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+ }, 50);
+}
+
+// Handle browser back button
+window.addEventListener('popstate', function() {
+ var hash = window.location.hash;
+ if(hash.startsWith('#case-') && hash !== '#case-studies') {
+ var num = hash.replace('#case-', '');
+ if(['01','02','03'].indexOf(num) > -1) {
+ openCasePage(num);
+ return;
+ }
+ }
+ // Default: show main page
+ allCasePageIds.forEach(function(id){ var el=document.getElementById(id); if(el) el.style.display='none'; });
+ document.getElementById('main-page').style.display = 'block';
+});
+
+
+/* ── RESULTS SLIDER (Seamless Infinite Endless Loop) ── */
+(function(){
+  var track = document.getElementById('resultsTrack');
+  if (!track) return;
+
+  var originalSlides = Array.from(track.querySelectorAll('.results-slide'));
+  var totalReal = originalSlides.length;
+  if (totalReal < 2) return;
+
+  var wrap = track.parentElement;
+  var dots = document.querySelectorAll('.res-dot');
+  var prev = document.getElementById('resPrev');
+  var next = document.getElementById('resNext');
+  var outer = document.querySelector('.results-slider-outer');
+
+  var transitionCss = 'transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  var isAnimating = false;
+  var currentIndex = 1; // Start at first real slide (after prepended clone)
+
+  // Clone first and last slides for seamless infinite loop
+  var firstClone = originalSlides[0].cloneNode(true);
+  firstClone.classList.add('clone-slide');
+  firstClone.setAttribute('aria-hidden', 'true');
+
+  var lastClone = originalSlides[totalReal - 1].cloneNode(true);
+  lastClone.classList.add('clone-slide');
+  lastClone.setAttribute('aria-hidden', 'true');
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, track.firstChild);
+
+  function getSlideWidth() {
+    return originalSlides[0].offsetWidth;
+  }
+
+
+  function updateDots() {
+    var realIndex = (currentIndex - 1 + totalReal) % totalReal;
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i === realIndex);
+    });
+  }
+
+  function moveTo(index, withAnimation) {
+    var slideW = getSlideWidth();
+    if (withAnimation) {
+      track.style.transition = transitionCss;
+      isAnimating = true;
+    } else {
+      track.style.transition = 'none';
+      isAnimating = false;
+    }
+    currentIndex = index;
+    track.style.transform = 'translateX(-' + (currentIndex * slideW) + 'px)';
+    updateDots();
+  }
+
+  // Set initial position
+  moveTo(1, false);
+
+  function slideNext() {
+    if (isAnimating) return;
+    moveTo(currentIndex + 1, true);
+  }
+
+  function slidePrev() {
+    if (isAnimating) return;
+    moveTo(currentIndex - 1, true);
+  }
+
+  // Handle seamless wrap when animation finishes
+  track.addEventListener('transitionend', function(e) {
+    if (e.target !== track) return;
+    isAnimating = false;
+
+    // Reached clone of first slide (past the end) -> snap silently to real slide 1
+    if (currentIndex >= totalReal + 1) {
+      moveTo(1, false);
+    }
+    // Reached clone of last slide (before the beginning) -> snap silently to real last slide
+    else if (currentIndex <= 0) {
+      moveTo(totalReal, false);
+    }
+    updateDots();
+  });
+
+  // Window resize recalculates exact pixel offset
+  window.addEventListener('resize', function() {
+    moveTo(currentIndex, false);
+  });
+
+  if (next) {
+    next.addEventListener('click', function(e) {
+      e.preventDefault();
+      slideNext();
+      resetAutoPlay();
+    });
+  }
+
+  if (prev) {
+    prev.addEventListener('click', function(e) {
+      e.preventDefault();
+      slidePrev();
+      resetAutoPlay();
+    });
+  }
+
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (isAnimating) return;
+      moveTo(i + 1, true);
+      resetAutoPlay();
+    });
+  });
+
+  // Auto-advance every 5.5 seconds for continuous endless movement
+  var autoPlayTimer = null;
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(slideNext, 5500);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+    }
+  }
+
+  function resetAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+  }
+
+  if (outer) {
+    outer.addEventListener('mouseenter', stopAutoPlay);
+    outer.addEventListener('mouseleave', startAutoPlay);
+  }
+
+  // Touch / swipe support
+  var startX = 0;
+  var currentX = 0;
+  var isSwiping = false;
+
+  track.addEventListener('touchstart', function(e) {
+    if (isAnimating || e.touches.length > 1) return;
+    stopAutoPlay();
+    startX = e.touches[0].clientX;
+    currentX = startX;
+    isSwiping = true;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function(e) {
+    if (!isSwiping) return;
+    currentX = e.touches[0].clientX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function() {
+    if (!isSwiping) return;
+    isSwiping = false;
+    var diffX = currentX - startX;
+    if (diffX < -50) {
+      slideNext();
+    } else if (diffX > 50) {
+      slidePrev();
+    }
+    startAutoPlay();
+  });
+
+  startAutoPlay();
+})();
+/* ── VIDEOS SLIDER ── */
+(function(){
+  var track = document.getElementById('vidTrack');
+  if (!track) return;
+
+  var originalSlides = Array.from(track.querySelectorAll('.vid-slide'));
+  var totalReal = originalSlides.length;
+  if (totalReal < 2) return;
+
+  var prev = document.getElementById('vidPrev');
+  var next = document.getElementById('vidNext');
+  
+  var firstClone = originalSlides[0].cloneNode(true);
+  var lastClone = originalSlides[totalReal - 1].cloneNode(true);
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+  
+  var currentIndex = 1;
+  var isAnimating = false;
+
+  function moveTo(index, animate) {
+    var slideWidth = originalSlides[0].offsetWidth;
+    track.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
+    track.style.transform = 'translateX(-' + (index * slideWidth) + 'px)';
+    currentIndex = index;
+  }
+
+  // Initial setup
+  setTimeout(function() { moveTo(1, false); }, 50);
+
+  function slideNext() {
+    if (isAnimating) return;
+    isAnimating = true;
+    moveTo(currentIndex + 1, true);
+  }
+
+  function slidePrev() {
+    if (isAnimating) return;
+    isAnimating = true;
+    moveTo(currentIndex - 1, true);
+  }
+
+  track.addEventListener('transitionend', function(e) {
+    if (e.target !== track) return;
+    isAnimating = false;
+
+    if (currentIndex >= totalReal + 1) {
+      moveTo(1, false);
+    }
+    else if (currentIndex <= 0) {
+      moveTo(totalReal, false);
+    }
+  });
+
+  window.addEventListener('resize', function() {
+    moveTo(currentIndex, false);
+  });
+
+  if (next) {
+    next.addEventListener('click', function(e) {
+      e.preventDefault();
+      slideNext();
+    });
+  }
+
+  if (prev) {
+    prev.addEventListener('click', function(e) {
+      e.preventDefault();
+      slidePrev();
+    });
+  }
+
+})();
+
+
+/* ── NAV DROPDOWN HELPERS ── */
+function scrollToAndHighlight(sectionId) {
+ const el = document.getElementById(sectionId);
+ if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function toggleNavSubdrop(trigger) {
+ const subdrop = document.getElementById('nav-cs-subdrop');
+ const isOpen = subdrop.classList.contains('open');
+ subdrop.classList.toggle('open', !isOpen);
+ trigger.classList.toggle('open', !isOpen);
+}
+
+function scrollToAndOpen(categoryTitle) {
+ const el = document.getElementById('case-studies');
+ if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ // Open the matching accordion category
+ setTimeout(function() {
+ const headers = document.querySelectorAll('.cs-acc-header');
+ headers.forEach(function(header) {
+ const titleEl = header.querySelector('.cs-acc-title');
+ if (titleEl && titleEl.textContent.trim() === categoryTitle) {
+ const body = header.nextElementSibling;
+ if (body && !body.classList.contains('open')) {
+ body.classList.add('open');
+ header.classList.add('open');
+ }
+ }
+ });
+ }, 600);
+}
+
+
+/* ── ABOUT FULL PAGE ── */
+function openAboutPage() {
+ document.getElementById('about-full-page').style.display = 'block';
+ window.scrollTo({ top: 0, behavior: 'instant' });
+ document.body.style.overflow = 'hidden';
+ document.getElementById('about-full-page').scrollTop = 0;
+}
+function closeAboutPage() {
+ document.getElementById('about-full-page').style.display = 'none';
+ document.body.style.overflow = '';
+}
+
+
+/* ── SMOOTH NAV SCROLL ── */
+function smoothNav(sectionId, e) {
+ if (e) e.preventDefault();
+ var el = document.getElementById(sectionId);
+ if (el) {
+ el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ }
+}
+
+
+function openCS01() {
+ document.getElementById('cs01-page').style.display = 'block';
+ document.body.style.overflow = 'hidden';
+ window.scrollTo(0, 0);
+}
+function closeCS01() {
+ document.getElementById('cs01-page').style.display = 'none';
+ document.body.style.overflow = '';
+}
+
+
+/* ── MEDIA INIT Reads from MEDIA config above ── */
+function initMedia() {
+ // Hero thumbnail
+ const heroImg = document.getElementById('hero-thumb-img');
+ if (heroImg) heroImg.src = MEDIA.heroThumb;
+
+ // YouTube grid
+ const ytGrid = document.getElementById('yt-grid');
+ if (ytGrid) {
+ ytGrid.innerHTML = MEDIA.youtube.map((v, i) => `
+ <a href="${v.url}" target="_blank" rel="noopener" class="yt-card reveal" style="transition-delay:${i * 0.1}s; text-decoration:none; color:inherit;">
+ <div class="yt-thumb">
+ <img src="${v.thumb}" alt="${v.title}" loading="lazy">
+ <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
+ </div>
+ <div class="yt-card-body">
+ <h4>${v.title}</h4>
+ <span class="yt-watch">
+ <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+ Watch on YouTube
+ </span>
+ </div>
+ </a>`).join('');
+ // Make cards visible immediately (already in/near viewport)
+ setTimeout(() => {
+ ytGrid.querySelectorAll('.reveal').forEach(el => {
+ observer.observe(el);
+ el.classList.add('visible'); // force visible in case already in viewport
+ });
+ }, 50);
+ }
+
+ // Social links
+ document.querySelectorAll('[data-media]').forEach(el => {
+ const key = el.getAttribute('data-media').split('.');
+ const val = key.reduce((obj, k) => obj && obj[k], MEDIA);
+ if (val) el.href = val;
+ });
+
+ // Partner links
+ const mg = document.getElementById('link-mindgame');
+ const sl = document.getElementById('link-sportlead');
+ if (mg) mg.href = MEDIA.partners.mindgame;
+ if (sl) sl.href = MEDIA.partners.sportlead;
+}
+
+document.addEventListener('DOMContentLoaded', initMedia);
+
+
+function submitManuscript() {
+ var name = document.getElementById('ms-name').value.trim();
+ var email = document.getElementById('ms-email').value.trim();
+ var inst = document.getElementById('ms-institution').value.trim();
+ var errMsg = document.getElementById('ms-error-msg');
+
+ // Validate all required fields
+ if (!name || !email || !inst) {
+ errMsg.style.display = 'block';
+ // Highlight empty fields
+ ['ms-name','ms-email','ms-institution'].forEach(function(id) {
+ var el = document.getElementById(id);
+ if (el && !el.value.trim()) {
+ el.style.borderColor = '#E53935';
+ el.style.background = '#FFF5F5';
+ el.addEventListener('input', function() {
+ this.style.borderColor = '#E0DDD4';
+ this.style.background = '#F9F8F5';
+ errMsg.style.display = 'none';
+ }, { once: true });
+ }
+ });
+ return;
+ }
+
+ var modal = document.getElementById('manuscript-modal');
+ var url = modal.getAttribute('data-url') || 'https://drive.google.com/file/d/1T_3QbMf4sZtbNJW-qLVCdqjjvD5EpgMt/view?usp=drive_link';
+ var title = document.getElementById('ms-modal-title').textContent;
+
+ // Send to Google Sheets
+ sendToSheets({
+ form: 'Manuscript Request',
+ name: name,
+ email: email,
+ org: inst,
+ challenge: title
+ });
+
+ // Set download link
+ document.getElementById('ms-download-btn').href = url;
+
+ // Show success state
+ document.getElementById('ms-form-state').style.display = 'none';
+ document.getElementById('ms-success-state').style.display = 'block';
+}
+
+function closeManuscriptModal() {
+ var modal = document.getElementById('manuscript-modal');
+ modal.style.display = 'none';
+ document.body.style.overflow = '';
+ // Reset modal state for next use
+ setTimeout(function() {
+ document.getElementById('ms-form-state').style.display = 'block';
+ document.getElementById('ms-success-state').style.display = 'none';
+ document.getElementById('ms-name').value = '';
+ document.getElementById('ms-email').value = '';
+ document.getElementById('ms-institution').value = '';
+ document.getElementById('ms-error-msg').style.display = 'none';
+ }, 400);
+}
+
+
+function openCS02() { document.getElementById('cs02-page').style.display='block'; document.body.style.overflow='hidden'; window.scrollTo(0,0); }
+function closeCS02() { document.getElementById('cs02-page').style.display='none'; document.body.style.overflow=''; }
+function openCS03() { document.getElementById('cs03-page').style.display='block'; document.body.style.overflow='hidden'; window.scrollTo(0,0); }
+function closeCS03() { document.getElementById('cs03-page').style.display='none'; document.body.style.overflow=''; }
+
+
+function openCS04() { document.getElementById('cs04-page').style.display='block'; document.body.style.overflow='hidden'; window.scrollTo(0,0); }
+function closeCS04() { document.getElementById('cs04-page').style.display='none'; document.body.style.overflow=''; }
+function openCS05() { document.getElementById('cs05-page').style.display='block'; document.body.style.overflow='hidden'; window.scrollTo(0,0); }
+function closeCS05() { document.getElementById('cs05-page').style.display='none'; document.body.style.overflow=''; }
+function openCS06() { document.getElementById('cs06-page').style.display='block'; document.body.style.overflow='hidden'; window.scrollTo(0,0); }
+function closeCS06() { document.getElementById('cs06-page').style.display='none'; document.body.style.overflow=''; }
+
+function openCS07(){document.getElementById("cs07-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS07(){document.getElementById("cs07-page").style.display="none";document.body.style.overflow="";}
+function openCS08(){document.getElementById("cs08-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS08(){document.getElementById("cs08-page").style.display="none";document.body.style.overflow="";}
+function openCS09(){document.getElementById("cs09-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS09(){document.getElementById("cs09-page").style.display="none";document.body.style.overflow="";}
+function openCS10(){document.getElementById("cs10-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS10(){document.getElementById("cs10-page").style.display="none";document.body.style.overflow="";}
+function openCS11(){document.getElementById("cs11-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS11(){document.getElementById("cs11-page").style.display="none";document.body.style.overflow="";}
+function openCS12(){document.getElementById("cs12-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS12(){document.getElementById("cs12-page").style.display="none";document.body.style.overflow="";}
+function openCS13(){document.getElementById("cs13-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS13(){document.getElementById("cs13-page").style.display="none";document.body.style.overflow="";}
+function openCS11(){document.getElementById("cs11-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS11(){document.getElementById("cs11-page").style.display="none";document.body.style.overflow="";}
+function openCS12(){document.getElementById("cs12-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS12(){document.getElementById("cs12-page").style.display="none";document.body.style.overflow="";}
+function openCS13(){document.getElementById("cs13-page").style.display="block";document.body.style.overflow="hidden";window.scrollTo(0,0);}
+function closeCS13(){document.getElementById("cs13-page").style.display="none";document.body.style.overflow="";}
+
+
+/* ── COUNTRY SEARCH FILTER ── */
+function filterCountry(input, selectId) {
+  var filter = input.value.toLowerCase();
+  var select = document.getElementById(selectId);
+  var matched = false;
+  for (var i = 0; i < select.options.length; i++) {
+    var opt = select.options[i];
+    if (opt.value === '') { opt.style.display = ''; continue; }
+    var txt = opt.textContent.toLowerCase();
+    if (txt.indexOf(filter) > -1) {
+      opt.style.display = '';
+      if (!matched && filter) { select.value = opt.value; matched = true; syncDial(select, selectId.split('-')[0]); }
+    } else {
+      opt.style.display = 'none';
+    }
+  }
+}
+
+function syncDial(countrySelect, prefix) {
+ var dial = countrySelect.options[countrySelect.selectedIndex].getAttribute('data-dial');
+ var dialEl = document.getElementById(prefix + '-dialcode');
+ if (dialEl && dial) {
+ for (var i = 0; i < dialEl.options.length; i++) {
+ if (dialEl.options[i].value === dial) {
+ dialEl.selectedIndex = i;
+ break;
+ }
+ }
+ }
+}
+
+
+/* ── FORM VALIDATION ── */
+function validateForm(formEl) {
+ var fields = formEl.querySelectorAll('input[required], select[required], textarea[required]');
+ var valid = true;
+
+ // Clear previous errors
+ formEl.querySelectorAll('.field-error').forEach(function(el) {
+ el.classList.remove('field-error');
+ });
+ formEl.querySelectorAll('.field-error-msg').forEach(function(el) {
+ el.remove();
+ });
+
+ fields.forEach(function(field) {
+ var isEmpty = !field.value || field.value.trim() === '';
+ if (isEmpty) {
+ valid = false;
+ field.classList.add('field-error');
+
+ // If inside phone-wrap, highlight the wrap too
+ var wrap = field.closest('.phone-wrap');
+ if (wrap) wrap.classList.add('field-error');
+
+ // Add error message
+ var label = field.closest('.bk-fg');
+ if (label) {
+ var msg = document.createElement('span');
+ msg.className = 'field-error-msg';
+ msg.textContent = 'This field is required';
+ label.appendChild(msg);
+ }
+
+ // Scroll to first error
+ if (valid === false && !formEl.querySelector('.field-error + .field-error')) {
+ field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+ }
+ }
+
+ // Remove error on input
+ field.addEventListener('input', function() {
+ this.classList.remove('field-error');
+ var wrap = this.closest('.phone-wrap');
+ if (wrap) wrap.classList.remove('field-error');
+ var msg = this.closest('.bk-fg') && this.closest('.bk-fg').querySelector('.field-error-msg');
+ if (msg) msg.remove();
+ }, { once: true });
+ });
+
+ // Scroll to first error field
+ var firstError = formEl.querySelector('.field-error');
+ if (firstError) {
+ firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+ }
+
+ return valid;
+}
+
+
+function openPub01_OLD() {
+ var p = document.getElementById('pub01-page');
+ if (p) { p.style.display = 'block'; document.body.style.overflow = 'hidden'; window.scrollTo(0, 0); }
+}
+function closePub01() {
+ var p = document.getElementById('pub01-page');
+ if (p) { p.style.display = 'none'; document.body.style.overflow = ''; }
+}
+
+
+function openPub02() {
+  var p = document.getElementById('pub02-page');
+  if (p) openOverlay(p);
+}
+function closePub02() {
+  var p = document.getElementById('pub02-page');
+  if (p) closeOverlay(p);
+}
+
+
+/* ── SCROLL POSITION RESTORE ── */
+var _savedScrollY = 0;
+function openOverlay(el) {
+  _savedScrollY = window.scrollY || window.pageYOffset;
+  el.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
+}
+function closeOverlay(el) {
+  el.style.display = 'none';
+  document.body.style.overflow = '';
+  setTimeout(function() { window.scrollTo(0, _savedScrollY); }, 20);
+}
+
+
+/* ── MOBILE NAV ── */
+function toggleMobileNav() {
+  var drawer = document.getElementById('mobile-nav-drawer');
+  var overlay = document.getElementById('mobile-nav-overlay');
+  var btn = document.getElementById('nav-hamburger');
+  var isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    closeMobileNav();
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeMobileNav() {
+  var drawer = document.getElementById('mobile-nav-drawer');
+  var overlay = document.getElementById('mobile-nav-overlay');
+  var btn = document.getElementById('nav-hamburger');
+  drawer.classList.remove('open');
+  overlay.classList.remove('open');
+  btn.classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close drawer on ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMobileNav();
+});
+
+function openCS14(){var p=document.getElementById("cs14-page");if(p){openOverlay(p);}}
+function closeCS14(){var p=document.getElementById("cs14-page");if(p){closeOverlay(p);}}
+function openCS15(){var p=document.getElementById("cs15-page");if(p){openOverlay(p);}}
+function closeCS15(){var p=document.getElementById("cs15-page");if(p){closeOverlay(p);}}
+function openCS16(){var p=document.getElementById("cs16-page");if(p){openOverlay(p);}}
+function closeCS16(){var p=document.getElementById("cs16-page");if(p){closeOverlay(p);}}
+
+function openPub01() {
+  var p = document.getElementById('pub01-page');
+  if (p) openOverlay(p);
+}
+function closePub01() {
+  var p = document.getElementById('pub01-page');
+  if (p) closeOverlay(p);
+}
+function openPub02() {
+  var p = document.getElementById('pub02-page');
+  if (p) openOverlay(p);
+}
+function closePub02() {
+  var p = document.getElementById('pub02-page');
+  if (p) closeOverlay(p);
+}
+
+/* ── TESTIMONIALS (22 Items) ── */
+var testimonialsExpanded = false;
+function toggleAllTestimonials() {
+  testimonialsExpanded = !testimonialsExpanded;
+  var extras = document.querySelectorAll('.vid-card-extra');
+  var btn = document.getElementById('btn-toggle-testimonials');
+  extras.forEach(function(card) {
+    card.style.display = testimonialsExpanded ? 'block' : 'none';
+  });
+  if (btn) {
+    btn.innerHTML = testimonialsExpanded ? 'Show Fewer Testimonials ↑' : 'View All Video Testimonials &amp; Scripts ↓';
+  }
+}
+
+function filterTestimonials(category, btn) {
+  document.querySelectorAll('.vid-filter-btn').forEach(function(b) {
+    b.classList.remove('active');
+    b.style.background = 'var(--white)';
+    b.style.color = 'var(--ink)';
+    b.style.borderColor = 'var(--border)';
+  });
+  if (btn) {
+    btn.classList.add('active');
+    btn.style.background = 'var(--navy)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--gold)';
+  }
+  var cards = document.querySelectorAll('#testimonials-grid .vid-card');
+  var count = 0;
+  cards.forEach(function(card) {
+    var cardCat = card.getAttribute('data-category');
+    var match = (category === 'all' || cardCat === category);
+    if (match) {
+      count++;
+      if (testimonialsExpanded || count <= 6) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Newsletter Signup
+var newsletterBtn = document.getElementById('newsletter-submit');
+if (newsletterBtn) {
+  newsletterBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var emailInput = document.getElementById('newsletter-email');
+    var email = emailInput ? emailInput.value : '';
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    sendToSheets({
+      form: 'Newsletter Signup',
+      email: email
+    });
+    var msg = document.getElementById('newsletter-msg');
+    if (msg) msg.style.display = 'block';
+    if (emailInput) emailInput.value = '';
+    setTimeout(function() {
+      if (msg) msg.style.display = 'none';
+    }, 5000);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   48-HOUR FREE CONSULTATION PROMO ENGINE
+   Controlled via /promo-switch.html (Password-Protected Switch)
+   ═══════════════════════════════════════════════════════════════ */
+(function() {
+  var PROMO_STORAGE_KEY = 'drjoshua_promo_state';
+  var KV_APP_KEY = 'jz4p0798';
+  var KV_KEY = 'promo_state';
+  var promoTimerInterval = null;
+
+  function getLocalPromoState() {
+    try {
+      var raw = localStorage.getItem(PROMO_STORAGE_KEY);
+      if (!raw) return { active: false, startTime: null, endTime: null };
+      var parsed = JSON.parse(raw);
+      if (parsed && parsed.active && parsed.endTime && Date.now() < Number(parsed.endTime)) {
+        return {
+          active: true,
+          startTime: Number(parsed.startTime) || Date.now(),
+          endTime: Number(parsed.endTime)
+        };
+      }
+    } catch (e) {}
+    return { active: false, startTime: null, endTime: null };
+  }
+
+  function saveLocalPromoState(state) {
+    try {
+      localStorage.setItem(PROMO_STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {}
+  }
+
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function renderServicesPromoUI(state) {
+    var isActive = Boolean(state && state.active && state.endTime && Date.now() < state.endTime);
+    var banner = document.getElementById('promo-48h-banner');
+    var introText = document.getElementById('services-intro-text');
+    var metas = document.querySelectorAll('.service-meta[data-price]');
+    var btns = document.querySelectorAll('#services .service-btn');
+
+    if (banner) {
+      banner.style.display = isActive ? 'block' : 'none';
+    }
+
+    if (introText) {
+      if (!introText.getAttribute('data-default-text')) {
+        introText.setAttribute('data-default-text', introText.innerHTML);
+      }
+      if (isActive) {
+        introText.innerHTML = 'Choose the service that best describes your situation. <strong style="color:var(--navy);">48-Hour Free Consultation Promo Active:</strong> All discovery consultations are complimentary (<strong style="color:#15803d;">$0 / ₦0</strong>) while the timer below is running.';
+      } else {
+        introText.innerHTML = introText.getAttribute('data-default-text');
+      }
+    }
+
+    metas.forEach(function(meta) {
+      var dur = meta.getAttribute('data-duration') || '30 min';
+      var origPrice = meta.getAttribute('data-price') || '$30';
+      if (isActive) {
+        meta.innerHTML = dur + ' · <span style="text-decoration:line-through;opacity:0.45;font-weight:500;margin-right:4px;">' + origPrice + '</span> <span style="background:rgba(22,163,74,0.12);color:#15803d;border:1px solid rgba(22,163,74,0.35);padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:0.04em;display:inline-block;">FREE ($0)</span>';
+      } else {
+        meta.textContent = dur + ' · ' + origPrice;
+      }
+    });
+
+    btns.forEach(function(btn) {
+      if (isActive) {
+        btn.textContent = 'Book Your Free Consultation ($0) →';
+      } else {
+        btn.textContent = 'Book a Discovery Consultation →';
+      }
+    });
+
+    if (promoTimerInterval) {
+      clearInterval(promoTimerInterval);
+      promoTimerInterval = null;
+    }
+
+    if (isActive && state.endTime) {
+      function tick() {
+        var remainingMs = state.endTime - Date.now();
+        if (remainingMs <= 0) {
+          if (localStorage.getItem('drjoshua_promo_autorestart') === '1') {
+            var nowMs = Date.now();
+            var restarted = { active: true, startTime: nowMs, endTime: nowMs + 48 * 3600 * 1000 };
+            saveLocalPromoState(restarted);
+            renderServicesPromoUI(restarted);
+            return;
+          }
+          clearInterval(promoTimerInterval);
+          promoTimerInterval = null;
+          var expiredState = { active: false, startTime: null, endTime: null };
+          saveLocalPromoState(expiredState);
+          renderServicesPromoUI(expiredState);
+          return;
+        }
+        var totalSecs = Math.floor(remainingMs / 1000);
+        var hrs = Math.floor(totalSecs / 3600);
+        var mins = Math.floor((totalSecs % 3600) / 60);
+        var secs = totalSecs % 60;
+
+        var elH = document.getElementById('promo-cd-hours');
+        var elM = document.getElementById('promo-cd-mins');
+        var elS = document.getElementById('promo-cd-secs');
+        if (elH) elH.textContent = pad2(hrs);
+        if (elM) elM.textContent = pad2(mins);
+        if (elS) elS.textContent = pad2(secs);
+      }
+      tick();
+      promoTimerInterval = setInterval(tick, 1000);
+    }
+  }
+
+  async function fetchRemotePromoState() {
+    // Check URL override first (?promo=free or ?promo=off)
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var p = (params.get('promo') || '').toLowerCase();
+      if (p === 'free' || p === 'on' || p === '1') {
+        var cur = getLocalPromoState();
+        if (!cur.active) {
+          var now = Date.now();
+          cur = { active: true, startTime: now, endTime: now + 48 * 3600 * 1000 };
+          saveLocalPromoState(cur);
+        }
+        renderServicesPromoUI(cur);
+        return cur;
+      } else if (p === 'off' || p === '0') {
+        var offState = { active: false, startTime: null, endTime: null };
+        saveLocalPromoState(offState);
+        renderServicesPromoUI(offState);
+        return offState;
+      }
+    } catch (e) {}
+
+    // 1. Try /api/promo endpoint
+    try {
+      var r = await fetch('/api/promo?t=' + Date.now(), { cache: 'no-store' });
+      if (r.ok) {
+        var data = await r.json();
+        if (data && data.ok) {
+          var valid = Boolean(data.active && data.endTime && Date.now() < Number(data.endTime));
+          var synced = {
+            active: valid,
+            startTime: valid ? Number(data.startTime) : null,
+            endTime: valid ? Number(data.endTime) : null
+          };
+          saveLocalPromoState(synced);
+          renderServicesPromoUI(synced);
+          return synced;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Fallback to direct cloud KV lookup
+    try {
+      var r2 = await fetch('https://keyvalue.immanuel.co/api/KeyVal/GetValue/' + KV_APP_KEY + '/' + KV_KEY + '?t=' + Date.now(), { cache: 'no-store' });
+      if (r2.ok) {
+        var raw = (await r2.text()).replace(/"/g, '').trim();
+        var parts = raw.split('_');
+        var isAct = parts[0] === 'ACTIVE';
+        var st = Number(parts[1]) || null;
+        var et = Number(parts[2]) || null;
+        var stillValid = Boolean(isAct && et && Date.now() < et);
+        var kvState = {
+          active: stillValid,
+          startTime: stillValid ? st : null,
+          endTime: stillValid ? et : null
+        };
+        saveLocalPromoState(kvState);
+        renderServicesPromoUI(kvState);
+        return kvState;
+      }
+    } catch (e) {}
+
+    var fallback = getLocalPromoState();
+    renderServicesPromoUI(fallback);
+    return fallback;
+  }
+
+  // Expose helper globally for thank-you.html and promo-switch.html
+  window.DRJOSHUA_PROMO = {
+    getState: getLocalPromoState,
+    saveLocal: saveLocalPromoState,
+    syncFromCloud: fetchRemotePromoState,
+    renderServices: renderServicesPromoUI
+  };
+
+  // Initial immediate render from localStorage, then sync from cloud
+  var initial = getLocalPromoState();
+  renderServicesPromoUI(initial);
+  fetchRemotePromoState();
+
+  // Listen for cross-tab storage updates (e.g. toggling switch in another tab)
+  window.addEventListener('storage', function(e) {
+    if (e.key === PROMO_STORAGE_KEY) {
+      renderServicesPromoUI(getLocalPromoState());
+    }
+  });
+})();
+
+/* ═══ FILTER FOR WRITTEN CLIENT TESTIMONIALS ═══ */
+window.filterCR = function(cat, btn) {
+  var cards = document.querySelectorAll('.cr-card');
+  var btns = document.querySelectorAll('.cr-filter-btn');
+  if (btns) {
+    btns.forEach(function(b) {
+      b.classList.remove('active');
+      b.style.background = '#fff';
+      b.style.color = 'var(--ink, #1F2421)';
+      b.style.border = '1px solid var(--border, #E4E0D8)';
+    });
+  }
+  if (btn) {
+    btn.classList.add('active');
+    btn.style.background = 'var(--navy, #0B2545)';
+    btn.style.color = '#fff';
+    btn.style.border = '1px solid var(--gold, #C8A830)';
+  }
+  if (cards) {
+    cards.forEach(function(card) {
+      if (cat === 'all' || card.getAttribute('data-category') === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+};
+
