@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=9">
   <style>
     :root {
       --gold-glow: rgba(200, 168, 48, 0.22);
@@ -30,11 +30,13 @@
       overflow-x: hidden;
     }
 
-    /* ═══ RETAINER HERO ═══ */
+    /* ═══ RETAINER HERO (VeeFly Luminous Mesh & Pill Polish) ═══ */
     .retainer-hero {
-      background: linear-gradient(135deg, #000c22 0%, #00102A 50%, #051b3a 100%);
+      background:
+        radial-gradient(ellipse 68% 55% at 50% 15%, rgba(200, 168, 48, 0.20) 0%, rgba(16, 56, 128, 0.25) 45%, transparent 78%),
+        linear-gradient(180deg, #000A1E 0%, #001436 55%, #001A44 100%);
       color: #fff;
-      padding: 130px 24px 80px;
+      padding: 138px 24px 84px;
       position: relative;
       overflow: hidden;
       border-bottom: 3px solid var(--gold);
@@ -1627,6 +1629,19 @@
         q.querySelector('span').textContent = isOpen ? '+' : '−';
       });
     });
+
+    // Floating Glassmorphic Pill Navbar on Scroll
+    (function () {
+      var navEl = document.querySelector('nav');
+      if (!navEl) return;
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 36) {
+          navEl.classList.add('scrolled-pill');
+        } else {
+          navEl.classList.remove('scrolled-pill');
+        }
+      }, { passive: true });
+    })();
   </script>
 </body>
 

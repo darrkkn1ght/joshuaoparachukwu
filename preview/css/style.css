@@ -4815,3 +4815,952 @@ footer {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   VEEFLY-GRADE INTERACTIVE DESIGN & MOTION ARCHITECTURE (2026)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* 1. FLOATING GLASSMORPHIC PILL NAVBAR (Like VeeFly Scroll Pill) */
+nav {
+  position: sticky !important;
+  top: 12px !important;
+  z-index: 1000 !important;
+  width: min(1280px, calc(100% - 32px)) !important;
+  margin: 12px auto -72px !important;
+  height: 64px !important;
+  padding: 0 24px !important;
+  border-radius: 999px !important;
+  background: rgba(3, 18, 44, 0.86) !important;
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+  border: 1px solid rgba(200, 168, 48, 0.28) !important;
+  box-shadow: 0 14px 40px rgba(0, 10, 28, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+nav.scrolled-pill {
+  background: rgba(2, 14, 36, 0.95) !important;
+  border-color: rgba(200, 168, 48, 0.5) !important;
+  box-shadow: 0 20px 50px rgba(0, 8, 24, 0.55) !important;
+  transform: translateY(-2px);
+}
+
+.nav-links a,
+.nav-dropdown-trigger {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.84) !important;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+}
+
+.nav-links a:hover,
+.nav-dropdown-trigger:hover {
+  color: var(--goldl, #F0D060) !important;
+  background: rgba(200, 168, 48, 0.12) !important;
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, #E5C148 0%, #C8A830 55%, #A68218 100%) !important;
+  color: #00102A !important;
+  border-radius: 999px !important;
+  padding: 10px 22px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: 0 6px 20px rgba(200, 168, 48, 0.35) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.nav-cta:hover {
+  transform: translateY(-1.5px) scale(1.02) !important;
+  box-shadow: 0 10px 28px rgba(200, 168, 48, 0.55) !important;
+}
+
+/* 2. LUMINOUS CENTERED HERO + INTERACTIVE ARENA PILL BAR */
+#hero {
+  background:
+    radial-gradient(circle at 50% 14%, rgba(200, 168, 48, 0.20) 0%, rgba(12, 45, 96, 0.35) 38%, rgba(0, 16, 42, 0.98) 78%),
+    linear-gradient(180deg, #021028 0%, #04193B 60%, #021028 100%) !important;
+  padding: 124px 32px 64px !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#hero::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image:
+    radial-gradient(rgba(200, 168, 48, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px) !important;
+  background-size: 28px 28px, 64px 64px, 64px 64px !important;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, #000 40%, transparent 100%);
+  pointer-events: none !important;
+}
+
+.hero-orb-glow {
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrbGlow 10s ease-in-out infinite alternate;
+}
+
+.hero-orb-glow.left {
+  top: -120px;
+  left: -140px;
+  background: radial-gradient(circle, #C8A830 0%, transparent 70%);
+}
+
+.hero-orb-glow.right {
+  top: 120px;
+  right: -140px;
+  background: radial-gradient(circle, #1E56A0 0%, transparent 70%);
+  animation-delay: -5s;
+}
+
+@keyframes floatOrbGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 24px) scale(1.1); }
+}
+
+.hero-content-center {
+  position: relative;
+  z-index: 2;
+  max-width: 1020px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(200, 168, 48, 0.45);
+  color: #F4DF86;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.hero-pill-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+  animation: livePulseDot 2s infinite;
+}
+
+@keyframes livePulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+  50% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+}
+
+#hero .hero-headline {
+  font-family: var(--font-display) !important;
+  font-size: clamp(38px, 5.2vw, 66px) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+  margin: 0 auto 22px !important;
+  max-width: 960px !important;
+  letter-spacing: -0.01em !important;
+}
+
+#hero .hero-headline .accent-gradient {
+  background: linear-gradient(95deg, #FFE484 0%, #C8A830 50%, #FFF1B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+#hero .hero-sub {
+  font-family: var(--font-body) !important;
+  font-size: clamp(15px, 1.5vw, 18.5px) !important;
+  color: rgba(226, 232, 240, 0.86) !important;
+  line-height: 1.7 !important;
+  max-width: 740px !important;
+  margin: 0 auto 30px !important;
+  text-align: center !important;
+}
+
+/* Interactive VeeFly-Style Pill Launcher Bar */
+.vf-hero-action-bar {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border: 2px solid rgba(200, 168, 48, 0.55);
+  border-radius: 999px;
+  padding: 7px 8px 7px 22px;
+  width: min(780px, 100%);
+  margin: 0 auto 18px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42), 0 0 0 6px rgba(200, 168, 48, 0.10);
+  gap: 12px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.vf-hero-action-bar:focus-within,
+.vf-hero-action-bar:hover {
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5), 0 0 0 8px rgba(200, 168, 48, 0.18);
+  transform: translateY(-1px);
+}
+
+.vf-bar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(200, 168, 48, 0.15);
+  color: #9A7414;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.vf-bar-select-wrap {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+.vf-bar-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 1px;
+}
+
+.vf-bar-select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #00102A;
+  outline: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.vf-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #00102A 0%, #0E2B5C 100%);
+  color: #FFE074;
+  border: 1.5px solid #C8A830;
+  border-radius: 999px;
+  padding: 15px 30px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(0, 16, 42, 0.28);
+  transition: all 0.25s ease;
+}
+
+.vf-bar-btn:hover {
+  background: linear-gradient(135deg, #E2BE42 0%, #C8A830 100%);
+  color: #00102A;
+  transform: scale(1.02);
+}
+
+.vf-bar-btn .arrow-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(200, 168, 48, 0.22);
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.vf-bar-btn:hover .arrow-circle {
+  background: rgba(0, 16, 42, 0.15);
+  transform: translateX(3px);
+}
+
+/* Quick Pill Links & Trust Bar under Hero Action Bar */
+.vf-hero-quick-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.vf-quick-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.vf-quick-pill.gold {
+  background: rgba(200, 168, 48, 0.16);
+  border: 1px solid rgba(200, 168, 48, 0.5);
+  color: #FFE484;
+}
+
+.vf-quick-pill.gold:hover {
+  background: #C8A830;
+  color: #00102A;
+  transform: translateY(-1.5px);
+}
+
+.vf-quick-pill.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #F8FAFC;
+}
+
+.vf-quick-pill.glass:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1.5px);
+}
+
+/* Cinema Hero Video Frame */
+.vf-hero-cinema-wrap {
+  position: relative;
+  width: min(1040px, 96%);
+  margin: 8px auto 0;
+  border-radius: 22px;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(200, 168, 48, 0.55) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(200, 168, 48, 0.45) 100%);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.55), 0 0 60px rgba(200, 168, 48, 0.16);
+  z-index: 2;
+}
+
+.vf-hero-cinema-inner {
+  position: relative;
+  width: 100%;
+  padding-bottom: 46%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #000;
+}
+
+/* 3. FLOATING VEEFLY KPI CARDS (Replaces Flat Brown Strip) */
+.vf-kpi-trio-section {
+  position: relative;
+  z-index: 5;
+  max-width: 1140px;
+  margin: -34px auto 0;
+  padding: 0 24px 36px;
+}
+
+.vf-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.vf-kpi-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(200, 168, 48, 0.28);
+  border-radius: 20px;
+  padding: 24px 26px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 18px 45px rgba(0, 16, 42, 0.10);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.vf-kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 55px rgba(0, 16, 42, 0.16);
+  border-color: var(--gold, #C8A830);
+}
+
+.vf-kpi-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00102A 0%, #0D2956 100%);
+  color: #E5C148;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(0, 16, 42, 0.18);
+}
+
+.vf-kpi-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: #00102A;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.vf-kpi-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* 4. INTERACTIVE 2-COLUMN "HOW IT WORKS" PROCESS + LIVE VISUAL STAGE (Like VeeFly 00:08) */
+#pillars {
+  background: linear-gradient(180deg, #F8F7F3 0%, #FFFFFF 100%) !important;
+  padding: 84px 36px 96px !important;
+}
+
+.vf-section-container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.vf-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 168, 48, 0.14);
+  border: 1px solid rgba(200, 168, 48, 0.4);
+  color: #8A6914;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.vf-process-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 36px;
+  align-items: stretch;
+  margin: 40px 0 72px;
+}
+
+.vf-process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.vf-step-tab {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 24px 26px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 16px rgba(0, 16, 42, 0.04);
+}
+
+.vf-step-tab:hover {
+  border-color: rgba(200, 168, 48, 0.6);
+  transform: translateX(4px);
+}
+
+.vf-step-tab.active {
+  background: #00102A;
+  border-color: #C8A830;
+  box-shadow: 0 20px 45px rgba(0, 16, 42, 0.22);
+  transform: translateX(6px);
+}
+
+.vf-step-tab-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.vf-step-num-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(200, 168, 48, 0.16);
+  color: #8A6914;
+  transition: all 0.25s;
+}
+
+.vf-step-tab.active .vf-step-num-badge {
+  background: #C8A830;
+  color: #00102A;
+}
+
+.vf-step-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #00102A;
+  margin: 0;
+  transition: color 0.25s;
+}
+
+.vf-step-tab.active .vf-step-title {
+  color: #FFFFFF;
+}
+
+.vf-step-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0;
+  transition: color 0.25s;
+}
+
+.vf-step-tab.active .vf-step-desc {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.vf-step-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #C8A830, #FFE484);
+}
+
+.vf-step-tab.active .vf-step-progress {
+  animation: stepProgressFill 5s linear forwards;
+}
+
+@keyframes stepProgressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Right Column: Live Interactive Stage */
+.vf-process-stage {
+  background: radial-gradient(circle at 80% 20%, #102D5E 0%, #021028 75%);
+  border: 2px solid rgba(200, 168, 48, 0.45);
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 26px 65px rgba(0, 16, 42, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 410px;
+}
+
+.vf-stage-panel {
+  display: none;
+  animation: stageFadeSlide 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.vf-stage-panel.active {
+  display: block;
+}
+
+@keyframes stageFadeSlide {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.vf-stage-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.vf-window-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.vf-window-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.vf-metric-bar-row {
+  margin-bottom: 14px;
+}
+
+.vf-metric-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 6px;
+}
+
+.vf-metric-track {
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  overflow: hidden;
+}
+
+.vf-metric-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #C8A830 0%, #FFE484 100%);
+}
+
+/* 5. VEEFLY 6-CARD BENTO BENEFITS GRID ("Why High Performers Choose Dr. Joshua") */
+.vf-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.vf-bento-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E0D5;
+  border-radius: 20px;
+  padding: 30px 26px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 16, 42, 0.05);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.vf-bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00102A, #C8A830);
+  opacity: 0.75;
+  transition: opacity 0.3s;
+}
+
+.vf-bento-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(0, 16, 42, 0.12);
+  border-color: #C8A830;
+}
+
+.vf-bento-card:hover::before {
+  opacity: 1;
+}
+
+.vf-bento-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(200, 168, 48, 0.18) 0%, rgba(0, 16, 42, 0.06) 100%);
+  border: 1px solid rgba(200, 168, 48, 0.38);
+  color: #00102A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.vf-bento-card h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: #00102A;
+  margin-bottom: 10px;
+}
+
+.vf-bento-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.68;
+  margin-bottom: 16px;
+}
+
+/* 6. INFINITE HORIZONTAL MARQUEE CAROUSEL ("Who Is It For?" — Like VeeFly 00:22) */
+.vf-marquee-section {
+  background: #00102A;
+  padding: 76px 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgba(200, 168, 48, 0.25);
+  border-bottom: 1px solid rgba(200, 168, 48, 0.25);
+}
+
+.vf-marquee-track-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.vf-marquee-track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: vfInfiniteMarquee 38s linear infinite;
+}
+
+.vf-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes vfInfiniteMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.vf-arena-card {
+  width: 340px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, rgba(16, 42, 86, 0.9) 0%, rgba(4, 20, 48, 0.95) 100%);
+  border: 1px solid rgba(200, 168, 48, 0.32);
+  border-radius: 20px;
+  padding: 26px 24px;
+  color: #FFFFFF;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vf-arena-card:hover {
+  transform: translateY(-5px);
+  border-color: #FFE074;
+}
+
+.vf-arena-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 168, 48, 0.16);
+  color: #FFE074;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.vf-arena-card h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 8px;
+}
+
+.vf-arena-card p {
+  font-size: 13.5px;
+  color: rgba(226, 232, 240, 0.8);
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+/* 7. EXPANDABLE REVIEWS GRID ("Show More Reviews" like VeeFly 00:27) */
+.review-block-card {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+.review-block-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 18px 42px rgba(0, 16, 42, 0.10) !important;
+  border-color: var(--gold, #C8A830) !important;
+}
+
+.vf-extra-review {
+  display: none !important;
+}
+
+.vf-extra-review.expanded {
+  display: flex !important;
+  animation: stageFadeSlide 0.45s ease forwards;
+}
+
+.vf-show-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #00102A;
+  color: #FFE074;
+  border: 1.5px solid #C8A830;
+  border-radius: 999px;
+  padding: 15px 34px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 16, 42, 0.18);
+  transition: all 0.25s ease;
+}
+
+.vf-show-more-btn:hover {
+  background: #C8A830;
+  color: #00102A;
+  transform: translateY(-2px);
+}
+
+/* 8. HIGH-CONTRAST FIX FOR #about & ALL .reveal ELEMENTS */
+#about .about-content,
+#about .about-photo {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+#about .about-content h2 {
+  color: #00102A !important;
+}
+
+#about .about-bio-preview {
+  color: #1E293B !important;
+  font-weight: 400 !important;
+}
+
+#about .credentials {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+/* 9. FLOATING MESH-GRADIENT FINAL CTA CARD (Like VeeFly 00:31) */
+#final-cta {
+  background: #F8F7F3 !important;
+  padding: 72px 24px 88px !important;
+  border-top: none !important;
+}
+
+.vf-final-cta-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 88% 50%, rgba(200, 168, 48, 0.28) 0%, rgba(16, 48, 98, 0.45) 42%, rgba(0, 16, 42, 0.98) 78%),
+    linear-gradient(135deg, #00102A 0%, #092047 100%);
+  border: 2px solid rgba(200, 168, 48, 0.5);
+  border-radius: 28px;
+  padding: 56px 56px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(0, 16, 42, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  text-align: left;
+}
+
+.vf-final-cta-rings {
+  position: absolute;
+  right: -90px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 168, 48, 0.25);
+  box-shadow:
+    inset 0 0 0 45px rgba(200, 168, 48, 0.05),
+    0 0 0 45px rgba(200, 168, 48, 0.06),
+    0 0 0 90px rgba(200, 168, 48, 0.03);
+  pointer-events: none;
+  animation: pulseOrbitalRings 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseOrbitalRings {
+  0% { transform: translateY(-50%) scale(0.96); opacity: 0.7; }
+  100% { transform: translateY(-50%) scale(1.06); opacity: 1; }
+}
+
+/* Responsive Adjustments for VeeFly Components */
+@media (max-width: 1024px) {
+  .vf-process-showcase {
+    grid-template-columns: 1fr !important;
+  }
+  .vf-bento-grid,
+  .vf-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .vf-final-cta-card {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 40px 28px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    top: 8px !important;
+    margin: 8px auto -60px !important;
+    padding: 0 18px !important;
+  }
+  #hero {
+    padding: 96px 16px 48px !important;
+  }
+  .vf-hero-action-bar {
+    flex-direction: column !important;
+    border-radius: 20px !important;
+    padding: 16px !important;
+    gap: 12px !important;
+  }
+  .vf-bar-btn {
+    width: 100% !important;
+  }
+  .vf-kpi-grid,
+  .vf-bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .vf-kpi-trio-section {
+    margin-top: 20px !important;
+  }
+  .vf-hero-cinema-inner {
+    padding-bottom: 56.25% !important;
+  }
+}
+
+

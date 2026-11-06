@@ -23,9 +23,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Joshua A. Oparachukwu | Performance Strategist · Applied Performance Science</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 
 <body>
@@ -111,118 +111,530 @@
   </div>
   <main>
     <section id="hero">
-      <div style="display:flex;justify-content:center;margin-bottom:14px;">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,48,0.14);border:1px solid rgba(200,168,48,0.45);color:var(--gold,#C8A830);padding:6px 16px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">
-          ★★★★★ PhD Performance Psychology &nbsp;·&nbsp; 219+ Performers &amp; Organizations Supported
+      <div class="hero-orb-glow"></div>
+
+      <div style="display:flex;justify-content:center;position:relative;z-index:2;">
+        <span class="hero-pill-badge">
+          <span class="pulse-dot"></span>
+          <span>PhD Performance Psychology &nbsp;·&nbsp; 219+ Performers &amp; Organizations Supported</span>
         </span>
       </div>
-      <div class="hero-gold-rule"></div>
+
       <h1 class="hero-headline">
         Helping Athletes, Clubs, Teams, Leaders<br>
         and Organizations Perform Better in<br>
-        <span class="accent">ALL Environments</span>
+        <span class="accent accent-gradient">ALL Environments</span>
       </h1>
-      <p class="hero-sub">Performance Psychology, Executive Performance, Team Development and Sport Governance for high-pressure environments where decisions, leadership, confidence and performance matter.</p>
 
-      <!-- VEEFLY-STYLE IMMEDIATE HERO CONVERSION CTA BAR -->
-      <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;margin:22px auto 18px;max-width:900px;padding:0 16px;">
-        <a href="performance-retainer.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--gold,#C8A830);color:#00102A;font-family:var(--font-body);font-size:14px;font-weight:700;padding:14px 26px;border-radius:8px;text-decoration:none;letter-spacing:0.03em;box-shadow:0 8px 24px rgba(200,168,48,0.28);transition:all 0.2s;">
-          Enrol in 4-Month Retainer ($500) →
+      <p class="hero-sub">
+        Performance Psychology, Executive Performance, Team Development and Sport Governance for high-pressure environments where decisions, leadership, confidence and performance matter.
+      </p>
+
+      <!-- VEEFLY-STYLE INTERACTIVE PILL LAUNCHER BAR -->
+      <div class="vf-hero-action-bar">
+        <div class="vf-arena-select-wrap">
+          <span class="vf-arena-icon">🎯</span>
+          <select id="vf-hero-arena-select" class="vf-arena-select" aria-label="Select Your Performance Pathway">
+            <option value="performance-retainer.html">⚽ Individual Athlete · 4-Month Performance Retainer ($500)</option>
+            <option value="services.html">🧠 Individual Athlete · Single Discovery Consultation ($30)</option>
+            <option value="services.html">🏆 Coach, Club or Team Performance Strategy ($50–$100)</option>
+            <option value="services.html">🏛️ Sport Federation &amp; Governance Advisory ($150)</option>
+            <option value="services.html">💼 Executive &amp; High-Stakes Leadership Performance ($100)</option>
+          </select>
+          <span style="color:var(--gold,#C8A830);font-size:12px;pointer-events:none;">▾</span>
+        </div>
+        <button type="button" class="vf-hero-launch-btn" onclick="var sel=document.getElementById('vf-hero-arena-select');window.location.href=sel?sel.value:'performance-retainer.html';">
+          <span>Start Performance Plan</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+
+      <!-- SECONDARY PILL SHORTCUTS & VEEFLY TRUSTPILOT-STYLE RATING STRIP -->
+      <div class="vf-hero-quick-row">
+        <a href="performance-retainer.html" class="vf-quick-pill">
+          <span>⚡</span> 4-Month Retainer ($500 · 8 Sessions)
         </a>
-        <a href="services.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.35);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:600;padding:13px 24px;border-radius:8px;text-decoration:none;letter-spacing:0.02em;transition:all 0.2s;">
-          Book a Discovery Consultation →
+        <a href="services.html" class="vf-quick-pill">
+          <span>📅</span> Book 1-on-1 Discovery Call
         </a>
-        <a href="#reviews" style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);border:1px solid rgba(200,168,48,0.45);color:var(--gold,#C8A830);font-family:var(--font-body);font-size:13px;font-weight:700;padding:13px 20px;border-radius:8px;text-decoration:none;letter-spacing:0.03em;">
-          ★ See Client Reviews ↓
+        <a href="#reviews" class="vf-trust-strip" title="Jump to Verified Client Reviews">
+          <span style="font-weight:700;color:#fff;">Excellent</span>
+          <span class="vf-trust-stars">★★★★★</span>
+          <span>40+ Verified Client Reviews · Read Below ↓</span>
         </a>
       </div>
 
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-      <div style="height:24px"></div>
-
-      <div
-        style="width:94%;max-width:1100px;margin:16px auto 48px;position:relative;padding-bottom:42.85%;height:0;overflow:hidden;border-radius:12px;">
-        <iframe src="https://www.youtube.com/embed/5km2Onm4gro"
-          title="Dr. Joshua Oparachukwu Website Introduction Video" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-          style="position:absolute;top:50%;left:50%;width:100%;height:133.5%;transform:translate(-50%,-50%);border:0;"></iframe>
+      <!-- CINEMA-FRAMED INTRODUCTION VIDEO -->
+      <div class="vf-hero-cinema-wrap">
+        <div class="vf-hero-cinema-inner">
+          <iframe src="https://www.youtube.com/embed/5km2Onm4gro"
+            title="Dr. Joshua Oparachukwu Website Introduction Video" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
       </div>
     </section>
 
-    <!-- STATS BAR -->
-    <div class="proof-bar">
-      <div class="proof-item">
-        <div class="proof-num">219+</div>
-        <div class="proof-label">Individuals Trained</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-num">40+</div>
-        <div class="proof-label">Testimonials</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-num">PhD</div>
-        <div class="proof-label">Performance Psychology</div>
+    <!-- ═══ VEEFLY-STYLE FLOATING 3-CARD KPI TRIO (Overlaps Hero Bottom) ═══ -->
+    <div class="vf-kpi-trio-section">
+      <div class="vf-kpi-trio-grid">
+        <div class="vf-kpi-card">
+          <div class="vf-kpi-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="vf-kpi-text">
+            <div class="vf-kpi-num" data-count-target="219" data-count-suffix="+">219+</div>
+            <div class="vf-kpi-label">Individuals &amp; Performers Trained</div>
+            <div class="vf-kpi-sub">Across UK, USA, Europe, UAE, Australia, Brazil &amp; Africa</div>
+          </div>
+        </div>
+
+        <div class="vf-kpi-card">
+          <div class="vf-kpi-icon-box">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="vf-kpi-text">
+            <div class="vf-kpi-num" data-count-target="40" data-count-suffix="+">40+</div>
+            <div class="vf-kpi-label">Verified Client Testimonials</div>
+            <div class="vf-kpi-sub">Athletes, Coaches, Club Directors &amp; High-Stakes Leaders</div>
+          </div>
+        </div>
+
+        <div class="vf-kpi-card">
+          <div class="vf-kpi-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="vf-kpi-text">
+            <div class="vf-kpi-num">PhD</div>
+            <div class="vf-kpi-label">Performance Psychology</div>
+            <div class="vf-kpi-sub">Peer-Reviewed Researcher · Applied Performance Scientist</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ═══ HOW IT WORKS + 3-PILLAR METHOD (VeeFly Step-by-Step + Value Architecture) ═══ -->
+    <!-- ═══ HOW IT WORKS + 3-PILLAR METHOD (VeeFly Interactive 2-Column Showcase + 6-Card Bento Grid) ═══ -->
     <section id="pillars">
-      <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:6px;">How It Works · 3-Step Execution Process</span>
-      <h2 class="section-title reveal">The 3-Pillar Performance Method</h2>
-      <div class="section-gold-rule"></div>
+      <div class="vf-section-head">
+        <span class="vf-eyebrow-pill">⚡ How It Works · 3-Step Execution System</span>
+        <h2 class="section-title">How We Engineer Peak Performance</h2>
+        <p class="vf-section-sub">
+          Just like elite physical conditioning, mental performance is built through a structured, repeatable 3-step system—not generic pep talks. Click any step below to inspect the live workflow.
+        </p>
+      </div>
 
-      <!-- 3-Step Visual Workflow Strip -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;max-width:1140px;margin:0 auto 36px;text-align:left;">
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,48,0.28);border-radius:12px;padding:20px 22px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold,#C8A830);margin-bottom:6px;">Step 01 · Diagnose</div>
-          <div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:#fff;margin-bottom:6px;">Performance Intake &amp; Audit</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0;">Pinpoint the exact cognitive, emotional, or systemic friction causing hesitation, inconsistency, or pressure drops.</p>
+      <!-- VEEFLY INTERACTIVE 2-COLUMN PROCESS SHOWCASE -->
+      <div class="vf-process-showcase" id="vf-process-showcase">
+        <div class="vf-process-steps">
+          <div class="vf-step-tab active" data-step="0" onclick="selectVfProcessStep(0)">
+            <div class="vf-step-tab-header">
+              <div class="vf-step-num-circle">01</div>
+              <div>
+                <div class="vf-step-kicker">Step 01 · Diagnose</div>
+                <h3 class="vf-step-title">Performance Intake &amp; Psychological Audit</h3>
+              </div>
+            </div>
+            <p class="vf-step-desc">
+              We pinpoint the exact cognitive, emotional, or systemic triggers causing hesitation, second-half drop-offs, pre-match anxiety, or decision fatigue under pressure.
+            </p>
+            <div class="vf-step-progress"><div class="vf-step-progress-bar"></div></div>
+          </div>
+
+          <div class="vf-step-tab" data-step="1" onclick="selectVfProcessStep(1)">
+            <div class="vf-step-tab-header">
+              <div class="vf-step-num-circle">02</div>
+              <div>
+                <div class="vf-step-kicker">Step 02 · Engineer</div>
+                <h3 class="vf-step-title">Custom Mental Operating System</h3>
+              </div>
+            </div>
+            <p class="vf-step-desc">
+              We install tailored pre-competition routines, the 3R Mistake-Reset Protocol (Recognize · Release · Refocus), and tactical cue words built specifically for your position or leadership role.
+            </p>
+            <div class="vf-step-progress"><div class="vf-step-progress-bar"></div></div>
+          </div>
+
+          <div class="vf-step-tab" data-step="2" onclick="selectVfProcessStep(2)">
+            <div class="vf-step-tab-header">
+              <div class="vf-step-num-circle">03</div>
+              <div>
+                <div class="vf-step-kicker">Step 03 · Execute &amp; Track</div>
+                <h3 class="vf-step-title">Live Season Integration &amp; Portal Tracking</h3>
+              </div>
+            </div>
+            <p class="vf-step-desc">
+              Across your 8-session retainer or advisory roadmap, we review real match and boardroom outcomes in your private Client Portal and lock in week-in, week-out consistency.
+            </p>
+            <div class="vf-step-progress"><div class="vf-step-progress-bar"></div></div>
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,48,0.28);border-radius:12px;padding:20px 22px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold,#C8A830);margin-bottom:6px;">Step 02 · Engineer</div>
-          <div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:#fff;margin-bottom:6px;">Tailored Psychological System</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0;">Install personalized pre-match routines, 3R mistake-reset switches, and decision-making frameworks built for your arena.</p>
-        </div>
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,48,0.28);border-radius:12px;padding:20px 22px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold,#C8A830);margin-bottom:6px;">Step 03 · Execute</div>
-          <div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:#fff;margin-bottom:6px;">Sustained Competitive Edge</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.6;margin:0;">Track live competitive outcomes, refine mental habits between matches or boardrooms, and lock in repeatable excellence.</p>
+
+        <!-- RIGHT VISUAL STAGE (Animated Mockups per Step) -->
+        <div class="vf-process-stage">
+          <!-- Stage 0: Diagnostic Audit -->
+          <div class="vf-stage-panel active" id="vf-stage-panel-0">
+            <div>
+              <div class="vf-stage-top-bar">
+                <span class="vf-stage-badge"><span style="width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block;"></span> Step 01 · Diagnostic Profile</span>
+                <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
+              </div>
+              <h4 class="vf-stage-card-title">Baseline Psychological Pressure Map</h4>
+              <p class="vf-stage-card-sub">Identifying the exact gap between training capability and high-stakes match execution.</p>
+
+              <div class="vf-stage-metric-grid">
+                <div class="vf-stage-metric">
+                  <div class="vf-stage-metric-label">Error Recovery Speed</div>
+                  <div class="vf-stage-metric-val">3.2s Reset</div>
+                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:88%;"></div></div>
+                </div>
+                <div class="vf-stage-metric">
+                  <div class="vf-stage-metric-label">Pre-Match Composure</div>
+                  <div class="vf-stage-metric-val">+94% Clarity</div>
+                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:94%;"></div></div>
+                </div>
+              </div>
+
+              <div class="vf-stage-checklist">
+                <div class="vf-stage-check-item">
+                  <span class="vf-stage-check-icon">✓</span>
+                  <span><strong>Trigger Mapping:</strong> Isolate what happens in the 10 seconds after an error or high-pressure call.</span>
+                </div>
+                <div class="vf-stage-check-item">
+                  <span class="vf-stage-check-icon">✓</span>
+                  <span><strong>Cognitive Load Audit:</strong> Strip away overthinking and paralysis before kickoff or key presentations.</span>
+                </div>
+              </div>
+            </div>
+            <div class="vf-stage-footer">
+              <span class="vf-stage-footer-note">Diagnostic completed in Session 01</span>
+              <a href="performance-retainer.html" class="vf-stage-cta-link">Explore 4-Month Retainer →</a>
+            </div>
+          </div>
+
+          <!-- Stage 1: Custom Mental System -->
+          <div class="vf-stage-panel" id="vf-stage-panel-1">
+            <div>
+              <div class="vf-stage-top-bar">
+                <span class="vf-stage-badge"><span style="width:7px;height:7px;border-radius:50%;background:#C8A830;display:inline-block;"></span> Step 02 · System Architecture</span>
+                <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
+              </div>
+              <h4 class="vf-stage-card-title">The 3R Mistake-Reset &amp; Focus Protocol</h4>
+              <p class="vf-stage-card-sub">Practical, on-pitch and in-room mental tools you can deploy in under 5 seconds.</p>
+
+              <div class="vf-stage-metric-grid">
+                <div class="vf-stage-metric">
+                  <div class="vf-stage-metric-label">1. Recognize &amp; Release</div>
+                  <div class="vf-stage-metric-val">Physical Cue</div>
+                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:92%;"></div></div>
+                </div>
+                <div class="vf-stage-metric">
+                  <div class="vf-stage-metric-label">2. Refocus Next Action</div>
+                  <div class="vf-stage-metric-val">Tactical Anchor</div>
+                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:96%;"></div></div>
+                </div>
+              </div>
+
+              <div class="vf-stage-checklist">
+                <div class="vf-stage-check-item">
+                  <span class="vf-stage-check-icon">✓</span>
+                  <span><strong>Pre-Performance Routine:</strong> Standardized 15-minute mental warm-up for calm, aggressive readiness.</span>
+                </div>
+                <div class="vf-stage-check-item">
+                  <span class="vf-stage-check-icon">✓</span>
+                  <span><strong>Pressure Inoculation:</strong> Simulated high-consequence scenarios so crunch time feels familiar.</span>
+                </div>
+              </div>
+            </div>
+            <div class="vf-stage-footer">
+              <span class="vf-stage-footer-note">Engineered specifically for your sport or role</span>
+              <a href="services.html" class="vf-stage-cta-link">Book Discovery Call →</a>
+            </div>
+          </div>
+
+          <!-- Stage 2: Client Portal & Sustained Edge -->
+          <div class="vf-stage-panel" id="vf-stage-panel-2">
+            <div>
+              <div class="vf-stage-top-bar">
+                <span class="vf-stage-badge"><span style="width:7px;height:7px;border-radius:50%;background:#38BDF8;display:inline-block;"></span> Step 03 · Live Client Portal</span>
+                <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
+              </div>
+              <h4 class="vf-stage-card-title">8-Session Retainer &amp; Calendar Sync</h4>
+              <p class="vf-stage-card-sub">Dedicated client portal with 1-click Google Meet room, local timezone sync, and session notes.</p>
+
+              <div class="vf-stage-metric-grid">
+                <div class="vf-stage-metric">
+                  <div class="vf-stage-metric-label">Retainer Cadence</div>
+                  <div class="vf-stage-metric-val">8 × 45m Calls</div>
+                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:100%;"></div></div>
+                </div>
+                <div class="vf-stage-metric">
+                  <div class="vf-stage-metric-label">Rollover Protection</div>
+                  <div class="vf-stage-metric-val">+30 Day Buffer</div>
+                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:90%;"></div></div>
+                </div>
+              </div>
+
+              <div class="vf-stage-checklist">
+                <div class="vf-stage-check-item">
+                  <span class="vf-stage-check-icon">✓</span>
+                  <span><strong>Global Timezone Sync:</strong> All sessions displayed automatically in your local city timezone.</span>
+                </div>
+                <div class="vf-stage-check-item">
+                  <span class="vf-stage-check-icon">✓</span>
+                  <span><strong>Post-Match Debriefs:</strong> Continuous refinement across 4 months of live competition.</span>
+                </div>
+              </div>
+            </div>
+            <div class="vf-stage-footer">
+              <span class="vf-stage-footer-note">Full 4-Month Retainer · $500 USD</span>
+              <a href="performance-retainer.html" class="vf-stage-cta-link">View Retainer Portal →</a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="pillars-grid">
-        <div class="pillar reveal">
-          <h3>Mental Clarity</h3>
-          <div class="pillar-rule"></div>
-          <p>Identify and remove psychological blocks. Build unshakeable focus even in the highest-stakes moments.</p>
-          <ul class="pillar-checks">
-            <li>Structured mental assessment to pinpoint blocks</li>
-            <li>Proven focus techniques used by elite performers</li>
-            <li>Build a pre-performance mental routine that works</li>
+      <!-- VEEFLY 6-CARD BENTO GRID: THE 3 CORE PILLARS + 3 STRATEGIC ADVANTAGES -->
+      <div class="vf-section-head" style="margin-top:20px;margin-bottom:36px;">
+        <span class="vf-eyebrow-pill">🏛️ The 3-Pillar Method &amp; Strategic Advantage</span>
+        <h3 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:8px 0 10px;">
+          Why Elite Performers &amp; Organizations Choose Dr. Joshua
+        </h3>
+      </div>
+
+      <div class="vf-bento-grid">
+        <!-- Bento 1 -->
+        <div class="vf-bento-card">
+          <div class="vf-bento-top">
+            <div class="vf-bento-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <span class="vf-bento-tag">Pillar 01</span>
+          </div>
+          <h3>Mental Clarity Under Fire</h3>
+          <p>Identify and remove psychological blocks so you execute with calm, decisive precision when the stakes are highest.</p>
+          <ul class="vf-bento-list">
+            <li>Structured diagnostic assessment to pinpoint mental blocks</li>
+            <li>Attentional control cues used by international competitors</li>
+            <li>Repeatable pre-performance mental routine</li>
           </ul>
         </div>
-        <div class="pillar reveal" style="transition-delay:.1s">
-          <h3>Resilience Systems</h3>
-          <div class="pillar-rule"></div>
-          <p>Structured tools to recover from errors fast. Reset immediately and keep performing at your peak.</p>
-          <ul class="pillar-checks">
-            <li>Error reset protocols for immediate bounce-back</li>
-            <li>Pressure-inoculation drills for big moments</li>
-            <li>Confidence rebuilding framework after setbacks</li>
+
+        <!-- Bento 2 -->
+        <div class="vf-bento-card">
+          <div class="vf-bento-top">
+            <div class="vf-bento-icon">
+              <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="vf-bento-tag">Pillar 02</span>
+          </div>
+          <h3>Resilience &amp; Rapid Error Reset</h3>
+          <p>Stop one mistake from snowballing into three. Recover composure immediately in live play or high-stakes meetings.</p>
+          <ul class="vf-bento-list">
+            <li>The 3R Reset protocol for instant bounce-back</li>
+            <li>Pressure-inoculation drills for decisive moments</li>
+            <li>Post-setback &amp; post-slump confidence rebuilding</li>
           </ul>
         </div>
-        <div class="pillar reveal" style="transition-delay:.2s">
-          <h3>Peak Consistency</h3>
-          <div class="pillar-rule"></div>
-          <p>The mental routines elite performers use to show up at their best, every single day.</p>
-          <ul class="pillar-checks">
-            <li>Performance check-ins and progress tracking</li>
-            <li>Habit stacking for consistent high performance</li>
-            <li>Long-term mindset systems that last</li>
+
+        <!-- Bento 3 -->
+        <div class="vf-bento-card">
+          <div class="vf-bento-top">
+            <div class="vf-bento-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <span class="vf-bento-tag">Pillar 03</span>
+          </div>
+          <h3>Peak Week-to-Week Consistency</h3>
+          <p>Bridge the gap between how you perform in training and how you show up when the lights, crowds, and expectations are on.</p>
+          <ul class="vf-bento-list">
+            <li>Ongoing performance check-ins &amp; progress tracking</li>
+            <li>Habit architecture for sustainable high performance</li>
+            <li>Long-term psychological autonomy that lasts</li>
           </ul>
+        </div>
+
+        <!-- Bento 4 -->
+        <div class="vf-bento-card">
+          <div class="vf-bento-top">
+            <div class="vf-bento-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <span class="vf-bento-tag">PhD Evidence</span>
+          </div>
+          <h3>Peer-Reviewed Applied Science</h3>
+          <p>Grounded in doctoral research in Sport &amp; Performance Psychology—not motivational clichés or generic life coaching.</p>
+          <ul class="vf-bento-list">
+            <li>Published researcher in mental toughness &amp; skill execution</li>
+            <li>Evidence-based cognitive &amp; behavioral interventions</li>
+            <li>Translated into clear, practical field language</li>
+          </ul>
+        </div>
+
+        <!-- Bento 5 -->
+        <div class="vf-bento-card">
+          <div class="vf-bento-top">
+            <div class="vf-bento-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="vf-bento-tag">Digital Portal</span>
+          </div>
+          <h3>Seamless Global Client Portal</h3>
+          <p>Every retainer client receives a private dashboard with automated local timezone conversion, Google Calendar sync, and 1-click Google Meet access.</p>
+          <ul class="vf-bento-list">
+            <li>Zero scheduling friction across 6 continents</li>
+            <li>24-hour flexible rescheduling for match calendar changes</li>
+            <li>30-day credit rollover protection option</li>
+          </ul>
+        </div>
+
+        <!-- Bento 6 -->
+        <div class="vf-bento-card">
+          <div class="vf-bento-top">
+            <div class="vf-bento-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="vf-bento-tag">Multi-Domain</span>
+          </div>
+          <h3>Individual, Team &amp; Governance</h3>
+          <p>Capable of working 1-on-1 with an athlete, inside a coaching staff dressing room, or at the federation board level.</p>
+          <ul class="vf-bento-list">
+            <li>16 documented multi-domain case studies</li>
+            <li>Dressing-room culture &amp; leadership alignment</li>
+            <li>Institutional governance &amp; policy execution</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHO IS IT FOR? (VeeFly Infinite Auto-Scrolling Horizontal Marquee Carousel) ═══ -->
+    <section class="vf-marquee-section">
+      <div class="vf-marquee-header">
+        <span class="vf-eyebrow-pill" style="background:rgba(200,168,48,0.14);border-color:rgba(200,168,48,0.4);color:var(--gold,#C8A830);">🌍 Built For High-Consequence Arenas</span>
+        <h2>Who Dr. Joshua Works With</h2>
+        <p>Hover over any card to pause and explore how applied performance science adapts to your specific competitive environment.</p>
+      </div>
+
+      <div class="vf-marquee-track">
+        <!-- SET 1 (6 Arenas) -->
+        <div class="vf-arena-card">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">⚽</div>
+            <span class="vf-arena-pill">Individual Performers</span>
+          </div>
+          <h3>Competitive Footballers &amp; Team Sport Athletes</h3>
+          <p>Eliminate second-half focus drops, recover instantly from on-pitch mistakes, and play with composed aggression in front of scouts, coaches, and crowds.</p>
+          <a href="performance-retainer.html" class="vf-arena-link">View 4-Month Athlete Retainer →</a>
+        </div>
+
+        <div class="vf-arena-card">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">🏃</div>
+            <span class="vf-arena-pill">Track, Field &amp; Combat</span>
+          </div>
+          <h3>Athletics, Track &amp; Individual Competitors</h3>
+          <p>Transfer your best training numbers into official finals. Master pre-race nerves, start-line readiness, and championship pressure.</p>
+          <a href="performance-retainer.html" class="vf-arena-link">Start 1-on-1 Mental Training →</a>
+        </div>
+
+        <div class="vf-arena-card">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">📋</div>
+            <span class="vf-arena-pill">Tactical Leadership</span>
+          </div>
+          <h3>Head Coaches, Managers &amp; Technical Directors</h3>
+          <p>Maintain emotional regulation on the touchline, sharpen in-game tactical adjustments, and communicate standards without losing the dressing room.</p>
+          <a href="services.html" class="vf-arena-link">Book Coach Consultation →</a>
+        </div>
+
+        <div class="vf-arena-card">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">🏆</div>
+            <span class="vf-arena-pill">Collective Culture</span>
+          </div>
+          <h3>Football Clubs, Academies &amp; High-Performance Teams</h3>
+          <p>Turn a collection of talented individuals into a cohesive, resilient unit that responds together after conceding or facing adversity.</p>
+          <a href="case-studies.html" class="vf-arena-link">Explore Team Case Studies →</a>
+        </div>
+
+        <div class="vf-arena-card">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">🏛️</div>
+            <span class="vf-arena-pill">Institutional Strategy</span>
+          </div>
+          <h3>Sport Federations, Boards &amp; Governance Bodies</h3>
+          <p>Install clear accountability frameworks, high-performance operating systems, and policy enforcement spines across sport organizations.</p>
+          <a href="services.html" class="vf-arena-link">Explore Governance Advisory →</a>
+        </div>
+
+        <div class="vf-arena-card">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">💼</div>
+            <span class="vf-arena-pill">C-Suite &amp; Founders</span>
+          </div>
+          <h3>Executives, Sport Managers &amp; High-Stakes Leaders</h3>
+          <p>Prevent decision fatigue, protect cognitive bandwidth under relentless operational urgency, and lead with sustainable clarity.</p>
+          <a href="services.html" class="vf-arena-link">Book Executive Consultation →</a>
+        </div>
+
+        <!-- SET 2 (Duplicate for Seamless Infinite Loop) -->
+        <div class="vf-arena-card" aria-hidden="true">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">⚽</div>
+            <span class="vf-arena-pill">Individual Performers</span>
+          </div>
+          <h3>Competitive Footballers &amp; Team Sport Athletes</h3>
+          <p>Eliminate second-half focus drops, recover instantly from on-pitch mistakes, and play with composed aggression in front of scouts, coaches, and crowds.</p>
+          <a href="performance-retainer.html" class="vf-arena-link" tabindex="-1">View 4-Month Athlete Retainer →</a>
+        </div>
+
+        <div class="vf-arena-card" aria-hidden="true">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">🏃</div>
+            <span class="vf-arena-pill">Track, Field &amp; Combat</span>
+          </div>
+          <h3>Athletics, Track &amp; Individual Competitors</h3>
+          <p>Transfer your best training numbers into official finals. Master pre-race nerves, start-line readiness, and championship pressure.</p>
+          <a href="performance-retainer.html" class="vf-arena-link" tabindex="-1">Start 1-on-1 Mental Training →</a>
+        </div>
+
+        <div class="vf-arena-card" aria-hidden="true">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">📋</div>
+            <span class="vf-arena-pill">Tactical Leadership</span>
+          </div>
+          <h3>Head Coaches, Managers &amp; Technical Directors</h3>
+          <p>Maintain emotional regulation on the touchline, sharpen in-game tactical adjustments, and communicate standards without losing the dressing room.</p>
+          <a href="services.html" class="vf-arena-link" tabindex="-1">Book Coach Consultation →</a>
+        </div>
+
+        <div class="vf-arena-card" aria-hidden="true">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">🏆</div>
+            <span class="vf-arena-pill">Collective Culture</span>
+          </div>
+          <h3>Football Clubs, Academies &amp; High-Performance Teams</h3>
+          <p>Turn a collection of talented individuals into a cohesive, resilient unit that responds together after conceding or facing adversity.</p>
+          <a href="case-studies.html" class="vf-arena-link" tabindex="-1">Explore Team Case Studies →</a>
+        </div>
+
+        <div class="vf-arena-card" aria-hidden="true">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">🏛️</div>
+            <span class="vf-arena-pill">Institutional Strategy</span>
+          </div>
+          <h3>Sport Federations, Boards &amp; Governance Bodies</h3>
+          <p>Install clear accountability frameworks, high-performance operating systems, and policy enforcement spines across sport organizations.</p>
+          <a href="services.html" class="vf-arena-link" tabindex="-1">Explore Governance Advisory →</a>
+        </div>
+
+        <div class="vf-arena-card" aria-hidden="true">
+          <div class="vf-arena-card-top">
+            <div class="vf-arena-emoji">💼</div>
+            <span class="vf-arena-pill">C-Suite &amp; Founders</span>
+          </div>
+          <h3>Executives, Sport Managers &amp; High-Stakes Leaders</h3>
+          <p>Prevent decision fatigue, protect cognitive bandwidth under relentless operational urgency, and lead with sustainable clarity.</p>
+          <a href="services.html" class="vf-arena-link" tabindex="-1">Book Executive Consultation →</a>
         </div>
       </div>
     </section>
@@ -1317,7 +1729,7 @@
           </div>
 
           <!-- 07 Sydney Nzuzi (Football) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1345,7 +1757,7 @@
           </div>
 
           <!-- 08 David Wells (Athletics) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1373,7 +1785,7 @@
           </div>
 
           <!-- 09 Bose Oluwasebikon (Collegiate Athletics) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1401,7 +1813,7 @@
           </div>
 
           <!-- 10 González Roca (Football / Performance) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1429,7 +1841,7 @@
           </div>
 
           <!-- 11 Ezekiel Badejo (Combat Sports / Athletics) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1454,7 +1866,7 @@
           </div>
 
           <!-- 12 Ashanti Cole (Athletics) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1479,7 +1891,7 @@
           </div>
 
           <!-- 13 Caleb Matias (Football) -->
-          <div class="review-block-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
+          <div class="review-block-card vf-extra-review" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 14px rgba(0,0,0,0.04);">
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
                 <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(200,168,48,0.12);color:var(--navy,#0B2545);padding:4px 10px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0.03em;">
@@ -1502,6 +1914,14 @@
             </div>
           </div>
 
+        </div>
+
+        <!-- VEEFLY-STYLE SHOW MORE / EXPAND REVIEWS BUTTON -->
+        <div class="vf-reviews-toggle-wrap">
+          <button type="button" id="vf-reviews-toggle-btn" class="vf-show-more-btn" onclick="toggleExtraReviews()">
+            <span id="vf-reviews-toggle-label">Show All 13 Verified Client Reviews (+7 More)</span>
+            <span id="vf-reviews-toggle-arrow" style="color:var(--gold,#C8A830);">↓</span>
+          </button>
         </div>
       </div>
     </section>
@@ -2232,37 +2652,160 @@
       </div>
     </section>
 
-    <!-- ═══ FINAL CTA ═══ -->
+    <!-- ═══ FINAL CTA (VeeFly Floating Mesh-Gradient Banner with Animated Orbital Rings) ═══ -->
     <section id="final-cta">
-      <h2>If you are serious about hitting optimum performance consistently,<br>you should speak to me immediately.</h2>
-      <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;margin-top:18px;">
-        <a href="performance-retainer.html" class="btn-navy" style="background:var(--gold,#C8A830);color:#00102A;border-color:var(--gold,#C8A830);">Enrol in 4-Month Retainer ($500) →</a>
-        <a href="services.html" class="btn-navy">Book a Discovery Consultation Call</a>
+      <div class="vf-final-cta-card">
+        <div class="vf-final-cta-rings"></div>
+        <div style="display:flex;justify-content:center;position:relative;z-index:2;margin-bottom:16px;">
+          <span class="vf-eyebrow-pill" style="background:rgba(200,168,48,0.16);border-color:rgba(200,168,48,0.45);color:var(--gold,#C8A830);">
+            ⚡ Ready To Lock In Consistent High Performance?
+          </span>
+        </div>
+        <h2>If you are serious about hitting optimum performance consistently,<br>you should speak to me immediately.</h2>
+        <p class="vf-final-cta-sub">
+          Join 219+ international athletes, coaches, and high-stakes leaders who have replaced hesitation and pressure drops with a repeatable psychological operating system.
+        </p>
+        <div style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;position:relative;z-index:2;">
+          <a href="performance-retainer.html" class="btn-navy" style="background:linear-gradient(135deg,#C8A830 0%,#E5C54F 100%);color:#00102A;border-color:transparent;box-shadow:0 12px 28px rgba(200,168,48,0.32);">
+            Enrol in 4-Month Retainer ($500) →
+          </a>
+          <a href="services.html" class="btn-navy">
+            Book a Discovery Consultation Call →
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- FLOATING JUMP-TO-REVIEWS PILL (Mobile & Desktop Compliant) -->
     <a href="#reviews" id="home-floating-reviews-pill"
-      style="position:fixed;bottom:22px;right:22px;z-index:990;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#00102A 0%,#0A2246 100%);color:#fff;border:1.5px solid var(--gold,#C8A830);border-radius:99px;padding:11px 18px;font-family:var(--font-body);font-size:12.5px;font-weight:700;text-decoration:none;box-shadow:0 12px 28px rgba(0,16,42,0.38);transition:opacity 0.25s,transform 0.25s;">
+      style="position:fixed;bottom:22px;right:22px;z-index:990;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#00102A 0%,#0A2246 100%);color:#fff;border:1.5px solid var(--gold,#C8A830);border-radius:99px;padding:11px 18px;font-family:var(--font-body);font-size:12.5px;font-weight:700;text-decoration:none;box-shadow:0 12px 28px rgba(0,16,42,0.38);opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;">
       <span style="color:var(--gold,#C8A830);">★★★★★</span>
       <span>See What People Say · Reviews ↓</span>
     </a>
     <script>
+      /* 1. Floating Reviews Pill + Floating Glassmorphic Pill Navbar on Scroll */
       (function () {
         var pill = document.getElementById('home-floating-reviews-pill');
         var revSec = document.getElementById('reviews');
-        if (!pill || !revSec) return;
+        var navEl = document.querySelector('nav');
         window.addEventListener('scroll', function () {
-          var rect = revSec.getBoundingClientRect();
-          var inView = rect.top < window.innerHeight && rect.bottom > 100;
-          if (window.scrollY < 260 || inView) {
-            pill.style.opacity = '0';
-            pill.style.pointerEvents = 'none';
-          } else {
-            pill.style.opacity = '1';
-            pill.style.pointerEvents = 'auto';
+          if (navEl) {
+            if (window.scrollY > 36) {
+              navEl.classList.add('scrolled-pill');
+            } else {
+              navEl.classList.remove('scrolled-pill');
+            }
+          }
+          if (pill && revSec) {
+            var rect = revSec.getBoundingClientRect();
+            var inView = rect.top < window.innerHeight && rect.bottom > 100;
+            if (window.scrollY < 420 || inView) {
+              pill.style.opacity = '0';
+              pill.style.pointerEvents = 'none';
+            } else {
+              pill.style.opacity = '1';
+              pill.style.pointerEvents = 'auto';
+            }
           }
         }, { passive: true });
+      })();
+
+      /* 2. VeeFly Interactive 3-Step Process Switcher + Auto-Cycle */
+      var vfCurrentStep = 0;
+      var vfStepTimer = null;
+      var vfStepPaused = false;
+
+      function selectVfProcessStep(stepIndex) {
+        vfCurrentStep = stepIndex;
+        var tabs = document.querySelectorAll('#vf-process-showcase .vf-step-tab');
+        var panels = document.querySelectorAll('#vf-process-showcase .vf-stage-panel');
+        tabs.forEach(function (tab, idx) {
+          if (idx === stepIndex) {
+            tab.classList.remove('active');
+            void tab.offsetWidth; /* restart progress bar animation */
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+        panels.forEach(function (panel, idx) {
+          if (idx === stepIndex) {
+            panel.classList.add('active');
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      }
+
+      (function () {
+        var showcase = document.getElementById('vf-process-showcase');
+        if (!showcase) return;
+        vfStepTimer = setInterval(function () {
+          if (!vfStepPaused) {
+            selectVfProcessStep((vfCurrentStep + 1) % 3);
+          }
+        }, 6000);
+        showcase.addEventListener('mouseenter', function () { vfStepPaused = true; });
+        showcase.addEventListener('mouseleave', function () { vfStepPaused = false; });
+      })();
+
+      /* 3. VeeFly Show More / Collapse Verified Reviews Toggle */
+      var vfReviewsExpanded = false;
+      function toggleExtraReviews() {
+        vfReviewsExpanded = !vfReviewsExpanded;
+        var extras = document.querySelectorAll('#reviews .vf-extra-review');
+        var label = document.getElementById('vf-reviews-toggle-label');
+        var arrow = document.getElementById('vf-reviews-toggle-arrow');
+        extras.forEach(function (card) {
+          if (vfReviewsExpanded) {
+            card.classList.add('vf-visible');
+          } else {
+            card.classList.remove('vf-visible');
+          }
+        });
+        if (label) {
+          label.textContent = vfReviewsExpanded
+            ? 'Show Fewer Reviews (Collapse to Top 6)'
+            : 'Show All 13 Verified Client Reviews (+7 More)';
+        }
+        if (arrow) {
+          arrow.textContent = vfReviewsExpanded ? '↑' : '↓';
+        }
+        if (!vfReviewsExpanded) {
+          var revSec = document.getElementById('reviews');
+          if (revSec) revSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      /* 4. Smooth Count-Up Animation for Floating Hero KPI Trio Cards */
+      (function () {
+        var counters = document.querySelectorAll('.vf-kpi-num[data-count-target]');
+        if (!counters.length || !('IntersectionObserver' in window)) return;
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            obs.unobserve(el);
+            var target = parseInt(el.getAttribute('data-count-target'), 10) || 0;
+            var suffix = el.getAttribute('data-count-suffix') || '';
+            var start = 0;
+            var duration = 1400;
+            var startTime = null;
+            function step(ts) {
+              if (!startTime) startTime = ts;
+              var progress = Math.min((ts - startTime) / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.floor(eased * target) + suffix;
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                el.textContent = target + suffix;
+              }
+            }
+            requestAnimationFrame(step);
+          });
+        }, { threshold: 0.35 });
+        counters.forEach(function (c) { obs.observe(c); });
       })();
     </script>
 
