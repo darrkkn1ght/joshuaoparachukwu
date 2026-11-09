@@ -1549,6 +1549,7 @@
   </section>
 
   <!-- ═══ ENROLMENT & CHECKOUT MODAL ═══ -->
+  <div id="enroll" style="position:relative;top:-80px;visibility:hidden;"></div><div id="retainer-checkout" style="position:relative;top:-80px;visibility:hidden;"></div>
   <div class="modal-overlay" id="enrol-modal">
     <div class="modal-card">
       <button class="modal-close" onclick="closeEnrolModal()">✕</button>
@@ -1662,7 +1663,7 @@
           <a id="btn-selar-pay" href="https://selar.com" target="_blank" class="btn-gold-hero" style="justify-content:center;padding:15px;">
             1. Complete $500 Payment via Selar / Card ↗
           </a>
-          <a id="btn-gcal-direct" href="#" target="_blank" style="background:#15803d;color:#fff;border:none;border-radius:8px;padding:14px;font-size:13.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
+          <a id="btn-gcal-direct" href="https://calendar.google.com/calendar/r/eventedit?text=Dr.+Joshua+Oparachukwu+1-on-1+Consultation&location=https://meet.google.com/pqu-skzs-qwp" target="_blank" style="background:#15803d;color:#fff;border:none;border-radius:8px;padding:14px;font-size:13.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
             📅 2. Schedule Directly into Google Calendar (Same Meet Link) ↗
           </a>
           <button onclick="activateAndGoToPortal()" style="background:var(--navy);color:#fff;border:none;border-radius:8px;padding:14px;font-size:13.5px;font-weight:600;cursor:pointer;">
@@ -1932,7 +1933,7 @@
       <span class="smb-title">4-Month Retainer Program</span>
       <span class="smb-sub">$500 USD · 8 Consultations</span>
     </div>
-    <a href="#enroll" class="smb-btn">Enrol Now ($500) →</a>
+    <a href="#enrol-modal" onclick="openEnrolModal();return false;" class="smb-btn">Enrol Now ($500) →</a>
   </div>
 
   <script>
