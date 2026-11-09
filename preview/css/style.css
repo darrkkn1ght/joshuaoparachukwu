@@ -6541,3 +6541,44 @@ nav.scrolled-pill {
   color: #00102A !important;
   border-color: var(--gold, #C8A830);
 }
+
+/* All 4 YouTube Shorts on One Single Row Spanning Desktop */
+.yt-shorts-quad-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 16px !important;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .yt-shorts-quad-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 540px) {
+  .yt-shorts-quad-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Retainer Carousel Manual Navigation Controls */
+.rc-nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid var(--gold, #C8A830);
+  color: var(--navy, #00102A);
+  font-size: 20px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 16, 42, 0.08);
+}
+.rc-nav-btn:hover {
+  background: var(--navy, #00102A);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
