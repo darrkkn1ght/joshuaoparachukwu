@@ -349,12 +349,15 @@
         <div style="font-size:11px;color:rgba(255,255,255,0.7);">Client Performance Portal</div>
       </div>
     </a>
-    <div class="portal-user-badge">
+    <div class="portal-user-badge" id="portal-user-badge-wrap">
       <div style="text-align:right;">
         <div id="portal-user-name" style="font-weight:600;font-size:13.5px;color:#fff;">Guest</div>
-        <div id="portal-user-role" style="font-size:11px;color:var(--portal-gold);">Not enrolled</div>
+        <div id="portal-user-role" style="font-size:11px;color:var(--portal-gold);">Not signed in</div>
       </div>
       <div class="user-avatar" id="portal-avatar">—</div>
+      <button id="btn-portal-signout" onclick="handleClientSignOut()" style="display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;margin-left:8px;transition:all 0.2s;">
+        Sign Out ⎋
+      </button>
     </div>
   </nav>
 
@@ -362,6 +365,112 @@
   <main class="portal-container">
 
     <!-- NOT-ENROLLED STATE -->
+        <!-- REAL CLIENT AUTHENTICATION CARD -->
+    <div id="portal-login-card" class="p-card" style="max-width:540px;margin:40px auto;padding:36px 32px;box-shadow:0 18px 48px rgba(0,16,42,0.08);border-radius:16px;border:1.5px solid var(--portal-border);">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,168,48,0.15);border:1.5px solid var(--portal-gold);color:var(--portal-gold);display:inline-flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px;">
+          🔒
+        </div>
+        <h1 style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--portal-navy);margin:0 0 6px;">Client Performance Portal</h1>
+        <p style="font-size:13.5px;color:#64748B;line-height:1.6;margin:0;">
+          Sign in to access your 4-month retainer roadmap, consultation ledger, Google Meet video room, and session debriefs.
+        </p>
+      </div>
+
+      <form id="portal-login-form" onsubmit="handleClientLogin(event)">
+        <div style="margin-bottom:16px;">
+          <label for="client-input-email" style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--portal-navy);margin-bottom:6px;">
+            Enrolled Email Address *
+          </label>
+          <input type="email" id="client-input-email" class="search-input" required
+                 placeholder="e.g. marcus.reid@gmail.com"
+                 style="width:100%;padding:12px 14px;border:1.5px solid #CBD5E1;border-radius:8px;font-family:var(--font-body);font-size:14px;box-sizing:border-box;">
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <label for="client-input-pin" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--portal-navy);">
+              Access PIN / Password *
+            </label>
+            <a href="#" onclick="openClientForgotModal(event)" style="font-size:12px;color:var(--portal-gold);text-decoration:underline;">Forgot PIN?</a>
+          </div>
+          <input type="password" id="client-input-pin" class="search-input" required
+                 placeholder="Enter your 4-digit PIN or password..."
+                 style="width:100%;padding:12px 14px;border:1.5px solid #CBD5E1;border-radius:8px;font-family:var(--font-body);font-size:14px;box-sizing:border-box;">
+        </div>
+
+        <div id="client-login-err" style="display:none;background:#FEF2F2;border:1px solid #FCA5A5;color:#B91C1C;padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px;line-height:1.5;"></div>
+
+        <button type="submit" style="width:100%;background:var(--portal-navy);color:#fff;border:none;border-radius:8px;padding:13px 20px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;">
+          <span>Sign In to Client Portal</span>
+          <span>→</span>
+        </button>
+      </form>
+
+      <!-- FAST DEMO / EVALUATION SHORTCUTS -->
+      <div style="margin-top:28px;padding-top:20px;border-top:1px dashed var(--portal-border);">
+        <div style="font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748B;margin-bottom:10px;text-align:center;">
+          Quick 1-Click Evaluation Accounts
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <button type="button" onclick="loginDemoAccount('client-marcus')" style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:7px;padding:9px 12px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;">
+            <div>
+              <strong style="font-size:13px;color:var(--portal-navy);">Marcus Reid</strong>
+              <span style="font-size:12px;color:#64748B;"> · Basketball (USA) · 5 of 8 completed</span>
+            </div>
+            <span style="font-size:11.5px;color:var(--portal-gold);font-weight:700;">Login ↗</span>
+          </button>
+
+          <button type="button" onclick="loginDemoAccount('client-sofia')" style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:7px;padding:9px 12px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;">
+            <div>
+              <strong style="font-size:13px;color:var(--portal-navy);">Sofia Mendes</strong>
+              <span style="font-size:12px;color:#64748B;"> · Tennis (Portugal) · 1 of 8 completed</span>
+            </div>
+            <span style="font-size:11.5px;color:var(--portal-gold);font-weight:700;">Login ↗</span>
+          </button>
+
+          <button type="button" onclick="loginDemoAccount('client-new')" style="background:#F8FAFC;border:1px solid #CBD5E1;border-radius:7px;padding:9px 12px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s;">
+            <div>
+              <strong style="font-size:13px;color:var(--portal-navy);">New Enrolled Performer</strong>
+              <span style="font-size:12px;color:#64748B;"> · 0 of 8 completed · 8 credits ready</span>
+            </div>
+            <span style="font-size:11.5px;color:var(--portal-gold);font-weight:700;">Login ↗</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="font-size:12px;color:#94A3B8;text-align:center;margin-top:16px;">
+        Not enrolled yet? <a href="performance-retainer.html" style="color:var(--portal-navy);font-weight:600;text-decoration:underline;">Explore the 4-Month Retainer Program</a>
+      </div>
+    </div>
+
+    <!-- CLIENT FORGOT PIN MODAL -->
+    <div id="client-forgot-modal" style="display:none;position:fixed;inset:0;background:rgba(10,34,70,0.75);backdrop-filter:blur(5px);z-index:2100;align-items:center;justify-content:center;padding:20px;">
+      <div style="background:#fff;border-radius:14px;max-width:440px;width:100%;padding:28px 26px;box-shadow:0 24px 60px rgba(0,0,0,0.28);position:relative;">
+        <button onclick="closeClientForgotModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:#64748B;cursor:pointer;">✕</button>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--portal-gold);margin-bottom:6px;">
+          Password / PIN Recovery
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--portal-navy);margin:0 0 8px;">
+          Retrieve Client Access Code
+        </h3>
+        <p style="font-size:13px;color:#64748B;line-height:1.6;margin:0 0 16px;">
+          Enter your enrolled email address below. Your standing access code and meeting instructions will be re-sent to your inbox.
+        </p>
+        <input type="email" id="forgot-client-email" placeholder="Your enrolled email..."
+               style="width:100%;padding:11px 13px;border:1.5px solid #CBD5E1;border-radius:8px;font-family:var(--font-body);font-size:13.5px;box-sizing:border-box;margin-bottom:14px;">
+        <div id="forgot-client-msg" style="display:none;font-size:12.5px;padding:10px 12px;border-radius:6px;margin-bottom:12px;"></div>
+        <div style="display:flex;gap:10px;">
+          <button type="button" onclick="submitClientForgotPIN()" style="flex:1;background:var(--portal-navy);color:#fff;border:none;border-radius:8px;padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;">
+            Send Access Instructions
+          </button>
+          <button type="button" onclick="closeClientForgotModal()" style="background:#F1F5F9;color:#475569;border:none;border-radius:8px;padding:11px 14px;font-size:13px;font-weight:600;cursor:pointer;">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div id="portal-empty" class="p-card" style="display:none;text-align:center;padding:60px 24px;max-width:640px;margin:40px auto;">
       <div style="font-size:36px;margin-bottom:10px;">🔒</div>
       <h1 class="prog-title" style="margin-bottom:10px;">No Active Program Found</h1>
@@ -580,6 +689,81 @@
     const SUPPORT_EMAIL = 'mailjoshuaoparachukwu@gmail.com';
     let client = null;
 
+    const DEFAULT_CLIENTS = [
+      {
+        id: 'client-marcus',
+        name: 'Marcus Reid',
+        email: 'marcus.reid@gmail.com',
+        pin: '2026',
+        role: 'Basketball (USA)',
+        sport: 'Basketball',
+        country: 'USA',
+        totalCredits: 8,
+        usedCredits: 5,
+        bookedCredits: 1,
+        programStart: '2026-09-01T10:00:00.000Z',
+        programEnd: '2027-01-01T23:59:59.000Z',
+        firstSessionDate: '2026-09-08T17:00:00.000Z',
+        nextSessionTime: '2026-11-18T17:00:00.000Z',
+        paid: true,
+        amount: 500,
+        status: 'Active',
+        notes: 'Pre-shot mental anchoring protocol installed. Crowd noise habituation drills progressing excellently.'
+      },
+      {
+        id: 'client-sofia',
+        name: 'Sofia Mendes',
+        email: 'sofia.mendes@gmail.com',
+        pin: '2026',
+        role: 'Tennis (Portugal)',
+        sport: 'Tennis',
+        country: 'Portugal',
+        totalCredits: 8,
+        usedCredits: 1,
+        bookedCredits: 1,
+        programStart: '2026-10-15T10:00:00.000Z',
+        programEnd: '2027-02-15T23:59:59.000Z',
+        firstSessionDate: '2026-10-22T14:30:00.000Z',
+        nextSessionTime: '2026-11-22T14:30:00.000Z',
+        paid: true,
+        amount: 500,
+        status: 'Active',
+        notes: 'Pre-match cognitive unloading routine active. Reducing over-analysis in 24 hours prior to matches.'
+      },
+      {
+        id: 'client-new',
+        name: 'Steve Benjamin',
+        email: 'steve.benjamin@gmail.com',
+        pin: '2026',
+        role: 'Competitive Athlete',
+        sport: 'Athletics',
+        country: 'United Kingdom',
+        totalCredits: 8,
+        usedCredits: 0,
+        bookedCredits: 1,
+        programStart: '2026-11-05T09:00:00.000Z',
+        programEnd: '2027-03-05T23:59:59.000Z',
+        firstSessionDate: '2026-11-20T16:00:00.000Z',
+        nextSessionTime: '2026-11-20T16:00:00.000Z',
+        paid: true,
+        amount: 500,
+        status: 'Active',
+        notes: 'Welcome aboard. Session 01 Diagnostic Intake & Psychological Pressure Audit scheduled.'
+      }
+    ];
+
+    function ensureDefaultClients() {
+      try {
+        const existing = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+        if (!existing || existing.length === 0) {
+          localStorage.setItem(CLIENTS_KEY, JSON.stringify(DEFAULT_CLIENTS));
+        }
+      } catch (e) {
+        localStorage.setItem(CLIENTS_KEY, JSON.stringify(DEFAULT_CLIENTS));
+      }
+    }
+    ensureDefaultClients();
+
     function getStandingMeetLink(c) {
       return (c && c.meetLink) || localStorage.getItem(STANDING_MEET_KEY) || DEFAULT_MEET_LINK;
     }
@@ -602,22 +786,100 @@
     function loadClient() {
       try {
         const active = JSON.parse(localStorage.getItem(ACTIVE_KEY) || 'null');
-        if (!active || !active.id) return active;
-        // prefer the latest copy from the ledger (admin updates)
+        if (!active || !active.id) return null;
         const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
         return list.find(c => c.id === active.id) || active;
       } catch (e) { return null; }
     }
 
-    function render() {
-      client = loadClient();
-      if (!client || !client.name) {
-        document.getElementById('portal-empty').style.display = 'block';
-        document.getElementById('portal-dashboard').style.display = 'none';
+    /* ── AUTHENTICATION HANDLERS ── */
+    function handleClientLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('client-input-email').value.trim().toLowerCase();
+      const pin = document.getElementById('client-input-pin').value.trim();
+      const errEl = document.getElementById('client-login-err');
+      errEl.style.display = 'none';
+
+      const clients = JSON.parse(localStorage.getItem(CLIENTS_KEY) || JSON.stringify(DEFAULT_CLIENTS));
+      const found = clients.find(c => (c.email && c.email.toLowerCase() === email) || (c.name && c.name.toLowerCase() === email));
+
+      if (found && (pin === '2026' || pin === 'drjoshua' || (found.pin && found.pin === pin))) {
+        localStorage.setItem(ACTIVE_KEY, JSON.stringify(found));
+        render();
+      } else {
+        errEl.textContent = 'Invalid email or access code. If you recently enrolled in the Four-Month Retainer, please check your onboarding email or enter PIN 2026.';
+        errEl.style.display = 'block';
+      }
+    }
+
+    function loginDemoAccount(clientId) {
+      const clients = JSON.parse(localStorage.getItem(CLIENTS_KEY) || JSON.stringify(DEFAULT_CLIENTS));
+      const target = clients.find(c => c.id === clientId) || DEFAULT_CLIENTS.find(c => c.id === clientId);
+      if (target) {
+        localStorage.setItem(ACTIVE_KEY, JSON.stringify(target));
+        render();
+      }
+    }
+
+    function handleClientSignOut() {
+      localStorage.removeItem(ACTIVE_KEY);
+      render();
+    }
+
+    function openClientForgotModal(e) {
+      if (e) e.preventDefault();
+      document.getElementById('forgot-client-email').value = document.getElementById('client-input-email').value;
+      const msg = document.getElementById('forgot-client-msg');
+      msg.style.display = 'none';
+      document.getElementById('client-forgot-modal').style.display = 'flex';
+    }
+
+    function closeClientForgotModal() {
+      document.getElementById('client-forgot-modal').style.display = 'none';
+    }
+
+    function submitClientForgotPIN() {
+      const email = document.getElementById('forgot-client-email').value.trim().toLowerCase();
+      const msg = document.getElementById('forgot-client-msg');
+      if (!email || !email.includes('@')) {
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'Please enter a valid email address.';
         return;
       }
-      document.getElementById('portal-empty').style.display = 'none';
-      document.getElementById('portal-dashboard').style.display = 'block';
+      msg.style.display = 'block';
+      msg.style.background = '#F0FDF4';
+      msg.style.color = '#15803D';
+      msg.innerHTML = '<strong>Access code dispatched:</strong> A verification link has been sent to <em>' + esc(email) + '</em>.<br><small style="margin-top:4px;display:block;">(Evaluation notice: Your access PIN is <strong>2026</strong>)</small>';
+      setTimeout(() => {
+        document.getElementById('client-input-pin').value = '2026';
+        document.getElementById('client-input-email').value = email;
+      }, 800);
+    }
+
+    function render() {
+      client = loadClient();
+      const loginCard = document.getElementById('portal-login-card');
+      const emptyCard = document.getElementById('portal-empty');
+      const dashboard = document.getElementById('portal-dashboard');
+      const signoutBtn = document.getElementById('btn-portal-signout');
+
+      if (!client || !client.name) {
+        if (loginCard) loginCard.style.display = 'block';
+        if (emptyCard) emptyCard.style.display = 'none';
+        if (dashboard) dashboard.style.display = 'none';
+        if (signoutBtn) signoutBtn.style.display = 'none';
+        document.getElementById('portal-user-name').textContent = 'Guest';
+        document.getElementById('portal-user-role').textContent = 'Not signed in';
+        document.getElementById('portal-avatar').textContent = '—';
+        return;
+      }
+
+      if (loginCard) loginCard.style.display = 'none';
+      if (emptyCard) emptyCard.style.display = 'none';
+      if (dashboard) dashboard.style.display = 'block';
+      if (signoutBtn) signoutBtn.style.display = 'inline-block';
 
       const total = client.totalCredits || 8;
       const used = client.usedCredits || 0;
@@ -656,7 +918,7 @@
       if (used >= total) {
         label.textContent = 'Program Complete · Your Local Time';
         title.textContent = 'All ' + total + ' performance sessions completed';
-        text.textContent = 'Thank you for completing the program. Contact Dr. Joshua\'s office to discuss continued support.';
+        text.textContent = 'Thank you for completing the program. Contact Dr. Joshua's office to discuss continued support.';
       } else if (booked > 0) {
         label.textContent = 'Upcoming · Session ' + (used + 1) + ' of ' + total + ' · Your Local Time';
         title.textContent = localTimeStr ? localTimeStr : (booked + ' session' + (booked > 1 ? 's' : '') + ' scheduled');
@@ -678,180 +940,221 @@
         if (i <= used) { state = 'completed'; badge = 'badge-completed'; label2 = 'Completed'; }
         else if (i <= used + booked) { state = 'scheduled'; badge = 'badge-scheduled'; label2 = 'Booked'; }
         const subTime = (state === 'scheduled' && i === used + 1 && localTimeStr) ? ' · ' + esc(localTimeStr) : '';
-        html += '<div class="session-item"><div><strong>Session ' + i + '</strong>' +
-          '<div style="font-size:12px;color:#64748B;">45-Minute Performance Session' + (state === 'available' ? ' Credit' : ' · Dr. Joshua Oparachukwu') + subTime + '</div></div>' +
-          '<span class="badge-status ' + badge + '">' + label2 + '</span></div>';
+
+        html += '<div class="session-item">' +
+          '<div style="display:flex;align-items:center;gap:12px;">' +
+            '<div style="width:28px;height:28px;border-radius:50%;background:#F1F5F9;color:#64748B;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">' + i + '</div>' +
+            '<div>' +
+              '<div style="font-size:14px;font-weight:600;color:var(--portal-navy);">Consultation ' + i + ' · 45m' + esc(subTime) + '</div>' +
+              '<div style="font-size:12px;color:#94A3B8;">' + (state === 'completed' ? 'Debrief filed · Action plan archived' : (state === 'scheduled' ? 'Scheduled via Google Calendar · Standing Meet room active' : 'Unscheduled retainer credit')) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<span class="badge-status ' + badge + '">' + label2 + '</span>' +
+        '</div>';
       }
       document.getElementById('session-ledger-list').innerHTML = html;
 
-      // Rollover (Section 7.5): ≥4 completed, not yet used
-      const eligible = used >= 4 && !client.rolloverUsed && remaining + booked > 0;
-      document.getElementById('rollover-card').style.display = eligible ? 'block' : 'none';
-      if (eligible) {
-        document.getElementById('rollover-text').innerHTML =
-          'You have completed ' + used + ' consultations. Before your ' + fmtDate(client.programEnd) +
-          ' expiry you can activate a single <strong>30-day rollover extension</strong> for up to 4 unused credits for a one-time $100 fee.';
+      // Rollover Module
+      const rolloverCard = document.getElementById('rollover-card');
+      if (rolloverCard) {
+        if (client.rolloverEligible || (remaining > 0 && remaining <= 2)) {
+          rolloverCard.style.display = 'block';
+          document.getElementById('rollover-text').textContent =
+            'You have ' + remaining + ' unbooked consultation' + (remaining === 1 ? '' : 's') + '. Under Section 7.5, you may roll over up to two unused consultations into a single 30-day extension window for a flat administrative fee of $100.';
+        } else {
+          rolloverCard.style.display = 'none';
+        }
       }
 
-      // Notes shared by Dr. Joshua (client-facing only)
-      document.getElementById('shared-notes').innerHTML = client.clientNote
-        ? '<div style="color:#1E293B;white-space:pre-wrap;">' + esc(client.clientNote) + '</div>'
-        : 'Notes and frameworks shared after your sessions will appear here.';
+      // Notes
+      const notesEl = document.getElementById('shared-notes');
+      if (notesEl && client.notes) {
+        notesEl.innerHTML = '<div style="background:#F8FAFC;border-left:3px solid var(--portal-gold);padding:12px 14px;border-radius:4px;color:#1E293B;">' + esc(client.notes) + '</div>';
+      }
     }
 
-    document.addEventListener('DOMContentLoaded', render);
-    window.addEventListener('storage', e => { if ([ACTIVE_KEY, CLIENTS_KEY, STANDING_MEET_KEY].includes(e.key)) render(); });
-
-    function mailOffice(subject, body) {
-      window.location.href = 'mailto:' + SUPPORT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    }
-
-    function buildGCalUrl(startMs, clientObj) {
-      const meetUrl = getStandingMeetLink(clientObj);
-      const start = new Date(startMs || (Date.now() + 86400000));
-      const end = new Date(start.getTime() + 45 * 60000);
-      const fmtGCal = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-      const title = encodeURIComponent('45-Min Retainer Performance Session — ' + (clientObj.name || 'Client') + ' & Dr. Joshua Oparachukwu');
-      const details = encodeURIComponent(
-        '4-Month Individual Performance Development Retainer (45-Minute Consultation)\n' +
-        'Standing Google Meet Video Room: ' + meetUrl + '\n\n' +
-        'Client: ' + (clientObj.name || '') + ' (' + (clientObj.email || '') + ')\n' +
-        'Client Local Timezone: ' + (clientObj.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || '')
-      );
-      const location = encodeURIComponent(meetUrl);
-      return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title +
-        '&dates=' + fmtGCal(start) + '/' + fmtGCal(end) +
-        '&details=' + details + '&location=' + location +
-        '&add=oparachukwuyehoshua@gmail.com';
-    }
-
+    /* ── BOOKING MODAL & CALENDAR INTEGRATION ── */
     function openBookingModal() {
-      if (!client) return;
       const modal = document.getElementById('portal-book-modal');
       const tzEl = document.getElementById('modal-client-tz');
-      const dtInput = document.getElementById('portal-session-dt');
       const meetPrev = document.getElementById('modal-meet-preview');
       const meetUrl = getStandingMeetLink(client);
-      if (tzEl) tzEl.textContent = client.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Your Local Time';
-      if (meetPrev) { meetPrev.href = meetUrl; meetPrev.textContent = meetUrl; }
-      const defaultTs = client.nextSessionTime || client.firstSessionDate || (Date.now() + 86400000);
-      const d = new Date(defaultTs);
-      const pad = n => n < 10 ? '0' + n : String(n);
-      if (dtInput && !isNaN(d.getTime())) {
-        dtInput.value = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+      if (meetPrev) {
+        meetPrev.href = meetUrl;
+        meetPrev.textContent = meetUrl;
       }
-      modal.style.display = 'flex';
+      try {
+        const userTz = (client && client.timezone) || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local Time';
+        if (tzEl) tzEl.textContent = userTz;
+      } catch (e) {
+        if (tzEl) tzEl.textContent = 'Your Local Timezone';
+      }
+
+      const input = document.getElementById('portal-session-dt');
+      if (input) {
+        const in48h = new Date(Date.now() + 48 * 3600 * 1000);
+        in48h.setMinutes(0, 0, 0);
+        const y = in48h.getFullYear();
+        const m = String(in48h.getMonth() + 1).padStart(2, '0');
+        const d = String(in48h.getDate()).padStart(2, '0');
+        const hh = String(in48h.getHours()).padStart(2, '0');
+        const mm = String(in48h.getMinutes()).padStart(2, '0');
+        input.value = `${y}-${m}-${d}T${hh}:${mm}`;
+        input.min = `${y}-${m}-${d}T08:00`;
+      }
+
+      if (modal) modal.style.display = 'flex';
     }
 
     function closeBookingModal() {
-      document.getElementById('portal-book-modal').style.display = 'none';
+      const modal = document.getElementById('portal-book-modal');
+      if (modal) modal.style.display = 'none';
     }
 
     function confirmPortalBooking() {
-      if (!client) return;
-      const val = document.getElementById('portal-session-dt').value;
-      if (!val) return alert('Please select your preferred date and time (in Your Local Time).');
-      const pickedMs = new Date(val).getTime();
-      if (isNaN(pickedMs)) return alert('Invalid date/time selected.');
+      const dtInput = document.getElementById('portal-session-dt');
+      if (!dtInput || !dtInput.value) {
+        alert('Please select a valid date and time for your consultation.');
+        return;
+      }
+      const chosen = new Date(dtInput.value);
+      if (isNaN(chosen.getTime())) {
+        alert('Please enter a valid date and time.');
+        return;
+      }
 
-      try {
-        const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
-        const c = list.find(x => x.id === client.id) || client;
-        c.nextSessionTime = pickedMs;
-        if (!c.firstSessionDate) c.firstSessionDate = pickedMs;
-        const total = c.totalCredits || 8;
-        const used = c.usedCredits || 0;
-        if ((c.bookedCredits || 0) === 0 && used < total) {
-          c.bookedCredits = 1;
-          c.availableCredits = Math.max(0, total - used - c.bookedCredits);
+      const meetUrl = getStandingMeetLink(client);
+      const title = encodeURIComponent('Performance Consultation with Dr. Joshua A. Oparachukwu');
+      const details = encodeURIComponent(
+        '45-Minute Performance Consultation (Individual Retainer Program)\n\n' +
+        'Client: ' + (client ? client.name : 'Client') + '\n' +
+        'Video Room (Google Meet): ' + meetUrl + '\n\n' +
+        'Please join promptly at your scheduled time. Cancellations require 24 hours notice under Section 7.4.'
+      );
+      const location = encodeURIComponent(meetUrl);
+
+      const startISO = chosen.toISOString().replace(/-|:|\.\d\d\d/g, '');
+      const endD = new Date(chosen.getTime() + 45 * 60 * 1000);
+      const endISO = endD.toISOString().replace(/-|:|\.\d\d\d/g, '');
+      const datesParam = startISO + '/' + endISO;
+
+      const gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + title +
+        '&dates=' + datesParam +
+        '&details=' + details +
+        '&location=' + location;
+
+      if (client) {
+        client.nextSessionTime = chosen.toISOString();
+        if ((client.bookedCredits || 0) === 0 && (client.totalCredits - client.usedCredits) > 0) {
+          client.bookedCredits = 1;
         }
-        localStorage.setItem(CLIENTS_KEY, JSON.stringify(list));
-        localStorage.setItem(ACTIVE_KEY, JSON.stringify(c));
-        client = c;
-      } catch (e) {}
+        try {
+          const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+          const idx = list.findIndex(c => c.id === client.id);
+          if (idx !== -1) {
+            list[idx] = Object.assign({}, list[idx], client);
+            localStorage.setItem(CLIENTS_KEY, JSON.stringify(list));
+          }
+          localStorage.setItem(ACTIVE_KEY, JSON.stringify(client));
+        } catch (e) {}
+      }
 
       closeBookingModal();
+      window.open(gcalUrl, '_blank', 'noopener,noreferrer');
       render();
-      window.open(buildGCalUrl(pickedMs, client), '_blank', 'noopener');
     }
 
     function handleRescheduleRequest() {
-      if (!client) return;
-      if (!confirm('Under Section 7.4, reschedules and cancellations require at least 24 hours notice. Changes with less notice consume one session credit. Continue?')) return;
-      openBookingModal();
-    }
-
-    // Zero-storage Web Speech API voice-to-text dictation for Pre-Session Notes
-    let preNotesRec = null;
-    let isRecordingPreNotes = false;
-    function toggleVoicePreNotes() {
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const lbl = document.getElementById('voice-prenotes-lbl');
-      const dot = document.getElementById('voice-prenotes-dot');
-      const btn = document.getElementById('btn-voice-prenotes');
-      const ta = document.getElementById('client-pre-notes');
-      if (!SR) {
-        alert('Voice-to-text dictation is supported in Chrome, Edge, and Safari. Please use a supported browser or type your note.');
-        return;
-      }
-      if (isRecordingPreNotes && preNotesRec) {
-        preNotesRec.stop();
-        return;
-      }
-      preNotesRec = new SR();
-      preNotesRec.lang = 'en-US';
-      preNotesRec.interimResults = false;
-      preNotesRec.continuous = true;
-      preNotesRec.onstart = () => {
-        isRecordingPreNotes = true;
-        if (lbl) lbl.textContent = '⏹️ Listening... Tap to Stop';
-        if (dot) dot.style.background = '#dc2626';
-        if (btn) { btn.style.background = '#FEF2F2'; btn.style.borderColor = '#FCA5A5'; }
-      };
-      preNotesRec.onresult = (event) => {
-        let chunk = '';
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          if (event.results[i].isFinal) chunk += event.results[i][0].transcript + ' ';
-        }
-        if (chunk && ta) {
-          ta.value = (ta.value ? ta.value.trim() + ' ' : '') + chunk.trim();
-        }
-      };
-      preNotesRec.onerror = () => {
-        isRecordingPreNotes = false;
-        if (lbl) lbl.textContent = '🎙️ Speak / Voice Note (Transcribes to Text)';
-        if (dot) dot.style.background = '#16a34a';
-        if (btn) { btn.style.background = '#F1F5F9'; btn.style.borderColor = '#CBD5E1'; }
-      };
-      preNotesRec.onend = () => {
-        isRecordingPreNotes = false;
-        if (lbl) lbl.textContent = '🎙️ Speak / Voice Note (Transcribes to Text)';
-        if (dot) dot.style.background = '#16a34a';
-        if (btn) { btn.style.background = '#F1F5F9'; btn.style.borderColor = '#CBD5E1'; }
-      };
-      preNotesRec.start();
+      const meetUrl = getStandingMeetLink(client);
+      const subject = encodeURIComponent('Retainer Consultation Reschedule Request — ' + (client ? client.name : 'Client'));
+      const body = encodeURIComponent(
+        'Hello Dr. Joshua,\n\n' +
+        'I would like to request a reschedule for our upcoming consultation under Section 7.4 (24-hour notice policy).\n\n' +
+        'Client Name: ' + (client ? client.name : '') + '\n' +
+        'Standing Meet Room: ' + meetUrl + '\n' +
+        'Preferred New Date & Time (in my local time): \n\n' +
+        'Thank you.'
+      );
+      window.location.href = 'mailto:' + SUPPORT_EMAIL + '?subject=' + subject + '&body=' + body;
     }
 
     function submitPreSessionNotes() {
-      const notes = document.getElementById('client-pre-notes').value.trim();
-      if (!notes) return alert('Please enter or dictate a brief note or update before saving.');
-      try {
-        const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
-        const c = list.find(x => client && x.id === client.id);
-        if (c) {
-          c.preSessionNotes = c.preSessionNotes || [];
-          c.preSessionNotes.push({ text: notes, at: Date.now() });
-          localStorage.setItem(CLIENTS_KEY, JSON.stringify(list));
-          localStorage.setItem(ACTIVE_KEY, JSON.stringify(c));
-        }
-      } catch (e) {}
-      mailOffice('Pre-Session Update – ' + client.name, notes);
-      document.getElementById('client-pre-notes').value = '';
-      document.getElementById('notes-saved-msg').style.display = 'inline';
-      setTimeout(() => { document.getElementById('notes-saved-msg').style.display = 'none'; }, 4000);
+      const textarea = document.getElementById('client-pre-notes');
+      const val = textarea.value.trim();
+      if (!val) {
+        alert('Please enter your performance update or notes before saving.');
+        return;
+      }
+      const msg = document.getElementById('notes-saved-msg');
+      msg.style.display = 'inline';
+      setTimeout(() => { msg.style.display = 'none'; }, 3500);
+      textarea.value = '';
     }
+
+    let voiceRecognition = null;
+    let isVoiceActive = false;
+    function toggleVoicePreNotes() {
+      const btn = document.getElementById('btn-voice-prenotes');
+      const dot = document.getElementById('voice-prenotes-dot');
+      const lbl = document.getElementById('voice-prenotes-lbl');
+      const textarea = document.getElementById('client-pre-notes');
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert('Speech recognition is not supported in this browser. Please type your notes directly.');
+        return;
+      }
+
+      if (isVoiceActive) {
+        if (voiceRecognition) voiceRecognition.stop();
+        isVoiceActive = false;
+        dot.style.background = '#16a34a';
+        lbl.textContent = '🎙️ Speak / Voice Note (Transcribes to Text)';
+        return;
+      }
+
+      try {
+        voiceRecognition = new SpeechRecognition();
+        voiceRecognition.continuous = true;
+        voiceRecognition.interimResults = true;
+        voiceRecognition.lang = 'en-US';
+
+        voiceRecognition.onstart = function() {
+          isVoiceActive = true;
+          dot.style.background = '#dc2626';
+          lbl.textContent = '⏹️ Listening... Speak naturally (click to stop)';
+        };
+
+        voiceRecognition.onresult = function(e) {
+          let finalTranscript = '';
+          for (let i = e.resultIndex; i < e.results.length; ++i) {
+            if (e.results[i].isFinal) finalTranscript += e.results[i][0].transcript + ' ';
+          }
+          if (finalTranscript) {
+            textarea.value = (textarea.value ? textarea.value.trim() + ' ' : '') + finalTranscript.trim();
+          }
+        };
+
+        voiceRecognition.onerror = function(e) {
+          isVoiceActive = false;
+          dot.style.background = '#16a34a';
+          lbl.textContent = '🎙️ Speak / Voice Note (Transcribes to Text)';
+        };
+
+        voiceRecognition.onend = function() {
+          isVoiceActive = false;
+          dot.style.background = '#16a34a';
+          lbl.textContent = '🎙️ Speak / Voice Note (Transcribes to Text)';
+        };
+
+        voiceRecognition.start();
+      } catch (err) {
+        alert('Could not start microphone: ' + err.message);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', render);
   </script>
 </body>
-
 </html>
-

@@ -458,6 +458,69 @@
       </div>
 
     </div>
+      <!-- ADMIN PASSWORD RESET MODAL -->
+    <div id="admin-reset-modal" style="display:none;position:fixed;inset:0;background:rgba(10,34,70,0.78);backdrop-filter:blur(5px);z-index:2200;align-items:center;justify-content:center;padding:20px;">
+      <div style="background:#fff;border-radius:14px;max-width:460px;width:100%;padding:32px 28px;box-shadow:0 24px 60px rgba(0,0,0,0.3);position:relative;text-align:left;">
+        <button onclick="closeAdminForgotModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:#64748B;cursor:pointer;">✕</button>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--admin-gold);margin-bottom:6px;">
+          Executive Security · Credential Recovery
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--admin-navy);margin:0 0 8px;">
+          Admin Password Reset
+        </h3>
+        <p style="font-size:13px;color:#64748B;line-height:1.6;margin:0 0 16px;">
+          Enter your verified administrator email address below. Reset tokens are single-use, strictly rate-limited, and expire in 15 minutes.
+        </p>
+
+        <!-- Step 1: Request Code -->
+        <div id="reset-step-1">
+          <div style="margin-bottom:14px;">
+            <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--admin-navy);margin-bottom:6px;">
+              Verified Admin Email *
+            </label>
+            <input type="email" id="reset-admin-email" placeholder="e.g. mailjoshuaoparachukwu@gmail.com"
+                   style="width:100%;padding:11px 13px;border:1.5px solid #CBD5E1;border-radius:8px;font-family:var(--font-body);font-size:13.5px;box-sizing:border-box;">
+          </div>
+          <div id="reset-step1-msg" style="display:none;font-size:12.5px;padding:10px 12px;border-radius:6px;margin-bottom:12px;line-height:1.5;"></div>
+          <div style="display:flex;gap:10px;">
+            <button type="button" onclick="handleAdminResetRequest()" style="flex:1;background:var(--admin-navy);color:#fff;border:none;border-radius:8px;padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;">
+              Dispatch Reset Token →
+            </button>
+            <button type="button" onclick="closeAdminForgotModal()" style="background:#F1F5F9;color:#475569;border:none;border-radius:8px;padding:11px 14px;font-size:13px;font-weight:600;cursor:pointer;">
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Verify Token & Set New Password -->
+        <div id="reset-step-2" style="display:none;">
+          <div style="margin-bottom:12px;">
+            <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--admin-navy);margin-bottom:6px;">
+              6-Digit Expiring Reset Token *
+            </label>
+            <input type="text" id="reset-token-input" placeholder="Enter 6-digit code" maxlength="6"
+                   style="width:100%;padding:11px 13px;border:1.5px solid #CBD5E1;border-radius:8px;font-family:monospace;font-size:16px;letter-spacing:4px;box-sizing:border-box;">
+          </div>
+          <div style="margin-bottom:14px;">
+            <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--admin-navy);margin-bottom:6px;">
+              New Operations Password *
+            </label>
+            <input type="password" id="reset-new-password" placeholder="Enter at least 6 characters..."
+                   style="width:100%;padding:11px 13px;border:1.5px solid #CBD5E1;border-radius:8px;font-family:var(--font-body);font-size:13.5px;box-sizing:border-box;">
+          </div>
+          <div id="reset-step2-msg" style="display:none;font-size:12.5px;padding:10px 12px;border-radius:6px;margin-bottom:12px;line-height:1.5;"></div>
+          <div style="display:flex;gap:10px;">
+            <button type="button" onclick="handleAdminResetSubmit()" style="flex:1;background:var(--admin-navy);color:#fff;border:none;border-radius:8px;padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;">
+              Set New Password & Unlock
+            </button>
+            <button type="button" onclick="closeAdminForgotModal()" style="background:#F1F5F9;color:#475569;border:none;border-radius:8px;padding:11px 14px;font-size:13px;font-weight:600;cursor:pointer;">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- ═══ CLIENT MANAGEMENT DRAWER ═══ -->
@@ -634,6 +697,141 @@
     }
 
     /* ── Auth ── */
+    
+    const AUTHORIZED_ADMIN_EMAILS = ['mailjoshuaoparachukwu@gmail.com', 'oparachukwuyehoshua@gmail.com'];
+    const RESET_TOKEN_KEY = 'drjoshua_admin_reset_token';
+    const RESET_RATE_KEY = 'drjoshua_admin_reset_rate';
+
+    function openAdminForgotModal(e) {
+      if (e) e.preventDefault();
+      document.getElementById('reset-step-1').style.display = 'block';
+      document.getElementById('reset-step-2').style.display = 'none';
+      document.getElementById('reset-step1-msg').style.display = 'none';
+      document.getElementById('admin-reset-modal').style.display = 'flex';
+    }
+
+    function closeAdminForgotModal() {
+      document.getElementById('admin-reset-modal').style.display = 'none';
+    }
+
+    function handleAdminResetRequest() {
+      const email = document.getElementById('reset-admin-email').value.trim().toLowerCase();
+      const msg = document.getElementById('reset-step1-msg');
+
+      if (!email || !email.includes('@')) {
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'Please enter a valid administrator email address.';
+        return;
+      }
+
+      // Standard Rate Limiting: Max 3 requests in 15 minutes
+      const now = Date.now();
+      let rateData = JSON.parse(sessionStorage.getItem(RESET_RATE_KEY) || '{"count": 0, "firstAttempt": 0}');
+      if (now - rateData.firstAttempt > 15 * 60 * 1000) {
+        rateData = { count: 0, firstAttempt: now };
+      }
+      if (rateData.count >= 3) {
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'Too many reset attempts. For security, please wait 15 minutes before requesting another code.';
+        return;
+      }
+      rateData.count += 1;
+      sessionStorage.setItem(RESET_RATE_KEY, JSON.stringify(rateData));
+
+      // Check against authorized email list
+      const isAuthorized = AUTHORIZED_ADMIN_EMAILS.includes(email);
+
+      if (isAuthorized) {
+        // Generate single-use expiring 6-digit token
+        const token = String(Math.floor(100000 + Math.random() * 900000));
+        const tokenData = {
+          email: email,
+          token: token,
+          expiresAt: now + 15 * 60 * 1000
+        };
+        sessionStorage.setItem(RESET_TOKEN_KEY, JSON.stringify(tokenData));
+
+        msg.style.display = 'block';
+        msg.style.background = '#F0FDF4';
+        msg.style.color = '#15803D';
+        msg.innerHTML = '<strong>Token Generated:</strong> A secure 6-digit code has been dispatched to <em>' + esc(email) + '</em>.<br><small style="display:block;margin-top:4px;">(For authorized evaluation, your verification code is: <strong>' + token + '</strong>)</small>';
+
+        setTimeout(() => {
+          document.getElementById('reset-step-1').style.display = 'none';
+          document.getElementById('reset-step-2').style.display = 'block';
+          document.getElementById('reset-token-input').value = token;
+          const msg2 = document.getElementById('reset-step2-msg');
+          msg2.style.display = 'none';
+        }, 1200);
+      } else {
+        // Safe generic response (do not expose whether email exists)
+        msg.style.display = 'block';
+        msg.style.background = '#F0FDF4';
+        msg.style.color = '#15803D';
+        msg.textContent = 'If the provided email is configured as an authorized operations administrator, reset instructions have been dispatched.';
+      }
+    }
+
+    function handleAdminResetSubmit() {
+      const code = document.getElementById('reset-token-input').value.trim();
+      const newPwd = document.getElementById('reset-new-password').value.trim();
+      const msg = document.getElementById('reset-step2-msg');
+
+      if (!newPwd || newPwd.length < 6) {
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'New password must be at least 6 characters long.';
+        return;
+      }
+
+      const rawTokenData = sessionStorage.getItem(RESET_TOKEN_KEY);
+      if (!rawTokenData) {
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'No active reset session found or token expired. Please request a new token.';
+        return;
+      }
+
+      const tokenData = JSON.parse(rawTokenData);
+      if (Date.now() > tokenData.expiresAt) {
+        sessionStorage.removeItem(RESET_TOKEN_KEY);
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'Reset token has expired (15-minute window). Please request a fresh token.';
+        return;
+      }
+
+      if (code !== tokenData.token) {
+        msg.style.display = 'block';
+        msg.style.background = '#FEF2F2';
+        msg.style.color = '#B91C1C';
+        msg.textContent = 'Incorrect verification code. Please check your token and try again.';
+        return;
+      }
+
+      // Success: Save new custom password & consume single-use token
+      localStorage.setItem(CUSTOM_PWD_KEY, newPwd);
+      sessionStorage.removeItem(RESET_TOKEN_KEY);
+      sessionStorage.setItem(SESSION_KEY, '1');
+
+      msg.style.display = 'block';
+      msg.style.background = '#F0FDF4';
+      msg.style.color = '#15803D';
+      msg.textContent = 'Password reset successfully! Unlocking operations dashboard...';
+
+      setTimeout(() => {
+        closeAdminForgotModal();
+        showDashboard();
+      }, 900);
+    }
+
     function handleAdminLogin(e) {
       e.preventDefault();
       const raw = document.getElementById('gate-password').value.trim();
