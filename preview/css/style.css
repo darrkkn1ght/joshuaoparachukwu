@@ -6582,3 +6582,150 @@ nav.scrolled-pill {
   color: #FFFFFF;
   transform: translateY(-2px);
 }
+
+
+/* ═══ MASTERCLASSES 2-COLUMN BALANCED GRID (NO SQUISHING) ═══ */
+.yt-masterclass-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+@media (max-width: 820px) {
+  .yt-masterclass-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.yt-masterclass-card {
+  display: flex !important;
+  flex-direction: row !important;
+  background: #FFFFFF !important;
+  border: 1px solid var(--border, #E4E0D8) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 6px 20px rgba(0, 16, 42, 0.05) !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+.yt-masterclass-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 32px rgba(0, 16, 42, 0.12) !important;
+  border-color: var(--gold, #C8A830) !important;
+}
+.yt-masterclass-thumb {
+  width: 210px !important;
+  min-height: 140px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  background: #00102A !important;
+  overflow: hidden !important;
+}
+.yt-masterclass-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.4s ease !important;
+}
+.yt-masterclass-card:hover .yt-masterclass-thumb img {
+  transform: scale(1.05) !important;
+}
+.yt-masterclass-info {
+  padding: 18px 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+.yt-masterclass-info h4 {
+  font-family: var(--font-display, serif) !important;
+  font-size: 16.5px !important;
+  font-weight: 700 !important;
+  color: var(--navy, #00102A) !important;
+  line-height: 1.35 !important;
+  margin: 0 0 10px 0 !important;
+}
+
+/* ═══ 3-PILLAR METHOD TIGHTENED SPACING ═══ */
+.pillars-section-tight {
+  background: var(--cream, #F9F8F5) !important;
+  padding: 56px 24px 64px !important;
+  border-bottom: 1px solid var(--border, #E4E0D8) !important;
+}
+.pillars-section-tight .section-title {
+  margin-bottom: 8px !important;
+}
+.pillars-section-tight .section-gold-rule {
+  margin: 0 auto 36px !important;
+}
+.pillars-grid-tight {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 28px !important;
+  max-width: 1160px !important;
+  margin: 0 auto !important;
+}
+@media (max-width: 900px) {
+  .pillars-grid-tight {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+.pillar-card-tight {
+  background: #FFFFFF !important;
+  border: 1px solid var(--border, #E4E0D8) !important;
+  border-radius: 14px !important;
+  padding: 32px 28px !important;
+  box-shadow: 0 4px 16px rgba(0, 16, 42, 0.04) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+.pillar-card-tight:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 28px rgba(0, 16, 42, 0.08) !important;
+}
+.pillar-card-tight h3 {
+  font-family: var(--font-display, serif) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: var(--gold, #C8A830) !important;
+  margin: 0 0 12px 0 !important;
+}
+.pillar-card-tight .pillar-rule {
+  width: 36px !important;
+  height: 2px !important;
+  background: var(--gold, #C8A830) !important;
+  margin-bottom: 14px !important;
+}
+.pillar-card-tight p {
+  font-size: 14.5px !important;
+  color: var(--ink2, #4A5568) !important;
+  line-height: 1.6 !important;
+  margin: 0 0 20px 0 !important;
+}
+.pillar-checks-tight {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+.pillar-checks-tight li {
+  font-size: 13.5px !important;
+  color: var(--ink, #1A1A16) !important;
+  line-height: 1.5 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+.pillar-checks-tight li::before {
+  content: "✓" !important;
+  color: var(--gold, #C8A830) !important;
+  font-weight: 700 !important;
+  flex-shrink: 0 !important;
+}

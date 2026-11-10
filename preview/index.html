@@ -25,7 +25,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="/preview/css/style.css?v=20">
+  <link rel="stylesheet" href="/css/style.css?v=20">
 </head>
 
 <body>
@@ -666,199 +667,59 @@
 </section>
 
     <!-- ═══ HOW IT WORKS + 3-PILLAR METHOD (Interactive 2-Column Showcase + 6-Card Bento Grid) ═══ -->
-    <section id="pillars">
-      <div class="vf-section-head">
-        <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:8px;">How It Works · 3-Step Execution System</span>
-        <h2 class="section-title">How We Engineer Peak Performance</h2>
-        <div class="section-gold-rule"></div>
-        <p class="vf-section-sub">
-          Just like elite physical conditioning, mental performance is built through a structured, repeatable 3-step system—not generic pep talks. Select any phase below to inspect the methodology.
-        </p>
-      </div>
+    <!-- ═══ 3-PILLAR PERFORMANCE METHOD (TIGHT SPACING - AS REQUESTED IN IMAGE 1) ═══ -->
+    <section id="pillars" class="pillars-section-tight">
+      <div style="max-width:1160px;margin:0 auto;text-align:center;">
+        <h2 class="section-title reveal" style="font-family:var(--font-display,serif);font-size:38px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;">The 3-Pillar Performance Method</h2>
+        <div class="section-gold-rule" style="width:50px;height:2px;background:var(--gold,#C8A830);margin:0 auto 36px;"></div>
 
-      <!-- INTERACTIVE 2-COLUMN PROCESS SHOWCASE -->
-      <div class="vf-process-showcase" id="vf-process-showcase">
-        <div class="vf-process-steps">
-          <div class="vf-step-tab active" data-step="0" onclick="selectVfProcessStep(0)">
-            <div class="vf-step-tab-header">
-              <div class="vf-step-num-circle">01</div>
-              <div>
-                <div class="vf-step-kicker">Step 01 · Diagnose</div>
-                <h3 class="vf-step-title">Performance Intake &amp; Psychological Audit</h3>
-              </div>
-            </div>
-            <p class="vf-step-desc">
-              We pinpoint the exact cognitive, emotional, or systemic triggers causing hesitation, second-half drop-offs, pre-match anxiety, or decision fatigue under pressure.
-            </p>
-            <div class="vf-step-progress"><div class="vf-step-progress-bar"></div></div>
-          </div>
-
-          <div class="vf-step-tab" data-step="1" onclick="selectVfProcessStep(1)">
-            <div class="vf-step-tab-header">
-              <div class="vf-step-num-circle">02</div>
-              <div>
-                <div class="vf-step-kicker">Step 02 · Engineer</div>
-                <h3 class="vf-step-title">Custom Mental Operating System</h3>
-              </div>
-            </div>
-            <p class="vf-step-desc">
-              We install tailored pre-competition routines, the 3R Mistake-Reset Protocol (Recognize · Release · Refocus), and tactical cue words built specifically for your position or leadership role.
-            </p>
-            <div class="vf-step-progress"><div class="vf-step-progress-bar"></div></div>
-          </div>
-
-          <div class="vf-step-tab" data-step="2" onclick="selectVfProcessStep(2)">
-            <div class="vf-step-tab-header">
-              <div class="vf-step-num-circle">03</div>
-              <div>
-                <div class="vf-step-kicker">Step 03 · Execute &amp; Track</div>
-                <h3 class="vf-step-title">Live Season Integration &amp; Portal Tracking</h3>
-              </div>
-            </div>
-            <p class="vf-step-desc">
-              Across your 8-session retainer or advisory roadmap, we review real match and boardroom outcomes in your private Client Portal and lock in week-in, week-out consistency.
-            </p>
-            <div class="vf-step-progress"><div class="vf-step-progress-bar"></div></div>
-          </div>
-        </div>
-
-        <!-- RIGHT VISUAL STAGE (Animated Mockups per Step) -->
-        <div class="vf-process-stage">
-          <!-- Stage 0: Diagnostic Audit -->
-          <div class="vf-stage-panel active" id="vf-stage-panel-0">
+        <div class="pillars-grid-tight">
+          <!-- Pillar 1 -->
+          <div class="pillar-card-tight">
             <div>
-              <div class="vf-stage-photo-banner">
-                <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=900&q=85" alt="Tactical performance audit & psychological mapping">
-                <span class="vf-stage-photo-caption">Phase 01 · Diagnostic Intake</span>
-              </div>
-              <div class="vf-stage-top-bar">
-                <span class="vf-stage-badge"><span class="vf-stage-dot"></span> Phase 01 · Diagnostic Profile</span>
-                <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
-              </div>
-              <h4 class="vf-stage-card-title">Baseline Psychological Pressure Map</h4>
-              <p class="vf-stage-card-sub">Identifying the exact gap between training capability and high-stakes match execution.</p>
-
-              <div class="vf-stage-metric-grid">
-                <div class="vf-stage-metric">
-                  <div class="vf-stage-metric-label">Error Recovery Speed</div>
-                  <div class="vf-stage-metric-val">3.2s Reset</div>
-                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:88%;"></div></div>
-                </div>
-                <div class="vf-stage-metric">
-                  <div class="vf-stage-metric-label">Pre-Match Composure</div>
-                  <div class="vf-stage-metric-val">+94% Clarity</div>
-                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:94%;"></div></div>
-                </div>
-              </div>
-
-              <div class="vf-stage-checklist">
-                <div class="vf-stage-check-item">
-                  <span class="vf-stage-check-icon">✓</span>
-                  <span><strong>Trigger Mapping:</strong> Isolate what happens in the 10 seconds after an error or high-pressure call.</span>
-                </div>
-                <div class="vf-stage-check-item">
-                  <span class="vf-stage-check-icon">✓</span>
-                  <span><strong>Cognitive Load Audit:</strong> Strip away overthinking and paralysis before kickoff or key presentations.</span>
-                </div>
-              </div>
+              <h3>Mental Clarity</h3>
+              <div class="pillar-rule"></div>
+              <p>Identify and remove psychological blocks. Build unshakeable focus even in the highest-stakes moments.</p>
             </div>
-            <div class="vf-stage-footer">
-              <span class="vf-stage-footer-note">Diagnostic completed in Session 01</span>
-              <a href="performance-retainer.html" class="vf-stage-cta-link">Explore 4-Month Retainer →</a>
-            </div>
+            <ul class="pillar-checks-tight">
+              <li>Structured mental assessment to pinpoint blocks</li>
+              <li>Proven focus techniques used by elite performers</li>
+              <li>Build a pre-performance mental routine that works</li>
+            </ul>
           </div>
 
-          <!-- Stage 1: Custom Mental System -->
-          <div class="vf-stage-panel" id="vf-stage-panel-1">
+          <!-- Pillar 2 -->
+          <div class="pillar-card-tight">
             <div>
-              <div class="vf-stage-photo-banner">
-                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=85" alt="Mental operating system & pressure inoculation">
-                <span class="vf-stage-photo-caption">Phase 02 · System Installation</span>
-              </div>
-              <div class="vf-stage-top-bar">
-                <span class="vf-stage-badge"><span class="vf-stage-dot"></span> Phase 02 · System Architecture</span>
-                <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
-              </div>
-              <h4 class="vf-stage-card-title">The 3R Mistake-Reset &amp; Focus Protocol</h4>
-              <p class="vf-stage-card-sub">Practical, on-pitch and in-room mental tools you can deploy in under 5 seconds.</p>
-
-              <div class="vf-stage-metric-grid">
-                <div class="vf-stage-metric">
-                  <div class="vf-stage-metric-label">1. Recognize &amp; Release</div>
-                  <div class="vf-stage-metric-val">Physical Cue</div>
-                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:92%;"></div></div>
-                </div>
-                <div class="vf-stage-metric">
-                  <div class="vf-stage-metric-label">2. Refocus Next Action</div>
-                  <div class="vf-stage-metric-val">Tactical Anchor</div>
-                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:96%;"></div></div>
-                </div>
-              </div>
-
-              <div class="vf-stage-checklist">
-                <div class="vf-stage-check-item">
-                  <span class="vf-stage-check-icon">✓</span>
-                  <span><strong>Pre-Performance Routine:</strong> Standardized 15-minute mental warm-up for calm, aggressive readiness.</span>
-                </div>
-                <div class="vf-stage-check-item">
-                  <span class="vf-stage-check-icon">✓</span>
-                  <span><strong>Pressure Inoculation:</strong> Simulated high-consequence scenarios so crunch time feels familiar.</span>
-                </div>
-              </div>
+              <h3>Resilience Systems</h3>
+              <div class="pillar-rule"></div>
+              <p>Structured tools to recover from errors fast. Reset immediately and keep performing at your peak.</p>
             </div>
-            <div class="vf-stage-footer">
-              <span class="vf-stage-footer-note">Engineered specifically for your sport or role</span>
-              <a href="services.html" class="vf-stage-cta-link">Book Discovery Call →</a>
-            </div>
+            <ul class="pillar-checks-tight">
+              <li>Error reset protocols for immediate bounce-back</li>
+              <li>Pressure-inoculation drills for big moments</li>
+              <li>Confidence rebuilding framework after setbacks</li>
+            </ul>
           </div>
 
-          <!-- Stage 2: Client Portal & Sustained Edge -->
-          <div class="vf-stage-panel" id="vf-stage-panel-2">
+          <!-- Pillar 3 -->
+          <div class="pillar-card-tight">
             <div>
-              <div class="vf-stage-photo-banner">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=85" alt="Live season tracking & 1-on-1 portal sessions">
-                <span class="vf-stage-photo-caption">Phase 03 · Execution & Tracking</span>
-              </div>
-              <div class="vf-stage-top-bar">
-                <span class="vf-stage-badge"><span class="vf-stage-dot"></span> Phase 03 · Live Client Portal</span>
-                <span class="vf-stage-window-dots"><span></span><span></span><span></span></span>
-              </div>
-              <h4 class="vf-stage-card-title">8-Session Retainer &amp; Calendar Sync</h4>
-              <p class="vf-stage-card-sub">Dedicated client portal with 1-click Google Meet room, local timezone sync, and session notes.</p>
-
-              <div class="vf-stage-metric-grid">
-                <div class="vf-stage-metric">
-                  <div class="vf-stage-metric-label">Retainer Cadence</div>
-                  <div class="vf-stage-metric-val">8 × 45m Calls</div>
-                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:100%;"></div></div>
-                </div>
-                <div class="vf-stage-metric">
-                  <div class="vf-stage-metric-label">Rollover Protection</div>
-                  <div class="vf-stage-metric-val">+30 Day Buffer</div>
-                  <div class="vf-stage-bar-wrap"><div class="vf-stage-bar-fill" style="width:90%;"></div></div>
-                </div>
-              </div>
-
-              <div class="vf-stage-checklist">
-                <div class="vf-stage-check-item">
-                  <span class="vf-stage-check-icon">✓</span>
-                  <span><strong>Global Timezone Sync:</strong> All sessions displayed automatically in your local city timezone.</span>
-                </div>
-                <div class="vf-stage-check-item">
-                  <span class="vf-stage-check-icon">✓</span>
-                  <span><strong>Post-Match Debriefs:</strong> Continuous refinement across 4 months of live competition.</span>
-                </div>
-              </div>
+              <h3>Peak Consistency</h3>
+              <div class="pillar-rule"></div>
+              <p>The mental routines elite performers use to show up at their best, every single day.</p>
             </div>
-            <div class="vf-stage-footer">
-              <span class="vf-stage-footer-note">Full 4-Month Retainer · $500 USD</span>
-              <a href="performance-retainer.html" class="vf-stage-cta-link">View Retainer Portal →</a>
-            </div>
+            <ul class="pillar-checks-tight">
+              <li>Performance check-ins and progress tracking</li>
+              <li>Habit stacking for consistent high performance</li>
+              <li>Long-term mindset systems that last</li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 6-CARD BENTO GRID: THE 3 CORE PILLARS + 3 STRATEGIC ADVANTAGES -->
+    <!-- 6-CARD BENTO GRID: THE 3 CORE PILLARS + 3 STRATEGIC ADVANTAGES -->
       <div class="vf-section-head" style="margin-top:20px;margin-bottom:36px;">
         <span class="section-label" style="display:block;text-align:center;color:var(--gold,#C8A830);margin-bottom:8px;">The 3-Pillar Method &amp; Strategic Advantage</span>
         <h3 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:4px 0 10px;">
@@ -1066,11 +927,11 @@
       </div>
 
       <!-- SUB-SECTION 2: LONG-FORM LESSONS Dr. Oparachukwu Teaches Performance Psychology -->
-    <div class="vf-yt-subgroup">
+    <div class="vf-yt-subgroup" style="margin-bottom:32px;">
       <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #E4E0D8;padding-bottom:12px;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
         <div>
           <span style="display:inline-block;background:rgba(10,34,70,0.10);color:var(--navy,#00102A);border:1px solid rgba(10,34,70,0.25);border-radius:999px;padding:3px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Masterclasses</span>
-          <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--navy,#00102A);margin:0;">
+          <h3 style="font-family:var(--font-display,serif);font-size:24px;font-weight:700;color:var(--navy,#00102A);margin:0;">
             Dr. Oparachukwu Teaches Performance Psychology · Deep-Dive Lessons
           </h3>
         </div>
@@ -1079,32 +940,32 @@
         </a>
       </div>
 
-      <div class="yt-grid">
-        <a href="https://www.youtube.com/watch?v=UxnKseVsEBo" target="_blank" rel="noopener" class="yt-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="yt-thumb">
+      <div class="yt-masterclass-grid">
+        <a href="https://www.youtube.com/watch?v=UxnKseVsEBo" target="_blank" rel="noopener" class="yt-masterclass-card">
+          <div class="yt-masterclass-thumb">
             <img src="https://img.youtube.com/vi/UxnKseVsEBo/maxresdefault.jpg" alt="How to Avoid Performance Misdiagnosis in Sport" loading="lazy">
             <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
-            <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,16,42,0.85);color:#FFE484;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid rgba(200,168,48,0.4);">Masterclass</span>
+            <span style="position:absolute;bottom:8px;left:8px;background:rgba(0,16,42,0.88);color:#FFE484;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid rgba(200,168,48,0.4);">Masterclass</span>
           </div>
-          <div class="yt-info">
+          <div class="yt-masterclass-info">
             <h4>How to Avoid Performance Misdiagnosis in Sport &amp; Executive Leadership</h4>
-            <span class="yt-watch">
-              <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+            <span class="yt-watch" style="font-size:12.5px;color:#C8A830;font-weight:600;display:inline-flex;align-items:center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:6px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
               Watch Masterclass on YouTube
             </span>
           </div>
         </a>
 
-        <a href="https://www.youtube.com/watch?v=Mzxw21P0oiA" target="_blank" rel="noopener" class="yt-card reveal" style="text-decoration:none;color:inherit;">
-          <div class="yt-thumb">
+        <a href="https://www.youtube.com/watch?v=Mzxw21P0oiA" target="_blank" rel="noopener" class="yt-masterclass-card">
+          <div class="yt-masterclass-thumb">
             <img src="https://img.youtube.com/vi/Mzxw21P0oiA/maxresdefault.jpg" alt="Why Great Performers Look Great Under Pressure" loading="lazy">
             <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
-            <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,16,42,0.85);color:#FFE484;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid rgba(200,168,48,0.4);">Masterclass</span>
+            <span style="position:absolute;bottom:8px;left:8px;background:rgba(0,16,42,0.88);color:#FFE484;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid rgba(200,168,48,0.4);">Masterclass</span>
           </div>
-          <div class="yt-info">
+          <div class="yt-masterclass-info">
             <h4>Why Great Performers Look Great Under Pressure — How Preparation Builds Execution</h4>
-            <span class="yt-watch">
-              <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+            <span class="yt-watch" style="font-size:12.5px;color:#C8A830;font-weight:600;display:inline-flex;align-items:center;">
+              <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:6px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
               Watch Masterclass on YouTube
             </span>
           </div>
@@ -1123,26 +984,28 @@
 </section>
 
     <!-- ═══ SECTION 06: WORK WITH ME (HOMEPAGE ABOUT TEASER) ═══ -->
-<section id="about" style="background:#fff;padding:84px 48px;border-bottom:1px solid var(--border,#E4E0D8);">
-  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;" class="about-grid-wrap">
+<section id="about" style="background:#FFFFFF;padding:72px 32px;border-bottom:1px solid var(--border,#E4E0D8);">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:minmax(320px, 420px) 1fr;gap:52px;align-items:center;" class="about-grid-wrap">
     <div>
-      <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 20px 48px rgba(0,16,42,0.12);border:2px solid rgba(200,168,48,0.35);">
-        <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1778194219/Dr._Oparachukwu_irnxil.png" alt="Dr. Joshua A. Oparachukwu — Applied Performance Psychologist" style="width:100%;height:460px;object-fit:cover;object-position:center top;display:block;background:linear-gradient(145deg, #0A2246 0%, #00102A 100%);">
-        <div style="position:absolute;bottom:0;inset-inline:0;background:linear-gradient(to top, rgba(0,16,42,0.92) 0%, transparent 100%);padding:24px 20px 18px;color:#fff;">
-          <div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:#FFE484;">Dr. Joshua A. Oparachukwu</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.85);margin-top:2px;">Applied Performance Psychologist and Strategic Sport Management Expert</div>
+      <div style="position:relative;border-radius:18px;overflow:hidden;box-shadow:0 20px 48px rgba(0,16,42,0.12);border:2px solid rgba(200,168,48,0.45);background:linear-gradient(145deg, #0A2246 0%, #00102A 100%);">
+        <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1778194219/Dr._Oparachukwu_irnxil.png"
+             alt="Dr. Joshua A. Oparachukwu — Applied Performance Psychologist"
+             style="width:100%;height:490px;object-fit:cover;object-position:center 12%;display:block;">
+        <div style="position:absolute;bottom:0;inset-inline:0;background:linear-gradient(to top, rgba(0,16,42,0.95) 0%, rgba(0,16,42,0.6) 70%, transparent 100%);padding:24px 20px 18px;color:#fff;">
+          <div style="font-family:var(--font-display,serif);font-size:20px;font-weight:700;color:#FFE484;">Dr. Joshua A. Oparachukwu</div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,0.9);margin-top:4px;">Applied Performance Psychologist and Strategic Sport Management Expert</div>
         </div>
       </div>
     </div>
     <div>
-      <span class="section-label" style="display:block;color:var(--gold,#C8A830);margin-bottom:8px;">Work With Me</span>
-      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:0 0 8px;line-height:1.2;">
+      <span class="section-label" style="display:block;color:var(--gold,#C8A830);margin-bottom:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Work With Me</span>
+      <h2 style="font-family:var(--font-display,serif);font-size:38px;font-weight:700;color:var(--navy,#00102A);margin:0 0 8px;line-height:1.2;">
         Dr. Joshua A. Oparachukwu
       </h2>
-      <div style="font-size:14.5px;font-weight:700;color:var(--gold,#C8A830);letter-spacing:0.04em;margin-bottom:18px;">
+      <div style="font-size:15px;font-weight:700;color:var(--gold,#C8A830);letter-spacing:0.03em;margin-bottom:18px;">
         Applied Performance Psychologist and Strategic Sport Management Expert
       </div>
-      <div class="section-gold-rule" style="margin-bottom:20px;"></div>
+      <div class="section-gold-rule" style="width:48px;height:2px;background:var(--gold,#C8A830);margin-bottom:20px;"></div>
       <p style="font-size:15.5px;color:var(--ink2,#4A5568);line-height:1.75;margin-bottom:16px;">
         High performance in competitive sport and executive environments is not an accident of motivation. It is the output of systematic psychological conditioning, emotional regulation under fire, and proven cognitive protocols.
       </p>
@@ -1150,12 +1013,13 @@
         Having trained over 219 athletes, coaches, and senior executives across the UK, USA, Europe, the Middle East, and Africa, Dr. Joshua brings empirical science directly into your matches and boardroom meetings.
       </p>
       <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-        <a href="about.html" class="vf-btn-primary-gold" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:8px;font-weight:700;font-size:14px;">
+        <a href="about.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:8px;font-weight:700;font-size:14px;box-shadow:0 4px 14px rgba(200,168,48,0.25);transition:all 0.2s;">
           <span>Learn About Dr. Joshua</span>
           <span>→</span>
         </a>
-        <a href="services.html" class="vf-btn-secondary-glass" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border:1.5px solid var(--navy,#00102A);color:var(--navy,#00102A);border-radius:8px;font-weight:700;font-size:13.5px;">
+        <a href="services.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--navy,#00102A);color:#FFFFFF;border-radius:8px;font-weight:700;font-size:14px;box-shadow:0 4px 14px rgba(0,16,42,0.18);transition:all 0.2s;">
           <span>Explore Consultation Services</span>
+          <span>→</span>
         </a>
       </div>
     </div>
