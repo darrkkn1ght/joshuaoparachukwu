@@ -152,3 +152,4 @@ function bumpVersion(dir) {
 
 bumpVersion('preview');
 console.log('Done fixing dropdown colors and bumping version to v=26!');
+
