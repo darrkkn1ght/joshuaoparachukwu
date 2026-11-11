@@ -19,7 +19,7 @@
 <title>Dr. Joshua Oparachukwu Performance Psychologist</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <title>About Dr. Joshua A. Oparachukwu | Performance Psychologist</title>
-  <link rel="stylesheet" href="/preview/css/style.css?v=20">
+  <link rel="stylesheet" href="/preview/css/style.css?v=25">
 </head>
 <body>
   <!-- ═══ NAV ═══ -->
@@ -79,11 +79,17 @@
       <a href="about.html" class="active">About</a>
       <a href="client-portal.html" class="nav-client-portal-btn" style="color:var(--gold,#C8A830);font-weight:700;border:1.5px solid rgba(200,168,48,0.5);padding:7px 14px;border-radius:99px;font-size:12.5px;letter-spacing:0.02em;text-decoration:none;transition:all 0.2s ease;">Client Login ↗</a>
       </div>
-    <a href="services.html" class="nav-cta">Book a Discovery Consultation</a>
-  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+    <div class="nav-actions">
+      <a href="client-portal.html" class="nav-client-login-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Client Login</span>
+      </a>
+      <a href="services.html" class="nav-cta-btn">Book a Discovery Consultation</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
 <!-- Mobile nav drawer -->
 <div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
@@ -93,15 +99,21 @@
     <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
   </div>
   <div class="mobile-nav-links">
-      <a href="index.html#results" class="mobile-nav-item" onclick="closeMobileNav()">Results</a>
+      <a href="index.html#written-testimonials" class="mobile-nav-item" onclick="closeMobileNav()">Testimonials</a>
       <a href="performance-retainer.html" class="mobile-nav-item" onclick="closeMobileNav()">Retainer Program</a>
       <a href="services.html" class="mobile-nav-item" onclick="closeMobileNav()">Services</a>
       <a href="case-studies.html" class="mobile-nav-item" onclick="closeMobileNav()">Case Studies</a>
       <a href="research.html" class="mobile-nav-item" onclick="closeMobileNav()">Research</a>
       <a href="about.html" class="mobile-nav-item" onclick="closeMobileNav()">About</a>
-      <a href="client-portal.html" class="mobile-nav-item" style="color:var(--gold,#C8A830);font-weight:700;" onclick="closeMobileNav()">Client Login ↗</a>
+      <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(255,255,255,0.08);margin-top:12px;">
+        <a href="services.html" class="nav-cta-btn" style="text-align:center;padding:12px;font-size:13.5px;" onclick="closeMobileNav()">Book a Discovery Consultation</a>
+        <a href="client-portal.html" class="nav-client-login-btn" style="justify-content:center;padding:10px;font-size:13px;" onclick="closeMobileNav()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Client Portal Login ↗</span>
+        </a>
+      </div>
     </div>
-</div>
+  </div>
   <main style="padding-top:20px;">
     
 <div id="about-full-page" style="display:block;min-height:80vh;">

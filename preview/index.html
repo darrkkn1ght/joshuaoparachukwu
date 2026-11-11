@@ -25,8 +25,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=20">
-  <link rel="stylesheet" href="/css/style.css?v=20">
+  <link rel="stylesheet" href="/preview/css/style.css?v=25">
+  <link rel="stylesheet" href="/css/style.css?v=25">
 </head>
 
 <body>
@@ -88,14 +88,16 @@
 
       <a href="about.html">About</a>
     </div>
-    <a href="client-portal.html" class="nav-client-login-link">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:2px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      <span>Client Login</span>
-    </a>
-    <a href="services.html" class="nav-cta">Book a Discovery Consultation</a>
-    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <a href="client-portal.html" class="nav-client-login-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Client Login</span>
+      </a>
+      <a href="services.html" class="nav-cta-btn">Book a Discovery Consultation</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Mobile nav drawer -->
@@ -112,7 +114,13 @@
       <a href="case-studies.html" class="mobile-nav-item" onclick="closeMobileNav()">Case Studies</a>
       <a href="research.html" class="mobile-nav-item" onclick="closeMobileNav()">Research</a>
       <a href="about.html" class="mobile-nav-item" onclick="closeMobileNav()">About</a>
-      <a href="client-portal.html" class="mobile-nav-item" style="color:var(--gold,#C8A830);font-weight:700;" onclick="closeMobileNav()">Client Login ↗</a>
+      <div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(255,255,255,0.08);margin-top:12px;">
+        <a href="services.html" class="nav-cta-btn" style="text-align:center;padding:12px;font-size:13.5px;" onclick="closeMobileNav()">Book a Discovery Consultation</a>
+        <a href="client-portal.html" class="nav-client-login-btn" style="justify-content:center;padding:10px;font-size:13px;" onclick="closeMobileNav()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Client Portal Login ↗</span>
+        </a>
+      </div>
     </div>
   </div>
   <main>
@@ -251,7 +259,6 @@
     <p>Once I experience a single bad touch, I was finished.  I’d just go quiet, stop making runs, stop calling for the ball, everything for the rest of the half match.. Like the mistake, I would carry it on my head like Gele, and it would sit on my head and I couldn’t shake it. After working with Dr. at the Liberty Stadium, Ibadan though I still mess up, of course I do, but I don’t disappear from the game, the same way anymore. I catch myself and try to get back into the game quicker. It’s not perfect every time but it’s better than before and that already helps.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">AO</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Abdulgaffar Okikiola</div>
       <div class="vf-author-meta">24 yrs · Football (Nigeria)</div>
@@ -263,7 +270,6 @@
     <p>I kinda always get tight every time the crowd would start shouting or the scores were close. Because of how I react to noise, my body will just lock up a bit, shoulders up, legs heavy, you know that feeling. During the sessions, I learnt to approach it differently. Dr. Joshua helped me such that I do not let it take over completely anymore. It’s been a while now, since I felt that way. The last time was when I missed an open goal. I felt the nerves, the tightness and rush, but it don’t own me like before no more. I play through it now.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">MR</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Marcus Reid</div>
       <div class="vf-author-meta">27, Basketball (USA)</div>
@@ -275,7 +281,6 @@
     <p>It was after I consulted with dr. Joshua that I realized without gainsaying, that a coach could become part of the problem, maybe a key part of the problem, without ever realising it, if they ever do. Naturally, I am a go-getter kind of person and my reaction to athletes who weren’t meeting set pedestals, as I have now come to learn, wasn’t the best way to go about it, and may have been counter-productive, at least at that material time. Basically, I wasn’t making the athletes get to where I wanted them to get to. Consulting with him made me more aware of the true limitations in my method. My athletes have since begun to respond better than they used to, partly and largely because of some consulting I did with someone across the ocean. Small change from my side but it affected the entire atmosphere. Cheers.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">ST</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Sarah Thompson</div>
       <div class="vf-author-meta">35, Swimming Coach (Australia)</div>
@@ -287,7 +292,6 @@
     <p>As coach, I had a set of players that I’ll always get frustrated with, because these players, they would just not re-engage after losing the ball. Instead, they would seek to blame each other, instead of doing what was necessary to regain possession. Doc, worked with a few of them and the difference was clear after some weeks. They started recovering quicker, the whole mood on the pitch and in the dressing room got lighter, better, many times better. I was surprised and impressed. Less drama after mistakes, more focus on the next thing. That really helped the group, thanks to Doc’s intervention.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">DO</div>
     <div class="vf-author-info">
       <div class="vf-author-name">David O</div>
       <div class="vf-author-meta">38, Football Coach (Nigeria)</div>
@@ -303,7 +307,6 @@
     <p>I came across one of his posts, and I have to admit that I always thought it was all about and was going to be another motivational talk like the usual stuff people say. But in the video where he talked about mistake and stuff like that, and coming back from mistakes, which was something I struggled with at the time, I had an initial consultation and it went well. I have since been talking to him frequently, since then kinda. We looked at what actually happens in my head after a mistake and how long I stay stuck on it. That alone made a difference in my play and how I came to understand my performance and sport (where there are no do-overs). I’m not perfect now, I still get angry with myself, but the spiral is shorter. I can get back to the next action faster most times, thanks to my work with Dr Josh.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">SH</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Susan Hall</div>
       <div class="vf-author-meta">22, Athletics – 400m (USA)</div>
@@ -315,7 +318,6 @@
     <p>I signed up to work with Josh because on certain occasions, I’d found myself distracted and struggling greatly under high pressure. It affected how I related with members of my family and members of my team. Dr. made some small tweaks here and there, that I was in agreement with, and by far, the season, has been my best, as I hoped it would, and set out to make it be. Thanks.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">AW</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Andre Williams</div>
       <div class="vf-author-meta">29, Basketball (USA)</div>
@@ -327,7 +329,6 @@
     <p>I was initially just trying to get selected and so I didn’t really believe in this stuff. I only went because the coach pushed it and I didn’t want problems, so I wanted to just it done and be done with. I’d just sit and talk. After a few sessions I realised somehow, that I was making simple things harder for myself, in my own head. I didn’t have any issues; I was my own issue. I was in my way. It was explained to me and once I saw that, things got easier on the pitch. I am still work in progress, I am not all there yet, but I am better for it, in heart and mind, soul and spirit. I understand myself more.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">JW</div>
     <div class="vf-author-info">
       <div class="vf-author-name">James Whitaker</div>
       <div class="vf-author-meta">23, Rugby (England)</div>
@@ -339,7 +340,6 @@
     <p>I’m a shy person and so my confidence whenever I am outdoors can be a a yo-yo, up and down like a yo-yo. Sometimes, I have a good training week, causing me to felt like a king. After even one bad game and everything felt useless, like why am I even here. Working with Dr. Josh helped me stop linking my whole worth, esteem and value, to result. I still want results and care a lot, maybe too much sometimes, but not in that crazy way where one play spoils me for so long before I become good again. Its more balanced now.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">TH</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Tomás Herrera</div>
       <div class="vf-author-meta">29, Football (Argentina)</div>
@@ -355,7 +355,6 @@
     <p>I play safe a lot. I am not one to take risks, in life, let alone in sport. I had a nickname sef, from my always trying to always play it safe and avoid injury. I don’t contest aerial balls that are not clear. My time with Doki, helped me in such a way that I now infuse a small bit of aggression into my playing. Just a bit though and because I am trying to get scouted. Because I am just not interested in getting injury, in a third world country. I would be left alone. So, I am admittedly a bit more aggressive even when the stakes are high, currently, but with greater wisdom and application, learnt in my sessions with doctor Joshua. When I get abroad, maybe I can take bigger risks, but for now, I still feel the need to play safe. But Dr. Joshua Oparachukwu helped me.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">TB</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Tunde Bakare</div>
       <div class="vf-author-meta">20, Football (Nigeria)</div>
@@ -367,7 +366,6 @@
     <p>We had talent in my team, but we would fall apart even when the game was good, and especially when the game got hard or became messy. You know those matches where everything is against you or is just not going right. Doki, worked with the squad on how we react when things go against us and it fixed lots of things. Some boys I was struggling with, came alive. Especially in the second half of the game, which was where they often played the sloppiest. Even the management were pleased, when they see it, especially in the second half of tough matches.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">IY</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Ibrahim Yusuf</div>
       <div class="vf-author-meta">31, Coach Football (Nigeria)</div>
@@ -379,7 +377,6 @@
     <p>The way my mind works, is that I used to process and over-process things. So, I could be playing and I’d be thinking of plenty things, including my career and what the fans are thinking about me. If I fail to score, I carry that weight into my next matches as I am disappointed with myself. My playing was not automatic. I would be thinking about plenty things, while the game was moving on. But I have improved now, if not even totally cured the issue, because once I start thinking, I immediately work at diverting my mind and focusing on what is in front of me. I catch myself doing the strategy Joshua taught more often over time, and I can reset a bit faster now and it has helped my overall contribution in games.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">KA</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Kwame Asante</div>
       <div class="vf-author-meta">20, Football (Ghana)</div>
@@ -391,7 +388,6 @@
     <p>Talking about what’s going on in your head isn’t easy, especially with a language barrier. Some sessions honestly felt a bit awkward at first. But I understand he used to be a language teacher and we made it through each session with something I could take away and had to do that was practical. He has no judgement. Just looking at my patterns carefully and identifying what to try next time. That made it usable and I kept coming back.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">EV</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Elena Vargas</div>
       <div class="vf-author-meta">24, Volleyball (Spain)</div>
@@ -407,7 +403,6 @@
     <p>I met Dr. Oparachukwu in 2026 when he carried out a mistake intervention study in my club. After the intervention, I took his number and I have kept communicating with him ever since. Before I met him, I played in a different club and only recently transferred into the club I was playing at, where I then met him. I wasn’t getting as much play time, in my new club, as I was in my former club, and when I am eventually, subbed in, I don’t get to touch the ball as often as I’d want, or used to, and this began to erode on my confidence and my decision-making when I eventually got the ball. I was getting slower and slower. I played automatically before, but I began to second-guess simple passes and then the chance is gone. He really helped me. He guided me, until I was able to find myself again and my place in the new team. Session after session was a success and helped me trust myself more and my first idea on the ball more often.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">DO</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Daniel Okafor</div>
       <div class="vf-author-meta">25, Football (Nigeria)</div>
@@ -419,7 +414,6 @@
     <p>Before big games, I’d get into a critical mode where I would overthink everything, from formation, my role, what people would say if I failed, social media, the whole thing. I was showing up steadily, but I was always out of it and very exhausted. Josh helped me care, cut a lot of that noise, prepare properly, and not be as drained off as before kick-off. I have more energy left for the actual game.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">SM</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Sofia Mendes</div>
       <div class="vf-author-meta">26, Tennis (Portugal)</div>
@@ -431,7 +425,6 @@
     <p>I had a player who was very talented but was a problem to work with. He never adhered even to the simplest of directives and made everything difficult for himself and the team. After another one of those shouting matchs we had, about getting him to align, I was eventually done with him, but I made it such that before I did, I spoke with Dr. Oparachukwu, who I had consulted on some other matters before. He asked that the player be mandated to consult/speak with him, and then the player showed up early the next training day. I couldn’t believe it, because he was not going to be playing in that particular game, but there he was. He also began showing up more consistently and early, and he’s coming full circle now. I am glad for one that I did not let him go, immediately, without talking to Dr. Oparachukwu Joshua, and also, that dr. Oparachukwu took time out to help as he is oft to.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">MA</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Michael Adewale</div>
       <div class="vf-author-meta">30, Basketball Coach (Nigeria)</div>
@@ -443,7 +436,6 @@
     <p>Being a long-jump athlete, I used to hate watching my own highlights because I only saw the mistakes. I always see what I didn’t do right, and or what I could have done differently. There was no praise of self I sometimes get very annoyed with myself. I thought it was dirty to think I did something right. Engaging in such, I thought, meant, one wouldn’t succeed. I saw a few of Dr. Joshua’s videos on YouTube, consumed many of his shorts and some of his TikTok videos, gained some insight from them and I eventually sent him a message. He helped me come to a different understanding and I am better off for it. Thanks</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">KM</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Kofi M.</div>
       <div class="vf-author-meta">23, Athletics – Long Jump (Ghana)</div>
@@ -459,7 +451,6 @@
     <p>I was billed to be scouted, but then I had a long injury and the physical side came back fine, but I would suddenly become overwhelmed mid game because, even out of nowhere. I would find myself scared of going in hard again, scared of the same thing happening. The work Doctor Joshua did with me, helped me trust my body and training more. I learnt to give the other opposing athletes grace also. Also, it helped me trust my training more. I am happy and in fact grateful I didn’t have to continue with it alone, the way I was, because it was a sorry state and a sorry sight.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">LM</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Lucas Moreau</div>
       <div class="vf-author-meta">18, Football (France)</div>
@@ -471,7 +462,6 @@
     <p>I used to compare myself to other players constantly. If someone was doing better, I would start doubting myself immediately. The sessions helped me focus more on my own process. I still look around, it’s hard not to, but it doesn’t derail me as quickly as before. I stay more focused with my own game.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">PS</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Priya Sharma</div>
       <div class="vf-author-meta">21, Badminton (India)</div>
@@ -483,7 +473,6 @@
     <p>I casually met Dr. Joshua in a barber shop, in Lagos Nigeria and as we got talking, we somehow got into a conversation about the Super Eagles and then what ordinarily should have obtained, and I just chipped in how I even had an issue as a parent, paying millions in private school fees, on the island, and that I had a kid with some athletic potential, that I felt was getting frustrated (I too was getting frustrated) because across his academics and sports life, he was always fluctuating. He’d do well today, then overthink in exams the next, performing poorly, show a lack of seriousness in his next sport event, only to completely perform and do everything well and right after that. It was a cycle we didn’t understand and we worried because we were paying a premium and thought consistency would have been much more reassuring that money wasn’t being wasted. Dr. Oparachukwu offered to help, and whatever he did, with him, seemed to help. My son listens and performs differently now, and I see him doing things, I believe they must have discussed and we are very happy with it.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">OF</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Olumide Fashola</div>
       <div class="vf-author-meta">44, Parent of Athlete (Nigeria)</div>
@@ -495,7 +484,6 @@
     <p>I had a short fuse and an anger problem. I used to and I’d get angry with referees and teammates too quickly. It was costing me play time, concentration and then too many cards. Dr. didn’t just help me “calm down”, he helped me take a deep dive into myself, helped me look at what was actually triggering me and my mind processes, helped with my understanding of myself, what I could do in the moment. I am a better and more informed and balanced player, because of the intervention, influence and understanding of Dr. Joshua Oparachukwu. I am a better manager of myself, the most important factor, multiple times over, than I was, only four months ago or under.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">EB</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Ethan Brooks</div>
       <div class="vf-author-meta">24, American Football (USA)</div>
@@ -511,7 +499,6 @@
     <p>After my injury, I had this habit where I will start games well and with lots of optimism, but I’ll soon see myself fading away if after all of my efforts, not much was immediately translating into what I wanted to see on the pitch and quickly. I like to think I am fast and that I am tough as nails, but without the bounce back I expected to see on the pitch, I would think to myself that I probably lost it already. That I just couldn’t cut it anymore and it made things frustrating and difficult for months. The funny thing is thoughts of how it was probably the same for everyone, who had an injury and bowed out of the sport, crept into my head. But out of the blue, I got a cold email, for some reason, I responded, took a chance to see whatever it was going to do, soon enough, when I look back, at what was happening in those months, before I got help, and retrospectively, I am glad I got that help because currently, my mindset is always crafted on “I’m in the Fight” of course, through Dr. Joshua’s help.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">JM</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Jake Morrison</div>
       <div class="vf-author-meta">26, Rugby (New Zealand)</div>
@@ -523,7 +510,6 @@
     <p>Athletics is all I have ever wanted to do. I wanted to be an athlete. Maybe earn an Olympic medal someday. But self-doubt, and the weight of our heritage as Kenyans-lol, were the biggest challenge for me. I worried if I could do it, a lot. My parents and family also did not help matters as they were also divided with some having high expectations and some advising me to focus on school and getting a scholarship to travel etc. Managing the expectations with other demands of the sport, life in Kenya as a student and other things, almost made me quit, altogether. It’s 2026, I haven’t quit, and I won’t be quitting, but I believe I have Dr. Joshua to thank among others because I met Dr. Joshua on LinkedIn and at a time that maybe if I didn’t get his professional look at things, I may have quit altogether and done something else. So, thanks again doc.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">AM</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Aisha Mohammed</div>
       <div class="vf-author-meta">23, Athletics – 100m (Kenya)</div>
@@ -535,7 +521,6 @@
     <p>After a bad run of form I was starting to doubt if I still belonged at this level. Talking it through helped me separate the results from the bigger picture. Im playing with a bit more freedom again. Not every game is perfect, some are still rough, but the fear is lower and that already helps me show more of what I can do.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">MS</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Mateo Silva</div>
       <div class="vf-author-meta">27, Football (Brazil)</div>
@@ -547,7 +532,6 @@
     <p>In the little time I worked with Dr. Joshua, while it didn’t turn me into a miracle or different player overnight, it stopped me from getting in my own way so much, as the overly worrisome and analytical person (in excess) that I am. I still have off days, plenty of them, where my mind wants to do what it wants, but I have much more measured control and resolve to do it all, after the lap, as against mid lap. Also, they don’t drag on as long. For me that was worth it. The bad moments pass faster and I can get back to moving even with more fluidity.</p>
   </div>
   <div class="vf-card-author">
-    <div class="vf-author-avatar">MC</div>
     <div class="vf-author-info">
       <div class="vf-author-name">Maira Campbell</div>
       <div class="vf-author-meta">22, Swimming (USA)</div>
@@ -667,52 +651,46 @@
 </section>
 
     <!-- ═══ HOW IT WORKS + 3-PILLAR METHOD (Interactive 2-Column Showcase + 6-Card Bento Grid) ═══ -->
-    <!-- ═══ 3-PILLAR PERFORMANCE METHOD (TIGHT SPACING - AS REQUESTED IN IMAGE 1) ═══ -->
-    <section id="pillars" class="pillars-section-tight">
+    <!-- ═══ 3-PILLAR METHOD (EXACT IMAGE 1 MATCH - TIGHT PADDING) ═══ -->
+    <section id="pillars" style="background:var(--cream,#F7F5EE);padding:52px 24px 60px;border-bottom:1px solid var(--border,#E4E0D8);">
       <div style="max-width:1160px;margin:0 auto;text-align:center;">
         <h2 class="section-title reveal" style="font-family:var(--font-display,serif);font-size:38px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;">The 3-Pillar Performance Method</h2>
         <div class="section-gold-rule" style="width:50px;height:2px;background:var(--gold,#C8A830);margin:0 auto 36px;"></div>
 
-        <div class="pillars-grid-tight">
+        <div class="pillars-grid" style="display:grid;grid-template-columns:repeat(3, 1fr);gap:36px;text-align:center;">
           <!-- Pillar 1 -->
-          <div class="pillar-card-tight">
-            <div>
-              <h3>Mental Clarity</h3>
-              <div class="pillar-rule"></div>
-              <p>Identify and remove psychological blocks. Build unshakeable focus even in the highest-stakes moments.</p>
-            </div>
-            <ul class="pillar-checks-tight">
-              <li>Structured mental assessment to pinpoint blocks</li>
-              <li>Proven focus techniques used by elite performers</li>
-              <li>Build a pre-performance mental routine that works</li>
+          <div class="pillar reveal" style="text-align:center;">
+            <h3 style="font-family:var(--font-display,serif);font-size:30px;font-weight:700;color:var(--gold,#C8A830);margin-bottom:8px;">Mental Clarity</h3>
+            <div class="pillar-rule" style="width:32px;height:2px;background:var(--gold,#C8A830);margin:0 auto 16px;border-radius:2px;"></div>
+            <p style="font-size:14px;color:var(--ink3,#555555);line-height:1.7;margin-bottom:20px;">Identify and remove psychological blocks. Build unshakeable focus even in the highest-stakes moments.</p>
+            <ul class="pillar-checks" style="list-style:none;text-align:left;display:inline-block;padding:0;margin:0;">
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Structured mental assessment to pinpoint blocks</span></li>
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Proven focus techniques used by elite performers</span></li>
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Build a pre-performance mental routine that works</span></li>
             </ul>
           </div>
 
           <!-- Pillar 2 -->
-          <div class="pillar-card-tight">
-            <div>
-              <h3>Resilience Systems</h3>
-              <div class="pillar-rule"></div>
-              <p>Structured tools to recover from errors fast. Reset immediately and keep performing at your peak.</p>
-            </div>
-            <ul class="pillar-checks-tight">
-              <li>Error reset protocols for immediate bounce-back</li>
-              <li>Pressure-inoculation drills for big moments</li>
-              <li>Confidence rebuilding framework after setbacks</li>
+          <div class="pillar reveal" style="transition-delay:.1s;text-align:center;">
+            <h3 style="font-family:var(--font-display,serif);font-size:30px;font-weight:700;color:var(--gold,#C8A830);margin-bottom:8px;">Resilience Systems</h3>
+            <div class="pillar-rule" style="width:32px;height:2px;background:var(--gold,#C8A830);margin:0 auto 16px;border-radius:2px;"></div>
+            <p style="font-size:14px;color:var(--ink3,#555555);line-height:1.7;margin-bottom:20px;">Structured tools to recover from errors fast. Reset immediately and keep performing at your peak.</p>
+            <ul class="pillar-checks" style="list-style:none;text-align:left;display:inline-block;padding:0;margin:0;">
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Error reset protocols for immediate bounce-back</span></li>
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Pressure-inoculation drills for big moments</span></li>
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Confidence rebuilding framework after setbacks</span></li>
             </ul>
           </div>
 
           <!-- Pillar 3 -->
-          <div class="pillar-card-tight">
-            <div>
-              <h3>Peak Consistency</h3>
-              <div class="pillar-rule"></div>
-              <p>The mental routines elite performers use to show up at their best, every single day.</p>
-            </div>
-            <ul class="pillar-checks-tight">
-              <li>Performance check-ins and progress tracking</li>
-              <li>Habit stacking for consistent high performance</li>
-              <li>Long-term mindset systems that last</li>
+          <div class="pillar reveal" style="transition-delay:.2s;text-align:center;">
+            <h3 style="font-family:var(--font-display,serif);font-size:30px;font-weight:700;color:var(--gold,#C8A830);margin-bottom:8px;">Peak Consistency</h3>
+            <div class="pillar-rule" style="width:32px;height:2px;background:var(--gold,#C8A830);margin:0 auto 16px;border-radius:2px;"></div>
+            <p style="font-size:14px;color:var(--ink3,#555555);line-height:1.7;margin-bottom:20px;">The mental routines elite performers use to show up at their best, every single day.</p>
+            <ul class="pillar-checks" style="list-style:none;text-align:left;display:inline-block;padding:0;margin:0;">
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Performance check-ins and progress tracking</span></li>
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Habit stacking for consistent high performance</span></li>
+              <li style="font-size:13px;color:var(--ink2,#333333);margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--gold,#C8A830);font-weight:700;">✓</span><span>Long-term mindset systems that last</span></li>
             </ul>
           </div>
         </div>

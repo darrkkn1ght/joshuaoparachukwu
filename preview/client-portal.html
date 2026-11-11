@@ -16,7 +16,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=20">
+  <link rel="stylesheet" href="/preview/css/style.css?v=25">
   <style>
     :root {
       --portal-navy: #00102A;
@@ -357,6 +357,16 @@
       <div class="user-avatar" id="portal-avatar">—</div>
       <button id="btn-portal-signout" onclick="handleClientSignOut()" style="display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;margin-left:8px;transition:all 0.2s;">
         Sign Out ⎋
+      </button>
+    </div>
+    <div class="nav-actions">
+      <a href="client-portal.html" class="nav-client-login-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Client Login</span>
+      </a>
+      <a href="services.html" class="nav-cta-btn">Book a Discovery Consultation</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>

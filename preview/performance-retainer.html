@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=20">
+  <link rel="stylesheet" href="/preview/css/style.css?v=25">
   <style>
     :root {
       --gold-glow: rgba(200, 168, 48, 0.22);
@@ -678,7 +678,16 @@
 
       <a href="about.html">About</a>
     </div>
-    <button onclick="openEnrolModal()" class="nav-cta">Enrol in Program →</button>
+    <div class="nav-actions">
+      <a href="client-portal.html" class="nav-client-login-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:3px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Client Login</span>
+      </a>
+      <a href="services.html" class="nav-cta-btn">Book a Discovery Consultation</a>
+      <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- ═══ HERO ═══ -->
