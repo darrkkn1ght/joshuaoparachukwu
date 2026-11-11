@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=30">
+  <link rel="stylesheet" href="/preview/css/style.css?v=31">
   <style>
     :root {
       --admin-navy: #00102A;
@@ -1102,9 +1102,10 @@
       const email = (prompt('Client email:') || '').trim();
       const role = (prompt('Sport / role (e.g. Footballer, Sprinter, Executive):') || '').trim();
       const now = Date.now();
+      const pin = String(Math.floor(1000 + Math.random() * 9000));
       const list = getClients();
       list.unshift({
-        id: 'cl_' + now.toString(36), name, email, phone: '', timezone: '', role, challenge: '',
+        id: 'cl_' + now.toString(36), name, email, pin, phone: '', timezone: '', role, challenge: '',
         registeredAt: now, paid: true, amount: 500, status: 'Active',
         totalCredits: 8, usedCredits: 0, bookedCredits: 0, availableCredits: 8,
         firstSessionDate: null, programStart: now, programEnd: now + 122 * 24 * 3600 * 1000,
@@ -1112,6 +1113,7 @@
       });
       saveClients(list);
       renderAll();
+      alert('Client enrolled! Portal login credentials:\nEmail: ' + email + '\nAccess PIN: ' + pin);
     }
 
     function addSpecialistPrompt() {
@@ -1145,6 +1147,7 @@
       if ([CLIENTS_KEY, SPEC_KEY].includes(e.key) && sessionStorage.getItem(SESSION_KEY) === '1') renderAll();
     });
   </script>
+  <script src="/preview/js/motion.js?v=1" defer></script>
 </body>
 
 </html>
