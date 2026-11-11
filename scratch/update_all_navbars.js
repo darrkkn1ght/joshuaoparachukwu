@@ -99,3 +99,4 @@ function processDir(dir) {
 
 processDir('preview');
 console.log('All preview pages updated!');
+

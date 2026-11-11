@@ -107,3 +107,4 @@ if (oldPillarsRegex.test(indexHtml)) {
 
 fs.writeFileSync('preview/index.html', indexHtml);
 console.log('Saved preview/index.html successfully');
+

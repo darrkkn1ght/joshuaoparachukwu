@@ -224,3 +224,4 @@ fs.writeFileSync('preview/css/style.css', css);
 fs.writeFileSync('css/style.css', css);
 fs.writeFileSync('style.css', css);
 console.log('Appended and synced CSS successfully! Length:', css.length);
+
