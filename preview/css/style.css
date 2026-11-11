@@ -7068,3 +7068,48 @@ nav {
 .nav-dropdown-wide::-webkit-scrollbar-track {
   background: #F4F2EC;
 }
+
+/* ═══ WRITTEN TESTIMONIALS SECTION (CLEAN AUTHENTIC DESIGN - NO PROFILE PICS, JUST NAME & REVIEW) ═══ */
+.written-filter-pill {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #DDD8CE;
+  background: #FFFFFF;
+  color: #4A5568;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.written-filter-pill:hover {
+  background: #F4EFE6;
+  color: #00102A;
+  border-color: #C8A830;
+}
+.written-filter-pill.active {
+  background: #00102A !important;
+  color: #FFFFFF !important;
+  border-color: #00102A !important;
+}
+.written-review-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.written-review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  border-color: #D8D2C4 !important;
+}
+@media (max-width: 768px) {
+  #written-testimonials {
+    padding: 56px 20px !important;
+  }
+  #writtenReviewsGrid {
+    grid-template-columns: 1fr !important;
+  }
+  .written-filter-pill {
+    padding: 6px 14px;
+    font-size: 12.5px;
+  }
+}
+

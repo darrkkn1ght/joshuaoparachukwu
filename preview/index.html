@@ -25,8 +25,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=26">
-  <link rel="stylesheet" href="/css/style.css?v=26">
+  <link rel="stylesheet" href="/preview/css/style.css?v=27">
+  <link rel="stylesheet" href="/css/style.css?v=27">
 </head>
 
 <body>
@@ -417,14 +417,696 @@
           </button>
 
           <!-- Centered Pagination Dots -->
+          
+          <!-- Centered Pagination Dots -->
           <div class="res-dots" id="resDots">
             <button class="res-dot active" data-slide="0" aria-label="Slide 1" type="button"></button>
             <button class="res-dot" data-slide="1" aria-label="Slide 2" type="button"></button>
             <button class="res-dot" data-slide="2" aria-label="Slide 3" type="button"></button>
           </div>
+
+          <!-- Direct Link to More Written Testimonials Under Slider -->
+          <div style="text-align:center;margin-top:36px;">
+            <a href="#written-testimonials" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--navy,#00102A);color:#FFFFFF;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.25s ease;box-shadow:0 4px 14px rgba(0,16,42,0.14);">
+              <span>More Reviews</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
+
+
+    
+    <!-- ═══ SECTION: MORE WRITTEN TESTIMONIALS (CLEAN AUTHENTIC REVIEWS - JUST NAME & REVIEW) ═══ -->
+    <section id="written-testimonials" style="background:#F9F8F5;padding:76px 32px;border-bottom:1px solid var(--border,#E4E0D8);">
+      <div id="more-testimonials" style="position:relative;top:-90px;visibility:hidden;"></div>
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:36px;">
+          <span class="section-label" style="display:inline-block;color:var(--gold,#C8A830);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Client Feedback</span>
+          <div class="section-rule" style="width:48px;height:2px;background:var(--gold,#C8A830);margin:0 auto 16px;"></div>
+          <h2 style="font-family:var(--font-display,Georgia,serif);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;line-height:1.25;">
+            More Testimonials &amp; Written Reflections
+          </h2>
+          <p style="font-size:15px;color:var(--ink2,#4A5568);max-width:680px;margin:0 auto;line-height:1.65;">
+            Authentic reflections from athletes, coaches, and sports executives across competitive football, athletics, court sports, and high-pressure environments.
+          </p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="written-reviews-filter" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+          <button type="button" class="written-filter-pill active" data-cat="all" onclick="filterWrittenReviews('all')">All Reviews (38)</button>
+          <button type="button" class="written-filter-pill" data-cat="football" onclick="filterWrittenReviews('football')">Football &amp; Pitch Sports</button>
+          <button type="button" class="written-filter-pill" data-cat="athletics" onclick="filterWrittenReviews('athletics')">Athletics &amp; Track</button>
+          <button type="button" class="written-filter-pill" data-cat="court" onclick="filterWrittenReviews('court')">Tennis, Court &amp; Aquatics</button>
+          <button type="button" class="written-filter-pill" data-cat="executive" onclick="filterWrittenReviews('executive')">Executive &amp; Sport Leadership</button>
+        </div>
+
+        <!-- Review Cards Grid -->
+        <div id="writtenReviewsGrid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:24px;">
+
+          <!-- Review 1: Abdulgaffar Okikiola -->
+          <div class="written-review-card" data-cat="football" data-index="0" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Once I experience a single bad touch, I was finished.  I’d just go quiet, stop making runs, stop calling for the ball, everything for the rest of the half match.. Like the mistake, I would carry it on my head like Gele, and it would sit on my head and I couldn’t shake it. After working with Dr. at the Liberty Stadium, Ibadan though I still mess up, of course I do, but I don’t disappear from the game, the same way anymore. I catch myself and try to get back into the game quicker. It’s not perfect every time but it’s better than before and that already helps.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Abdulgaffar Okikiola
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2: Marcus Reid -->
+          <div class="written-review-card" data-cat="football" data-index="1" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I kinda always get tight every time the crowd would start shouting or the scores were close. Because of how I react to noise, my body will just lock up a bit, shoulders up, legs heavy, you know that feeling. During the sessions, I learnt to approach it differently. Dr. Joshua helped me such that I do not let it take over completely anymore. It’s been a while now, since I felt that way. The last time was when I missed an open goal. I felt the nerves, the tightness and rush, but it don’t own me like before no more. I play through it now.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Marcus Reid
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3: Sarah Thompson -->
+          <div class="written-review-card" data-cat="football" data-index="2" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                It was after I consulted with dr. Joshua that I realized without gainsaying, that a coach could become part of the problem, maybe a key part of the problem, without ever realising it, if they ever do. Naturally, I am a go-getter kind of person and my reaction to athletes who weren’t meeting set pedestals, as I have now come to learn, wasn’t the best way to go about it, and may have been counter-productive, at least at that material time. Basically, I wasn’t making the athletes get to where I wanted them to get to. Consulting with him made me more aware of the true limitations in my method. My athletes have since begun to respond better than they used to, partly and largely because of some consulting I did with someone across the ocean. Small change from my side but it affected the entire atmosphere. Cheers.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Sarah Thompson
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4: David O -->
+          <div class="written-review-card" data-cat="football" data-index="3" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                As coach, I had a set of players that I’ll always get frustrated with, because these players, they would just not re-engage after losing the ball. Instead, they would seek to blame each other, instead of doing what was necessary to regain possession. Doc, worked with a few of them and the difference was clear after some weeks. They started recovering quicker, the whole mood on the pitch and in the dressing room got lighter, better, many times better. I was surprised and impressed. Less drama after mistakes, more focus on the next thing. That really helped the group, thanks to Doc’s intervention.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                David O
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5: Susan Hall -->
+          <div class="written-review-card" data-cat="athletics" data-index="4" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I came across one of his posts, and I have to admit that I always thought it was all about and was going to be another motivational talk like the usual stuff people say. But in the video where he talked about mistake and stuff like that, and coming back from mistakes, which was something I struggled with at the time, I had an initial consultation and it went well. I have since been talking to him frequently, since then kinda. We looked at what actually happens in my head after a mistake and how long I stay stuck on it. That alone made a difference in my play and how I came to understand my performance and sport (where there are no do-overs). I’m not perfect now, I still get angry with myself, but the spiral is shorter. I can get back to the next action faster most times, thanks to my work with Dr Josh.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Susan Hall
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6: Andre Williams -->
+          <div class="written-review-card" data-cat="athletics" data-index="5" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I signed up to work with Josh because on certain occasions, I’d found myself distracted and struggling greatly under high pressure. It affected how I related with members of my family and members of my team. Dr. made some small tweaks here and there, that I was in agreement with, and by far, the season, has been my best, as I hoped it would, and set out to make it be. Thanks.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Andre Williams
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 7: James Whitaker -->
+          <div class="written-review-card" data-cat="athletics" data-index="6" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I was initially just trying to get selected and so I didn’t really believe in this stuff. I only went because the coach pushed it and I didn’t want problems, so I wanted to just it done and be done with. I’d just sit and talk. After a few sessions I realised somehow, that I was making simple things harder for myself, in my own head. I didn’t have any issues; I was my own issue. I was in my way. It was explained to me and once I saw that, things got easier on the pitch. I am still work in progress, I am not all there yet, but I am better for it, in heart and mind, soul and spirit. I understand myself more.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                James Whitaker
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 8: Tomás Herrera -->
+          <div class="written-review-card" data-cat="athletics" data-index="7" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I’m a shy person and so my confidence whenever I am outdoors can be a a yo-yo, up and down like a yo-yo. Sometimes, I have a good training week, causing me to felt like a king. After even one bad game and everything felt useless, like why am I even here. Working with Dr. Josh helped me stop linking my whole worth, esteem and value, to result. I still want results and care a lot, maybe too much sometimes, but not in that crazy way where one play spoils me for so long before I become good again. Its more balanced now.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Tomás Herrera
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 9: Tunde Bakare -->
+          <div class="written-review-card" data-cat="football" data-index="8" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I play safe a lot. I am not one to take risks, in life, let alone in sport. I had a nickname sef, from my always trying to always play it safe and avoid injury. I don’t contest aerial balls that are not clear. My time with Doki, helped me in such a way that I now infuse a small bit of aggression into my playing. Just a bit though and because I am trying to get scouted. Because I am just not interested in getting injury, in a third world country. I would be left alone. So, I am admittedly a bit more aggressive even when the stakes are high, currently, but with greater wisdom and application, learnt in my sessions with doctor Joshua. When I get abroad, maybe I can take bigger risks, but for now, I still feel the need to play safe. But Dr. Joshua Oparachukwu helped me.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Tunde Bakare
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 10: Ibrahim Yusuf -->
+          <div class="written-review-card" data-cat="football" data-index="9" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                We had talent in my team, but we would fall apart even when the game was good, and especially when the game got hard or became messy. You know those matches where everything is against you or is just not going right. Doki, worked with the squad on how we react when things go against us and it fixed lots of things. Some boys I was struggling with, came alive. Especially in the second half of the game, which was where they often played the sloppiest. Even the management were pleased, when they see it, especially in the second half of tough matches.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Ibrahim Yusuf
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 11: Kwame Asante -->
+          <div class="written-review-card" data-cat="football" data-index="10" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                The way my mind works, is that I used to process and over-process things. So, I could be playing and I’d be thinking of plenty things, including my career and what the fans are thinking about me. If I fail to score, I carry that weight into my next matches as I am disappointed with myself. My playing was not automatic. I would be thinking about plenty things, while the game was moving on. But I have improved now, if not even totally cured the issue, because once I start thinking, I immediately work at diverting my mind and focusing on what is in front of me. I catch myself doing the strategy Joshua taught more often over time, and I can reset a bit faster now and it has helped my overall contribution in games.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Kwame Asante
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 12: Elena Vargas -->
+          <div class="written-review-card" data-cat="football" data-index="11" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Talking about what’s going on in your head isn’t easy, especially with a language barrier. Some sessions honestly felt a bit awkward at first. But I understand he used to be a language teacher and we made it through each session with something I could take away and had to do that was practical. He has no judgement. Just looking at my patterns carefully and identifying what to try next time. That made it usable and I kept coming back.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Elena Vargas
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 13: Daniel Okafor -->
+          <div class="written-review-card" data-cat="court" data-index="12" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I met Dr. Oparachukwu in 2026 when he carried out a mistake intervention study in my club. After the intervention, I took his number and I have kept communicating with him ever since. Before I met him, I played in a different club and only recently transferred into the club I was playing at, where I then met him. I wasn’t getting as much play time, in my new club, as I was in my former club, and when I am eventually, subbed in, I don’t get to touch the ball as often as I’d want, or used to, and this began to erode on my confidence and my decision-making when I eventually got the ball. I was getting slower and slower. I played automatically before, but I began to second-guess simple passes and then the chance is gone. He really helped me. He guided me, until I was able to find myself again and my place in the new team. Session after session was a success and helped me trust myself more and my first idea on the ball more often.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Daniel Okafor
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 14: Sofia Mendes -->
+          <div class="written-review-card" data-cat="court" data-index="13" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Before big games, I’d get into a critical mode where I would overthink everything, from formation, my role, what people would say if I failed, social media, the whole thing. I was showing up steadily, but I was always out of it and very exhausted. Josh helped me care, cut a lot of that noise, prepare properly, and not be as drained off as before kick-off. I have more energy left for the actual game.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Sofia Mendes
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 15: Michael Adewale -->
+          <div class="written-review-card" data-cat="court" data-index="14" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I had a player who was very talented but was a problem to work with. He never adhered even to the simplest of directives and made everything difficult for himself and the team. After another one of those shouting matchs we had, about getting him to align, I was eventually done with him, but I made it such that before I did, I spoke with Dr. Oparachukwu, who I had consulted on some other matters before. He asked that the player be mandated to consult/speak with him, and then the player showed up early the next training day. I couldn’t believe it, because he was not going to be playing in that particular game, but there he was. He also began showing up more consistently and early, and he’s coming full circle now. I am glad for one that I did not let him go, immediately, without talking to Dr. Oparachukwu Joshua, and also, that dr. Oparachukwu took time out to help as he is oft to.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Michael Adewale
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 16: Kofi M. -->
+          <div class="written-review-card" data-cat="court" data-index="15" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Being a long-jump athlete, I used to hate watching my own highlights because I only saw the mistakes. I always see what I didn’t do right, and or what I could have done differently. There was no praise of self I sometimes get very annoyed with myself. I thought it was dirty to think I did something right. Engaging in such, I thought, meant, one wouldn’t succeed. I saw a few of Dr. Joshua’s videos on YouTube, consumed many of his shorts and some of his TikTok videos, gained some insight from them and I eventually sent him a message. He helped me come to a different understanding and I am better off for it. Thanks
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Kofi M.
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 17: Lucas Moreau -->
+          <div class="written-review-card" data-cat="executive" data-index="16" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I was billed to be scouted, but then I had a long injury and the physical side came back fine, but I would suddenly become overwhelmed mid game because, even out of nowhere. I would find myself scared of going in hard again, scared of the same thing happening. The work Doctor Joshua did with me, helped me trust my body and training more. I learnt to give the other opposing athletes grace also. Also, it helped me trust my training more. I am happy and in fact grateful I didn’t have to continue with it alone, the way I was, because it was a sorry state and a sorry sight.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Lucas Moreau
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 18: Priya Sharma -->
+          <div class="written-review-card" data-cat="executive" data-index="17" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I used to compare myself to other players constantly. If someone was doing better, I would start doubting myself immediately. The sessions helped me focus more on my own process. I still look around, it’s hard not to, but it doesn’t derail me as quickly as before. I stay more focused with my own game.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Priya Sharma
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 19: Olumide Fashola -->
+          <div class="written-review-card" data-cat="executive" data-index="18" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I casually met Dr. Joshua in a barber shop, in Lagos Nigeria and as we got talking, we somehow got into a conversation about the Super Eagles and then what ordinarily should have obtained, and I just chipped in how I even had an issue as a parent, paying millions in private school fees, on the island, and that I had a kid with some athletic potential, that I felt was getting frustrated (I too was getting frustrated) because across his academics and sports life, he was always fluctuating. He’d do well today, then overthink in exams the next, performing poorly, show a lack of seriousness in his next sport event, only to completely perform and do everything well and right after that. It was a cycle we didn’t understand and we worried because we were paying a premium and thought consistency would have been much more reassuring that money wasn’t being wasted. Dr. Oparachukwu offered to help, and whatever he did, with him, seemed to help. My son listens and performs differently now, and I see him doing things, I believe they must have discussed and we are very happy with it.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Olumide Fashola
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 20: Ethan Brooks -->
+          <div class="written-review-card" data-cat="executive" data-index="19" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I had a short fuse and an anger problem. I used to and I’d get angry with referees and teammates too quickly. It was costing me play time, concentration and then too many cards. Dr. didn’t just help me “calm down”, he helped me take a deep dive into myself, helped me look at what was actually triggering me and my mind processes, helped with my understanding of myself, what I could do in the moment. I am a better and more informed and balanced player, because of the intervention, influence and understanding of Dr. Joshua Oparachukwu. I am a better manager of myself, the most important factor, multiple times over, than I was, only four months ago or under.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Ethan Brooks
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 21: Jake Morrison -->
+          <div class="written-review-card" data-cat="court" data-index="20" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                After my injury, I had this habit where I will start games well and with lots of optimism, but I’ll soon see myself fading away if after all of my efforts, not much was immediately translating into what I wanted to see on the pitch and quickly. I like to think I am fast and that I am tough as nails, but without the bounce back I expected to see on the pitch, I would think to myself that I probably lost it already. That I just couldn’t cut it anymore and it made things frustrating and difficult for months. The funny thing is thoughts of how it was probably the same for everyone, who had an injury and bowed out of the sport, crept into my head. But out of the blue, I got a cold email, for some reason, I responded, took a chance to see whatever it was going to do, soon enough, when I look back, at what was happening in those months, before I got help, and retrospectively, I am glad I got that help because currently, my mindset is always crafted on “I’m in the Fight” of course, through Dr. Joshua’s help.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Jake Morrison
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 22: Aisha Mohammed -->
+          <div class="written-review-card" data-cat="court" data-index="21" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Athletics is all I have ever wanted to do. I wanted to be an athlete. Maybe earn an Olympic medal someday. But self-doubt, and the weight of our heritage as Kenyans-lol, were the biggest challenge for me. I worried if I could do it, a lot. My parents and family also did not help matters as they were also divided with some having high expectations and some advising me to focus on school and getting a scholarship to travel etc. Managing the expectations with other demands of the sport, life in Kenya as a student and other things, almost made me quit, altogether. It’s 2026, I haven’t quit, and I won’t be quitting, but I believe I have Dr. Joshua to thank among others because I met Dr. Joshua on LinkedIn and at a time that maybe if I didn’t get his professional look at things, I may have quit altogether and done something else. So, thanks again doc.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Aisha Mohammed
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 23: Mateo Silva -->
+          <div class="written-review-card" data-cat="court" data-index="22" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                After a bad run of form I was starting to doubt if I still belonged at this level. Talking it through helped me separate the results from the bigger picture. Im playing with a bit more freedom again. Not every game is perfect, some are still rough, but the fear is lower and that already helps me show more of what I can do.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Mateo Silva
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 24: Maira Campbell -->
+          <div class="written-review-card" data-cat="court" data-index="23" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                In the little time I worked with Dr. Joshua, while it didn’t turn me into a miracle or different player overnight, it stopped me from getting in my own way so much, as the overly worrisome and analytical person (in excess) that I am. I still have off days, plenty of them, where my mind wants to do what it wants, but I have much more measured control and resolve to do it all, after the lap, as against mid lap. Also, they don’t drag on as long. For me that was worth it. The bad moments pass faster and I can get back to moving even with more fluidity.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Maira Campbell
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 25: Adesola Joshua Ayomide -->
+          <div class="written-review-card" data-cat="executive" data-index="24" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I used to be the kind of player who let one error snowball into three. It was frustrating because I knew I was better than that. Working with Dr. Joshua gave me something practical to use in the moment, not just theory. I stayed on the pitch mentally even when things went wrong physically.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Adesola Joshua Ayomide
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 26: Alarape Bashit -->
+          <div class="written-review-card" data-cat="executive" data-index="25" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I was reacting out of panic or emotion, not making the decisions I knew I was capable of, especially in tight moments. I think differently on the pitch now. I walk into games with a different kind of confidence. It's quieter but more solid.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Alarape Bashit
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 27: Hossein Salama -->
+          <div class="written-review-card" data-cat="executive" data-index="26" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I have known Joshua since the COVID years, long before he became Dr. Joshua Oparachukwu. We first met on Preply, where he was working as an English language instructor. At the time, I was a high school athlete in the United States, dealing with anxiety, confidence issues, and the pressure that comes with competitive sport. What began as language lessons gradually became something much more valuable to me.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Hossein Salama
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 28: Laura Johnson -->
+          <div class="written-review-card" data-cat="executive" data-index="27" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                When I started working in sport management straight out of school, I quickly realised that the demands of the job were quite different from what I had experienced during my training. The pace was overwhelming. I struggled with administrative responsibilities, keeping track of tasks, and following up on important assignments. At the same time, I was dealing with some personal challenges involving my relationship and family, which made everything even more difficult.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Laura Johnson
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 29: Steve Benjamin -->
+          <div class="written-review-card" data-cat="executive" data-index="28" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I used to struggle a lot with my confidence as a high school athlete. I would perform really well during practice, but whenever it was time to compete, I just couldn't reproduce the same level of performance. It became frustrating because I knew what I was capable of, and I expected so much more from myself. Eventually, I started questioning my abilities and even considered quitting because I felt I wasn't good enough.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Steve Benjamin
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 30: Sydney Nzuzi -->
+          <div class="written-review-card" data-cat="executive" data-index="29" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                When I first considered working with Dr. Joshua, I was a little skeptical. I wasn't entirely sure about receiving performance psychology support online, and I also had concerns about the cost. But I decided to give it a try, partly because I thought the online arrangement might be more affordable.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Sydney Nzuzi
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 31: David Wells -->
+          <div class="written-review-card" data-cat="executive" data-index="30" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I first came across Dr. Joshua through an advertisement, and I'll admit I was skeptical about working with a performance psychologist online. I had always imagined that this kind of support would be more effective in person. But I was curious, so I decided to give it a try. Initially, I thought it would simply be an additional source of support for my performance. I never imagined how important it would eventually become to the way I approach my sport.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                David Wells
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 32: Bose Oluwasebikon -->
+          <div class="written-review-card" data-cat="executive" data-index="31" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I was introduced to Dr. Joshua by a friend and teammate who had already worked with him. She spoke highly of her experience and encouraged me to reach out, so I decided to give it a try.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Bose Oluwasebikon
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 33: González Roca -->
+          <div class="written-review-card" data-cat="executive" data-index="32" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Working with Dr. Joshua has been a privilege, and having experienced his services firsthand, I believe performance psychology is something anyone who is serious about improving their performance should consider.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                González Roca
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 34: Ezekiel Badejo -->
+          <div class="written-review-card" data-cat="executive" data-index="33" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                Dr. Joshua was the first performance psychologist I ever worked with, and I'm genuinely glad that my first experience was with him. From the beginning, he was professional, approachable, and very attentive to the challenges I brought to him. He took the time to understand my concerns and helped me work through them with practical guidance that made a difference.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Ezekiel Badejo
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 35: Ashanti Cole -->
+          <div class="written-review-card" data-cat="executive" data-index="34" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                For a long time, I never really considered working with a performance psychologist. I had been involved in sport for years, and I believed that my experience was enough to help me manage whatever challenges came my way. When I came across Dr. Joshua's advertisement, I was initially skeptical. I wasn't convinced that I needed psychological support, but I decided to reach out and see what he had to offer.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Ashanti Cole
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 36: Caleb Matias -->
+          <div class="written-review-card" data-cat="executive" data-index="35" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I'll keep this short, simple, and straight to the point.
+                Joshua is exactly who he says he is. One hundred percent.
+                That's it.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Caleb Matias
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 37: Carlos Rivera -->
+          <div class="written-review-card" data-cat="executive" data-index="36" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                My first of many sessions with señor Joshua felt different, because I'd tried mindset stuff before, in person and off watching TikTok and shorts. But it never lasted more than a week before wearing off. Many tools and routines we developed together are what I still use every week. Above all, that consistency is new for me and it keeps helping.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Carlos Rivera
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 38: Laila Hassan -->
+          <div class="written-review-card" data-cat="executive" data-index="37" style="background:#FFFFFF;border:1px solid #E8E5DF;border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.03);transition:transform 0.25s ease, box-shadow 0.25s ease;display:none;">
+            <div>
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;font-style:normal;">“</div>
+              <p style="font-size:14.5px;line-height:1.72;color:var(--ink2,#2D3748);margin:0 0 20px;font-style:italic;">
+                I normally was always overthinking my preparation so much that by game day I was already tired. Checking everything ten times, thinking about what could go wrong. Doc helped me simplify what I focus on. I still work hard, maybe even harder, but I'm not wasting energy on things I can't control. I feel fresher going into matches now.
+              </p>
+            </div>
+            <div style="padding-top:14px;border-top:1px solid #ECE8E0;">
+              <div style="font-family:var(--font-display,Georgia,serif);font-size:16px;font-weight:700;color:var(--navy,#00102A);line-height:1.2;">
+                Laila Hassan
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expand / Collapse All Button -->
+        <div style="text-align:center;margin-top:36px;">
+          <button id="toggleMoreReviewsBtn" type="button" onclick="toggleAllWrittenReviews()" style="display:inline-flex;align-items:center;gap:8px;padding:12px 30px;background:#FFFFFF;border:1.5px solid var(--navy,#00102A);color:var(--navy,#00102A);border-radius:999px;font-size:14.5px;font-weight:600;cursor:pointer;transition:all 0.25s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+            <span id="toggleReviewsText">Show All 38 Client Reviews (+29 More)</span>
+            <svg id="toggleReviewsIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.3s ease;"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let isAllReviewsExpanded = false;
+      let activeReviewsFilter = 'all';
+
+      function filterWrittenReviews(cat) {
+        activeReviewsFilter = cat;
+        document.querySelectorAll('.written-filter-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-cat') === cat);
+        });
+
+        const cards = document.querySelectorAll('#writtenReviewsGrid .written-review-card');
+        let visibleCount = 0;
+        cards.forEach((card, idx) => {
+          const cardCat = card.getAttribute('data-cat');
+          const matches = (cat === 'all' || cardCat === cat);
+          if (!matches) {
+            card.style.display = 'none';
+          } else {
+            if (isAllReviewsExpanded || cat !== 'all') {
+              card.style.display = 'flex';
+              visibleCount++;
+            } else {
+              if (idx < 9) {
+                card.style.display = 'flex';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            }
+          }
+        });
+
+        const toggleBtn = document.getElementById('toggleMoreReviewsBtn');
+        if (toggleBtn) {
+          toggleBtn.style.display = (cat === 'all') ? 'inline-flex' : 'none';
+        }
+      }
+
+      function toggleAllWrittenReviews() {
+        isAllReviewsExpanded = !isAllReviewsExpanded;
+        const text = document.getElementById('toggleReviewsText');
+        const icon = document.getElementById('toggleReviewsIcon');
+        const cards = document.querySelectorAll('#writtenReviewsGrid .written-review-card');
+
+        if (isAllReviewsExpanded) {
+          cards.forEach(card => card.style.display = 'flex');
+          if (text) text.textContent = 'Show Fewer Testimonials';
+          if (icon) icon.style.transform = 'rotate(180deg)';
+        } else {
+          cards.forEach((card, idx) => {
+            card.style.display = idx < 9 ? 'flex' : 'none';
+          });
+          if (text) text.textContent = 'Show All 38 Client Reviews (+29 More)';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+          const sec = document.getElementById('written-testimonials');
+          if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    </script>
 
 
     <!-- ═══ SECTION 03: VIDEO TESTIMONIALS (6-VIDEO ARRANGEMENT) ═══ -->
@@ -903,74 +1585,7 @@
     <!-- ═══ SIGNUP + QUOTE ═══ -->
     
 
-    <!-- ═══ SECTION 07: MORE TESTIMONIALS (REVIEWS 37, 38 & VERIFIED VIDEO ATHLETE QUOTES) ═══ -->
-<section id="more-testimonials" style="background:var(--cream2,#F3F0EB);padding:84px 48px;border-top:1px solid var(--border,#E4E0D8);border-bottom:1px solid var(--border,#E4E0D8);">
-  <div style="max-width:1320px;margin:0 auto;">
-    <div class="vf-section-head" style="text-align:center;margin-bottom:38px;">
-      <span class="section-label" style="display:block;color:var(--gold,#C8A830);margin-bottom:8px;">Client Feedback</span>
-      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;">
-        More Testimonials
-      </h2>
-      <div class="section-gold-rule" style="margin:0 auto 16px;"></div>
-      <p style="font-size:15.5px;color:var(--ink2,#4A5568);max-width:720px;margin:0 auto;line-height:1.65;">
-        Continuous reports from international competition, tactical resets, and season-long performance retainers.
-      </p>
-    </div>
-
-    <div class="vf-reviews-grid-3" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
-      <!-- Review 37: Carlos Rivera -->
-      <div class="vf-review-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 16px rgba(0,0,0,0.03);">
-        <div>
-          <div style="color:var(--gold,#C8A830);font-size:16px;margin-bottom:10px;">★★★★★</div>
-          <p style="font-size:14.5px;line-height:1.7;color:var(--ink2,#334155);font-style:italic;margin-bottom:16px;">
-            "My first of many sessions with señor Joshua felt different, because I'd tried mindset stuff before, in person and off watching TikTok and shorts. But it never lasted more than a week before wearing off. Many tools and routines we developed together are what I still use every week. Above all, that consistency is new for me and it keeps helping."
-          </p>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #F1F5F9;padding-top:14px;">
-          <div style="width:42px;height:42px;border-radius:50%;background:#00102A;color:#FFE484;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;">CR</div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy,#00102A);">Carlos Rivera</div>
-            <div style="font-size:12px;color:var(--ink3,#718096);">27 yrs · Football (Mexico)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 38: Laila Hassan -->
-      <div class="vf-review-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 16px rgba(0,0,0,0.03);">
-        <div>
-          <div style="color:var(--gold,#C8A830);font-size:16px;margin-bottom:10px;">★★★★★</div>
-          <p style="font-size:14.5px;line-height:1.7;color:var(--ink2,#334155);font-style:italic;margin-bottom:16px;">
-            "I normally was always overthinking my preparation so much that by game day I was already tired. Checking everything ten times, thinking about what could go wrong. Doc helped me simplify what I focus on. I still work hard, maybe even harder, but I'm not wasting energy on things I can't control. I feel fresher going into matches now."
-          </p>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #F1F5F9;padding-top:14px;">
-          <div style="width:42px;height:42px;border-radius:50%;background:#00102A;color:#FFE484;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;">LH</div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy,#00102A);">Laila Hassan</div>
-            <div style="font-size:12px;color:var(--ink3,#718096);">25 yrs · Tennis (Egypt)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Verified Athlete: Oluwoye Martins Eniola -->
-      <div class="vf-review-card" style="background:#fff;border:1px solid #E4E0D8;border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 16px rgba(0,0,0,0.03);">
-        <div>
-          <div style="color:var(--gold,#C8A830);font-size:16px;margin-bottom:10px;">★★★★★</div>
-          <p style="font-size:14.5px;line-height:1.7;color:var(--ink2,#334155);font-style:italic;margin-bottom:16px;">
-            "The sessions gave me a completely new perspective on match pressure. I no longer panic when we concede early or when the referee makes an unfavorable call. My game is calmer and far more decisive."
-          </p>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #F1F5F9;padding-top:14px;">
-          <div style="width:42px;height:42px;border-radius:50%;background:#00102A;color:#FFE484;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px;">OE</div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy,#00102A);">Oluwoye Martins Eniola</div>
-            <div style="font-size:12px;color:var(--ink3,#718096);">Forward · Professional Footballer</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    
 
     <section id="signup">
       <div class="signup-grid">
