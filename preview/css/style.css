@@ -7131,6 +7131,33 @@ nav {
   transform: scale(1.08);
   box-shadow: 0 0 0 4px rgba(200, 168, 48, 0.25);
 }
+
+/* ═══ GLOBAL CANONICAL NAVBAR COMFORT & FIT ═══ */
+nav {
+  padding: 0 clamp(16px, 2.5vw, 36px) !important;
+  box-sizing: border-box !important;
+}
+.nav-links {
+  gap: clamp(12px, 1.4vw, 20px) !important;
+}
+.nav-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+.nav-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  padding: 8px 18px !important;
+  font-size: 13px !important;
+}
+.nav-client-portal-btn {
+  display: none !important;
+}
 .written-review-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
