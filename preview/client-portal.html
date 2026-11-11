@@ -16,7 +16,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=29">
+  <link rel="stylesheet" href="/preview/css/style.css?v=30">
   <style>
     :root {
       --portal-navy: #00102A;
@@ -919,7 +919,7 @@
       document.getElementById('stat-remaining').textContent = remaining;
       document.getElementById('ledger-total-label').textContent = total + ' Total Sessions';
 
-      // Next-step card (Strictly displays Your Local Time — never Practitioner Time)
+      // Next-step card (Strictly displays Your Local Time, never Practitioner Time)
       const label = document.getElementById('next-appt-label');
       const title = document.getElementById('next-appt-title');
       const text = document.getElementById('next-appt-text');
@@ -1078,7 +1078,7 @@
 
     function handleRescheduleRequest() {
       const meetUrl = getStandingMeetLink(client);
-      const subject = encodeURIComponent('Retainer Consultation Reschedule Request — ' + (client ? client.name : 'Client'));
+      const subject = encodeURIComponent('Retainer Consultation Reschedule Request: ' + (client ? client.name : 'Client'));
       const body = encodeURIComponent(
         'Hello Dr. Joshua,\n\n' +
         'I would like to request a reschedule for our upcoming consultation under Section 7.4 (24-hour notice policy).\n\n' +

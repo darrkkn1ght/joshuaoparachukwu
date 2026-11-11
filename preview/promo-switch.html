@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=29">
+  <link rel="stylesheet" href="/preview/css/style.css?v=30">
   <style>
     body {
       background: var(--cream);
@@ -483,7 +483,7 @@
             </div>
             <div id="status-badge" class="status-pill inactive">
               <span class="status-dot"></span>
-              <span id="status-badge-text">INACTIVE · STANDARD PAID PRICING ($30–$150)</span>
+              <span id="status-badge-text">INACTIVE · STANDARD PAID PRICING ($30 to $150)</span>
             </div>
           </div>
           <div style="display:flex;gap:10px;align-items:center;">
@@ -766,7 +766,7 @@
         timestampsEl.innerHTML = 'Started: <strong>' + startStr + '</strong> &nbsp;·&nbsp; Auto-Expires: <strong>' + endStr + '</strong>';
       } else {
         badge.className = 'status-pill inactive';
-        badgeText.textContent = 'INACTIVE · STANDARD PAID PRICING ($30–$150)';
+        badgeText.textContent = 'INACTIVE · STANDARD PAID PRICING ($30 to $150)';
         btnOn.innerHTML = '<span>⚡ Turn ON 48-Hour Free Promo ($0)</span>';
         timestampsEl.textContent = 'Promo is currently OFF. Visitors on the services page see standard paid prices ($30, $75, $100, $150).';
       }

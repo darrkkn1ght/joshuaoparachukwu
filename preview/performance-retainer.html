@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=29">
+  <link rel="stylesheet" href="/preview/css/style.css?v=30">
   <style>
     :root {
       --gold-glow: rgba(200, 168, 48, 0.22);
@@ -36,7 +36,7 @@
         linear-gradient(180deg, rgba(22, 52, 100, 0.88) 0%, rgba(33, 74, 138, 0.84) 55%, rgba(23, 54, 104, 0.94) 100%),
         url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1600&q=85') center/cover no-repeat;
       color: #fff;
-      padding: 138px 24px 84px;
+      padding: 64px 24px 72px;
       position: relative;
       overflow: hidden;
       border-bottom: 3px solid var(--gold);
@@ -191,8 +191,8 @@
     }
 
     .lead-box-wide-wrap {
-      width: 94%;
-      max-width: 1280px;
+      width: 96%;
+      max-width: 1380px;
       margin: 32px auto 0;
     }
 
@@ -203,10 +203,10 @@
       border-top: 1px solid rgba(200, 168, 48, 0.22);
       border-bottom: 1px solid rgba(200, 168, 48, 0.22);
       border-radius: 12px;
-      padding: 36px 52px;
+      padding: 26px 40px;
       margin-bottom: 22px;
-      font-size: 19px;
-      line-height: 1.82;
+      font-size: clamp(16px, 1.18vw, 18px);
+      line-height: 1.62;
       color: var(--navy);
       font-family: var(--font-display);
       box-shadow: 0 10px 30px rgba(0, 16, 42, 0.05);
@@ -360,6 +360,8 @@
       padding: 28px 26px;
       transition: all 0.25s ease;
       position: relative;
+      border-top: 3px solid var(--gold, #C8A830);
+      box-shadow: 0 8px 24px rgba(0, 16, 42, 0.05);
     }
 
     .feature-card:hover {
@@ -404,7 +406,7 @@
     }
 
     .audience-inner {
-      max-width: 1040px;
+      max-width: 1240px;
       margin: 0 auto;
     }
 
@@ -721,7 +723,7 @@
           HOW THE PROGRAM WORKS
         </a>
         <a href="#reviews" class="btn-outline-hero" style="border-color:rgba(200,168,48,0.6);color:var(--gold);">
-          ★ GO STRAIGHT TO REVIEWS ↓
+          ★ GO STRAIGHT TO TESTIMONIALS ↓
         </a>
       </div>
     </div>
@@ -1003,7 +1005,7 @@
           </div>
           <h3 class="feat-title">Included Specialist Sessions (Up to 2)</h3>
           <p class="feat-desc">
-            Where appropriate and upon mutual agreement, up to two consultations may be delivered by an affiliated qualified specialist—arranged and funded directly by the practice.
+            Where appropriate and upon mutual agreement, up to two consultations may be delivered by an affiliated qualified specialist, arranged and funded directly by the practice.
           </p>
         </div>
       </div>
@@ -1011,7 +1013,7 @@
       <!-- Direct Enrol CTA under What You Get -->
       <div style="text-align:center;margin-top:44px;">
         <a href="#pricing" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 6px 20px rgba(200,168,48,0.28);transition:all 0.25s ease;">
-          <span>Enrol in 4-Month Retainer Program</span>
+          <span>Enrol Now</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -1042,7 +1044,7 @@
       <!-- Direct Enrol CTA under Who This Is For -->
       <div style="text-align:center;margin-top:40px;">
         <a href="#pricing" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 6px 20px rgba(200,168,48,0.28);transition:all 0.25s ease;">
-          <span>Apply for Retainer Advisory</span>
+          <span>Enrol Now</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -1054,7 +1056,7 @@
     <span class="section-label">Step-by-Step Client Journey</span>
     <div class="section-rule"></div>
     <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin-bottom:14px;">
-      How Enrolment Works
+      How It Works
     </h2>
     <p style="font-size:15px;color:var(--ink3);max-width:600px;line-height:1.7;">
       From initial checkout to your final consultation, your engagement follows a clear, predictable professional protocol.
@@ -1109,14 +1111,16 @@
         </div>
       </div>
     
-      <!-- Direct Enrol CTA under How Enrolment Works -->
+      </div>
+
+    <!-- Direct Enrol CTA under How Enrolment Works -->
       <div style="text-align:center;margin-top:44px;">
         <a href="#pricing" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 6px 20px rgba(200,168,48,0.28);transition:all 0.25s ease;">
-          <span>Complete Intake &amp; Begin Retainer</span>
+          <span>Enrol Now</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
-    </div>
+    
   </section>
 
     <!-- ═══ REVIEWS (Client Testimonials - Football, Athletics, Sport Management) ═══ -->
@@ -1437,7 +1441,7 @@
     <div class="faq-item">
       <div class="faq-q">How are affiliated specialist sessions handled? <span>+</span></div>
       <div class="faq-a">
-        If your performance assessment indicates a need for specialized expertise (e.g., specific clinical psychology, biomechanical, or tactical domains), up to two of your eight sessions may be allocated to an affiliated qualified specialist. The practice covers their fees directly—there is no extra cost to you, and your affirmative consent is always required prior to booking.
+        If your performance assessment indicates a need for specialized expertise (e.g., specific clinical psychology, biomechanical, or tactical domains), up to two of your eight sessions may be allocated to an affiliated qualified specialist. The practice covers their fees directly, with no extra cost to you, and your affirmative consent is always required prior to booking.
       </div>
     </div>
 
@@ -1701,7 +1705,7 @@
       const start = startTs ? new Date(startTs) : new Date(Date.now() + 24 * 3600 * 1000);
       const end = new Date(start.getTime() + 45 * 60 * 1000);
       const fmtGCal = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-      const title = `Performance Retainer Session ${sessionNum || 1} – ${clientName} & Dr. Joshua Oparachukwu`;
+      const title = `Performance Retainer Session ${sessionNum || 1}: ${clientName} & Dr. Joshua Oparachukwu`;
       const details = `4-Month Individual Performance Development Retainer Consultation (45 mins).\n\nStanding Google Meet Link (used for all sessions):\n${meetUrl}\n\nClient: ${clientName} (${clientEmail || ''})`;
       return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${fmtGCal(start)}/${fmtGCal(end)}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(meetUrl)}&add=${encodeURIComponent('oparachukwuyehoshua@gmail.com,mailjoshuaoparachukwu@gmail.com')}`;
     }

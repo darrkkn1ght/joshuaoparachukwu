@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=29">
+  <link rel="stylesheet" href="/preview/css/style.css?v=30">
   <style>
     :root {
       --admin-navy: #00102A;
@@ -898,7 +898,7 @@
           <td><strong>${esc(c.name)}</strong><br><span style="font-size:11px;color:#64748B;">${esc(c.email)}</span></td>
           <td>${esc(c.role || '—')}<br><span style="font-size:11px;color:#15803d;font-weight:600;">${esc(pracTime)}</span></td>
           <td>${c.paid ? '$' + (c.amount || 0) + ' Paid' : 'Unpaid'}${c.rolloverUsed ? ' + $100 Rollover' : ''}</td>
-          <td>${fmtDate(c.programStart)} – ${fmtDate(c.programEnd)}${c.rolloverUsed ? ' (Ext)' : ''}</td>
+          <td>${fmtDate(c.programStart)} to ${fmtDate(c.programEnd)}${c.rolloverUsed ? ' (Ext)' : ''}</td>
           <td><strong>${c.usedCredits || 0} / ${c.totalCredits || 8}</strong> (${c.availableCredits || 0} Left${c.bookedCredits ? ', ' + c.bookedCredits + ' Booked' : ''})</td>
           <td>${esc(c.assigned || 'Dr. Joshua Oparachukwu')}</td>
           <td><span class="status-badge ${badge[c.status] || 'badge-active'}">${esc(c.status || 'Active')}</span></td>
@@ -938,7 +938,7 @@
       document.getElementById('drawer-completed').textContent = c.usedCredits || 0;
       document.getElementById('drawer-remaining').textContent = c.availableCredits || 0;
       document.getElementById('drawer-booked').textContent = c.bookedCredits || 0;
-      document.getElementById('drawer-term').textContent = fmtDate(c.programStart) + ' – ' + fmtDate(c.programEnd);
+      document.getElementById('drawer-term').textContent = fmtDate(c.programStart) + ' to ' + fmtDate(c.programEnd);
       document.getElementById('drawer-email').textContent = c.email || '—';
 
       const nextTs = c.nextSessionTime || c.firstSessionDate;
@@ -1003,7 +1003,7 @@
         const start = new Date(pickedMs);
         const end = new Date(pickedMs + 45 * 60000);
         const fmtGCal = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-        const title = encodeURIComponent('45-Min Retainer Performance Session — ' + (updated.name || 'Client') + ' & Dr. Joshua Oparachukwu');
+        const title = encodeURIComponent('45-Min Retainer Performance Session: ' + (updated.name || 'Client') + ' & Dr. Joshua Oparachukwu');
         const details = encodeURIComponent(
           '4-Month Individual Performance Development Retainer (45-Minute Consultation)\n' +
           'Standing Google Meet Video Room: ' + meetUrl + '\n' +
