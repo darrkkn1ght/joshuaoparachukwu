@@ -17,7 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/preview/css/style.css?v=26">
+  <link rel="stylesheet" href="/preview/css/style.css?v=28">
   <style>
     :root {
       --gold-glow: rgba(200, 168, 48, 0.22);
@@ -634,7 +634,7 @@
       </a>
     </div>
     <div class="nav-links">
-      <a href="index.html#written-testimonials">Testimonials</a>
+      <a href="testimonials.html">Testimonials</a>
       <a href="performance-retainer.html" class="active" style="color:var(--gold);font-weight:600;">Retainer Program</a>
       <a href="services.html">Services</a>
 
@@ -728,282 +728,173 @@
   </header>
 
   <!-- ═══ WIDE LEAD QUOTE BOX & JUMP TO REVIEWS (Video 1 Edit) ═══ -->
-  <!-- ═══ RETAINER PAGE RIGHT-TO-LEFT TESTIMONIAL CAROUSEL (12 REVIEWS) ═══ -->
-<section class="retainer-carousel-section" aria-label="Client Testimonials Carousel">
-  <div class="retainer-carousel-header">
-    <span class="rc-label">Verified Client Experiences</span>
-    <h3 class="rc-headline">What Performers Say About the Retainer Program</h3>
-    <p class="rc-sub">12 verified written debriefs from athletes, coaches, and sports professionals who completed Dr. Joshua's four-month retainer. Hover to pause.</p>
-  </div>
-  <div class="retainer-carousel-wrap" id="retainerCarouselWrap" tabindex="0" role="region" aria-label="Scrolling testimonials">
-    <div class="retainer-carousel-track">
-      <div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I used to struggle a lot with my confidence as a high school athlete. I would perform really well during practice, but whenever it was time to compete, I just couldn't reproduce the same level of performance. It became frustrating because I knew what I was capable of, and I..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Steve Benjamin</div>
-      <div class="rc-role">High School Athlete (USA) · Track &amp; Field</div>
+  
+  <!-- ═══ RETAINER TESTIMONIALS (PHOTO REVIEWS FIRST + CONTROLLER) ═══ -->
+  <section class="retainer-carousel-section" aria-label="Client Testimonials Carousel" style="background:#FFFFFF;padding:64px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="retainer-carousel-header" style="text-align:center;margin-bottom:32px;">
+        <span class="rc-label" style="display:inline-block;color:var(--gold,#C8A830);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Verified Client Outcomes</span>
+        <h3 class="rc-headline" style="font-family:var(--font-display,serif);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;">What Performers Say About Dr. Joshua &amp; The Retainer</h3>
+        <p class="rc-sub" style="font-size:15px;color:var(--ink2,#4A5568);max-width:680px;margin:0 auto;line-height:1.65;">Verified on-pitch breakthroughs and mindset transformations from competitive athletes and leaders who completed Dr. Joshua's four-month retainer.</p>
+      </div>
+
+      <div class="results-slider-outer" style="position:relative;margin-top:24px;">
+        <!-- Left Controller Arrow -->
+        <button class="res-btn res-btn-prev" id="retPrev" aria-label="Previous reviews" type="button" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;border-radius:50%;background:#00102A;color:#FFE484;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.25);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+            <polyline points="15,18 9,12 15,6" />
+          </svg>
+        </button>
+
+        <div class="results-slider-track-wrap" style="overflow:hidden;border-radius:16px;">
+          <div class="results-slider-track" id="retTrack" style="display:flex;transition:transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);">
+
+            <!-- SLIDE 1 -->
+            <div class="results-slide" style="min-width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;">
+              <div class="result-card" style="background:#FAF8F5;border:1px solid #E4E0D8;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span style="font-family:var(--font-display,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;display:block;">“</span>
+                  <p style="font-size:14px;color:var(--ink2,#333333);line-height:1.7;margin-bottom:20px;font-style:italic;">
+                    My confidence used to be fragile. One missed chance and it was gone for the rest of the half. Working with Dr. Joshua Oparachukwu changed how I talk to myself after those moments. I'm more composed now, and it shows in how I keep pressing.
+                  </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #ECE7DE;padding-top:14px;">
+                  <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1780733334/Belief_Anozie_n9trvn.jpg" alt="Belief Anozie" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold,#C8A830);" loading="lazy">
+                  <div>
+                    <div style="font-weight:700;color:var(--navy,#00102A);font-size:15px;">Belief Anozie</div>
+                    <div style="font-size:12px;color:var(--ink3,#718096);">Forward, Peridot FC</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-card" style="background:#FAF8F5;border:1px solid #E4E0D8;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span style="font-family:var(--font-display,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;display:block;">“</span>
+                  <p style="font-size:14px;color:var(--ink2,#333333);line-height:1.7;margin-bottom:20px;font-style:italic;">
+                    The biggest change for me is self-control on the pitch. I used to let frustration build with referees, with teammates, with myself and it affected my game. Dr. Joshua helped me understand that composure is something you can actually train.
+                  </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #ECE7DE;padding-top:14px;">
+                  <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1780733342/Oyejide_Temiloluwa_r6ierg.jpg" alt="Oyejide Temiloluwa" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold,#C8A830);" loading="lazy">
+                  <div>
+                    <div style="font-weight:700;color:var(--navy,#00102A);font-size:15px;">Oyejide Temiloluwa</div>
+                    <div style="font-size:12px;color:var(--ink3,#718096);">Forward, Peridot FC</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-card" style="background:#FAF8F5;border:1px solid #E4E0D8;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span style="font-family:var(--font-display,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;display:block;">“</span>
+                  <p style="font-size:14px;color:var(--ink2,#333333);line-height:1.7;margin-bottom:20px;font-style:italic;">
+                    I used to get in my own way a lot, thinking about everything that could go wrong before a big game. Dr. Joshua gave me specific mental routines that calmed all that noise down. I play much freer now.
+                  </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #ECE7DE;padding-top:14px;">
+                  <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1780733341/Olusola_Kayode_t1b5t2.jpg" alt="Olusola Kayode" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold,#C8A830);" loading="lazy">
+                  <div>
+                    <div style="font-weight:700;color:var(--navy,#00102A);font-size:15px;">Olusola Kayode</div>
+                    <div style="font-size:12px;color:var(--ink3,#718096);">Midfielder, Peridot FC</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="results-slide" style="min-width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;">
+              <div class="result-card" style="background:#FAF8F5;border:1px solid #E4E0D8;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span style="font-family:var(--font-display,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;display:block;">“</span>
+                  <p style="font-size:14px;color:var(--ink2,#333333);line-height:1.7;margin-bottom:20px;font-style:italic;">
+                    Before working with Dr. Joshua Oparachukwu, I used to carry a bad touch or a missed chance in my head for the rest of the game. That's changed. I process mistakes faster now.
+                  </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #ECE7DE;padding-top:14px;">
+                  <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1780733339/Olowoyo_Martins_Eniola_h9r9t0.jpg" alt="Olowoyo Martins Eniola" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold,#C8A830);" loading="lazy">
+                  <div>
+                    <div style="font-weight:700;color:var(--navy,#00102A);font-size:15px;">Olowoyo Martins Eniola</div>
+                    <div style="font-size:12px;color:var(--ink3,#718096);">Forward, Peridot FC</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-card" style="background:#FAF8F5;border:1px solid #E4E0D8;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span style="font-family:var(--font-display,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;display:block;">“</span>
+                  <p style="font-size:14px;color:var(--ink2,#333333);line-height:1.7;margin-bottom:20px;font-style:italic;">
+                    What I noticed most was how quickly I could reset. Defending is a position where one mistake can cost a goal. Dr. Joshua helped me develop a mental switch to move to what's next.
+                  </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #ECE7DE;padding-top:14px;">
+                  <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1780733337/Joshua_Ademola_Jomiloju_f9fmsw.jpg" alt="Joshua Ademola Jomiloju" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold,#C8A830);" loading="lazy">
+                  <div>
+                    <div style="font-weight:700;color:var(--navy,#00102A);font-size:15px;">Joshua Ademola Jomiloju</div>
+                    <div style="font-size:12px;color:var(--ink3,#718096);">Defender, Peridot FC</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="result-card" style="background:#FAF8F5;border:1px solid #E4E0D8;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <span style="font-family:var(--font-display,serif);font-size:38px;color:var(--gold,#C8A830);line-height:1;margin-bottom:8px;display:block;">“</span>
+                  <p style="font-size:14px;color:var(--ink2,#333333);line-height:1.7;margin-bottom:20px;font-style:italic;">
+                    Decision-making under pressure was my biggest issue. What changed for me was confidence not the fake kind you try to pump yourself up with, but something more solid. I trust my reads now.
+                  </p>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #ECE7DE;padding-top:14px;">
+                  <img src="https://res.cloudinary.com/dkxyhtuun/image/upload/q_auto:best,f_auto/v1780733334/Ayodele_Adebayo_evr42w.jpg" alt="Ayodele Adebayo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold,#C8A830);" loading="lazy">
+                  <div>
+                    <div style="font-weight:700;color:var(--navy,#00102A);font-size:15px;">Ayodele Adebayo</div>
+                    <div style="font-size:12px;color:var(--ink3,#718096);">Forward, Peridot FC</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Controller Arrow -->
+        <button class="res-btn res-btn-next" id="retNext" aria-label="Next reviews" type="button" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;border-radius:50%;background:#00102A;color:#FFE484;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.25);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+            <polyline points="9,6 15,12 9,18" />
+          </svg>
+        </button>
+
+        <!-- Pagination Dots -->
+        <div class="res-dots" id="retDots" style="display:flex;justify-content:center;gap:8px;margin-top:24px;">
+          <button class="res-dot active" data-slide="0" aria-label="Slide 1" type="button" style="width:12px;height:12px;border-radius:50%;border:none;background:#C8A830;cursor:pointer;"></button>
+          <button class="res-dot" data-slide="1" aria-label="Slide 2" type="button" style="width:12px;height:12px;border-radius:50%;border:none;background:#DDD8CE;cursor:pointer;"></button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I have known Joshua since the COVID years, long before he became Dr. Joshua Oparachukwu. We first met on Preply, where he was working as an English language instructor. At the time, I was a high school athlete in the United States, dealing with anxiety, confidence issues, an..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Hossein Salama</div>
-      <div class="rc-role">UAE · Athletics &amp; Competitive Athlete (formerly US high school athletics)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I was introduced to Dr. Joshua by a friend and teammate who had already worked with him. She spoke highly of her experience and encouraged me to reach out, so I decided to give it a try. We eventually both worked with him individually, and I can confidently say that it was o..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Bose Oluwasebikon</div>
-      <div class="rc-role">Competitive Athlete &amp; Teammate (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I first came across Dr. Joshua through an advertisement, and I'll admit I was skeptical about working with a performance psychologist online. I had always imagined that this kind of support would be more effective in person. But I was curious, so I decided to give it a try...."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">David Wells</div>
-      <div class="rc-role">Competitive Athlete · 4-Month Retainer Client</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"When I started working in sport management straight out of school, I quickly realised that the demands of the job were quite different from what I had experienced during my training. The pace was overwhelming. I struggled with administrative responsibilities, keeping track o..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Laura Johnson</div>
-      <div class="rc-role">Sport Management Professional (UK)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I'll keep this short, simple, and straight to the point. Joshua is exactly who he says he is. One hundred percent. That's it."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Caleb Matias</div>
-      <div class="rc-role">Elite Competitor (USA)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"Working with Dr. Joshua has been a privilege, and having experienced his services firsthand, I believe performance psychology is something anyone who is serious about improving their performance should consider. What I particularly appreciate is the balance he brings to his..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">González Roca</div>
-      <div class="rc-role">Basketball Coach &amp; Sports Professional (Spain)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"When I first considered working with Dr. Joshua, I was a little skeptical. I wasn't entirely sure about receiving performance psychology support online, and I also had concerns about the cost. But I decided to give it a try, partly because I thought the online arrangement mi..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Sydney Nzuzi</div>
-      <div class="rc-role">Footballer (Congo / France)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"My son was faking small injuries toward the end of tough matches. We knew it was the pressure, maybe approval too, and he would suddenly have a “pain” when the game got hard. As a parent, initially you’re worried, but soon, you understand what is going on. After a few sessio..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">The Bello’s - Parent of a Young Footballer (Nigeria)</div>
-      <div class="rc-role">Parent of a Young Footballer (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"For a long time, I never really considered working with a performance psychologist. I had been involved in sport for years, and I believed that my experience was enough to help me manage whatever challenges came my way. When I came across Dr. Joshua's advertisement, I was in..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Matthew Daley</div>
-      <div class="rc-role">Track &amp; Field Athlete (UK)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"Dr. Joshua was the first performance psychologist I ever worked with, and I'm genuinely glad that my first experience was with him. From the beginning, he was professional, approachable, and very attentive to the challenges I brought to him. He took the time to understand my..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Ezekiel Badejo</div>
-      <div class="rc-role">Footballer (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"Let me start by saying that my own biggest surprise was how practical, hands on and highly effective he was, and how it turned out to be. It was my very first time with anything sport related, other than being out on the court, bouncing the ball and taking shots at the baske..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Ngozi Eze</div>
-      <div class="rc-role">21, Basketball (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I used to struggle a lot with my confidence as a high school athlete. I would perform really well during practice, but whenever it was time to compete, I just couldn't reproduce the same level of performance. It became frustrating because I knew what I was capable of, and I..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Steve Benjamin</div>
-      <div class="rc-role">High School Athlete (USA) · Track &amp; Field</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I have known Joshua since the COVID years, long before he became Dr. Joshua Oparachukwu. We first met on Preply, where he was working as an English language instructor. At the time, I was a high school athlete in the United States, dealing with anxiety, confidence issues, an..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Hossein Salama</div>
-      <div class="rc-role">UAE · Athletics &amp; Competitive Athlete (formerly US high school athletics)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I was introduced to Dr. Joshua by a friend and teammate who had already worked with him. She spoke highly of her experience and encouraged me to reach out, so I decided to give it a try. We eventually both worked with him individually, and I can confidently say that it was o..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Bose Oluwasebikon</div>
-      <div class="rc-role">Competitive Athlete &amp; Teammate (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I first came across Dr. Joshua through an advertisement, and I'll admit I was skeptical about working with a performance psychologist online. I had always imagined that this kind of support would be more effective in person. But I was curious, so I decided to give it a try...."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">David Wells</div>
-      <div class="rc-role">Competitive Athlete · 4-Month Retainer Client</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"When I started working in sport management straight out of school, I quickly realised that the demands of the job were quite different from what I had experienced during my training. The pace was overwhelming. I struggled with administrative responsibilities, keeping track o..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Laura Johnson</div>
-      <div class="rc-role">Sport Management Professional (UK)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"I'll keep this short, simple, and straight to the point. Joshua is exactly who he says he is. One hundred percent. That's it."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Caleb Matias</div>
-      <div class="rc-role">Elite Competitor (USA)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"Working with Dr. Joshua has been a privilege, and having experienced his services firsthand, I believe performance psychology is something anyone who is serious about improving their performance should consider. What I particularly appreciate is the balance he brings to his..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">González Roca</div>
-      <div class="rc-role">Basketball Coach &amp; Sports Professional (Spain)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"When I first considered working with Dr. Joshua, I was a little skeptical. I wasn't entirely sure about receiving performance psychology support online, and I also had concerns about the cost. But I decided to give it a try, partly because I thought the online arrangement mi..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Sydney Nzuzi</div>
-      <div class="rc-role">Footballer (Congo / France)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"My son was faking small injuries toward the end of tough matches. We knew it was the pressure, maybe approval too, and he would suddenly have a “pain” when the game got hard. As a parent, initially you’re worried, but soon, you understand what is going on. After a few sessio..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">The Bello’s - Parent of a Young Footballer (Nigeria)</div>
-      <div class="rc-role">Parent of a Young Footballer (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"For a long time, I never really considered working with a performance psychologist. I had been involved in sport for years, and I believed that my experience was enough to help me manage whatever challenges came my way. When I came across Dr. Joshua's advertisement, I was in..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Matthew Daley</div>
-      <div class="rc-role">Track &amp; Field Athlete (UK)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"Dr. Joshua was the first performance psychologist I ever worked with, and I'm genuinely glad that my first experience was with him. From the beginning, he was professional, approachable, and very attentive to the challenges I brought to him. He took the time to understand my..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Ezekiel Badejo</div>
-      <div class="rc-role">Footballer (Nigeria)</div>
-    </div>
-  </div>
-</div>
-<div class="retainer-carousel-card">
-  <div class="rc-stars">★★★★★</div>
-  <p class="rc-text">"Let me start by saying that my own biggest surprise was how practical, hands on and highly effective he was, and how it turned out to be. It was my very first time with anything sport related, other than being out on the court, bouncing the ball and taking shots at the baske..."</p>
-  <div class="rc-author">
-    
-    <div class="rc-meta">
-      <div class="rc-name">Ngozi Eze</div>
-      <div class="rc-role">21, Basketball (Nigeria)</div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</section>
+  </section>
+
+  <script>
+    (function initRetainerSlider() {
+      let currentRetSlide = 0;
+      const track = document.getElementById('retTrack');
+      const prevBtn = document.getElementById('retPrev');
+      const nextBtn = document.getElementById('retNext');
+      const dots = document.querySelectorAll('#retDots .res-dot');
+      if (!track || !prevBtn || !nextBtn) return;
+
+      function goToRetSlide(idx) {
+        currentRetSlide = (idx + 2) % 2;
+        track.style.transform = 'translateX(-' + (currentRetSlide * 100) + '%)';
+        dots.forEach((d, i) => {
+          d.style.background = (i === currentRetSlide) ? '#C8A830' : '#DDD8CE';
+        });
+      }
+
+      prevBtn.addEventListener('click', () => goToRetSlide(currentRetSlide - 1));
+      nextBtn.addEventListener('click', () => goToRetSlide(currentRetSlide + 1));
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => goToRetSlide(idx));
+      });
+    })();
+  </script>
+
 
   <div class="lead-box-wide-wrap">
     <div class="lead-box">
@@ -1012,7 +903,7 @@
     <div class="jump-reviews-bar">
       <a href="#reviews" class="btn-jump-reviews">
         <span class="star-badge">★★★★★</span>
-        <span>See What Other People Say About the Retainer Program · Go Straight to Reviews ↓</span>
+        <span>See What Other People Say About the Retainer Program · Go Straight to Testimonials ↓</span>
       </a>
     </div>
   </div>
@@ -1116,6 +1007,14 @@
           </p>
         </div>
       </div>
+
+      <!-- Direct Enrol CTA under What You Get -->
+      <div style="text-align:center;margin-top:44px;">
+        <a href="#pricing" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 6px 20px rgba(200,168,48,0.28);transition:all 0.25s ease;">
+          <span>Enrol in 4-Month Retainer Program</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1138,6 +1037,14 @@
         <div class="aud-pill">Performing Artists &amp; Creators</div>
         <div class="aud-pill">High-Performance Coaches &amp; Directors</div>
         <div class="aud-pill">High-Stakes Decision-Makers</div>
+      </div>
+    
+      <!-- Direct Enrol CTA under Who This Is For -->
+      <div style="text-align:center;margin-top:40px;">
+        <a href="#pricing" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 6px 20px rgba(200,168,48,0.28);transition:all 0.25s ease;">
+          <span>Apply for Retainer Advisory</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1201,14 +1108,22 @@
           Schedule and utilize your remaining 7 session credits across the 4 months via the client portal.
         </div>
       </div>
+    
+      <!-- Direct Enrol CTA under How Enrolment Works -->
+      <div style="text-align:center;margin-top:44px;">
+        <a href="#pricing" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:10px;padding:15px 36px;background:var(--gold,#C8A830);color:var(--navy,#00102A);border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 6px 20px rgba(200,168,48,0.28);transition:all 0.25s ease;">
+          <span>Complete Intake &amp; Begin Retainer</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
   </section>
 
     <!-- ═══ REVIEWS (Client Testimonials - Football, Athletics, Sport Management) ═══ -->
   <section id="reviews" style="background:#FAF8F5;padding:80px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:60px;">
     <div style="max-width:1320px;margin:0 auto;">
-      <span class="section-label" style="display:block;text-align:center;font-size:12px;letter-spacing:0.18em;font-weight:700;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">Evidence &amp; Social Proof</span>
-      <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--navy);text-align:center;margin:0 0 12px;letter-spacing:0.02em;">REVIEWS</h2>
+      <span class="section-label" style="display:block;text-align:center;font-size:12px;letter-spacing:0.18em;font-weight:700;color:var(--gold);text-transform:uppercase;margin-bottom:8px;">Client Feedback &amp; Outcomes</span>
+      <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--navy);text-align:center;margin:0 0 12px;letter-spacing:0.02em;">TESTIMONIALS</h2>
       <div style="width:120px;height:2px;background:var(--gold);margin:0 auto 36px;"></div>
       <p style="text-align:center;color:var(--ink3);font-size:16px;max-width:760px;margin:-16px auto 44px;line-height:1.65;">
         Authentic reflections from athletes, collegiate competitors, and sport professionals who retained Dr. Joshua Oparachukwu for performance psychology support across international football, athletics, and high-pressure domains.
@@ -1690,7 +1605,7 @@
   <!-- ═══ FLOATING JUMP TO REVIEWS PILL (Mobile & Desktop Compliant) ═══ -->
   <a href="#reviews" id="floating-reviews-pill" class="floating-reviews-pill" aria-label="See what people say about the Retainer Program">
     <span style="color:var(--gold);">★</span>
-    <span>See What People Say About the Retainer Program ↓</span>
+    <span>★★★★★ See What People Say · Testimonials ↓</span>
   </a>
 
   <!-- ═══ FOOTER ═══ -->
@@ -1699,17 +1614,72 @@
       <div class="footer-left">
         <div class="footer-name">Dr. Joshua A. Oparachukwu</div>
         <div class="footer-sub">Applied Performance Psychologist</div>
+        <div class="footer-socials">
+          <!-- LinkedIn (Item 13) -->
+          <a href="https://linkedin.com/in/joshua-oparachukwu-phd-7707b4397" target="_blank" rel="noopener"
+            aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.46 1.46 0 1 0 0-2.92 1.46 1.46 0 0 0 0 2.92M7.86 18.5V10.13H5.06v8.37h2.8z" />
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@dr.joshuaoparachukwu" target="_blank" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/thedrjoshuaoparachukwu" target="_blank" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@thedrjoshuaoparachukwu" target="_blank" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/people/Dr-Joshua-Oparachukwu/61564682447955/" target="_blank"
+            aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="https://x.com/thedrjoshuaOp" target="_blank" aria-label="X / Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+        </div>
       </div>
+
       <div class="footer-nav">
-        <a href="performance-retainer.html">Retainer Program</a>
-        <a href="client-portal.html">Client Portal</a>
-        <a href="retainer-terms.html">Program Terms</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="research.html">Research</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Book a Discovery Consultation</a>
         <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+
+      <div class="footer-orgs">
+        <!-- Social Tag -->
+        <a href="https://youtube.com/@dr.joshuaoparachukwu?si=CVys0jY24-cUPbRy" target="_blank"
+          rel="noopener">#AskDrJoshuaOparachukwu</a>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© 2027 Dr. Joshua A. Oparachukwu. All rights reserved.</span>
+      <span>© 2027 Dr. Joshua A. Oparachukwu. All rights reserved. &nbsp;·&nbsp; <a href="https://mindgameafrica.com" target="_blank" style="color:inherit;text-decoration:underline;">MindGame Africa</a> &nbsp;·&nbsp; <a href="https://sportleadafrica.com" target="_blank" style="color:inherit;text-decoration:underline;">SportLead Africa</a> &nbsp;·&nbsp;
+         <a href="privacy-policy.html"
+          style="color:inherit;text-decoration:underline;">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html"
+          style="color:inherit;text-decoration:underline;">Terms of Use</a></span>
     </div>
   </footer>
 
