@@ -8007,3 +8007,231 @@ nav.scrolled-pill {
   color: #64748B;
   margin-top: 6px;
 }
+
+
+/* ═══ VOICE NOTE POLISH: SPACING, MASONRY, HOVER POP & COLOR CODING (2026) ═══ */
+
+/* 1. Tighten Hero -> KPI Trio -> Testimonials Gap */
+#hero {
+  padding: 56px 32px 68px !important;
+}
+.vf-kpi-trio-section {
+  margin: -38px auto 0 !important;
+  padding: 0 24px 10px !important;
+}
+#testimonials {
+  padding: 26px 32px 44px !important;
+}
+#written-testimonials {
+  padding: 36px 32px 34px !important;
+}
+
+/* 2. Color-Coded Category Filter Pills under More Testimonials */
+.written-filter-pill[data-cat="all"] {
+  border-color: rgba(0, 16, 42, 0.35);
+  color: #00102A;
+}
+.written-filter-pill[data-cat="all"].active {
+  background: #00102A !important;
+  border-color: #C8A830 !important;
+  color: #FFE484 !important;
+}
+.written-filter-pill[data-cat="football"] {
+  background: #EFFAF3;
+  border-color: #84D1A0;
+  color: #0F5132;
+}
+.written-filter-pill[data-cat="football"]:hover,
+.written-filter-pill[data-cat="football"].active {
+  background: #0F5132 !important;
+  border-color: #0F5132 !important;
+  color: #FFFFFF !important;
+}
+.written-filter-pill[data-cat="athletics"] {
+  background: #FFF5EB;
+  border-color: #F3B37A;
+  color: #9A3412;
+}
+.written-filter-pill[data-cat="athletics"]:hover,
+.written-filter-pill[data-cat="athletics"].active {
+  background: #9A3412 !important;
+  border-color: #9A3412 !important;
+  color: #FFFFFF !important;
+}
+.written-filter-pill[data-cat="court"] {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+  color: #1E3A8A;
+}
+.written-filter-pill[data-cat="court"]:hover,
+.written-filter-pill[data-cat="court"].active {
+  background: #1E3A8A !important;
+  border-color: #1E3A8A !important;
+  color: #FFFFFF !important;
+}
+.written-filter-pill[data-cat="executive"] {
+  background: #F5F3FF;
+  border-color: #C4B5FD;
+  color: #4C1D95;
+}
+.written-filter-pill[data-cat="executive"]:hover,
+.written-filter-pill[data-cat="executive"].active {
+  background: #4C1D95 !important;
+  border-color: #4C1D95 !important;
+  color: #FFFFFF !important;
+}
+
+/* Matching top accent border per category on written testimonial cards */
+.written-review-card[data-cat="football"] {
+  border-top: 3px solid #157347 !important;
+}
+.written-review-card[data-cat="athletics"] {
+  border-top: 3px solid #C2410C !important;
+}
+.written-review-card[data-cat="court"] {
+  border-top: 3px solid #1D4ED8 !important;
+}
+.written-review-card[data-cat="executive"] {
+  border-top: 3px solid #5B21B6 !important;
+}
+
+/* 3. Masonry Packing + Full Text + Tactile Hover Pop ("tick, tick, tick") */
+#writtenReviewsGrid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 22px !important;
+  align-items: start !important;
+}
+.written-masonry-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+@media (max-width: 980px) {
+  #writtenReviewsGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 680px) {
+  #writtenReviewsGrid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.written-review-card .written-quote-text {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+  margin-bottom: 18px !important;
+}
+.written-read-more-btn {
+  display: none !important;
+}
+.written-review-card {
+  height: auto !important;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease !important;
+  will-change: transform;
+}
+.written-review-card:hover {
+  transform: translateY(-7px) scale(1.022) !important;
+  box-shadow: 0 20px 42px rgba(0, 16, 42, 0.16) !important;
+  border-color: #C8A830 !important;
+  z-index: 4;
+}
+
+/* 4. Live Video Accounts: Move Header Up Close to Top Line */
+#video-testimonials,
+.vf-video-testimonials-section {
+  padding: 28px 32px 52px !important;
+}
+#video-testimonials .vf-section-head {
+  margin-bottom: 26px !important;
+}
+
+/* 5. Strategic Advantage (#why-choose): Rich Deep Color Themes */
+#why-choose {
+  padding: 28px 32px 56px !important;
+}
+#why-choose .vf-section-head {
+  margin-top: 0 !important;
+  margin-bottom: 24px !important;
+}
+/* Top 3 Pillar Cards: Warm Ivory with Deep Gold-Tinted Header Split */
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(1),
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(2),
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(3) {
+  background: linear-gradient(180deg, #FDFBF5 0%, #F5EFE0 100%) !important;
+  border: 1.5px solid #DFD3B6 !important;
+  border-top: 4px solid #C8A830 !important;
+}
+/* Bottom 3 Advantage Cards: Deep Rich Retainer-Style Royal Navy & Midnight Shades */
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) {
+  background: linear-gradient(150deg, #04193B 0%, #0C2D63 100%) !important;
+  border: 1.5px solid rgba(232, 197, 75, 0.42) !important;
+  border-top: 4px solid #E5C148 !important;
+  color: #FFFFFF !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(5) {
+  background: linear-gradient(150deg, #09244F 0%, #143C78 100%) !important;
+  border: 1.5px solid rgba(232, 197, 75, 0.42) !important;
+  border-top: 4px solid #FFE484 !important;
+  color: #FFFFFF !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) {
+  background: linear-gradient(150deg, #051E42 0%, #12366B 100%) !important;
+  border: 1.5px solid rgba(232, 197, 75, 0.42) !important;
+  border-top: 4px solid #C8A830 !important;
+  color: #FFFFFF !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) h3 {
+  color: #FFE484 !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) p {
+  color: rgba(241, 245, 249, 0.90) !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-list li {
+  color: rgba(248, 250, 252, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.10) !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-tag {
+  background: rgba(232, 197, 75, 0.18) !important;
+  color: #FFE484 !important;
+  border: 1px solid rgba(232, 197, 75, 0.45) !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-icon {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: 1px solid rgba(232, 197, 75, 0.50) !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-icon svg {
+  stroke: #FFE484 !important;
+}
+
+/* 6. YouTube Channel Section: Move Up & Stretch Header Wide */
+#youtube,
+.vf-youtube-split-section {
+  padding: 30px 32px 58px !important;
+}
+#youtube .yt-header {
+  margin-bottom: 30px !important;
+  max-width: 1240px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#youtube .yt-header p {
+  max-width: 1120px !important;
+}
+
+/* 7. Work With Me (#about): Move Text Up to Top Line */
+#about {
+  padding: 34px 32px 58px !important;
+}
+#about .about-grid-wrap {
+  align-items: flex-start !important;
+}
+
+/* 8. FAQ (#home-faq) & Stay Inspired (#signup): Tight Top Spacing */
+#home-faq {
+  padding: 30px 48px 56px !important;
+}
+#signup {
+  padding: 34px clamp(24px, 6vw, 120px) 60px !important;
+}

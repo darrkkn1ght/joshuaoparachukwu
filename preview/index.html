@@ -189,7 +189,7 @@
           </div>
           <div class="vf-kpi-text">
             <div class="vf-kpi-num" data-count-target="40" data-count-suffix="+">40+</div>
-            <div class="vf-kpi-label">Verified Client Testimonials</div>
+            <div class="vf-kpi-label">Client Testimonials</div>
             <div class="vf-kpi-sub">Athletes, Coaches, Club Directors &amp; High-Stakes Leaders</div>
           </div>
         </div>
@@ -216,9 +216,6 @@
         <h2 style="font-family:var(--font-display,serif);font-size:36px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;line-height:1.25;">
           What Performers Say After Working with Dr. Joshua Oparachukwu
         </h2>
-        <p style="font-size:15px;color:var(--ink2,#4A5568);max-width:640px;margin:0 0 32px;line-height:1.65;">
-          Genuine on-pitch testimonials, mindset shifts, and verified outcomes from competitive athletes and leaders.
-        </p>
 
         <div class="results-slider-outer" style="position:relative;margin-top:24px;">
           <!-- Left Navigation Arrow -->
@@ -1120,61 +1117,82 @@
       let isAllReviewsExpanded = false;
       let activeReviewsFilter = 'all';
       let currentWrittenPage = 1;
-      const WRITTEN_PAGE_SIZE = 6;
-      let activeModalIdx = -1;
+      const WRITTEN_PAGE_SIZE = 9;
+      let allWrittenCardsMaster = [];
 
-      function getFilteredWrittenCards() {
-        const cards = Array.from(document.querySelectorAll('#writtenReviewsGrid .written-review-card'));
-        return cards.filter(card => activeReviewsFilter === 'all' || card.getAttribute('data-cat') === activeReviewsFilter);
+      function ensureMasterWrittenCards() {
+        const grid = document.getElementById('writtenReviewsGrid');
+        if (!grid) return [];
+        if (allWrittenCardsMaster.length === 0) {
+          allWrittenCardsMaster = Array.from(grid.querySelectorAll('.written-review-card'));
+          allWrittenCardsMaster.forEach((card, idx) => {
+            card.setAttribute('data-idx', String(idx));
+            const btn = card.querySelector('.written-read-more-btn');
+            if (btn) btn.remove();
+          });
+        }
+        return allWrittenCardsMaster;
       }
 
-      function initWrittenCardControls() {
-        const cards = document.querySelectorAll('#writtenReviewsGrid .written-review-card');
-        cards.forEach((card, idx) => {
-          card.setAttribute('data-idx', String(idx));
-          const p = card.querySelector('p');
-          if (p && !p.classList.contains('written-quote-text')) {
-            p.classList.add('written-quote-text');
-          }
-          const bodyWrap = card.firstElementChild;
-          if (bodyWrap && !card.querySelector('.written-read-more-btn')) {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'written-read-more-btn';
-            btn.innerHTML = '<span>Read Full Reflection</span><span>&rarr;</span>';
-            btn.onclick = function() { openWrittenModalByIdx(idx); };
-            bodyWrap.appendChild(btn);
-          }
-        });
+      function getFilteredWrittenCards() {
+        const master = ensureMasterWrittenCards();
+        return master.filter(card => activeReviewsFilter === 'all' || card.getAttribute('data-cat') === activeReviewsFilter);
+      }
+
+      function getColumnCount() {
+        if (window.innerWidth <= 680) return 1;
+        if (window.innerWidth <= 980) return 2;
+        return 3;
       }
 
       function renderWrittenReviewsPage() {
-        initWrittenCardControls();
-        const allCards = Array.from(document.querySelectorAll('#writtenReviewsGrid .written-review-card'));
+        const grid = document.getElementById('writtenReviewsGrid');
+        if (!grid) return;
         const filtered = getFilteredWrittenCards();
         const total = filtered.length;
         const totalPages = Math.max(1, Math.ceil(total / WRITTEN_PAGE_SIZE));
         if (currentWrittenPage > totalPages) currentWrittenPage = totalPages;
         if (currentWrittenPage < 1) currentWrittenPage = 1;
 
-        allCards.forEach(c => {
-          c.style.display = 'none';
-          c.classList.toggle('expanded', isAllReviewsExpanded);
-        });
-
+        let visibleCards = [];
         let showingStart = 0;
         let showingEnd = 0;
         if (isAllReviewsExpanded) {
-          filtered.forEach(c => { c.style.display = 'flex'; });
+          visibleCards = filtered;
           showingStart = total > 0 ? 1 : 0;
           showingEnd = total;
         } else {
           const start = (currentWrittenPage - 1) * WRITTEN_PAGE_SIZE;
           const end = Math.min(start + WRITTEN_PAGE_SIZE, total);
-          filtered.slice(start, end).forEach(c => { c.style.display = 'flex'; });
+          visibleCards = filtered.slice(start, end);
           showingStart = total > 0 ? start + 1 : 0;
           showingEnd = end;
         }
+
+        // Build shortest-column Masonry columns so shorter cards (e.g. Ethan Brooks)
+        // let the next card (e.g. Mateo Silva) move right up underneath to fill the space
+        const colCount = getColumnCount();
+        grid.innerHTML = '';
+        const cols = [];
+        const colWeights = [];
+        for (let c = 0; c < colCount; c++) {
+          const colDiv = document.createElement('div');
+          colDiv.className = 'written-masonry-col';
+          cols.push(colDiv);
+          colWeights.push(0);
+          grid.appendChild(colDiv);
+        }
+
+        visibleCards.forEach(card => {
+          card.style.display = 'flex';
+          let minCol = 0;
+          for (let c = 1; c < colCount; c++) {
+            if (colWeights[c] < colWeights[minCol]) minCol = c;
+          }
+          cols[minCol].appendChild(card);
+          const textLen = (card.textContent || '').trim().length;
+          colWeights[minCol] += textLen + 140;
+        });
 
         const pagBar = document.getElementById('writtenPaginationBar');
         if (pagBar) {
@@ -1186,14 +1204,14 @@
               btns += '<button type="button" class="written-page-btn ' + (p === currentWrittenPage ? 'active' : '') + '" onclick="goToWrittenPage(' + p + ')">' + p + '</button>';
             }
             btns += '<button type="button" class="written-page-btn" ' + (currentWrittenPage === totalPages ? 'disabled' : '') + ' onclick="goToWrittenPage(' + (currentWrittenPage + 1) + ')">Next &rarr;</button>';
-            btns += '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' full client reflections &middot; Click any card to read in full</div>';
+            btns += '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections</div>';
             pagBar.innerHTML = btns;
           }
         }
 
         const text = document.getElementById('toggleReviewsText');
         const icon = document.getElementById('toggleReviewsIcon');
-        if (text) text.textContent = isAllReviewsExpanded ? 'Switch Back to Compact Paged View (6 per Page)' : 'Expand All ' + total + ' Reflections on One Page';
+        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse into Compact Page View' : 'Expand All ' + total + ' Reflections on One Page';
         if (icon) icon.style.transform = isAllReviewsExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
       }
 
@@ -1209,60 +1227,17 @@
       function goToWrittenPage(page) {
         currentWrittenPage = page;
         renderWrittenReviewsPage();
-        const sec = document.getElementById('written-testimonials');
-        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
       function toggleAllWrittenReviews() {
         isAllReviewsExpanded = !isAllReviewsExpanded;
         renderWrittenReviewsPage();
-        if (!isAllReviewsExpanded) {
-          const sec = document.getElementById('written-testimonials');
-          if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-
-      function openWrittenModalByIdx(idx) {
-        const cards = Array.from(document.querySelectorAll('#writtenReviewsGrid .written-review-card'));
-        const card = cards[idx];
-        if (!card) return;
-        activeModalIdx = idx;
-
-        let modal = document.getElementById('written-reader-modal');
-        if (!modal) {
-          modal = document.createElement('div');
-          modal.id = 'written-reader-modal';
-          modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,16,42,0.82);backdrop-filter:blur(6px);z-index:12500;display:flex;align-items:center;justify-content:center;padding:20px;';
-          modal.innerHTML = '<div style="width:min(680px,95vw);max-height:88vh;overflow-y:auto;background:#FFFFFF;border:1.5px solid #D8D2C4;border-top:4px solid #C8A830;border-radius:16px;padding:34px 30px;box-shadow:0 24px 64px rgba(0,0,0,0.35);position:relative;"><button type="button" onclick="closeWrittenReaderModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;color:#64748B;cursor:pointer;">&times;</button><div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#8E6F1E;margin-bottom:10px;">Client Reflection</div><div style="font-family:var(--font-display,Georgia,serif);font-size:44px;color:rgba(200,168,48,0.55);line-height:0.8;margin-bottom:10px;">&ldquo;</div><p id="wrm-quote" style="font-size:15.5px;line-height:1.78;color:#1E293B;font-style:italic;margin:0 0 24px;"></p><div style="padding-top:16px;border-top:1px solid #ECE8E0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;"><div><div id="wrm-name" style="font-family:var(--font-display,Georgia,serif);font-size:19px;font-weight:700;color:#00102A;"></div><div id="wrm-meta" style="font-size:13px;font-weight:600;color:#9A7B1C;margin-top:3px;"></div></div><div style="display:flex;gap:8px;"><button type="button" onclick="stepWrittenModal(-1)" style="padding:8px 14px;border-radius:999px;border:1px solid #CBD5E1;background:#F8FAFC;color:#00102A;font-size:12.5px;font-weight:600;cursor:pointer;">&larr; Previous</button><button type="button" onclick="stepWrittenModal(1)" style="padding:8px 14px;border-radius:999px;border:1px solid #00102A;background:#00102A;color:#FFE484;font-size:12.5px;font-weight:600;cursor:pointer;">Next Story &rarr;</button></div></div></div>';
-          modal.addEventListener('click', function(e) { if (e.target === modal) closeWrittenReaderModal(); });
-          document.body.appendChild(modal);
-        }
-
-        const p = card.querySelector('p');
-        const metaWrap = card.lastElementChild;
-        const nameEl = metaWrap ? metaWrap.children[0] : null;
-        const subEl = metaWrap ? metaWrap.children[1] : null;
-
-        document.getElementById('wrm-quote').textContent = p ? p.textContent.trim() : '';
-        document.getElementById('wrm-name').textContent = nameEl ? nameEl.textContent.trim() : '';
-        document.getElementById('wrm-meta').textContent = subEl ? subEl.textContent.trim() : '';
-        modal.style.display = 'flex';
-      }
-
-      function stepWrittenModal(delta) {
-        const filtered = getFilteredWrittenCards();
-        if (!filtered.length) return;
-        const currPos = filtered.findIndex(c => Number(c.getAttribute('data-idx')) === activeModalIdx);
-        const nextPos = currPos === -1 ? 0 : (currPos + delta + filtered.length) % filtered.length;
-        openWrittenModalByIdx(Number(filtered[nextPos].getAttribute('data-idx')));
-      }
-
-      function closeWrittenReaderModal() {
-        const modal = document.getElementById('written-reader-modal');
-        if (modal) modal.style.display = 'none';
       }
 
       document.addEventListener('DOMContentLoaded', renderWrittenReviewsPage);
+      window.addEventListener('resize', function() {
+        if (allWrittenCardsMaster.length) renderWrittenReviewsPage();
+      });
     </script>
 
 
@@ -1290,7 +1265,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Peridot FC, Elite FC &amp; Ogologo One FC</div>
           <div class="vf-video-meta">Football Clubs · Team Psychology &amp; Group Culture</div>
-          <p class="vf-video-quote">"The psychological preparation before key tournament matches completely transformed our squad's resilience under pressure."</p>
           <a href="https://www.youtube.com/watch?v=eKPaeAAANoQ" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1303,7 +1277,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Khazim Korede Olarenwaju</div>
           <div class="vf-video-meta">Competitive Footballer · Mental Composure</div>
-          <p class="vf-video-quote">"I learned to stop beating myself up after a bad first touch. My mental reset became instantaneous."</p>
           <a href="https://www.youtube.com/watch?v=k7XdkthBevA" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1316,7 +1289,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Adedeji Abdulroqeeb</div>
           <div class="vf-video-meta">Midfielder, Dynamic FA · Tactical Focus</div>
-          <p class="vf-video-quote">"Dr. Joshua gave me specific cue words that keep me aggressive and calm even against hostile home crowds."</p>
           <a href="https://www.youtube.com/watch?v=4IZC0yx4iDw" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1329,7 +1301,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Coach Folorunso Saheed</div>
           <div class="vf-video-meta">Football Coach · Bench Decision-Making</div>
-          <p class="vf-video-quote">"Doc's intervention with my squad eliminated dressing room friction and brought emotional discipline to our second halves."</p>
           <a href="https://www.youtube.com/watch?v=nVHR7YZxRtg" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1342,7 +1313,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Belief Anozie</div>
           <div class="vf-video-meta">Forward, Dynamic FA · Goalscoring Confidence</div>
-          <p class="vf-video-quote">"Before, one missed chance meant I disappeared for the half. Now, I keep pressing and making runs without fear."</p>
           <a href="https://www.youtube.com/watch?v=iqa6t4J4i9I" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1355,7 +1325,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Ayodele Adebayo</div>
           <div class="vf-video-meta">Goalkeeper · Pressure Inoculation</div>
-          <p class="vf-video-quote">"In high-stakes penalty scenarios, my mind stays completely still. Dr. Joshua's pre-performance routine works."</p>
           <a href="https://www.youtube.com/watch?v=-a_ILn3XpSU" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1373,7 +1342,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Aliyu Oluwagbotemi Emmanuel</div>
           <div class="vf-video-meta">Competitive Footballer · In-Game Focus</div>
-          <p class="vf-video-quote">"Dr. Joshua’s sessions taught me how to manage in-game anxiety and maintain laser-sharp concentration when the competitive intensity ramps up."</p>
           <a href="https://www.youtube.com/watch?v=_NV_05tdQDQ" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1388,7 +1356,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Ojo Babatunde</div>
           <div class="vf-video-meta">Competitive Footballer · Pre-Kickoff Routines</div>
-          <p class="vf-video-quote">"The mental training gave me structure. I developed rituals to stay anchored, handle high stakes, and eliminate internal doubt before kickoff."</p>
           <a href="https://www.youtube.com/watch?v=wylzJxZYObQ" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1403,7 +1370,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">James Ndubuisi</div>
           <div class="vf-video-meta">Competitive Footballer · Match Adversity</div>
-          <p class="vf-video-quote">"I learned how to stay disciplined in my thoughts during tough match situations. When adversity hits, I now have the mental tools to respond instead of react."</p>
           <a href="https://www.youtube.com/watch?v=L6RCiZO-6NM" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1418,7 +1384,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Badmus Mubarak</div>
           <div class="vf-video-meta">Competitive Footballer · Mental Endurance</div>
-          <p class="vf-video-quote">"Understanding the psychology behind performance helped me stay composed when things were not clicking on the pitch. My mental endurance has leveled up."</p>
           <a href="https://www.youtube.com/watch?v=zYhC6ASMM5A" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1433,7 +1398,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Alaba Olamide</div>
           <div class="vf-video-meta">Competitive Footballer · Attention Control</div>
-          <p class="vf-video-quote">"Dr. Joshua showed me that mental toughness is not about being emotionless. It is about directing your focus to the exact right cue at the right moment."</p>
           <a href="https://www.youtube.com/watch?v=Bfzv0-iqx5o" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1448,7 +1412,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Agboola Afolabi John</div>
           <div class="vf-video-meta">Competitive Footballer · Emotional Reframing</div>
-          <p class="vf-video-quote">"Handling coach feedback and game pressure used to trigger frustration. Dr. Joshua taught me cognitive reframing and how to turn setbacks into fuel."</p>
           <a href="https://www.youtube.com/watch?v=HelkGlUm_98" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1463,7 +1426,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Adepeju Ibrahim</div>
           <div class="vf-video-meta">Competitive Footballer · Trusting Preparation</div>
-          <p class="vf-video-quote">"I discovered how to silence mental noise and trust my preparation. The confidence I built in our sessions translated directly onto the field."</p>
           <a href="https://www.youtube.com/watch?v=jeQVDNoGcoM" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1478,7 +1440,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Waheed Akeem</div>
           <div class="vf-video-meta">Competitive Footballer · Match Clarity</div>
-          <p class="vf-video-quote">"The mental tools helped me overcome game-day hesitation. I enter matches with complete clarity and conviction in my tactical role."</p>
           <a href="https://www.youtube.com/watch?v=yleZYJBbym0" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1493,7 +1454,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Oluwoye Martins Eniola</div>
           <div class="vf-video-meta">Forward, Peridot FC · Error Recovery</div>
-          <p class="vf-video-quote">"Before working with Dr. Joshua, I used to carry a bad touch in my head for the rest of the game. That changed completely. I process mistakes faster now."</p>
           <a href="https://www.youtube.com/watch?v=9BIKD2A-kkg" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1508,7 +1468,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Oyejide Temiloluwa</div>
           <div class="vf-video-meta">Forward, Peridot FC · Composure</div>
-          <p class="vf-video-quote">"The biggest change for me is self-control on the pitch. I used to let frustration build with referees and teammates. Now I manage that better."</p>
           <a href="https://www.youtube.com/watch?v=feRh68o8AYA" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1523,7 +1482,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Olusola Kayode</div>
           <div class="vf-video-meta">Defender, Elite FC · Second-Half Presence</div>
-          <p class="vf-video-quote">"Staying mentally engaged for a full match was something I struggled with, especially after a mistake. I stay present longer and my second half has improved."</p>
           <a href="https://www.youtube.com/watch?v=yyfw5aaVmS8" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1538,7 +1496,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Ilori Johnson Oluwadamilare & Joshua</div>
           <div class="vf-video-meta">Elite FC & Peridot FC · High-Stakes Execution</div>
-          <p class="vf-video-quote">"In tough games where the crowd is involved or the stakes are high, we used to tighten up. Dr. Joshua’s sessions taught us to channel tension into execution."</p>
           <a href="https://www.youtube.com/watch?v=MLcBNvCw7rI" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1553,7 +1510,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Akande Yusuf</div>
           <div class="vf-video-meta">Competitive Footballer · 90-Minute Focus</div>
-          <p class="vf-video-quote">"Understanding how to reset between plays helped me maintain high performance levels throughout 90 minutes without mental fatigue."</p>
           <a href="https://www.youtube.com/watch?v=BZl6Ia-R1No" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1568,7 +1524,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Adewale Adeyinka</div>
           <div class="vf-video-meta">Competitive Footballer · Steady Confidence</div>
-          <p class="vf-video-quote">"The psychological preparation gave me consistency. I do not experience the wild swings in confidence that used to plague my competitive season."</p>
           <a href="https://www.youtube.com/watch?v=g8znBawmxBc" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1583,7 +1538,6 @@
         <div class="vf-video-caption">
           <div class="vf-video-title">Joshua Ademola Jomiloju (A.A Joshua)</div>
           <div class="vf-video-meta">Defender, Peridot FC · Defensive Reset</div>
-          <p class="vf-video-quote">"Defending is a position where one mistake can cost a goal. Dr. Joshua helped me build a mental switch to move from what happened to what is next."</p>
           <a href="https://www.youtube.com/watch?v=URGnQMZMGRY" target="_blank" rel="noopener" class="vf-video-watch-link">Watch on YouTube &rarr;</a>
         </div>
       </div>
@@ -1592,7 +1546,7 @@
 
     <div style="text-align:center;margin-top:36px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
       <button type="button" id="toggle-extra-videos-btn" onclick="toggleExtraVideoDebriefs()" class="btn-yt-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:13.5px;font-weight:700;cursor:pointer;">
-        <span id="toggle-extra-videos-label">Load All 21 Client Video Debriefs (15 More)</span>
+        <span id="toggle-extra-videos-label">Load All 21 Client Video Debriefs</span>
         <span id="toggle-extra-videos-arrow">&darr;</span>
       </button>
       <a href="testimonials.html#video-testimonials" class="btn-yt-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:13.5px;font-weight:700;text-decoration:none;">
@@ -1825,13 +1779,13 @@
 
           <a href="https://www.youtube.com/watch?v=Mzxw21P0oiA" target="_blank" rel="noopener" class="yt-card" onclick="event.preventDefault();openYtLightbox('Mzxw21P0oiA', this.querySelector('h4')?this.querySelector('h4').textContent:'Dr. Joshua Oparachukwu');" style="text-decoration:none;color:inherit;">
             <div class="yt-thumb">
-              <img src="https://img.youtube.com/vi/Mzxw21P0oiA/maxresdefault.jpg" alt="Why Great Performers Look Great Under Pressure: How Preparation Builds Execution" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Mzxw21P0oiA/hqdefault.jpg';">
+              <img src="https://img.youtube.com/vi/Mzxw21P0oiA/maxresdefault.jpg" alt="Why Great Performers Look Great Under Pressure: How Preparation Helps You Perform Under Pressure" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Mzxw21P0oiA/hqdefault.jpg';">
               <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
               <span style="position:absolute;bottom:8px;left:8px;background:rgba(0,16,42,0.88);color:#FFE484;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;">#AskDrOparachukwu</span>
               <span style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.82);color:#fff;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:4px;">2:57</span>
             </div>
             <div class="yt-info" style="padding:12px 14px;">
-              <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">Why Great Performers Look Great Under Pressure: How Preparation Builds Execution</h4>
+              <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">Why Great Performers Look Great Under Pressure: How Preparation Helps You Perform Under Pressure</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
                 Watch on YouTube
@@ -1841,13 +1795,13 @@
 
           <a href="https://www.youtube.com/watch?v=7PGG2EBvYug" target="_blank" rel="noopener" class="yt-card" onclick="event.preventDefault();openYtLightbox('7PGG2EBvYug', this.querySelector('h4')?this.querySelector('h4').textContent:'Dr. Joshua Oparachukwu');" style="text-decoration:none;color:inherit;">
             <div class="yt-thumb">
-              <img src="https://img.youtube.com/vi/7PGG2EBvYug/maxresdefault.jpg" alt="Confidence is NOT a Feeling: A Decision Before Competition" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/7PGG2EBvYug/hqdefault.jpg';">
+              <img src="https://img.youtube.com/vi/7PGG2EBvYug/maxresdefault.jpg" alt="Confidence is NOT a Feeling: It's a Decision" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/7PGG2EBvYug/hqdefault.jpg';">
               <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
               <span style="position:absolute;bottom:8px;left:8px;background:rgba(0,16,42,0.88);color:#FFE484;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;">#AskDrOparachukwu</span>
               <span style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.82);color:#fff;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:4px;">2:39</span>
             </div>
             <div class="yt-info" style="padding:12px 14px;">
-              <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">Confidence is NOT a Feeling: A Decision Before Competition</h4>
+              <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">Confidence is NOT a Feeling: It's a Decision</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
                 Watch on YouTube
@@ -1857,13 +1811,13 @@
 
           <a href="https://www.youtube.com/watch?v=i3RnpYW147A" target="_blank" rel="noopener" class="yt-card" onclick="event.preventDefault();openYtLightbox('i3RnpYW147A', this.querySelector('h4')?this.querySelector('h4').textContent:'Dr. Joshua Oparachukwu');" style="text-decoration:none;color:inherit;">
             <div class="yt-thumb">
-              <img src="https://img.youtube.com/vi/i3RnpYW147A/maxresdefault.jpg" alt="What Happens 3 Seconds After a Mistake: How to Recover Quickly in Sport" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/i3RnpYW147A/hqdefault.jpg';">
+              <img src="https://img.youtube.com/vi/i3RnpYW147A/maxresdefault.jpg" alt="What Happens 3 Seconds After a Mistake: How to Recover Quickly After a Mistake in Sport" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/i3RnpYW147A/hqdefault.jpg';">
               <div class="yt-thumb-play"><span><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></span></div>
               <span style="position:absolute;bottom:8px;left:8px;background:rgba(0,16,42,0.88);color:#FFE484;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;">#AskDrOparachukwu</span>
               <span style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.82);color:#fff;font-size:10.5px;font-weight:700;padding:2px 6px;border-radius:4px;">2:57</span>
             </div>
             <div class="yt-info" style="padding:12px 14px;">
-              <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">What Happens 3 Seconds After a Mistake: How to Recover Quickly in Sport</h4>
+              <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">What Happens 3 Seconds After a Mistake: How to Recover Quickly After a Mistake in Sport</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
                 Watch on YouTube
@@ -2028,35 +1982,7 @@
 
     
 
-    <section id="signup">
-      <div class="signup-grid">
-        <div class="signup-left reveal">
-          <h2>Stay Inspired</h2>
-          <p>Get insights on performance psychology, mindset, and what it takes to win.</p>
-          <div class="signup-row">
-            <input type="email" id="newsletter-email" placeholder="Enter your email here">
-            <button id="newsletter-submit">Submit</button>
-          </div>
-          <div id="newsletter-msg" style="display:none; color: var(--gold); margin-top: 10px; font-size: 0.9rem;">Thank you for subscribing!</div>
-          <ul class="signup-checks">
-            <li>Performance insights delivered to your inbox</li>
-            <li>Practical psychology you can apply immediately</li>
-          </ul>
-          <p class="signup-no-spam">No spam. Unsubscribe anytime.</p>
-          <!-- Mobile-only quote, shown below "No spam" -->
-          <div class="quote-block-mobile">
-            <span class="quote-mark">"</span>
-            <p class="quote-text">The mind is the athlete's greatest tool and the least trained.</p>
-            <p class="quote-attr">Dr. Joshua Oparachukwu</p>
-          </div>
-        </div>
-        <div class="quote-block reveal" style="transition-delay:.15s">
-          <span class="quote-mark">"</span>
-          <p class="quote-text">The mind is the athlete's greatest tool and the least trained.</p>
-          <p class="quote-attr"> Dr. Joshua Oparachukwu</p>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- ═══ RESEARCH ═══ -->
     <!-- MANUSCRIPT REQUEST MODAL -->
@@ -2167,7 +2093,7 @@
             </div>
             <div>
               <h1 class="about-page-name">Dr. Joshua A. Oparachukwu</h1>
-              <p class="about-page-role">Performance Psychologist · Performance Strategist · Sport Administration Expert
+              <p class="about-page-role">Applied Performance Psychologist and Strategic Sport Management Expert
               </p>
               <p class="about-page-creds" style="line-height:1.7;">B.Ed Human Kinetics &nbsp;·&nbsp; M.Ed Sociology & Psychology of Sport &nbsp;·&nbsp; M.Sc Sport Administration &nbsp;·&nbsp; PhD Performance Psychology</p>
               <div class="about-tags" style="margin-top:16px;">
@@ -2178,8 +2104,7 @@
           </div>
 
           <div class="about-page-text">
-            <p>Dr. Joshua A. Oparachukwu is a Performance Psychologist, Performance Strategist, and Sport Administration
-              expert committed to helping athletes, teams, leaders, and everyday high performers unlock sustainable
+            <p>Dr. Joshua A. Oparachukwu is a Applied Performance Psychologist and Strategic Sport Management Expert committed to helping athletes, teams, leaders, and everyday high performers unlock sustainable
               excellence under pressure. He is the Founder of <a href="https://mindgameafrica.com" target="_blank" style="color:var(--gold);text-decoration:none;">MindGame Africa</a>, a sport and performance consulting
               practice focused on mental performance, psychological skills training, and applied performance solutions,
               and the Founder of <a href="https://sportleadafrica.com" target="_blank" style="color:var(--gold);text-decoration:none;">SportLead Africa</a>, a consulting platform dedicated to sport administration, governance,
@@ -2270,6 +2195,41 @@
       </div>
     </section>
 
+    
+
+    <section id="signup">
+      <div style="text-align:center;max-width:760px;margin:0 auto 28px;">
+        <span class="section-label" style="display:block;color:var(--gold,#C8A830);margin-bottom:6px;">Newsletter &amp; Performance Insights</span>
+        <h2 style="font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy,#00102A);margin:0 0 10px;">Stay Inspired</h2>
+        <div style="width:64px;height:2.5px;background:var(--gold,#C8A830);margin:0 auto;"></div>
+      </div>
+      <div class="signup-grid">
+        <div class="signup-left reveal">
+          <p style="font-size:15.5px;font-weight:600;color:var(--navy,#00102A);margin-bottom:18px;">Get insights on performance psychology, mindset, and what it takes to win.</p>
+          <div class="signup-row">
+            <input type="email" id="newsletter-email" placeholder="Enter your email here">
+            <button id="newsletter-submit">Submit</button>
+          </div>
+          <div id="newsletter-msg" style="display:none; color: var(--gold); margin-top: 10px; font-size: 0.9rem;">Thank you for subscribing!</div>
+          <ul class="signup-checks">
+            <li>Performance insights delivered to your inbox</li>
+            <li>Practical psychology you can apply immediately</li>
+          </ul>
+          <p class="signup-no-spam">No spam. Unsubscribe anytime.</p>
+          <div class="quote-block-mobile">
+            <span class="quote-mark">"</span>
+            <p class="quote-text">The mind is the athlete's greatest tool and the least trained.</p>
+            <p class="quote-attr">Dr. Joshua Oparachukwu</p>
+          </div>
+        </div>
+        <div class="quote-block reveal" style="transition-delay:.15s">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">The mind is the athlete's greatest tool and the least trained.</p>
+          <p class="quote-attr">Dr. Joshua Oparachukwu</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ FINAL CTA (Floating Mesh-Gradient Banner with Animated Orbital Rings) ═══ -->
     <section id="final-cta">
       <div class="vf-final-cta-card">
@@ -2293,15 +2253,20 @@
       </div>
     </section>
 
-    <!-- FLOATING JUMP-TO-REVIEWS PILL (Mobile & Desktop Compliant) -->
+    <!-- FLOATING STICKY PILLS: LEFT = TESTIMONIALS, RIGHT = ENROL IN RETAINER -->
     <a href="#reviews" id="home-floating-reviews-pill"
-      style="position:fixed;bottom:22px;right:22px;z-index:990;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#00102A 0%,#0A2246 100%);color:#fff;border:1.5px solid var(--gold,#C8A830);border-radius:99px;padding:11px 18px;font-family:var(--font-body);font-size:12.5px;font-weight:700;text-decoration:none;box-shadow:0 12px 28px rgba(0,16,42,0.38);opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;">
+      style="position:fixed;bottom:22px;left:22px;z-index:990;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#00102A 0%,#0A2246 100%);color:#fff;border:1.5px solid var(--gold,#C8A830);border-radius:99px;padding:11px 18px;font-family:var(--font-body);font-size:12.5px;font-weight:700;text-decoration:none;box-shadow:0 12px 28px rgba(0,16,42,0.38);opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;">
       <span>See What People Say · Testimonials ↓</span>
     </a>
+    <a href="performance-retainer.html" id="home-floating-enrol-pill"
+      style="position:fixed;bottom:22px;right:22px;z-index:990;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F0D264 0%,#C8A830 100%);color:#00102A;border:1.5px solid #FFE484;border-radius:99px;padding:11px 20px;font-family:var(--font-body);font-size:12.5px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px rgba(0,16,42,0.32);opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;">
+      <span>Enrol in Retainer Program &rarr;</span>
+    </a>
     <script>
-      /* 1. Floating Reviews Pill + Floating Glassmorphic Pill Navbar on Scroll */
+      /* 1. Floating Pills + Floating Glassmorphic Pill Navbar on Scroll */
       (function () {
         var pill = document.getElementById('home-floating-reviews-pill');
+        var enrolPill = document.getElementById('home-floating-enrol-pill');
         var revSec = document.getElementById('reviews');
         var navEl = document.querySelector('nav');
         window.addEventListener('scroll', function () {
@@ -2315,12 +2280,21 @@
           if (pill && revSec) {
             var rect = revSec.getBoundingClientRect();
             var inView = rect.top < window.innerHeight && rect.bottom > 100;
-            if (window.scrollY < 420 || inView) {
+            if (window.scrollY < 320 || inView) {
               pill.style.opacity = '0';
               pill.style.pointerEvents = 'none';
             } else {
               pill.style.opacity = '1';
               pill.style.pointerEvents = 'auto';
+            }
+            if (enrolPill) {
+              if (window.scrollY < 320) {
+                enrolPill.style.opacity = '0';
+                enrolPill.style.pointerEvents = 'none';
+              } else {
+                enrolPill.style.opacity = '1';
+                enrolPill.style.pointerEvents = 'auto';
+              }
             }
           }
         }, { passive: true });
@@ -2590,7 +2564,7 @@ function toggleExtraVideoDebriefs() {
   if (!drawer) return;
   const hidden = drawer.style.display === 'none' || !drawer.style.display;
   drawer.style.display = hidden ? 'block' : 'none';
-  if (label) label.textContent = hidden ? 'Show Fewer Video Debriefs' : 'Load All 21 Client Video Debriefs (15 More)';
+  if (label) label.textContent = hidden ? 'Show Fewer Video Debriefs' : 'Load All 21 Client Video Debriefs';
   if (arrow) arrow.innerHTML = hidden ? '&uarr;' : '&darr;';
 }
 function openYtLightbox(videoId, title) {
