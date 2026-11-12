@@ -1438,26 +1438,14 @@
       let isAllReviewsExpanded = false;
       let activeReviewsFilter = 'all';
       let currentWrittenPage = 1;
-      const WRITTEN_PAGE_SIZE = 9;
+      const WRITTEN_PAGE_SIZE = 6;
       let allWrittenCardsMaster = [];
 
-      function ensureMasterWrittenCards() {
+      function initWrittenCardsMaster() {
+        if (allWrittenCardsMaster.length > 0) return;
         const grid = document.getElementById('writtenReviewsGrid');
-        if (!grid) return [];
-        if (allWrittenCardsMaster.length === 0) {
-          allWrittenCardsMaster = Array.from(grid.querySelectorAll('.written-review-card'));
-          allWrittenCardsMaster.forEach((card, idx) => {
-            card.setAttribute('data-idx', String(idx));
-            const btn = card.querySelector('.written-read-more-btn');
-            if (btn) btn.remove();
-          });
-        }
-        return allWrittenCardsMaster;
-      }
-
-      function getFilteredWrittenCards() {
-        const master = ensureMasterWrittenCards();
-        return master.filter(card => activeReviewsFilter === 'all' || card.getAttribute('data-cat') === activeReviewsFilter);
+        if (!grid) return;
+        allWrittenCardsMaster = Array.from(grid.querySelectorAll('.written-review-card'));
       }
 
       function getColumnCount() {
@@ -1467,58 +1455,82 @@
       }
 
       function renderWrittenReviewsPage() {
+        initWrittenCardsMaster();
         const grid = document.getElementById('writtenReviewsGrid');
         if (!grid) return;
-        const filtered = getFilteredWrittenCards();
-        const total = filtered.length;
+
+        const matching = allWrittenCardsMaster.filter(card => {
+          const cardCat = card.getAttribute('data-cat');
+          return activeReviewsFilter === 'all' || cardCat === activeReviewsFilter;
+        });
+
+        const total = matching.length;
         const totalPages = Math.max(1, Math.ceil(total / WRITTEN_PAGE_SIZE));
         if (currentWrittenPage > totalPages) currentWrittenPage = totalPages;
         if (currentWrittenPage < 1) currentWrittenPage = 1;
 
-        let visibleCards = [];
         let showingStart = 0;
         let showingEnd = 0;
+        let visibleCards = [];
+
         if (isAllReviewsExpanded) {
-          visibleCards = filtered;
+          visibleCards = matching.slice();
           showingStart = total > 0 ? 1 : 0;
           showingEnd = total;
+          grid.classList.add('vault-expanded-scroll');
         } else {
-          const start = (currentWrittenPage - 1) * WRITTEN_PAGE_SIZE;
-          const end = Math.min(start + WRITTEN_PAGE_SIZE, total);
-          visibleCards = filtered.slice(start, end);
-          showingStart = total > 0 ? start + 1 : 0;
-          showingEnd = end;
+          const startIdx = (currentWrittenPage - 1) * WRITTEN_PAGE_SIZE;
+          const endIdx = Math.min(startIdx + WRITTEN_PAGE_SIZE, total);
+          visibleCards = matching.slice(startIdx, endIdx);
+          showingStart = total > 0 ? startIdx + 1 : 0;
+          showingEnd = endIdx;
+          grid.classList.remove('vault-expanded-scroll');
         }
 
-        // Build shortest-column Masonry columns so shorter cards (e.g. Ethan Brooks)
-        // let the next card (e.g. Mateo Silva) move right up underneath to fill the space
+        // LPT (Longest-Processing-Time) Smart Bin Packing:
+        // Sort a working copy from longest to shortest text so long cards never stack together
+        // and short cards automatically slot underneath long cards to equalize column heights.
         const colCount = getColumnCount();
         grid.innerHTML = '';
         const cols = [];
+        const colCards = [];
         const colWeights = [];
         for (let c = 0; c < colCount; c++) {
           const colDiv = document.createElement('div');
           colDiv.className = 'written-masonry-col';
           cols.push(colDiv);
+          colCards.push([]);
           colWeights.push(0);
           grid.appendChild(colDiv);
         }
 
-        visibleCards.forEach(card => {
-          card.style.display = 'flex';
+        const weighted = visibleCards.map((card, idx) => ({
+          card,
+          idx,
+          weight: (card.textContent || '').replace(/\s+/g, ' ').trim().length
+        })).sort((a, b) => b.weight - a.weight);
+
+        weighted.forEach(item => {
           let minCol = 0;
           for (let c = 1; c < colCount; c++) {
             if (colWeights[c] < colWeights[minCol]) minCol = c;
           }
-          cols[minCol].appendChild(card);
-          const textLen = (card.textContent || '').trim().length;
-          colWeights[minCol] += textLen + 140;
+          colCards[minCol].push(item);
+          colWeights[minCol] += item.weight + 95;
         });
+
+        // Within each column, keep original reading order and append
+        for (let c = 0; c < colCount; c++) {
+          colCards[c].sort((a, b) => a.idx - b.idx).forEach(item => {
+            item.card.style.display = 'flex';
+            cols[c].appendChild(item.card);
+          });
+        }
 
         const pagBar = document.getElementById('writtenPaginationBar');
         if (pagBar) {
           if (isAllReviewsExpanded || total <= WRITTEN_PAGE_SIZE) {
-            pagBar.innerHTML = '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections</div>';
+            pagBar.innerHTML = '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections (scroll inside vault)</div>';
           } else {
             let btns = '<button type="button" class="written-page-btn" ' + (currentWrittenPage === 1 ? 'disabled' : '') + ' onclick="goToWrittenPage(' + (currentWrittenPage - 1) + ')">&larr; Prev</button>';
             for (let p = 1; p <= totalPages; p++) {
@@ -1532,7 +1544,7 @@
 
         const text = document.getElementById('toggleReviewsText');
         const icon = document.getElementById('toggleReviewsIcon');
-        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse into Compact Page View' : 'Expand All ' + total + ' Reflections on One Page';
+        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse into Compact Page View' : 'Expand All ' + total + ' Reflections in Vault';
         if (icon) icon.style.transform = isAllReviewsExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
       }
 
