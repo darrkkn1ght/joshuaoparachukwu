@@ -168,5 +168,28 @@
   } else {
     initMotion();
   }
+
+  /* PREVIEW LINK ROUTING GUARD */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var raw = a.getAttribute('href');
+    if (!raw) return;
+    if (
+      raw.charAt(0) === '#' ||
+      raw.indexOf('http://') === 0 ||
+      raw.indexOf('https://') === 0 ||
+      raw.indexOf('mailto:') === 0 ||
+      raw.indexOf('tel:') === 0 ||
+      raw.indexOf('javascript:') === 0 ||
+      raw.indexOf('data:') === 0 ||
+      raw.indexOf('/preview/') === 0
+    ) {
+      return;
+    }
+    var cleaned = raw.replace(/^(\.\.\/)+/, '').replace(/^\.\//, '').replace(/^\//, '');
+    a.setAttribute('href', '/preview/' + cleaned);
+  }, true);
+
 })();
 
