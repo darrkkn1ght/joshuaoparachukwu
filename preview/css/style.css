@@ -8095,51 +8095,60 @@ nav.scrolled-pill {
   border-top: 3px solid #5B21B6 !important;
 }
 
-/* 3. Compact Bento Vault + LPT Balanced Masonry + Tactile Hover Pop */
+/* 3. Ultra-Compact Single-Screen Bento Vault + LPT Balanced Masonry + Tactile Hover Pop */
 #written-testimonials {
-  padding: 24px 32px 28px !important;
+  padding: 18px 32px 24px !important;
 }
 #written-testimonials > div {
   background: linear-gradient(180deg, #F4EFE6 0%, #EAE3D5 100%);
   border: 1.5px solid #D5CBB8;
   border-radius: 20px;
-  padding: 22px 24px 20px !important;
+  padding: 18px 22px 16px !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 14px 34px rgba(0, 16, 42, 0.07);
 }
+#written-testimonials h2 {
+  font-size: clamp(24px, 2.6vw, 32px) !important;
+  margin-bottom: 4px !important;
+}
+#written-testimonials > div > div:first-child p {
+  font-size: 13.5px !important;
+  margin-bottom: 0 !important;
+}
 #written-testimonials .written-filter-bar {
-  margin-bottom: 16px !important;
+  margin-bottom: 12px !important;
   gap: 8px !important;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(0, 16, 42, 0.08);
 }
 #writtenReviewsGrid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  gap: 14px !important;
+  gap: 12px !important;
   align-items: stretch !important;
-}
-#writtenReviewsGrid.vault-expanded-scroll {
-  max-height: 640px !important;
+  max-height: 440px !important;
   overflow-y: auto !important;
   padding: 4px 8px 6px 2px !important;
   scrollbar-width: thin;
   scrollbar-color: #C8A830 rgba(0, 16, 42, 0.08);
 }
-#writtenReviewsGrid.vault-expanded-scroll::-webkit-scrollbar {
-  width: 8px;
+#writtenReviewsGrid.vault-expanded-scroll {
+  max-height: 540px !important;
 }
-#writtenReviewsGrid.vault-expanded-scroll::-webkit-scrollbar-track {
+#writtenReviewsGrid::-webkit-scrollbar {
+  width: 7px;
+}
+#writtenReviewsGrid::-webkit-scrollbar-track {
   background: rgba(0, 16, 42, 0.06);
   border-radius: 99px;
 }
-#writtenReviewsGrid.vault-expanded-scroll::-webkit-scrollbar-thumb {
+#writtenReviewsGrid::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #C8A830, #00102A);
   border-radius: 99px;
 }
 .written-masonry-col {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   height: 100%;
 }
 @media (max-width: 980px) {
@@ -8152,15 +8161,16 @@ nav.scrolled-pill {
     grid-template-columns: 1fr !important;
   }
 }
-/* Remove the space-wasting giant standalone quote mark line */
-.written-review-card .written-quote-mark {
+/* Remove the space-wasting standalone quote mark icon */
+.written-review-card .written-quote-mark,
+.written-review-card .written-quote-icon {
   display: none !important;
 }
 .written-review-card {
   height: auto !important;
   flex: 1 1 auto !important;
-  padding: 15px 17px !important;
-  border-radius: 12px !important;
+  padding: 13px 15px !important;
+  border-radius: 11px !important;
   background: #FFFFFF !important;
   display: flex !important;
   flex-direction: column !important;
@@ -8172,13 +8182,14 @@ nav.scrolled-pill {
   display: block !important;
   -webkit-line-clamp: unset !important;
   overflow: visible !important;
-  font-size: 13.1px !important;
-  line-height: 1.52 !important;
+  font-style: normal !important;
+  font-size: 12.4px !important;
+  line-height: 1.46 !important;
   color: #243042 !important;
-  margin-bottom: 11px !important;
+  margin-bottom: 9px !important;
 }
 .written-review-card .written-author {
-  padding-top: 9px !important;
+  padding-top: 7px !important;
   border-top: 1px solid #EFECE6 !important;
   display: flex !important;
   align-items: baseline !important;
@@ -8187,11 +8198,11 @@ nav.scrolled-pill {
   flex-wrap: wrap !important;
 }
 .written-review-card .written-name {
-  font-size: 13.5px !important;
+  font-size: 13px !important;
   margin-bottom: 0 !important;
 }
 .written-review-card .written-meta {
-  font-size: 11.5px !important;
+  font-size: 11px !important;
 }
 .written-read-more-btn {
   display: none !important;
@@ -8203,7 +8214,53 @@ nav.scrolled-pill {
   z-index: 4;
 }
 .written-pagination-bar {
-  margin-top: 16px !important;
+  margin-top: 10px !important;
+}
+
+/* Retainer Page (#reviews) Compact Dossier Vault Packing */
+#reviews .cr-grid {
+  background: linear-gradient(180deg, #F4EFE6 0%, #EAE3D5 100%) !important;
+  border: 1.5px solid #D5CBB8 !important;
+  border-radius: 18px !important;
+  padding: 16px 18px !important;
+  max-height: 500px !important;
+  overflow-y: auto !important;
+  gap: 14px !important;
+  scrollbar-width: thin;
+  scrollbar-color: #C8A830 rgba(0, 16, 42, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 12px 30px rgba(0, 16, 42, 0.06) !important;
+}
+#reviews .cr-grid::-webkit-scrollbar {
+  width: 7px;
+}
+#reviews .cr-grid::-webkit-scrollbar-track {
+  background: rgba(0, 16, 42, 0.06);
+  border-radius: 99px;
+}
+#reviews .cr-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C8A830, #00102A);
+  border-radius: 99px;
+}
+.retainer-dossier-card {
+  padding: 15px 17px !important;
+  border-radius: 12px !important;
+  background: #FFFFFF !important;
+}
+.retainer-dossier-quote-mark {
+  display: none !important;
+}
+.retainer-dossier-head {
+  padding-bottom: 8px !important;
+  margin-bottom: 9px !important;
+}
+.retainer-dossier-body p {
+  font-size: 12.5px !important;
+  line-height: 1.48 !important;
+  margin-bottom: 8px !important;
+}
+.retainer-dossier-foot {
+  margin-top: 8px !important;
+  padding-top: 8px !important;
 }
 
 /* 4. Live Video Accounts: Move Header Up Close to Top Line */
@@ -8302,4 +8359,151 @@ nav.scrolled-pill {
 }
 #signup {
   padding: 34px clamp(24px, 6vw, 120px) 60px !important;
+}
+
+/* ═══ ULTRA-COMPACT SINGLE-SCREEN BENTO VAULT OVERRIDES (2026) ═══ */
+#written-testimonials {
+  padding: 18px 32px 24px !important;
+}
+#written-testimonials > div {
+  background: linear-gradient(180deg, #F4EFE6 0%, #EAE3D5 100%) !important;
+  border: 1.5px solid #D5CBB8 !important;
+  border-radius: 20px !important;
+  padding: 18px 22px 16px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 14px 34px rgba(0, 16, 42, 0.07) !important;
+}
+#written-testimonials h2 {
+  font-size: clamp(24px, 2.5vw, 31px) !important;
+  margin-bottom: 4px !important;
+}
+#written-testimonials > div > div:first-child {
+  margin-bottom: 10px !important;
+}
+#written-testimonials > div > div:first-child p {
+  font-size: 13.2px !important;
+  margin-bottom: 0 !important;
+}
+#written-testimonials .written-filter-bar {
+  margin-bottom: 10px !important;
+  gap: 8px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid rgba(0, 16, 42, 0.08) !important;
+}
+#writtenReviewsGrid {
+  max-height: 430px !important;
+  overflow-y: auto !important;
+  padding: 4px 8px 6px 2px !important;
+  gap: 11px !important;
+  scrollbar-width: thin;
+  scrollbar-color: #C8A830 rgba(0, 16, 42, 0.08);
+}
+#writtenReviewsGrid.vault-expanded-scroll {
+  max-height: 490px !important;
+}
+#writtenReviewsGrid::-webkit-scrollbar {
+  width: 7px;
+}
+#writtenReviewsGrid::-webkit-scrollbar-track {
+  background: rgba(0, 16, 42, 0.06);
+  border-radius: 99px;
+}
+#writtenReviewsGrid::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C8A830, #00102A);
+  border-radius: 99px;
+}
+.written-masonry-col {
+  gap: 11px !important;
+}
+.written-review-card .written-quote-mark,
+.written-review-card .written-quote-icon,
+.written-review-card > div:first-child > div:first-child {
+  display: none !important;
+}
+.written-review-card {
+  padding: 12px 15px !important;
+  border-radius: 10px !important;
+}
+.written-review-card .written-quote-text,
+.written-review-card > div:first-child > p {
+  font-style: normal !important;
+  font-size: 12.2px !important;
+  line-height: 1.44 !important;
+  color: #243042 !important;
+  margin-bottom: 8px !important;
+}
+.written-review-card .written-author,
+.written-review-card > div:last-child {
+  padding-top: 7px !important;
+  margin-top: 2px !important;
+  border-top: 1px solid #EFECE6 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+.written-review-card .written-name,
+.written-review-card > div:last-child > div:first-child {
+  font-size: 12.8px !important;
+  margin-bottom: 0 !important;
+}
+.written-review-card .written-meta,
+.written-review-card > div:last-child > div:last-child {
+  font-size: 11px !important;
+}
+.written-pagination-bar {
+  margin-top: 10px !important;
+}
+
+/* Retainer Page (#reviews) Compact Single-Screen Dossier Vault */
+#reviews {
+  padding: 32px 24px 40px !important;
+}
+#reviews > div > p {
+  margin: -12px auto 18px !important;
+  font-size: 14px !important;
+}
+#reviews .reviews-grid-3col {
+  background: linear-gradient(180deg, #F4EFE6 0%, #EAE3D5 100%) !important;
+  border: 1.5px solid #D5CBB8 !important;
+  border-radius: 18px !important;
+  padding: 16px 18px !important;
+  max-height: 470px !important;
+  overflow-y: auto !important;
+  gap: 14px !important;
+  scrollbar-width: thin;
+  scrollbar-color: #C8A830 rgba(0, 16, 42, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 12px 30px rgba(0, 16, 42, 0.06) !important;
+}
+#reviews .reviews-grid-3col::-webkit-scrollbar {
+  width: 7px;
+}
+#reviews .reviews-grid-3col::-webkit-scrollbar-track {
+  background: rgba(0, 16, 42, 0.06);
+  border-radius: 99px;
+}
+#reviews .reviews-grid-3col::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C8A830, #00102A);
+  border-radius: 99px;
+}
+.retainer-dossier-card {
+  padding: 14px 16px !important;
+  border-radius: 11px !important;
+  background: #FFFFFF !important;
+}
+.retainer-dossier-quote-mark {
+  display: none !important;
+}
+.retainer-dossier-head {
+  padding-bottom: 7px !important;
+  margin-bottom: 8px !important;
+}
+.retainer-dossier-body p {
+  font-size: 12.2px !important;
+  line-height: 1.45 !important;
+  margin-bottom: 7px !important;
+}
+.retainer-dossier-foot {
+  margin-top: 8px !important;
+  padding-top: 8px !important;
 }
