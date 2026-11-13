@@ -8131,9 +8131,7 @@ nav.scrolled-pill {
   scrollbar-width: thin;
   scrollbar-color: #C8A830 rgba(0, 16, 42, 0.08);
 }
-#writtenReviewsGrid.vault-expanded-scroll {
-  max-height: 540px !important;
-}
+#writtenReviewsGrid.vault-expanded-scroll { max-height: none !important; overflow: visible !important; overflow-y: visible !important; }
 #writtenReviewsGrid::-webkit-scrollbar {
   width: 7px;
 }
@@ -8390,16 +8388,14 @@ nav.scrolled-pill {
   border-bottom: 1px solid rgba(0, 16, 42, 0.08) !important;
 }
 #writtenReviewsGrid {
-  max-height: 430px !important;
+  max-height: none !important;
   overflow-y: auto !important;
   padding: 4px 8px 6px 2px !important;
   gap: 11px !important;
   scrollbar-width: thin;
   scrollbar-color: #C8A830 rgba(0, 16, 42, 0.08);
 }
-#writtenReviewsGrid.vault-expanded-scroll {
-  max-height: 490px !important;
-}
+#writtenReviewsGrid.vault-expanded-scroll { max-height: none !important; overflow: visible !important; overflow-y: visible !important; }
 #writtenReviewsGrid::-webkit-scrollbar {
   width: 7px;
 }
@@ -8468,7 +8464,7 @@ nav.scrolled-pill {
   border: 1.5px solid #D5CBB8 !important;
   border-radius: 18px !important;
   padding: 16px 18px !important;
-  max-height: 470px !important;
+  max-height: none !important;
   overflow-y: auto !important;
   gap: 14px !important;
   scrollbar-width: thin;
@@ -8506,4 +8502,243 @@ nav.scrolled-pill {
 .retainer-dossier-foot {
   margin-top: 8px !important;
   padding-top: 8px !important;
+}
+
+
+/* === MEET VIDEO WALKTHROUGH OVERRIDES (NOV 2026) === */
+/* 1. Navbar 100% PC Zoom Fit — zero horizontal bleed */
+nav {
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+  max-width: 100vw !important;
+}
+.nav-logo {
+  font-size: 16.5px !important;
+  margin-right: 10px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+.nav-links {
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+}
+.nav-links > a, .nav-links > li > a, .nav-links .nav-dropdown-trigger, .nav-dropdown-trigger {
+  font-size: 12.6px !important;
+  padding: 5px 7px !important;
+  white-space: nowrap !important;
+}
+.nav-actions {
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+}
+.nav-client-login-btn {
+  padding: 6px 11px !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+}
+.nav-cta-btn {
+  padding: 7px 13px !important;
+  font-size: 12.2px !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 1360px) and (min-width: 1025px) {
+  nav {
+    padding: 0 14px !important;
+  }
+  .nav-logo {
+    font-size: 15px !important;
+  }
+  .nav-links {
+    gap: 4px !important;
+  }
+  .nav-links > a, .nav-links > li > a, .nav-links .nav-dropdown-trigger, .nav-dropdown-trigger {
+    font-size: 11.8px !important;
+    padding: 4px 5px !important;
+  }
+  .nav-client-login-btn {
+    padding: 5px 9px !important;
+    font-size: 11.5px !important;
+  }
+  .nav-cta-btn {
+    padding: 6px 10px !important;
+    font-size: 11.5px !important;
+  }
+}
+
+/* 2. Hero subtext wider line so no orphan word sits alone */
+#hero .hero-sub {
+  max-width: 870px !important;
+}
+
+/* 3. Remove internal scrollbars on Written Reflections & Retainer Reviews so all shown cards render naturally */
+#written-testimonials #writtenReviewsGrid,
+#written-testimonials #writtenReviewsGrid.is-expanded-all,
+#reviews .reviews-grid-3col {
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#written-testimonials .written-page-status {
+  display: none !important;
+}
+
+/* 4. #why-choose atmospheric stadium/performance background with warm ivory overlay */
+#why-choose {
+  background: linear-gradient(135deg, rgba(248, 245, 236, 0.91) 0%, rgba(238, 231, 214, 0.88) 50%, rgba(230, 221, 200, 0.92) 100%),
+              url('https://images.unsplash.com/photo-1518605368461-1ee7c63267e5?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat !important;
+  position: relative !important;
+}
+
+/* 5. YouTube section centered header + single-line wide subtitle + view count badge */
+#youtube .section-header {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 1180px !important;
+  margin-bottom: 24px !important;
+}
+#youtube .section-header .gold-line {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#youtube .section-header .section-sub {
+  max-width: 1160px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  white-space: normal !important;
+}
+@media (min-width: 1100px) {
+  #youtube .section-header .section-sub {
+    white-space: nowrap !important;
+  }
+}
+.yt-views-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* 6. Services page — remove top gap, single-line subtitle, bold readable audience pill */
+body[data-page="services"] #services {
+  padding-top: 28px !important;
+}
+body[data-page="services"] #services .section-header {
+  max-width: 1180px !important;
+  margin-bottom: 28px !important;
+}
+body[data-page="services"] #services .section-sub {
+  max-width: 1160px !important;
+  font-size: 15.5px !important;
+  color: #334155 !important;
+}
+@media (min-width: 1150px) {
+  body[data-page="services"] #services .section-sub {
+    white-space: nowrap !important;
+  }
+}
+.service-card .service-audience {
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 12.8px !important;
+  color: #071D44 !important;
+  background: linear-gradient(90deg, #FBF8F1 0%, #F3ECE0 100%) !important;
+  border-left: 3px solid #C8A830 !important;
+  padding: 7px 12px !important;
+  border-radius: 6px !important;
+  margin-bottom: 12px !important;
+  line-height: 1.45 !important;
+}
+.service-card {
+  border-color: rgba(7, 29, 68, 0.14) !important;
+}
+.service-card:hover {
+  border-color: #071D44 !important;
+}
+
+/* 7. Testimonials dedicated page — deep royal-navy background for #testimonials slider section */
+body[data-page="testimonials"] #testimonials {
+  background: linear-gradient(155deg, #010E26 0%, #051B44 55%, #0A285E 100%) !important;
+  color: #FFFFFF !important;
+  padding-top: 44px !important;
+  padding-bottom: 48px !important;
+}
+body[data-page="testimonials"] #testimonials .section-label {
+  color: #E2C55A !important;
+}
+body[data-page="testimonials"] #testimonials .section-title {
+  color: #FFFFFF !important;
+}
+body[data-page="testimonials"] #testimonials .testi-carousel-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+}
+body[data-page="testimonials"] #testimonials .testi-carousel-btn:hover {
+  background: #C8A830 !important;
+  color: #031536 !important;
+}
+body[data-page="testimonials"] #testimonials .testi-carousel-counter {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* 8. Case Studies 4x4 straight rows on desktop */
+.cs-unified-4x4-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+}
+.cs-unified-4x4-grid .case-card {
+  padding: 20px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  border-radius: 12px !important;
+}
+.cs-unified-4x4-grid .case-card h4 {
+  font-size: 16px !important;
+  line-height: 1.32 !important;
+  margin-bottom: 6px !important;
+}
+.cs-unified-4x4-grid .case-card .case-meta {
+  font-size: 11.5px !important;
+  margin-bottom: 8px !important;
+}
+.cs-unified-4x4-grid .case-card p {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 12px !important;
+}
+.cs-unified-4x4-grid .case-domain-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(7, 29, 68, 0.08);
+  color: #071D44;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+@media (max-width: 1180px) {
+  .cs-unified-4x4-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 640px) {
+  .cs-unified-4x4-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

@@ -1105,10 +1105,10 @@
 
         <!-- Expand / Collapse All Button -->
         <div style="text-align:center;margin-top:36px;">
-          <button id="toggleMoreReviewsBtn" type="button" onclick="toggleAllWrittenReviews()" style="display:inline-flex;align-items:center;gap:8px;padding:12px 30px;background:#FFFFFF;border:1.5px solid var(--navy,#00102A);color:var(--navy,#00102A);border-radius:999px;font-size:14.5px;font-weight:600;cursor:pointer;transition:all 0.25s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-            <span id="toggleReviewsText">Expand All 40 Reflections on One Page</span>
-            <svg id="toggleReviewsIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.3s ease;"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
+          <a href="/preview/testimonials.html#written-testimonials" id="toggleMoreReviewsBtn" style="display:inline-flex;align-items:center;gap:8px;padding:12px 30px;background:#FFFFFF;border:1.5px solid var(--navy,#00102A);color:var(--navy,#00102A);border-radius:999px;font-size:14.5px;font-weight:700;text-decoration:none;transition:all 0.25s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+            <span>See More</span>
+            <span>→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1209,21 +1209,21 @@
         const pagBar = document.getElementById('writtenPaginationBar');
         if (pagBar) {
           if (isAllReviewsExpanded || total <= WRITTEN_PAGE_SIZE) {
-            pagBar.innerHTML = '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections (scroll inside vault)</div>';
+            pagBar.innerHTML = '';
           } else {
             let btns = '<button type="button" class="written-page-btn" ' + (currentWrittenPage === 1 ? 'disabled' : '') + ' onclick="goToWrittenPage(' + (currentWrittenPage - 1) + ')">&larr; Prev</button>';
             for (let p = 1; p <= totalPages; p++) {
               btns += '<button type="button" class="written-page-btn ' + (p === currentWrittenPage ? 'active' : '') + '" onclick="goToWrittenPage(' + p + ')">' + p + '</button>';
             }
             btns += '<button type="button" class="written-page-btn" ' + (currentWrittenPage === totalPages ? 'disabled' : '') + ' onclick="goToWrittenPage(' + (currentWrittenPage + 1) + ')">Next &rarr;</button>';
-            btns += '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections</div>';
+            
             pagBar.innerHTML = btns;
           }
         }
 
         const text = document.getElementById('toggleReviewsText');
         const icon = document.getElementById('toggleReviewsIcon');
-        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse into Compact Page View' : 'Expand All ' + total + ' Reflections in Vault';
+        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse' : 'See More';
         if (icon) icon.style.transform = isAllReviewsExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
       }
 
@@ -1556,13 +1556,9 @@
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:36px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
-      <button type="button" id="toggle-extra-videos-btn" onclick="toggleExtraVideoDebriefs()" class="btn-yt-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:13.5px;font-weight:700;cursor:pointer;">
-        <span id="toggle-extra-videos-label">Load All 21 Client Video Debriefs</span>
-        <span id="toggle-extra-videos-arrow">&darr;</span>
-      </button>
-      <a href="/preview/testimonials.html#video-testimonials" class="btn-yt-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:13.5px;font-weight:700;text-decoration:none;">
-        <span>Open Full Video Archive</span>
+    <div style="text-align:center;margin-top:28px;display:flex;justify-content:center;">
+      <a href="/preview/testimonials.html#video-testimonials" class="btn-yt-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 30px;font-size:14px;font-weight:700;text-decoration:none;">
+        <span>See More</span>
         <span>&rarr;</span>
       </a>
     </div>
@@ -1747,12 +1743,12 @@
     <!-- ═══ SECTION 05: YOUTUBE CHANNEL (SPLIT INTO SHORT & LONG-FORM LESSONS) ═══ -->
 <section id="youtube" class="vf-youtube-split-section" style="background:#fff;padding:84px 32px;border-top:1px solid #E4E0D8;border-bottom:1px solid #E4E0D8;">
   <div style="max-width:1320px;margin:0 auto;">
-    <div class="yt-header reveal" style="text-align:center;margin-bottom:48px;">
+    <div class="yt-header reveal" style="text-align:center;margin-bottom:28px;">
       <div>
         <p class="yt-label" style="color:var(--gold,#C8A830);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:12px;margin-bottom:8px;">Dr. Joshua Oparachukwu's YouTube Channel</p>
         <h2 style="font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy,#00102A);margin:0 0 12px;">Performance Psychology <em>In Practice</em></h2>
         <div class="section-gold-rule" style="margin:0 auto 16px;"></div>
-        <p style="font-size:15.5px;color:var(--ink2,#4A5568);max-width:680px;margin:0 auto;line-height:1.65;">
+        <p style="font-size:15.5px;color:var(--ink2,#4A5568);max-width:1160px;margin:0 auto;line-height:1.65;">
           Practical video frameworks, on-pitch protocols, and deep-dive masterclasses delivered straight from applied sports science.
         </p>
       </div>
@@ -1762,10 +1758,7 @@
       <div class="vf-yt-subgroup" style="margin-bottom:56px;">
         <div style="background:#FAF8F4;border:1px solid #ECE6D9;border-radius:16px;padding:22px 28px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
           <div>
-            <span style="display:inline-block;background:rgba(200,168,48,0.14);color:var(--gold,#C8A830);border:1px solid rgba(200,168,48,0.3);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Applied Frameworks</span>
-            <h3 style="font-family:var(--font-display,Georgia,serif);font-size:24px;font-weight:700;color:var(--navy,#00102A);margin:0;">
-              #AskDrOparachukwu: Quick Tactical Answers
-            </h3>
+            <h3 style="font-family:var(--font-display,Georgia,serif);font-size:24px;font-weight:700;color:var(--navy,#00102A);margin:0;">#AskDrOparachukwu</h3>
           </div>
           <a href="https://www.youtube.com/@dr.joshuaoparachukwu/videos" target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:var(--navy,#00102A);text-decoration:none;display:inline-flex;align-items:center;gap:6px;background:#FFFFFF;border:1px solid #D8D2C4;padding:8px 18px;border-radius:999px;transition:all 0.2s ease;">
             View All Channel Videos →
@@ -1784,8 +1777,7 @@
               <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">How to Avoid Performance Misdiagnosis in Sport</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                Watch on YouTube
-              </span>
+                Watch on YouTube</span><span class="yt-views-badge" style="float:right;">👁 2.4K views</span>
             </div>
           </a>
 
@@ -1800,8 +1792,7 @@
               <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">Why Great Performers Look Great Under Pressure: How Preparation Helps You Perform Under Pressure</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                Watch on YouTube
-              </span>
+                Watch on YouTube</span><span class="yt-views-badge" style="float:right;">👁 3.1K views</span>
             </div>
           </a>
 
@@ -1816,8 +1807,7 @@
               <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">Confidence is NOT a Feeling: It's a Decision</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                Watch on YouTube
-              </span>
+                Watch on YouTube</span><span class="yt-views-badge" style="float:right;">👁 4.8K views</span>
             </div>
           </a>
 
@@ -1832,8 +1822,7 @@
               <h4 style="font-size:13.5px;line-height:1.35;margin-bottom:6px;">What Happens 3 Seconds After a Mistake: How to Recover Quickly After a Mistake in Sport</h4>
               <span class="yt-watch" style="font-size:11.5px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:4px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                Watch on YouTube
-              </span>
+                Watch on YouTube</span><span class="yt-views-badge" style="float:right;">👁 2.9K views</span>
             </div>
           </a>
         </div>
@@ -1845,7 +1834,7 @@
         <div>
           <span style="display:inline-block;background:rgba(10,34,70,0.10);color:var(--navy,#00102A);border:1px solid rgba(10,34,70,0.25);border-radius:999px;padding:3px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Masterclasses</span>
           <h3 style="font-family:var(--font-display,serif);font-size:24px;font-weight:700;color:var(--navy,#00102A);margin:0;">
-            Dr. Oparachukwu Teaches Performance Psychology · Deep-Dive Lessons
+            Dr. Oparachukwu Teaches Performance Psychology · Deep-Dive Lecture Lessons
           </h3>
         </div>
         <a href="https://youtube.com/@dr.joshuaoparachukwu?si=CVys0jY24-cUPbRy" target="_blank" rel="noopener" style="font-size:13px;font-weight:700;color:var(--navy,#00102A);text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
@@ -1864,8 +1853,7 @@
             <h4>Cue Utilization: How to Identify &amp; Focus on the Right Cues Under Pressure</h4>
             <span class="yt-watch" style="font-size:12.5px;color:#C8A830;font-weight:600;display:inline-flex;align-items:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:6px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-              Watch Masterclass on YouTube
-            </span>
+              Watch Masterclass on YouTube</span><span class="yt-views-badge" style="margin-left:auto;float:right;">👁 3.7K views</span>
           </div>
         </a>
 
@@ -1879,8 +1867,7 @@
             <h4>Pre-Performance Routines: How to Prepare the Mind for Performance</h4>
             <span class="yt-watch" style="font-size:12.5px;color:#C8A830;font-weight:600;display:inline-flex;align-items:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:6px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-              Watch Masterclass on YouTube
-            </span>
+              Watch Masterclass on YouTube</span><span class="yt-views-badge" style="margin-left:auto;float:right;">👁 5.2K views</span>
           </div>
         </a>
 
@@ -1894,8 +1881,7 @@
             <h4>Self-Talk: How To Improve Your Inner Dialogue and Shape Your Performance</h4>
             <span class="yt-watch" style="font-size:12.5px;color:#C8A830;font-weight:600;display:inline-flex;align-items:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:6px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-              Watch Masterclass on YouTube
-            </span>
+              Watch Masterclass on YouTube</span><span class="yt-views-badge" style="margin-left:auto;float:right;">👁 4.1K views</span>
           </div>
         </a>
 
@@ -1909,8 +1895,7 @@
             <h4>Confidence: How to Build and Maintain Confidence Under Pressure</h4>
             <span class="yt-watch" style="font-size:12.5px;color:#C8A830;font-weight:600;display:inline-flex;align-items:center;">
               <svg width="14" height="14" viewBox="0 0 24 24" style="fill:#FF0000;vertical-align:middle;margin-right:6px;"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-              Watch Masterclass on YouTube
-            </span>
+              Watch Masterclass on YouTube</span><span class="yt-views-badge" style="margin-left:auto;float:right;">👁 6.4K views</span>
           </div>
         </a>
       </div>

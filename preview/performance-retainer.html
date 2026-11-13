@@ -626,6 +626,157 @@
     .form-textarea:focus {
       border-color: var(--navy);
     }
+    /* === RETAINER MEET VIDEO OVERRIDES === */
+    .retainer-hero {
+      background: linear-gradient(155deg, #000B1E 0%, #03173A 50%, #062356 100%) !important;
+      padding: 118px 5% 68px !important;
+    }
+    #testimonials.retainer-photo-testi-sec {
+      padding-top: 28px !important;
+      padding-bottom: 36px !important;
+    }
+    #testimonials.retainer-photo-testi-sec .section-title {
+      max-width: 1180px !important;
+      font-size: clamp(24px, 2.5vw, 33px) !important;
+    }
+    @media (min-width: 1100px) {
+      #testimonials.retainer-photo-testi-sec .section-title {
+        white-space: nowrap !important;
+      }
+    }
+    .retainer-sec-head {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .retainer-sec-head h2 {
+      text-align: center !important;
+    }
+    .retainer-sec-head p {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+    }
+    /* Atmospheric background on What You Get (#included) */
+    #included.retainer-sec {
+      background: linear-gradient(135deg, rgba(249, 246, 238, 0.92) 0%, rgba(241, 234, 218, 0.89) 55%, rgba(233, 224, 204, 0.93) 100%),
+                  url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat !important;
+    }
+    /* Directional flow arrows on How Enrolment Works (.steps-grid) */
+    .steps-grid .step-card {
+      position: relative !important;
+    }
+    @media (min-width: 961px) {
+      .steps-grid .step-card:not(:nth-child(3n))::after {
+        content: "→";
+        position: absolute;
+        right: -19px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #C8A830;
+        color: #031536;
+        font-weight: 900;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        box-shadow: 0 4px 12px rgba(3, 21, 54, 0.18);
+      }
+    }
+    /* Dual CTA stack below each Retainer section */
+    .retainer-dual-cta {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .retainer-dual-cta .see-others-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: rgba(7, 29, 68, 0.06);
+      border: 1.5px solid rgba(7, 29, 68, 0.2);
+      color: #071D44;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .retainer-dual-cta .see-others-btn:hover {
+      background: #071D44;
+      color: #FFFFFF;
+    }
+    .retainer-dual-cta .enrol-inline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #041838 0%, #0A2756 100%);
+      color: #FFFFFF;
+      font-size: 14.5px;
+      font-weight: 800;
+      border: 1.5px solid #C8A830;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(4, 24, 56, 0.18);
+      transition: all 0.2s ease;
+    }
+    .retainer-dual-cta .enrol-inline-btn:hover {
+      background: #C8A830;
+      color: #031536;
+      transform: translateY(-2px);
+    }
+    /* Retainer Dossier Cards — Client Name & Country at the TOP before quote */
+    #reviews .review-card-top-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(7, 29, 68, 0.1);
+    }
+    #reviews .review-card-top-author .review-author-name {
+      font-size: 16.5px !important;
+      font-weight: 800 !important;
+      color: #041838 !important;
+      margin-bottom: 2px !important;
+    }
+    #reviews .review-card-top-author .review-author-role {
+      font-size: 12.5px !important;
+      font-weight: 600 !important;
+      color: #64748B !important;
+    }
+    .step-card-alt { position: relative !important; }
+    @media (min-width: 980px) {
+      .steps-list .step-card-alt:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        right: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: #C8A830;
+        color: #00102A;
+        font-weight: 900;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 6;
+        box-shadow: 0 4px 10px rgba(0,16,42,0.18);
+      }
+    }
   </style>
 </head>
 
@@ -905,29 +1056,62 @@
   </script>
 
 
-  <div class="lead-box-wide-wrap">
+  <div class="lead-box-wide-wrap" id="what-it-is" style="padding-top:36px;">
+    <div style="text-align:center;max-width:860px;margin:0 auto 24px;">
+      <span class="section-label">Individual Performance Development Program</span>
+      <div class="section-rule" style="margin:8px auto 14px;"></div>
+      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin:0 0 10px;">What It Is</h2>
+      <p style="font-size:15.5px;color:var(--ink3);line-height:1.65;margin:0 auto;">A structured four-month one-on-one performance psychology retainer engineered for sustained execution under competitive pressure.</p>
+    </div>
     <div class="lead-box">
-      "Performing consistently requires more than knowing what to do. Pressure, uncertainty, setbacks, expectations and ingrained habits can change how you think, decide and respond. This program provides structured professional support to understand those patterns, develop practical mental skills and apply them in the situations that matter to you."
+      <div>"Performing consistently requires more than knowing what to do. Pressure, uncertainty, setbacks, expectations and ingrained habits can change how you think, decide and respond. This program provides structured professional support to understand those patterns, develop practical mental skills and apply them in the situations that matter to you."</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(0,16,42,0.12);font-style:normal;text-align:left;">
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:11px;font-weight:800;color:#9A7B1C;text-transform:uppercase;letter-spacing:0.08em;">Program Investment</div>
+          <div style="font-size:16px;font-weight:800;color:#00102A;margin-top:2px;">$500 USD One-Time</div>
+          <div style="font-size:12.5px;color:#475569;">Covers full 4-month engagement</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:11px;font-weight:800;color:#9A7B1C;text-transform:uppercase;letter-spacing:0.08em;">Consultation Cadence</div>
+          <div style="font-size:16px;font-weight:800;color:#00102A;margin-top:2px;">8 Private Sessions</div>
+          <div style="font-size:12.5px;color:#475569;">Two 45-min consultations / month</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:11px;font-weight:800;color:#9A7B1C;text-transform:uppercase;letter-spacing:0.08em;">Duration &amp; Rollover</div>
+          <div style="font-size:16px;font-weight:800;color:#00102A;margin-top:2px;">4 Consecutive Months</div>
+          <div style="font-size:12.5px;color:#475569;">30-day rollover option + renewal</div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:10px;padding:12px 16px;">
+          <div style="font-size:11px;font-weight:800;color:#9A7B1C;text-transform:uppercase;letter-spacing:0.08em;">Dedicated Access</div>
+          <div style="font-size:16px;font-weight:800;color:#00102A;margin-top:2px;">Private Client Portal</div>
+          <div style="font-size:12.5px;color:#475569;">PIN login &amp; Google Calendar sync</div>
+        </div>
+      </div>
     </div>
-    <div class="jump-reviews-bar">
-      <a href="#reviews" class="btn-jump-reviews">
-        <span>See What Other People Say About the Retainer Program · Go Straight to Testimonials ↓</span>
-      </a>
-    </div>
+    <div class="retainer-dual-cta" style="text-align:center;margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <a href="#reviews" class="btn-jump-reviews" style="display:inline-flex;align-items:center;gap:8px;">
+          <span>See What Other People Say About the Retainer Program · See Testimonials ↓</span>
+        </a>
+        <button type="button" onclick="openEnrolModal()" class="btn-enrol-lux">
+          <span>Enrol Now</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
   </div>
 
   <!-- ═══ THE OFFER ═══ -->
-  <section class="section-wrap" style="max-width:1460px;padding:34px clamp(20px, 3vw, 40px) 28px;">
-
-    <div>
-      <span class="section-label">Program Architecture</span>
-      <div class="section-rule"></div>
-      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin-bottom:14px;">
-        What You Get
-      </h2>
-      <p style="font-size:15px;color:var(--ink3);max-width:640px;line-height:1.7;">
+  <section class="section-wrap" id="what-you-get-sec" style="max-width:none;width:100%;box-sizing:border-box;padding:48px clamp(20px, 4vw, 56px) 44px;background:linear-gradient(135deg, rgba(249,246,238,0.92) 0%, rgba(240,233,216,0.89) 55%, rgba(232,223,202,0.93) 100%), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;border-top:1px solid #E5DEC9;border-bottom:1px solid #E5DEC9;">
+    <div style="max-width:1380px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:28px;">
+        <span class="section-label">Program Architecture</span>
+        <div class="section-rule" style="margin:8px auto 14px;"></div>
+        <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin-bottom:12px;">
+          What You Get
+        </h2>
+        <p style="font-size:15px;color:var(--ink3);max-width:680px;margin:0 auto;line-height:1.7;">
         A rigorous, highly personalized engagement designed to produce observable, durable competitive breakthroughs.
       </p>
+      </div>
 
       <div class="feature-grid">
         <div class="feature-card">
@@ -1017,7 +1201,10 @@
       </div>
 
       <!-- Direct Enrol CTA under What You Get -->
-      <div style="text-align:center;margin-top:44px;">
+      <div class="retainer-dual-cta" style="text-align:center;margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <a href="#reviews" class="btn-jump-reviews" style="display:inline-flex;align-items:center;gap:8px;">
+          <span>See What Other People Say About the Retainer Program · See Testimonials ↓</span>
+        </a>
         <button type="button" onclick="openEnrolModal()" class="btn-enrol-lux">
           <span>Enrol Now</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1028,17 +1215,15 @@
 
   <!-- ═══ WHO THE PROGRAMME IS FOR ═══ -->
   <section class="audience-band">
-    <div class="audience-inner">
+    <div class="audience-inner" style="text-align:center;">
       <span class="section-label">Target Audience</span>
-      <div class="section-rule"></div>
-      <h2 style="font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--navy);margin-bottom:12px;">
-        Who the Programme Is Built For
-      </h2>
-      <p style="font-size:15.5px;color:var(--ink2);line-height:1.75;max-width:820px;">
+      <div class="section-rule" style="margin:8px auto 14px;"></div>
+      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin-bottom:12px;">Who It's For</h2>
+      <p style="font-size:15.5px;color:var(--ink2);line-height:1.75;max-width:860px;margin:0 auto;">
         Athletes, students, professionals, performers, creators, coaches, executives and others who want structured, continuous support with their performance, development and functioning in demanding environments. Clients may be supported by different qualified professionals according to the specialized needs identified during their consultations.
       </p>
 
-      <div class="audience-pills">
+      <div class="audience-pills" style="justify-content:center;">
         <div class="aud-pill">Professional &amp; Elite Athletes</div>
         <div class="aud-pill">Academy &amp; Collegiate Competitors</div>
         <div class="aud-pill">Founders &amp; C-Suite Executives</div>
@@ -1048,7 +1233,10 @@
       </div>
     
       <!-- Direct Enrol CTA under Who This Is For -->
-      <div style="text-align:center;margin-top:40px;">
+      <div class="retainer-dual-cta" style="text-align:center;margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <a href="#reviews" class="btn-jump-reviews" style="display:inline-flex;align-items:center;gap:8px;">
+          <span>See What Other People Say About the Retainer Program · See Testimonials ↓</span>
+        </a>
         <button type="button" onclick="openEnrolModal()" class="btn-enrol-lux">
           <span>Enrol Now</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1059,14 +1247,16 @@
 
   <!-- ═══ HOW ENROLMENT WORKS ═══ -->
   <section class="section-wrap" id="how-it-works" style="max-width:none;width:100%;box-sizing:border-box;padding:48px clamp(20px, 3vw, 48px) 36px;">
-    <span class="section-label">Step-by-Step Client Journey</span>
-    <div class="section-rule"></div>
-    <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin-bottom:14px;">
-      How Enrolment Works
-    </h2>
-    <p style="font-size:15px;color:var(--ink3);max-width:600px;line-height:1.7;">
-      From initial checkout to your final consultation, your engagement follows a clear, predictable professional protocol.
-    </p>
+    <div style="text-align:center;margin-bottom:28px;">
+      <span class="section-label">Step-by-Step Client Journey</span>
+      <div class="section-rule" style="margin:8px auto 14px;"></div>
+      <h2 style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);margin-bottom:12px;">
+        How Enrolment Works
+      </h2>
+      <p style="font-size:15px;color:var(--ink3);max-width:680px;margin:0 auto;line-height:1.7;">
+        From initial checkout to your final consultation, your engagement follows a clear, predictable professional protocol.
+      </p>
+    </div>
 
     <div class="steps-list">
       <div class="step-card-alt">
@@ -1120,7 +1310,10 @@
       </div>
 
     <!-- Direct Enrol CTA under How Enrolment Works -->
-      <div style="text-align:center;margin-top:44px;">
+      <div class="retainer-dual-cta" style="text-align:center;margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <a href="#reviews" class="btn-jump-reviews" style="display:inline-flex;align-items:center;gap:8px;">
+          <span>See What Other People Say About the Retainer Program · See Testimonials ↓</span>
+        </a>
         <button type="button" onclick="openEnrolModal()" class="btn-enrol-lux">
           <span>Enrol Now</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1144,206 +1337,236 @@
         <!-- 01 Hossein Salama -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 01 &middot; Athletics</span>
-              <span class="dossier-region">UAE</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">HS</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Hossein Salama</div>
+              <div style="font-size:12px;color:var(--ink3);">UAE · Athletics & Competitive Athlete (formerly US high school athletics)
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Athletics</span>
+                <span class="dossier-region">UAE</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"I have known Joshua since the COVID years, long before he became Dr. Joshua Oparachukwu. We first met on Preply, where he was working as an English language instructor. At the time, I was a high school athlete in the United States, dealing with anxiety, confidence issues, and the pressure that comes with competitive sport. What began as language lessons gradually became something much more valuable to me."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"Joshua was someone I could speak to freely. He understood what I was experiencing, knew how to approach my concerns, and helped me develop the confidence and psychological skills to manage pressure more effectively. I eventually retained him privately for performance psychology support, even while he was still undergoing his professional training. That decision helped me navigate a particularly difficult period in my athletic journey."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"Today, I am better equipped to manage anxiety, handle performance pressure, and approach challenging situations with greater confidence."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">HS</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Hossein Salama</div>
-              <div style="font-size:12px;color:var(--ink3);">UAE · Athletics & Competitive Athlete (formerly US high school athletics)</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 02 Laura Johnson -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 02 &middot; Sport Management</span>
-              <span class="dossier-region">USA</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">LJ</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Laura Johnson</div>
+              <div style="font-size:12px;color:var(--ink3);">USA · Sport Management Professional
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Sport Management</span>
+                <span class="dossier-region">USA</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"When I started working in sport management straight out of school, I quickly realised that the demands of the job were quite different from what I had experienced during my training. The pace was overwhelming. I struggled with administrative responsibilities, keeping track of tasks, and following up on important assignments. At the same time, I was dealing with some personal challenges involving my relationship and family, which made everything even more difficult."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"Working with Dr. Joshua helped me develop a better approach to managing these pressures. I became more organised, more confident in handling my responsibilities, and better able to manage what was happening in my personal life without allowing it to interfere with my performance at work."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"I'm genuinely grateful that I had the opportunity to work with him. His support made a real difference, and I can confidently say that his services are worth it."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">LJ</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Laura Johnson</div>
-              <div style="font-size:12px;color:var(--ink3);">USA · Sport Management Professional</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 03 Steve Benjamin -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 03 &middot; Track & Field</span>
-              <span class="dossier-region">USA</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">SB</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Steve Benjamin</div>
+              <div style="font-size:12px;color:var(--ink3);">USA · Athletics Competitor
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Track & Field</span>
+                <span class="dossier-region">USA</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"I used to struggle a lot with my confidence as a high school athlete. I would perform really well during practice, but whenever it was time to compete, I just couldn't reproduce the same level of performance. It became frustrating because I knew what I was capable of, and I expected so much more from myself. Eventually, I started questioning my abilities and even considered quitting because I felt I wasn't good enough."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"Things began to change when I reached out to Dr. Joshua. During our first consultation, he took the time to understand what I was experiencing, and by our second session, we had already started working on the psychological challenges affecting my performance."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"Since then, I've noticed a real improvement in my confidence and how I approach competition. I'm no longer as overwhelmed by the expectations I place on myself, and I'm learning to trust my abilities when it matters. Working with him has made a meaningful difference."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">SB</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Steve Benjamin</div>
-              <div style="font-size:12px;color:var(--ink3);">USA · Athletics Competitor</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 04 Sydney Nzuzi -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 04 &middot; Football</span>
-              <span class="dossier-region">Portugal</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">SN</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Sydney Nzuzi</div>
+              <div style="font-size:12px;color:var(--ink3);">Lisbon, Portugal · Football Performance
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Football</span>
+                <span class="dossier-region">Portugal</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"When I first considered working with Dr. Joshua, I was a little skeptical. I wasn't entirely sure about receiving performance psychology support online, and I also had concerns about the cost. But I decided to give it a try, partly because I thought the online arrangement might be more affordable."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"Looking back, I'm really glad I made that decision. Working with him helped me manage my anxiety, deal with the pressure I was experiencing, and become more confident in my athletic performance. I've seen meaningful improvements in how I approach my sport and handle challenging situations."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"I would definitely recommend Dr. Joshua to anyone looking for a qualified performance psychologist who can help them manage anxiety, overcome performance challenges, and work towards achieving their full potential."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">SN</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Sydney Nzuzi</div>
-              <div style="font-size:12px;color:var(--ink3);">Lisbon, Portugal · Football Performance</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 05 David Wells -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 05 &middot; Athletics</span>
-              <span class="dossier-region">Australia</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">DW</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">David Wells</div>
+              <div style="font-size:12px;color:var(--ink3);">Australia · Competitive Athletics
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Athletics</span>
+                <span class="dossier-region">Australia</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"I first came across Dr. Joshua through an advertisement, and I'll admit I was skeptical about working with a performance psychologist online. I had always imagined that this kind of support would be more effective in person. But I was curious, so I decided to give it a try. Initially, I thought it would simply be an additional source of support for my performance. I never imagined how important it would eventually become to the way I approach my sport."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"What stood out to me was how practical our sessions were. Dr. Joshua was patient, approachable, and genuinely interested in understanding my challenges. He knew the right questions to ask, and our conversations always led to something useful that I could apply. Even weeks after our consultations, I would find myself remembering things we had discussed and applying them during training and competition."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"Working with him has become an important part of my development as an athlete. I'm glad I made that decision, and I'm continuing to work with him because I've experienced the value of his support firsthand."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">DW</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">David Wells</div>
-              <div style="font-size:12px;color:var(--ink3);">Australia · Competitive Athletics</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 06 Bose Oluwasebikon -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 06 &middot; Collegiate Athletics</span>
-              <span class="dossier-region">USA</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">BO</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Bose Oluwasebikon</div>
+              <div style="font-size:12px;color:var(--ink3);">USA · Collegiate Athletics Competitor
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Collegiate Athletics</span>
+                <span class="dossier-region">USA</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"I was introduced to Dr. Joshua by a friend and teammate who had already worked with him. She spoke highly of her experience and encouraged me to reach out, so I decided to give it a try."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"We eventually both worked with him individually, and I can confidently say that it was one of the best decisions I made for my personal and athletic development. The experience has been worth every penny. In fact, I would say the value I've received is ten times what I paid."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"I'm genuinely happy that I was connected to Dr. Joshua, and I look forward to many more productive sessions with him in the future."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">BO</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Bose Oluwasebikon</div>
-              <div style="font-size:12px;color:var(--ink3);">USA · Collegiate Athletics Competitor</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 07 González Roca -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 07 &middot; Football</span>
-              <span class="dossier-region">United Kingdom</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">GR</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">González Roca</div>
+              <div style="font-size:12px;color:var(--ink3);">Liverpool, UK · Football Performer
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Football</span>
+                <span class="dossier-region">United Kingdom</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"Working with Dr. Joshua has been a privilege, and having experienced his services firsthand, I believe performance psychology is something anyone who is serious about improving their performance should consider."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"What I particularly appreciate is the balance he brings to his sessions. They are relaxed and conversational, but also practical, structured, and focused on achieving meaningful results. He knows how to connect with you personally while maintaining a high level of professionalism. I've also followed his educational content on YouTube, and it's clear that he has a strong understanding of his field. That depth of knowledge comes through in our conversations, but what makes the difference is his ability to translate it into practical guidance that you can actually use."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"My experience has been genuinely rewarding, and I've already recommended him to several friends. Working with him has helped me improve, and I would gladly recommend his services."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">GR</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">González Roca</div>
-              <div style="font-size:12px;color:var(--ink3);">Liverpool, UK · Football Performer</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 08 Ezekiel Badejo -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 08 &middot; Combat Sports</span>
-              <span class="dossier-region">United Kingdom</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">EB</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Ezekiel Badejo</div>
+              <div style="font-size:12px;color:var(--ink3);">Birmingham, UK · Combat Sports & Performance Athlete
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Combat Sports</span>
+                <span class="dossier-region">United Kingdom</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"Dr. Joshua was the first performance psychologist I ever worked with, and I'm genuinely glad that my first experience was with him. From the beginning, he was professional, approachable, and very attentive to the challenges I brought to him. He took the time to understand my concerns and helped me work through them with practical guidance that made a difference."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"One thing I've come to appreciate is that you don't necessarily need to be struggling with a serious problem before speaking with a performance psychologist. Sometimes, having a qualified professional you can talk to, discuss your concerns with, and seek guidance from is valuable in itself. That is exactly what I've found in Dr. Joshua. I'm pleased with the experience so far, and I look forward to continuing our work together."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">EB</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Ezekiel Badejo</div>
-              <div style="font-size:12px;color:var(--ink3);">Birmingham, UK · Combat Sports & Performance Athlete</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 09 Ashanti Cole -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 09 &middot; Senior Athletics</span>
-              <span class="dossier-region">Brazil</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">AC</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Ashanti Cole</div>
+              <div style="font-size:12px;color:var(--ink3);">Brazil · Senior Athletics Competitor
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Senior Athletics</span>
+                <span class="dossier-region">Brazil</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 14px;">"For a long time, I never really considered working with a performance psychologist. I had been involved in sport for years, and I believed that my experience was enough to help me manage whatever challenges came my way. When I came across Dr. Joshua's advertisement, I was initially skeptical. I wasn't convinced that I needed psychological support, but I decided to reach out and see what he had to offer."</p>
             <p style="font-size:14px;line-height:1.72;color:var(--ink2);margin:0 0 0;">"What impressed me was his ability to understand my perspective without dismissing my experience. He knew how to ask the right questions, identify the issues I had been overlooking, and help me approach them in ways I hadn't previously considered. Our sessions gave me a different understanding of the psychological side of performance. Experience is valuable, but so is working with a professional who understands how the mind influences performance."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">AC</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Ashanti Cole</div>
-              <div style="font-size:12px;color:var(--ink3);">Brazil · Senior Athletics Competitor</div>
-            </div>
+        </div>
           </div>
         </div>
 
         <!-- 10 Caleb Matias -->
         <div class="retainer-dossier-card">
           <div>
-            <div class="dossier-head">
-              <span class="dossier-eyebrow">Dossier 10 &middot; Football</span>
-              <span class="dossier-region">Mexico</span>
+            <div class="review-card-top-author" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #E2E8F0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="dossier-initials">CM</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Caleb Matias</div>
+              <div style="font-size:12px;color:var(--ink3);">Mexico · Football & Performance
+              </div>
+              <div class="dossier-head" style="margin:0;flex-shrink:0;">
+                <span class="dossier-eyebrow">Football</span>
+                <span class="dossier-region">Mexico</span>
+              </div>
             </div>
             <span class="dossier-quote-mark">&ldquo;</span>
             <p style="font-size:15.5px;line-height:1.8;color:var(--navy);font-family:var(--font-display);font-weight:600;margin:0 0 16px;">"I'll keep this short, simple, and straight to the point.<br><br>Joshua is exactly who he says he is. One hundred percent.<br><br>That's it."</p>
           </div>
-          <div class="dossier-footer">
-            <div class="dossier-initials">CM</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);line-height:1.2;">Caleb Matias</div>
-              <div style="font-size:12px;color:var(--ink3);">Mexico · Football & Performance</div>
-            </div>
+        </div>
           </div>
         </div>
 
@@ -1509,40 +1732,33 @@
 
       <!-- Step 2: Payment & First Session Scheduling -->
       <div id="modal-step-2" style="display:none;text-align:center;">
-        <div style="width:52px;height:52px;border-radius:50%;background:#ecfdf5;border:1.5px solid #6ee7b7;color:#047857;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
+        <div style="width:52px;height:52px;border-radius:50%;background:#FFFBEB;border:1.5px solid #F59E0B;color:#B45309;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:800;font-size:22px;">
+          1/2
         </div>
         <h3 style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--navy);margin:0 0 8px;">
-          Registration Confirmed!
+          Registration in Progress — Complete Payment to Activate
         </h3>
-        <p style="font-size:14.5px;color:var(--ink2);margin-bottom:22px;">
-          Welcome, <strong id="conf-name">Client</strong>. To finalize your enrolment in the Four-Month Retainer:
+        <p style="font-size:14.5px;color:var(--ink2);margin-bottom:20px;">
+          Thank you, <strong id="conf-name">Client</strong>. Your registration details have been recorded for <strong id="conf-email">—</strong>.
         </p>
 
-        <div style="background:var(--cream2);border-radius:10px;padding:20px;text-align:left;margin-bottom:22px;font-size:13.5px;line-height:1.65;">
-          <strong>Enrolment &amp; Session Summary:</strong><br>
-          • <strong>Program:</strong> Individual Performance Development Retainer ($500)<br>
-          • <strong>Sessions:</strong> 8 Private 45-Minute Consultations (4 Consecutive Months)<br>
-          • <strong>Your First Session (Your Local Time):</strong> <span id="conf-local-time">Scheduled upon confirmation</span><br>
-          • <strong>Standing Google Meet Link (All 8 Sessions):</strong> <a id="conf-meet-link" href="https://meet.google.com/pqu-skzs-qwp" target="_blank" style="color:var(--navy);font-weight:700;text-decoration:underline;">https://meet.google.com/pqu-skzs-qwp</a><br>
-          • <strong>Portal Login:</strong> <span id="conf-email" style="font-weight:600;">—</span> &nbsp;|&nbsp; <strong>Access PIN:</strong> <code id="conf-pin" style="background:#00102A;color:#FFE484;padding:2px 8px;border-radius:4px;font-weight:700;">—</code>
+        <div style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:10px;padding:18px 20px;text-align:left;margin-bottom:22px;font-size:13.5px;line-height:1.65;color:#78350F;">
+          <strong style="color:#00102A;display:block;margin-bottom:6px;">Next Step: Complete $500 Retainer Payment</strong>
+          • <strong>Program:</strong> 4-Month Individual Performance Development Retainer ($500 USD)<br>
+          • <strong>Requested First Session Window:</strong> <span id="conf-local-time">—</span><br>
+          • <strong>Status:</strong> <strong>Pending Payment Verification</strong><br>
+          <span style="display:block;margin-top:8px;font-size:12.8px;color:#92400E;">
+            🔒 Your private <strong>Client Portal Access PIN</strong> and <strong>Standing Google Meet Consultation Link</strong> are automatically issued and emailed to you immediately after your $500 payment is confirmed.
+          </span>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <a id="btn-selar-pay" href="https://selar.com" target="_blank" class="btn-gold-hero" style="justify-content:center;padding:15px;">
-            1. Complete $500 Payment via Selar / Card ↗
+          <a id="btn-selar-pay" href="https://selar.com/m/joshua-oparachukwu1" target="_blank" rel="noopener" class="btn-gold-hero" style="justify-content:center;padding:16px;font-size:15px;">
+            Complete $500 Payment via Selar / Card ↗
           </a>
-          <a id="btn-gcal-direct" href="https://calendar.google.com/calendar/r/eventedit?text=Dr.+Joshua+Oparachukwu+1-on-1+Consultation&location=https://meet.google.com/pqu-skzs-qwp" target="_blank" style="background:#15803d;color:#fff;border:none;border-radius:8px;padding:14px;font-size:13.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>2. Schedule Directly into Google Calendar (Same Meet Link) &nearr;</span>
-          </a>
-          <button onclick="activateAndGoToPortal()" style="background:var(--navy);color:#fff;border:none;border-radius:8px;padding:14px;font-size:13.5px;font-weight:600;cursor:pointer;">
-            3. Access Your Client Dashboard →
-          </button>
         </div>
-        <p style="font-size:12px;color:var(--ink4);margin-top:14px;">
-          All 8 consultations use the same permanent Google Meet room and sync directly with your Google Calendar.
+        <p style="font-size:12.5px;color:var(--ink4);margin-top:16px;">
+          Questions or payment confirmation? Contact <a href="mailto:mailjoshuaoparachukwu@gmail.com" style="color:var(--navy);font-weight:700;">mailjoshuaoparachukwu@gmail.com</a>
         </p>
       </div>
 
@@ -1668,6 +1884,11 @@
       document.body.style.overflow = 'hidden';
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+      if (new URLSearchParams(window.location.search).get('enrol') === '1') {
+        setTimeout(openEnrolModal, 200);
+      }
+    });
     function closeEnrolModal() {
       document.getElementById('enrol-modal').style.display = 'none';
       document.body.style.overflow = '';
@@ -1697,9 +1918,9 @@
         challenge: challenge,
         registeredAt: Date.now(),
         pin: accessPin,
-        paid: true,
+        paid: false,
         amount: 500,
-        status: 'Active',
+        status: 'Pending Payment',
         totalCredits: 8,
         usedCredits: 0,
         bookedCredits: 1,
@@ -1725,12 +1946,24 @@
       document.getElementById('conf-name').textContent = newClient.name;
       const localStr = new Date(firstSessionTs).toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
       document.getElementById('conf-local-time').textContent = `${localStr} (${timezone})`;
-      const meetLinkEl = document.getElementById('conf-meet-link');
-      meetLinkEl.href = meetUrl;
-      meetLinkEl.textContent = meetUrl;
       const confEmailEl = document.getElementById('conf-email'); if (confEmailEl) confEmailEl.textContent = email;
-      const confPinEl = document.getElementById('conf-pin'); if (confPinEl) confPinEl.textContent = accessPin;
-      document.getElementById('btn-gcal-direct').href = buildGoogleCalendarUrl(newClient.name, newClient.email, firstSessionTs, 1);
+      // Send registration details to Dr. Joshua via Web3Forms
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'f9b6f0f0-0b1a-4b1a-9b1a-0b1a4b1a9b1a',
+          subject: 'New 4-Month Retainer Registration (Pending $500 Payment): ' + newClient.name,
+          from_name: newClient.name,
+          email: newClient.email,
+          phone: newClient.phone,
+          timezone: newClient.timezone,
+          role: newClient.role,
+          challenge: newClient.challenge,
+          requested_first_session: localStr + ' (' + timezone + ')',
+          assigned_pin_after_payment: accessPin
+        })
+      }).catch(() => {});
 
       document.getElementById('modal-step-1').style.display = 'none';
       document.getElementById('modal-step-2').style.display = 'block';

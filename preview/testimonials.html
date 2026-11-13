@@ -29,7 +29,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="/preview/css/style.css?v=31">
 </head>
-<body>
+<body data-page="testimonials">
   <nav>
     <div class="nav-logo" style="display:flex;align-items:center;gap:12px;">
       <a href="/preview/index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
@@ -1330,7 +1330,7 @@
         <!-- Expand / Collapse All Button -->
         <div style="text-align:center;margin-top:36px;">
           <button id="toggleMoreReviewsBtn" type="button" onclick="toggleAllWrittenReviews()" style="display:inline-flex;align-items:center;gap:8px;padding:12px 30px;background:#FFFFFF;border:1.5px solid var(--navy,#00102A);color:var(--navy,#00102A);border-radius:999px;font-size:14.5px;font-weight:600;cursor:pointer;transition:all 0.25s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-            <span id="toggleReviewsText">Expand All 40 Reflections on One Page</span>
+            <span id="toggleReviewsText">See More</span>
             <svg id="toggleReviewsIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform 0.3s ease;"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         </div>
@@ -1530,21 +1530,21 @@
         const pagBar = document.getElementById('writtenPaginationBar');
         if (pagBar) {
           if (isAllReviewsExpanded || total <= WRITTEN_PAGE_SIZE) {
-            pagBar.innerHTML = '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections (scroll inside vault)</div>';
+            pagBar.innerHTML = '';
           } else {
             let btns = '<button type="button" class="written-page-btn" ' + (currentWrittenPage === 1 ? 'disabled' : '') + ' onclick="goToWrittenPage(' + (currentWrittenPage - 1) + ')">&larr; Prev</button>';
             for (let p = 1; p <= totalPages; p++) {
               btns += '<button type="button" class="written-page-btn ' + (p === currentWrittenPage ? 'active' : '') + '" onclick="goToWrittenPage(' + p + ')">' + p + '</button>';
             }
             btns += '<button type="button" class="written-page-btn" ' + (currentWrittenPage === totalPages ? 'disabled' : '') + ' onclick="goToWrittenPage(' + (currentWrittenPage + 1) + ')">Next &rarr;</button>';
-            btns += '<div class="written-page-status">Showing ' + showingStart + ' to ' + showingEnd + ' of ' + total + ' client reflections</div>';
+            
             pagBar.innerHTML = btns;
           }
         }
 
         const text = document.getElementById('toggleReviewsText');
         const icon = document.getElementById('toggleReviewsIcon');
-        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse into Compact Page View' : 'Expand All ' + total + ' Reflections in Vault';
+        if (text) text.textContent = isAllReviewsExpanded ? 'Collapse' : 'See More';
         if (icon) icon.style.transform = isAllReviewsExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
       }
 
@@ -1623,7 +1623,7 @@ function toggleExtraVideoDebriefs() {
   if (!drawer) return;
   const hidden = drawer.style.display === 'none' || !drawer.style.display;
   drawer.style.display = hidden ? 'block' : 'none';
-  if (label) label.textContent = hidden ? 'Show Fewer Video Debriefs' : 'Load All 21 Client Video Debriefs';
+  if (label) label.textContent = hidden ? 'Collapse' : 'See More';
   if (arrow) arrow.innerHTML = hidden ? '&uarr;' : '&darr;';
 }
 function openYtLightbox(videoId, title) {
