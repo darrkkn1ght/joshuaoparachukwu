@@ -1032,7 +1032,7 @@
       if (used >= total) {
         label.textContent = 'Program Complete · Your Local Time';
         title.textContent = 'All ' + total + ' performance sessions completed';
-        text.textContent = 'Thank you for completing the program. Contact Dr. Joshua's office to discuss continued support.';
+        text.textContent = "Thank you for completing the program. Contact Dr. Joshua's office to discuss continued support.";
       } else if (booked > 0) {
         label.textContent = 'Upcoming · Session ' + (used + 1) + ' of ' + total + ' · Your Local Time';
         title.textContent = localTimeStr ? localTimeStr : (booked + ' session' + (booked > 1 ? 's' : '') + ' scheduled');
