@@ -446,6 +446,18 @@
       </form>
 
       <!-- FAST DEMO / EVALUATION SHORTCUTS (Hidden for Production) -->
+      <div id="preview-test-login-box" style="margin-top:20px;padding:14px 16px;background:#FFFBEB;border:1.5px dashed #D97706;border-radius:10px;text-align:left;">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#B45309;margin-bottom:6px;">
+          Preview Mode · Test Client Login
+        </div>
+        <div style="font-size:12.5px;color:#78350F;line-height:1.55;margin-bottom:10px;">
+          <strong>Email:</strong> <code style="background:#FEF3C7;padding:1px 6px;border-radius:4px;">test.client@joshuaoparachukwu.com</code><br>
+          <strong>Access PIN:</strong> <code style="background:#FEF3C7;padding:1px 6px;border-radius:4px;">2026</code>
+        </div>
+        <button type="button" onclick="loginDemoAccount('client-test')" style="width:100%;background:#041838;color:#FFE484;border:1px solid #C8A830;border-radius:7px;padding:9px 14px;font-size:12.5px;font-weight:700;cursor:pointer;">
+          1-Click Preview Client Dashboard →
+        </button>
+      </div>
       <div style="display:none;" id="evaluation-shortcuts-drawer">
       <div style="margin-top:28px;padding-top:20px;border-top:1px dashed var(--portal-border);">
         <div style="font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748B;margin-bottom:10px;text-align:center;">
@@ -771,6 +783,26 @@
 
     const DEFAULT_CLIENTS = [
       {
+        id: 'client-test',
+        name: 'Test Performer (Preview)',
+        email: 'test.client@joshuaoparachukwu.com',
+        pin: '2026',
+        role: 'Preview Test Account · Football',
+        sport: 'Football',
+        country: 'Nigeria',
+        totalCredits: 8,
+        usedCredits: 2,
+        bookedCredits: 1,
+        programStart: '2026-10-01T10:00:00.000Z',
+        programEnd: '2027-02-01T23:59:59.000Z',
+        firstSessionDate: '2026-10-08T16:00:00.000Z',
+        nextSessionTime: '2026-11-20T16:00:00.000Z',
+        paid: true,
+        amount: 500,
+        status: 'Active',
+        notes: 'Preview test account active. Pre-competition focus routine and post-mistake 3-second reset protocol in progress.'
+      },
+      {
         id: 'client-marcus',
         name: 'Marcus Reid',
         email: 'marcus.reid@gmail.com',
@@ -880,7 +912,8 @@
       const errEl = document.getElementById('client-login-err');
       errEl.style.display = 'none';
 
-      const clients = JSON.parse(localStorage.getItem(CLIENTS_KEY) || JSON.stringify(DEFAULT_CLIENTS));
+      const stored = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+      const clients = [...DEFAULT_CLIENTS, ...stored.filter(s => !DEFAULT_CLIENTS.some(d => d.email === s.email))];
       const found = clients.find(c => (c.email && c.email.toLowerCase() === email) || (c.name && c.name.toLowerCase() === email));
 
       if (found && (pin === '2026' || pin === 'drjoshua' || (found.pin && found.pin === pin))) {
@@ -893,7 +926,8 @@
     }
 
     function loginDemoAccount(clientId) {
-      const clients = JSON.parse(localStorage.getItem(CLIENTS_KEY) || JSON.stringify(DEFAULT_CLIENTS));
+      const stored = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+      const clients = [...DEFAULT_CLIENTS, ...stored.filter(s => !DEFAULT_CLIENTS.some(d => d.email === s.email))];
       const target = clients.find(c => c.id === clientId) || DEFAULT_CLIENTS.find(c => c.id === clientId);
       if (target) {
         localStorage.setItem(ACTIVE_KEY, JSON.stringify(target));
