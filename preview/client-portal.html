@@ -311,44 +311,54 @@
     }
 
     /* ═══ SESSION LEDGER ═══ */
-    .session-row {
+    .session-row,
+    .session-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 13px 10px;
+      gap: 12px;
+      padding: 13px 12px;
       border-bottom: 1px solid #F1F5F9;
       font-size: 13.5px;
       border-radius: 8px;
       transition: background 0.15s ease;
     }
 
-    .session-row:hover {
+    .session-row:hover,
+    .session-item:hover {
       background: #F8FAFC;
     }
 
-    .session-row:last-child {
+    .session-row:last-child,
+    .session-item:last-child {
       border-bottom: none;
     }
 
-    .status-pill {
+    .status-pill,
+    .badge-status {
       display: inline-block;
       padding: 4px 11px;
       border-radius: 99px;
       font-size: 11.5px;
       font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .pill-done {
+    .pill-done,
+    .badge-completed {
       background: #DCFCE7;
       color: #15803d;
     }
 
-    .pill-booked {
+    .pill-booked,
+    .badge-scheduled {
       background: #DBEAFE;
       color: #1d4ed8;
     }
 
-    .pill-open {
+    .pill-open,
+    .badge-available {
       background: #F1F5F9;
       color: #64748B;
     }
