@@ -8663,23 +8663,26 @@ body[data-page="services"] #services .section-sub {
 .service-card .service-audience {
   font-style: normal !important;
   font-weight: 700 !important;
-  font-size: 12.8px !important;
+  font-size: 10px !important;
+  letter-spacing: 0.03em !important;
   color: #071D44 !important;
   background: linear-gradient(90deg, #FBF8F1 0%, #F3ECE0 100%) !important;
   border-left: 3px solid #C8A830 !important;
-  padding: 7px 12px !important;
+  padding: 8px 10px !important;
   border-radius: 6px !important;
   margin-bottom: 12px !important;
   line-height: 1.45 !important;
 }
 .service-card .service-audience .service-audience-hook {
   display: block !important;
-  margin-top: 3px !important;
+  margin-top: 4px !important;
   text-transform: none !important;
-  font-style: italic !important;
-  font-weight: 500 !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 12.5px !important;
   letter-spacing: 0 !important;
-  color: #4A5568 !important;
+  white-space: normal !important;
+  color: #1E293B !important;
 }
 .service-card {
   border-color: rgba(7, 29, 68, 0.14) !important;
