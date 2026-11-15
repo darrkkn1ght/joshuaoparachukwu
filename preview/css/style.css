@@ -8672,6 +8672,15 @@ body[data-page="services"] #services .section-sub {
   margin-bottom: 12px !important;
   line-height: 1.45 !important;
 }
+.service-card .service-audience .service-audience-hook {
+  display: block !important;
+  margin-top: 3px !important;
+  text-transform: none !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  color: #4A5568 !important;
+}
 .service-card {
   border-color: rgba(7, 29, 68, 0.14) !important;
 }
