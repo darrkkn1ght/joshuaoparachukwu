@@ -670,6 +670,17 @@
           </div>
         </div>
 
+        
+        <!-- SESSION HISTORY, SUMMARIES & ASSIGNMENTS -->
+        <div class="p-card">
+          <div class="p-card-title">
+            <span>Session History, Summaries &amp; Assignments</span>
+            <span id="history-count-badge" style="font-size:12px;font-weight:700;color:#0F172A;background:#F1F5F9;padding:4px 10px;border-radius:99px;">0 Completed</span>
+          </div>
+          <div id="portal-practitioner-banner" style="display:none;background:#FFFBEB;border:1px solid #FCD34D;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#78350F;line-height:1.55;"></div>
+          <div id="portal-session-history-list" style="display:flex;flex-direction:column;gap:12px;"></div>
+        </div>
+
         <!-- PRE-SESSION UPDATE SUBMISSION -->
         <div class="p-card">
           <div class="p-card-title" style="flex-wrap:wrap;gap:8px;">
@@ -820,7 +831,25 @@
         paid: true,
         amount: 500,
         status: 'Active',
-        notes: 'Preview test account active. Pre-competition focus routine and post-mistake 3-second reset protocol in progress.'
+        notes: 'Preview test account active. Pre-competition focus routine and post-mistake 3-second reset protocol in progress.',
+        sessionRecords: [
+          {
+            sessionNumber: 1,
+            date: '2026-10-08',
+            startTime: '16:00',
+            endTime: '16:45',
+            summary: 'Diagnostic intake & pressure audit. Identified late-game hesitation after early turnovers and mapped pre-match arousal triggers.',
+            assignment: 'Write your 3-cue pre-match reset phrase and practice 4-4-6 breathing for 5 minutes before every training session.'
+          },
+          {
+            sessionNumber: 2,
+            date: '2026-10-22',
+            startTime: '16:00',
+            endTime: '16:45',
+            summary: 'Installed the 3-second mistake reset protocol and reviewed video clips from last weekend\'s fixture to separate execution errors from emotional carry-over.',
+            assignment: 'Log your reset score (1–10) immediately after training drills 4x this week and submit your 2-minute pre-session update before Session 03.'
+          }
+        ]
       },
       {
         id: 'client-marcus',
@@ -1045,6 +1074,40 @@
       document.getElementById('stat-scheduled').textContent = booked;
       document.getElementById('stat-remaining').textContent = remaining;
       document.getElementById('ledger-total-label').textContent = total + ' Total Sessions';
+
+      // Render Session History, Start/End Times, Summaries & Assignments
+      const histListEl = document.getElementById('portal-session-history-list');
+      const histBadgeEl = document.getElementById('history-count-badge');
+      const pracBannerEl = document.getElementById('portal-practitioner-banner');
+      const records = Array.isArray(client.sessionRecords) ? client.sessionRecords : [];
+      if (histBadgeEl) histBadgeEl.textContent = records.length + ' Logged';
+      if (pracBannerEl) {
+        const latestNote = client.clientNote || client.notes || '';
+        if (latestNote) {
+          pracBannerEl.style.display = 'block';
+          pracBannerEl.innerHTML = '<strong>Current Focus / Dr. Joshua Note:</strong> ' + esc(latestNote);
+        } else {
+          pracBannerEl.style.display = 'none';
+        }
+      }
+      if (histListEl) {
+        if (!records.length) {
+          histListEl.innerHTML = '<div style="font-size:13.5px;color:#64748B;padding:12px;background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;">Your completed session timestamps, summaries, and assignments from Dr. Joshua will appear here after each consultation.</div>';
+        } else {
+          histListEl.innerHTML = records.slice().reverse().map((r, idx) => {
+            const num = r.sessionNumber || (records.length - idx);
+            const timeRange = (r.startTime || r.endTime) ? (esc(r.startTime || '—') + ' – ' + esc(r.endTime || '—')) : '45 min';
+            return '<div style="border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;background:#FAFBFC;">' +
+              '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #E2E8F0;">' +
+                '<div style="font-weight:800;font-size:14.5px;color:var(--portal-navy);">Session ' + num + ' · ' + esc(r.date || 'Completed') + '</div>' +
+                '<div style="font-size:12px;font-weight:700;color:#15803d;background:#DCFCE7;padding:3px 10px;border-radius:99px;">' + timeRange + '</div>' +
+              '</div>' +
+              '<div style="font-size:13.5px;color:#1E293B;line-height:1.6;margin-bottom:8px;"><strong>Session Summary:</strong> ' + esc(r.summary || '—') + '</div>' +
+              (r.assignment ? '<div style="font-size:13px;color:#065F46;background:#ECFDF5;border-left:3px solid #10B981;padding:8px 12px;border-radius:6px;line-height:1.55;"><strong>Your Assignment:</strong> ' + esc(r.assignment) + '</div>' : '') +
+            '</div>';
+          }).join('');
+        }
+      }
 
       // Next-step card (Strictly displays Your Local Time, never Practitioner Time)
       const label = document.getElementById('next-appt-label');

@@ -588,6 +588,45 @@
 
       <!-- Tab 2: Notes Compartment -->
       <div id="tab-notes" style="display:none;">
+        
+        <div id="admin-session-record-form" style="background:#F8FAFC;border:1.5px solid #CBD5E1;border-radius:8px;padding:14px;margin-bottom:18px;">
+          <div style="font-size:12px;font-weight:800;color:var(--admin-navy);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">
+            Log Session History, Summary &amp; Client Assignment
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px;margin-bottom:10px;">
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;color:#475569;margin-bottom:3px;">Session Date</label>
+              <input type="date" id="rec-date" style="width:100%;padding:7px 9px;border:1px solid #CBD5E1;border-radius:6px;font-size:12.5px;box-sizing:border-box;">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;color:#475569;margin-bottom:3px;">Start Time</label>
+              <input type="time" id="rec-start" value="16:00" style="width:100%;padding:7px 9px;border:1px solid #CBD5E1;border-radius:6px;font-size:12.5px;box-sizing:border-box;">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;color:#475569;margin-bottom:3px;">End Time</label>
+              <input type="time" id="rec-end" value="16:45" style="width:100%;padding:7px 9px;border:1px solid #CBD5E1;border-radius:6px;font-size:12.5px;box-sizing:border-box;">
+            </div>
+          </div>
+          <div style="margin-bottom:8px;">
+            <label style="display:block;font-size:11px;font-weight:700;color:#475569;margin-bottom:3px;">Session Summary (What Was Discussed — Visible to Client)</label>
+            <textarea id="rec-summary" rows="2" style="width:100%;padding:8px 10px;border:1px solid #CBD5E1;border-radius:6px;font-size:12.5px;box-sizing:border-box;" placeholder="E.g. Reviewed match-day anxiety triggers and practiced the 3-second mistake reset routine..."></textarea>
+          </div>
+          <div style="margin-bottom:10px;">
+            <label style="display:block;font-size:11px;font-weight:700;color:#475569;margin-bottom:3px;">Client Assignment / Work to Complete (Visible to Client)</label>
+            <textarea id="rec-assignment" rows="2" style="width:100%;padding:8px 10px;border:1px solid #CBD5E1;border-radius:6px;font-size:12.5px;box-sizing:border-box;" placeholder="E.g. Complete 5-minute pre-training cue script before every session this week and log 3 observations..."></textarea>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <label style="font-size:12px;color:#334155;display:flex;align-items:center;gap:6px;cursor:pointer;">
+              <input type="checkbox" id="rec-consume-credit" checked>
+              <span>Also mark 1 session completed</span>
+            </label>
+            <button type="button" onclick="saveSessionRecord()" style="background:#15803d;color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;">
+              + Save Session to Client History
+            </button>
+          </div>
+          <div id="admin-session-records-list" style="margin-top:12px;border-top:1px solid #E2E8F0;padding-top:10px;font-size:12px;color:#334155;"></div>
+        </div>
+        
         <div id="drawer-client-prenotes-box" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:12px;margin-bottom:14px;font-size:12.5px;color:#334155;">
           <strong style="color:var(--admin-navy);display:block;margin-bottom:4px;">Client Pre-Session Updates (Voice / Text):</strong>
           <div id="drawer-client-prenotes-list">No pre-session updates submitted yet.</div>
@@ -956,6 +995,22 @@
       const dJoin = document.getElementById('drawer-join-meet');
       if (dJoin) dJoin.href = meetUrl;
 
+      const recListEl = document.getElementById('admin-session-records-list');
+      if (recListEl) {
+        const recs = c.sessionRecords || [];
+        recListEl.innerHTML = recs.length
+          ? '<strong style="display:block;margin-bottom:6px;color:var(--admin-navy);">Logged Sessions (' + recs.length + '):</strong>' +
+            recs.slice().reverse().map((r, idx) =>
+              '<div style="background:#fff;border:1px solid #E2E8F0;border-radius:6px;padding:8px 10px;margin-bottom:6px;">' +
+              '<div style="font-weight:700;color:#0F172A;">Session ' + (recs.length - idx) + ' · ' + esc(r.date || '—') + ' (' + esc(r.startTime || '—') + ' – ' + esc(r.endTime || '—') + ')</div>' +
+              '<div style="margin-top:3px;"><strong>Summary:</strong> ' + esc(r.summary || '—') + '</div>' +
+              '<div style="margin-top:2px;color:#15803d;"><strong>Assignment:</strong> ' + esc(r.assignment || '—') + '</div>' +
+              '</div>'
+            ).join('')
+          : 'No structured session records logged yet.';
+      }
+      const dateInput = document.getElementById('rec-date');
+      if (dateInput && !dateInput.value) dateInput.value = new Date().toISOString().slice(0, 10);
       const preListEl = document.getElementById('drawer-client-prenotes-list');
       if (preListEl) {
         if (c.preSessionNotes && c.preSessionNotes.length) {
@@ -1063,6 +1118,43 @@
         cl.privateNote = document.getElementById('note-private').value.trim();
       });
       alert('Both note records saved.');
+    }
+
+    function saveSessionRecord() {
+      if (!currentClientId) return;
+      const date = document.getElementById('rec-date').value;
+      const startTime = document.getElementById('rec-start').value;
+      const endTime = document.getElementById('rec-end').value;
+      const summary = document.getElementById('rec-summary').value.trim();
+      const assignment = document.getElementById('rec-assignment').value.trim();
+      const consume = document.getElementById('rec-consume-credit').checked;
+      if (!date || !summary) {
+        alert('Please enter at least the session date and session summary.');
+        return;
+      }
+      updateClient(currentClientId, cl => {
+        cl.sessionRecords = cl.sessionRecords || [];
+        cl.sessionRecords.push({
+          id: 'sess-' + Date.now(),
+          sessionNumber: cl.sessionRecords.length + 1,
+          date,
+          startTime,
+          endTime,
+          summary,
+          assignment,
+          createdAt: Date.now()
+        });
+        if (assignment) cl.clientNote = assignment;
+        if (consume && (cl.usedCredits || 0) < (cl.totalCredits || 8)) {
+          if ((cl.bookedCredits || 0) > 0) cl.bookedCredits -= 1;
+          cl.usedCredits = (cl.usedCredits || 0) + 1;
+        }
+      });
+      document.getElementById('rec-summary').value = '';
+      document.getElementById('rec-assignment').value = '';
+      renderAll();
+      openClientDrawer(currentClientId);
+      alert('Session history, summary, and assignment saved to client portal.');
     }
 
     function applyRollover() {
