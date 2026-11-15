@@ -8663,12 +8663,12 @@ body[data-page="services"] #services .section-sub {
 .service-card .service-audience {
   font-style: normal !important;
   font-weight: 700 !important;
-  font-size: 10px !important;
-  letter-spacing: 0.03em !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.01em !important;
   color: #071D44 !important;
   background: linear-gradient(90deg, #FBF8F1 0%, #F3ECE0 100%) !important;
   border-left: 3px solid #C8A830 !important;
-  padding: 8px 10px !important;
+  padding: 8px 12px !important;
   border-radius: 6px !important;
   margin-bottom: 12px !important;
   line-height: 1.45 !important;
@@ -8679,7 +8679,7 @@ body[data-page="services"] #services .section-sub {
   text-transform: none !important;
   font-style: normal !important;
   font-weight: 600 !important;
-  font-size: 12.5px !important;
+  font-size: 13.5px !important;
   letter-spacing: 0 !important;
   white-space: normal !important;
   color: #1E293B !important;
