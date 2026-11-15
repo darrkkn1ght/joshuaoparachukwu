@@ -8816,3 +8816,23 @@ body[data-page="services"] .service-card,
 body[data-page="services"] .service-card * {
   font-style: normal !important;
 }
+
+/* F. Center the desktop navbar links cleanly between logo and action buttons */
+@media (min-width: 1121px) {
+  nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .nav-links {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+  }
+  .nav-logo,
+  .nav-actions {
+    flex-shrink: 0 !important;
+  }
+}
