@@ -8080,6 +8080,17 @@ nav.scrolled-pill {
   border-color: #4C1D95 !important;
   color: #FFFFFF !important;
 }
+.written-filter-pill[data-cat="parents"] {
+  background: #FEF9E7;
+  border-color: #E6C25C;
+  color: #7C5808;
+}
+.written-filter-pill[data-cat="parents"]:hover,
+.written-filter-pill[data-cat="parents"].active {
+  background: #8A630A !important;
+  border-color: #8A630A !important;
+  color: #FFFFFF !important;
+}
 
 /* Matching top accent border per category on written testimonial cards */
 .written-review-card[data-cat="football"] {
@@ -8093,6 +8104,9 @@ nav.scrolled-pill {
 }
 .written-review-card[data-cat="executive"] {
   border-top: 3px solid #5B21B6 !important;
+}
+.written-review-card[data-cat="parents"] {
+  border-top: 3px solid #B78103 !important;
 }
 
 /* 3. Ultra-Compact Single-Screen Bento Vault + LPT Balanced Masonry + Tactile Hover Pop */
