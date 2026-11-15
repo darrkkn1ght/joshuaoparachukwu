@@ -8292,54 +8292,172 @@ nav.scrolled-pill {
   margin-top: 0 !important;
   margin-bottom: 24px !important;
 }
-/* Top 3 Pillar Cards: Warm Ivory with Deep Gold-Tinted Header Split */
+/* 2026 Editorial Asymmetric Bento Grid (#why-choose) */
+#why-choose .vf-bento-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: 20px !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+}
+#why-choose .vf-bento-card {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  padding: 28px 28px 26px !important;
+  box-shadow: 0 10px 30px rgba(0, 16, 42, 0.04) !important;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease !important;
+}
+#why-choose .vf-bento-card::before {
+  display: none !important;
+}
+#why-choose .vf-bento-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 24px 48px rgba(0, 16, 42, 0.10), 0 0 0 1px rgba(200, 168, 48, 0.35) !important;
+}
+#why-choose .vf-bento-card .vf-bento-icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  background: rgba(200, 168, 48, 0.10) !important;
+  border: 1px solid rgba(200, 168, 48, 0.28) !important;
+}
+#why-choose .vf-bento-card .vf-bento-tag {
+  border-radius: 999px !important;
+  padding: 5px 12px !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.11em !important;
+  text-transform: uppercase !important;
+}
+/* Row 1: 3 Core Pillars (4 + 4 + 4 cols) */
 #why-choose .vf-bento-grid > .vf-bento-card:nth-child(1),
 #why-choose .vf-bento-grid > .vf-bento-card:nth-child(2),
 #why-choose .vf-bento-grid > .vf-bento-card:nth-child(3) {
-  background: linear-gradient(180deg, #FDFBF5 0%, #F5EFE0 100%) !important;
-  border: 1.5px solid #DFD3B6 !important;
-  border-top: 4px solid #C8A830 !important;
+  grid-column: span 4 !important;
+  background: radial-gradient(circle at 92% 8%, rgba(200, 168, 48, 0.10), transparent 46%), linear-gradient(180deg, #FFFFFF 0%, #FAF6EC 100%) !important;
+  border: 1px solid rgba(0, 16, 42, 0.09) !important;
 }
-/* Bottom 3 Advantage Cards: Deep Rich Retainer-Style Royal Navy & Midnight Shades */
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(1) .vf-bento-tag,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(2) .vf-bento-tag,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(3) .vf-bento-tag {
+  background: rgba(0, 16, 42, 0.04) !important;
+  color: #8A6B11 !important;
+  border: 1px solid rgba(200, 168, 48, 0.30) !important;
+}
+/* Row 2 Left: Wide Obsidian Spotlight Card (7 cols) */
 #why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) {
-  background: linear-gradient(150deg, #04193B 0%, #0C2D63 100%) !important;
-  border: 1.5px solid rgba(232, 197, 75, 0.42) !important;
-  border-top: 4px solid #E5C148 !important;
+  grid-column: span 7 !important;
+  background: radial-gradient(circle at 88% 14%, rgba(200, 168, 48, 0.20), transparent 52%), linear-gradient(145deg, #020E24 0%, #092552 100%) !important;
+  border: 1px solid rgba(232, 197, 75, 0.32) !important;
   color: #FFFFFF !important;
 }
+/* Row 2 Right: Warm Editorial Gold-Cream Card (5 cols) */
 #why-choose .vf-bento-grid > .vf-bento-card:nth-child(5) {
-  background: linear-gradient(150deg, #09244F 0%, #143C78 100%) !important;
-  border: 1.5px solid rgba(232, 197, 75, 0.42) !important;
-  border-top: 4px solid #FFE484 !important;
-  color: #FFFFFF !important;
+  grid-column: span 5 !important;
+  background: radial-gradient(circle at 12% 90%, rgba(200, 168, 48, 0.14), transparent 55%), linear-gradient(155deg, #FFFDF9 0%, #F3EAD5 100%) !important;
+  border: 1px solid rgba(200, 168, 48, 0.35) !important;
+  color: #00102A !important;
 }
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(5) .vf-bento-tag {
+  background: #00102A !important;
+  color: #FFE484 !important;
+  border: 1px solid #00102A !important;
+}
+/* Row 3: Full-Width Architectural Horizon Card (12 cols) */
 #why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) {
-  background: linear-gradient(150deg, #051E42 0%, #12366B 100%) !important;
-  border: 1.5px solid rgba(232, 197, 75, 0.42) !important;
-  border-top: 4px solid #C8A830 !important;
+  grid-column: span 12 !important;
+  background: radial-gradient(circle at 90% 50%, rgba(200, 168, 48, 0.16), transparent 48%), linear-gradient(125deg, #00102A 0%, #0A2857 65%, #123873 100%) !important;
+  border: 1px solid rgba(232, 197, 75, 0.32) !important;
   color: #FFFFFF !important;
+  display: grid !important;
+  grid-template-columns: 1.15fr 1fr !important;
+  grid-template-rows: auto auto 1fr !important;
+  column-gap: 36px !important;
+  align-items: start !important;
 }
-#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) h3 {
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-top {
+  grid-column: 1 !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) h3 {
+  grid-column: 1 !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) p {
+  grid-column: 1 !important;
+  margin-bottom: 0 !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-list {
+  grid-column: 2 !important;
+  grid-row: 1 / span 3 !important;
+  align-self: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-list li {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 10px !important;
+  padding: 11px 14px 11px 34px !important;
+  margin: 0 !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-list li::before {
+  left: 12px !important;
+  top: 12px !important;
+}
+/* Dark Card Typography Overrides (Cards 4 & 6 only) */
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) h3,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) h3 {
   color: #FFE484 !important;
 }
-#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) p {
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) p,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) p {
   color: rgba(241, 245, 249, 0.90) !important;
 }
-#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-list li {
-  color: rgba(248, 250, 252, 0.92) !important;
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) .vf-bento-list li,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-list li {
+  color: rgba(248, 250, 252, 0.94) !important;
   border-bottom-color: rgba(255, 255, 255, 0.10) !important;
 }
-#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-tag {
-  background: rgba(232, 197, 75, 0.18) !important;
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) .vf-bento-tag,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-tag {
+  background: rgba(232, 197, 75, 0.16) !important;
   color: #FFE484 !important;
+  border: 1px solid rgba(232, 197, 75, 0.42) !important;
+}
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) .vf-bento-icon,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-icon {
+  background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(232, 197, 75, 0.45) !important;
 }
-#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-icon {
-  background: rgba(255, 255, 255, 0.10) !important;
-  border: 1px solid rgba(232, 197, 75, 0.50) !important;
-}
-#why-choose .vf-bento-grid > .vf-bento-card:nth-child(n+4) .vf-bento-icon svg {
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(4) .vf-bento-icon svg,
+#why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) .vf-bento-icon svg {
   stroke: #FFE484 !important;
+}
+@media (max-width: 980px) {
+  #why-choose .vf-bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  #why-choose .vf-bento-grid > .vf-bento-card:nth-child(n) {
+    grid-column: span 1 !important;
+  }
+  #why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) {
+    grid-column: span 2 !important;
+    display: block !important;
+  }
+  #why-choose .vf-bento-grid > .vf-bento-card:nth-child(6) p {
+    margin-bottom: 16px !important;
+  }
+}
+@media (max-width: 680px) {
+  #why-choose .vf-bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  #why-choose .vf-bento-grid > .vf-bento-card:nth-child(n) {
+    grid-column: span 1 !important;
+  }
 }
 
 /* 6. YouTube Channel Section: Move Up & Stretch Header Wide */
