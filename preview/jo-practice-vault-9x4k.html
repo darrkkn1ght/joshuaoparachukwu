@@ -891,7 +891,7 @@
       const inp = document.getElementById('standing-meet-input');
       if (inp) inp.value = meetUrl;
       const joinBtn = document.getElementById('admin-join-standing-meet');
-      if (joinBtn) joinBtn.href = meetUrl;
+      if (joinBtn) joinBtn.href = meetUrl; syncClientsFromCloud();
       renderAll();
     }
 
@@ -901,6 +901,52 @@
 
     /* ── Rendering ── */
     function renderAll() { renderKPIs(); renderClients(); renderSpecialists(); }
+
+    async function syncClientsFromCloud() {
+      try {
+        const res = await fetch('/api/retainer?action=list&t=' + Date.now(), { cache: 'no-store' });
+        const data = await res.json();
+        if (!data.ok || !Array.isArray(data.clients)) return;
+        const local = getClients();
+        const byEmail = new Map();
+        local.forEach(c => { if (c && c.email) byEmail.set(c.email.toLowerCase(), c); });
+        data.clients.forEach(c => {
+          if (c && c.email) {
+            const key = c.email.toLowerCase();
+            byEmail.set(key, Object.assign({}, byEmail.get(key) || {}, c));
+          }
+        });
+        saveClients(Array.from(byEmail.values()));
+        renderAll();
+      } catch (_) {}
+    }
+
+    async function activateRetainerClient(email) {
+      if (!email) return;
+      if (!confirm('Mark ' + email + ' as Paid ($500) and email their 4-digit Access PIN?')) return;
+      try {
+        const res = await fetch('/api/retainer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'activate', email: email, meetUrl: getStandingMeetLink() })
+        });
+        const data = await res.json();
+        if (data.ok && data.client) {
+          const list = getClients();
+          const idx = list.findIndex(x => x.email && x.email.toLowerCase() === email.toLowerCase());
+          if (idx >= 0) list[idx] = Object.assign({}, list[idx], data.client);
+          else list.unshift(data.client);
+          saveClients(list);
+          renderAll();
+          const emailSent = data.emailResult && data.emailResult.clientEmail && data.emailResult.clientEmail.sent;
+          alert('Client activated! PIN: ' + (data.client.accessPin || data.client.pin) + (emailSent ? ' (Welcome email sent)' : ' (Email not sent — check RESEND_API_KEY in Vercel)'));
+        } else {
+          alert('Activation failed: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Network error activating client.');
+      }
+    }
 
     function renderKPIs() {
       const clients = getClients();
@@ -936,7 +982,7 @@
         <tr>
           <td><strong>${esc(c.name)}</strong><br><span style="font-size:11px;color:#64748B;">${esc(c.email)}</span></td>
           <td>${esc(c.role || '—')}<br><span style="font-size:11px;color:#15803d;font-weight:600;">${esc(pracTime)}</span></td>
-          <td>${c.paid ? '$' + (c.amount || 0) + ' Paid' : 'Unpaid'}${c.rolloverUsed ? ' + $100 Rollover' : ''}</td>
+          <td>${c.paid ? '$' + (c.amount || 0) + ' Paid' : 'Unpaid <button class="btn-action-sm" style="margin-left:6px;background:#1A7F37;color:#fff;border-color:#1A7F37;" onclick="activateRetainerClient(\'' + esc(c.email) + '\')">Mark Paid &amp; Email PIN</button>'}${c.rolloverUsed ? ' + $100 Rollover' : ''}</td>
           <td>${fmtDate(c.programStart)} to ${fmtDate(c.programEnd)}${c.rolloverUsed ? ' (Ext)' : ''}</td>
           <td><strong>${c.usedCredits || 0} / ${c.totalCredits || 8}</strong> (${c.availableCredits || 0} Left${c.bookedCredits ? ', ' + c.bookedCredits + ' Booked' : ''})</td>
           <td>${esc(c.assigned || 'Dr. Joshua Oparachukwu')}</td>

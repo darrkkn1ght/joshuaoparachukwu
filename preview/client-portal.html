@@ -1009,22 +1009,47 @@
     }
 
     /* ── AUTHENTICATION HANDLERS ── */
-    function handleClientLogin(e) {
+    async function handleClientLogin(e) {
       e.preventDefault();
       const email = document.getElementById('client-input-email').value.trim().toLowerCase();
       const pin = document.getElementById('client-input-pin').value.trim();
       const errEl = document.getElementById('client-login-err');
       errEl.style.display = 'none';
 
+      try {
+        const res = await fetch('/api/retainer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'login', email, pin })
+        });
+        const data = await res.json();
+        if (data.ok && data.client) {
+          localStorage.setItem(ACTIVE_KEY, JSON.stringify(data.client));
+          render();
+          return;
+        }
+        if (data.pending) {
+          errEl.innerHTML = (data.error || 'Payment verification pending.') + ' <a href="/preview/retainer-pending.html?email=' + encodeURIComponent(email) + '" style="color:#92400E;font-weight:700;text-decoration:underline;">Check Pending Status →</a>';
+          errEl.style.display = 'block';
+          return;
+        }
+      } catch (_) {}
+
       const stored = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
       const clients = [...DEFAULT_CLIENTS, ...stored.filter(s => !DEFAULT_CLIENTS.some(d => d.email === s.email))];
       const found = clients.find(c => (c.email && c.email.toLowerCase() === email) || (c.name && c.name.toLowerCase() === email));
 
-      if (found && (pin === '2026' || pin === 'drjoshua' || (found.pin && found.pin === pin))) {
+      if (found && found.paid === false && pin !== '2026' && pin !== 'drjoshua') {
+        errEl.innerHTML = 'Payment verification is still pending for this email. <a href="/preview/retainer-pending.html?email=' + encodeURIComponent(email) + '" style="color:#92400E;font-weight:700;text-decoration:underline;">Check Pending Status →</a>';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      if (found && (pin === '2026' || pin === 'drjoshua' || (found.pin && found.pin === pin) || (found.accessPin && found.accessPin === pin))) {
         localStorage.setItem(ACTIVE_KEY, JSON.stringify(found));
         render();
       } else {
-        errEl.textContent = 'Invalid email or access code. If you recently enrolled in the Four-Month Retainer, please check your onboarding email or enter PIN 2026.';
+        errEl.textContent = 'Invalid email or access PIN. If you recently enrolled in the Four-Month Retainer, check your welcome email for your 4-digit PIN.';
         errEl.style.display = 'block';
       }
     }
@@ -1370,6 +1395,17 @@
             localStorage.setItem(CLIENTS_KEY, JSON.stringify(list));
           }
           localStorage.setItem(ACTIVE_KEY, JSON.stringify(client));
+          if (client.email) {
+            fetch('/api/retainer', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'update',
+                email: client.email,
+                updates: { nextSessionTime: client.nextSessionTime, bookedCredits: client.bookedCredits }
+              })
+            }).catch(() => {});
+          }
         } catch (e) {}
       }
 
