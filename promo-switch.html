@@ -635,7 +635,6 @@
 
   <script src="/js/main.js"></script>
   <script>
-    const ADMIN_PASSWORDS = ['joshua48', 'drjoshua48', 'drjoshua2026', 'oparachukwu48'];
     const CUSTOM_PWD_KEY = 'drjoshua_custom_switch_pwd';
     const AUTO_RESTART_KEY = 'drjoshua_promo_autorestart';
     const SESSION_UNLOCK_KEY = 'drjoshua_switch_unlocked';
@@ -655,19 +654,33 @@
       }
     }
 
-    function handleUnlock(e) {
+    async function handleUnlock(e) {
       e.preventDefault();
       const raw = (document.getElementById('admin-pwd-input').value || '').trim();
       const val = raw.toLowerCase();
       const customPwd = (localStorage.getItem(CUSTOM_PWD_KEY) || '').trim();
       const errEl = document.getElementById('pwd-error');
-      if (ADMIN_PASSWORDS.includes(val) || (customPwd && (raw === customPwd || val === customPwd.toLowerCase()))) {
+      if (customPwd && (raw === customPwd || val === customPwd.toLowerCase())) {
         errEl.style.display = 'none';
         sessionStorage.setItem(SESSION_UNLOCK_KEY, '1');
         showDashboard();
-      } else {
-        errEl.style.display = 'block';
+        return;
       }
+      try {
+        const res = await fetch('/api/retainer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'admin_login', password: raw })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          errEl.style.display = 'none';
+          sessionStorage.setItem(SESSION_UNLOCK_KEY, '1');
+          showDashboard();
+          return;
+        }
+      } catch (_) {}
+      errEl.style.display = 'block';
     }
 
     function handleSaveCustomPassword(e) {

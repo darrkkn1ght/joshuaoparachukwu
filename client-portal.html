@@ -853,12 +853,39 @@
       } catch (e) { return ''; }
     }
 
+    const DEMO_IDS = new Set(['client-test', 'client-marcus', 'client-sofia', 'client-new']);
+    const DEMO_EMAILS = new Set(['test.client@joshuaoparachukwu.com', 'marcus@athletics.org', 'sofia@tennispro.pt', 'newclient@retainer.com']);
+    function isDemoClient(c) {
+      if (!c || typeof c !== 'object') return false;
+      const id = String(c.id || '').toLowerCase();
+      const em = String(c.email || '').toLowerCase();
+      const nm = String(c.name || '');
+      return DEMO_IDS.has(id) || DEMO_EMAILS.has(em) || /\(preview\)/i.test(nm);
+    }
+
+    (function purgeLegacyDemoClients() {
+      try {
+        const active = JSON.parse(localStorage.getItem(ACTIVE_KEY) || 'null');
+        if (active && (isDemoClient(active) || active.paid === false)) {
+          localStorage.removeItem(ACTIVE_KEY);
+        }
+        const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
+        if (Array.isArray(list) && list.some(isDemoClient)) {
+          localStorage.setItem(CLIENTS_KEY, JSON.stringify(list.filter(c => !isDemoClient(c))));
+        }
+      } catch (e) {}
+    })();
+
     function loadClient() {
       try {
         const active = JSON.parse(localStorage.getItem(ACTIVE_KEY) || 'null');
-        if (!active || !active.id) return null;
+        if (!active || !active.id || !active.paid || isDemoClient(active)) {
+          localStorage.removeItem(ACTIVE_KEY);
+          return null;
+        }
         const list = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');
-        return list.find(c => c.id === active.id) || active;
+        const matched = list.find(c => c.id === active.id && !isDemoClient(c));
+        return matched || active;
       } catch (e) { return null; }
     }
 
@@ -887,6 +914,9 @@
           errEl.style.display = 'block';
           return;
         }
+        errEl.textContent = data.error || 'Invalid email or 4-digit Access PIN. Please check your welcome email.';
+        errEl.style.display = 'block';
+        return;
       } catch (_) {}
 
       const stored = JSON.parse(localStorage.getItem(CLIENTS_KEY) || '[]');

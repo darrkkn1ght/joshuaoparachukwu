@@ -690,8 +690,21 @@
 
   <script src="/js/main.js"></script>
   <script>
-    const PASSWORDS = ['joshua48', 'drjoshua48', 'drjoshua2026', 'oparachukwu48'];
     const CUSTOM_PWD_KEY = 'drjoshua_custom_switch_pwd';
+    const DEMO_IDS = new Set(['client-test', 'client-marcus', 'client-sofia', 'client-new']);
+    const DEMO_EMAILS = new Set(['test.client@joshuaoparachukwu.com', 'marcus@athletics.org', 'sofia@tennispro.pt', 'newclient@retainer.com']);
+    (function purgeDemoVaultRecords() {
+      try {
+        const raw = localStorage.getItem('drjoshua_retainer_clients');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            const cleaned = parsed.filter(c => c && !DEMO_IDS.has(String(c.id || '').toLowerCase()) && !DEMO_EMAILS.has(String(c.email || '').toLowerCase()) && !/\(preview\)/i.test(String(c.name || '')));
+            if (cleaned.length !== parsed.length) localStorage.setItem('drjoshua_retainer_clients', JSON.stringify(cleaned));
+          }
+        }
+      } catch (e) {}
+    })();
     const STANDING_MEET_KEY = 'drjoshua_standing_meet_link';
     const DEFAULT_MEET_LINK = 'https://meet.google.com/pqu-skzs-qwp';
     const SESSION_KEY = 'drjoshua_admin_auth';
@@ -900,17 +913,31 @@
       }, 900);
     }
 
-    function handleAdminLogin(e) {
+    async function handleAdminLogin(e) {
       e.preventDefault();
       const raw = document.getElementById('gate-password').value.trim();
       const val = raw.toLowerCase();
       const customPwd = (localStorage.getItem(CUSTOM_PWD_KEY) || '').trim();
-      if (PASSWORDS.includes(val) || (customPwd && (raw === customPwd || val === customPwd.toLowerCase()))) {
+      if (customPwd && (raw === customPwd || val === customPwd.toLowerCase())) {
         sessionStorage.setItem(SESSION_KEY, '1');
         showDashboard();
-      } else {
-        document.getElementById('gate-err').style.display = 'block';
+        return;
       }
+      try {
+        const res = await fetch('/api/retainer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'admin_login', password: raw })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          document.getElementById('gate-err').style.display = 'none';
+          sessionStorage.setItem(SESSION_KEY, '1');
+          showDashboard();
+          return;
+        }
+      } catch (_) {}
+      document.getElementById('gate-err').style.display = 'block';
     }
 
     function showDashboard() {

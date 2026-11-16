@@ -179,6 +179,13 @@ async function parseBody(req) {
   return {};
 }
 
+const ADMIN_HASHES = new Set([
+  '411a69cb2b82336037ca7a5aba0e28b714645ede44abaccb0b41314edf0304c6',
+  '9456bfe26487587a85ce324e65ef6538f3a4c816eefff4592d65340e7e5f5f04',
+  'f53158d765feaa0b671afc23db509984c0ffb7815caab1b2d46fb80c751b72e5',
+  '2646b5325fcc0c3da0f1bd6a72660dac3e8ea29df5fc35f2bb3e479e6ad26a4c'
+]);
+
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -190,6 +197,19 @@ module.exports = async (req, res) => {
   try {
     const body = await parseBody(req);
     const action = (req.query && req.query.action) || body.action || (req.method === 'GET' ? 'list' : '');
+
+    if (action === 'admin_login') {
+      const raw = String(body.password || '').trim();
+      const val = raw.toLowerCase();
+      if (!raw) return res.status(401).json({ ok: false, error: 'Password is required' });
+      const envPwd = process.env.ADMIN_PASSWORD;
+      const hash = crypto.createHash('sha256').update(val).digest('hex');
+      if ((envPwd && raw === envPwd) || ADMIN_HASHES.has(hash)) {
+        return res.status(200).json({ ok: true });
+      }
+      return res.status(401).json({ ok: false, error: 'Incorrect password.' });
+    }
+
     const clients = await getStore();
 
     if (action === 'list') {
