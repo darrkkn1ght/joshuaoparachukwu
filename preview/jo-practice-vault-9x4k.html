@@ -312,37 +312,66 @@
     <!-- UNLOCKED DASHBOARD -->
     <div id="admin-dashboard" style="display:none;">
 
-      <!-- KPI METRICS (computed live from enrolment records) -->
+      <!-- KPI METRICS (computed live from enrolment records — click any card for history) -->
       <div class="kpi-grid">
-        <div class="kpi-card">
+        <div class="kpi-card" onclick="openKpiHistory('sales')" style="cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;" title="Click to view payment & enrolment history">
           <div class="kpi-title">Total Collected Sales</div>
           <div class="kpi-val" id="kpi-sales">$0</div>
           <div class="kpi-sub" id="kpi-sales-sub">0 Program Enrolments</div>
+          <div style="font-size:11px;font-weight:700;color:#9A7B1C;margin-top:6px;">View Client &amp; Payment History →</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" onclick="openKpiHistory('active')" style="cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;" title="Click to view active clients & past meetings">
           <div class="kpi-title">Active Retainers</div>
           <div class="kpi-val" id="kpi-active" style="color:#15803d;">0</div>
           <div class="kpi-sub">Within 4-Month Term</div>
+          <div style="font-size:11px;font-weight:700;color:#15803d;margin-top:6px;">View Past Meetings &amp; Notes →</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" onclick="openKpiHistory('booked')" style="cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;" title="Click to view upcoming booked sessions">
           <div class="kpi-title">Booked Sessions</div>
           <div class="kpi-val" id="kpi-booked" style="color:#2563eb;">0</div>
           <div class="kpi-sub">Scheduled, Not Yet Held</div>
+          <div style="font-size:11px;font-weight:700;color:#2563eb;margin-top:6px;">View Upcoming Schedule →</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" onclick="openKpiHistory('liability')" style="cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;" title="Click to view session credits & meeting history">
           <div class="kpi-title">Session Liability</div>
           <div class="kpi-val" id="kpi-liability" style="color:var(--admin-gold);">0</div>
           <div class="kpi-sub">Remaining Active Credits</div>
+          <div style="font-size:11px;font-weight:700;color:#9A7B1C;margin-top:6px;">View Session Ledger →</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" onclick="openKpiHistory('rollover')" style="cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;" title="Click to view rollover extensions">
           <div class="kpi-title">Rollover Extensions</div>
           <div class="kpi-val" id="kpi-rollover" style="color:#d97706;">0</div>
           <div class="kpi-sub" id="kpi-rollover-sub">$0 Rollover Fees</div>
+          <div style="font-size:11px;font-weight:700;color:#d97706;margin-top:6px;">View Rollover History →</div>
         </div>
-        <div class="kpi-card">
+        <div class="kpi-card" onclick="openKpiHistory('spec')" style="cursor:pointer;transition:transform 0.18s ease, box-shadow 0.18s ease;" title="Click to view specialist referrals">
           <div class="kpi-title">Specialist Invoices</div>
           <div class="kpi-val" id="kpi-spec">$0</div>
           <div class="kpi-sub" id="kpi-spec-sub">0 Firm-Funded Consultations</div>
+          <div style="font-size:11px;font-weight:700;color:#475569;margin-top:6px;">View Referral History →</div>
+        </div>
+      </div>
+
+      <!-- KPI / PRACTICE HISTORY MODAL -->
+      <div id="kpi-history-modal" style="display:none;position:fixed;inset:0;background:rgba(0,16,42,0.72);backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this) closeKpiHistory();">
+        <div style="background:#FFFFFF;border-radius:14px;max-width:920px;width:100%;max-height:86vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.35);">
+          <div style="background:#00102A;color:#FFFFFF;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C8A830;">Practice Operations History</div>
+              <h3 id="kpi-modal-title" style="margin:4px 0 0;font-family:var(--font-display);font-size:24px;color:#FFFFFF;">Client &amp; Meeting History</h3>
+            </div>
+            <button type="button" onclick="closeKpiHistory()" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer;">✕</button>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;padding:12px 24px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="meetings" onclick="openKpiHistory('meetings')">All Past Meetings &amp; Notes</button>
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="active" onclick="openKpiHistory('active')">Active Retainers</button>
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="booked" onclick="openKpiHistory('booked')">Booked Sessions</button>
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="sales" onclick="openKpiHistory('sales')">Collected Sales</button>
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="liability" onclick="openKpiHistory('liability')">Session Credits</button>
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="rollover" onclick="openKpiHistory('rollover')">Rollovers</button>
+            <button type="button" class="btn-action-sm kpi-tab-btn" data-tab="spec" onclick="openKpiHistory('spec')">Specialists</button>
+          </div>
+          <div id="kpi-modal-body" style="padding:20px 24px;overflow-y:auto;font-size:13.5px;color:#1E293B;"></div>
         </div>
       </div>
 
@@ -901,6 +930,124 @@
 
     /* ── Rendering ── */
     function renderAll() { renderKPIs(); renderClients(); renderSpecialists(); }
+
+    function closeKpiHistory() {
+      const m = document.getElementById('kpi-history-modal');
+      if (m) m.style.display = 'none';
+    }
+
+    function openKpiHistory(tab) {
+      const modal = document.getElementById('kpi-history-modal');
+      const titleEl = document.getElementById('kpi-modal-title');
+      const bodyEl = document.getElementById('kpi-modal-body');
+      if (!modal || !bodyEl) return;
+
+      const clients = getClients();
+      const specs = getSpecialists();
+      document.querySelectorAll('.kpi-tab-btn').forEach(b => {
+        const isOn = b.getAttribute('data-tab') === tab;
+        b.style.background = isOn ? '#00102A' : '#FFFFFF';
+        b.style.color = isOn ? '#FFE484' : '#334155';
+        b.style.borderColor = isOn ? '#00102A' : '#CBD5E1';
+      });
+
+      const titles = {
+        meetings: 'All Past Meetings, Debriefs & Client Notes',
+        sales: 'Total Collected Sales & Payment History',
+        active: 'Active Retainers & Client Meeting History',
+        booked: 'Upcoming Booked Sessions Schedule',
+        liability: 'Remaining Session Credits & Utilization',
+        rollover: 'Rollover Extensions & Eligibility',
+        spec: 'Specialist Referrals & Firm-Funded Invoices'
+      };
+      if (titleEl) titleEl.textContent = titles[tab] || 'Client & Meeting History';
+
+      if (tab === 'meetings' || tab === 'active') {
+        const list = tab === 'active' ? clients.filter(c => c.status !== 'Completed') : clients;
+        if (!list.length) {
+          bodyEl.innerHTML = '<p style="color:#64748B;">No client records found yet.</p>';
+        } else {
+          bodyEl.innerHTML = list.map(c => {
+            const recs = Array.isArray(c.sessionRecords) ? c.sessionRecords : [];
+            const pre = Array.isArray(c.preSessionNotes) ? c.preSessionNotes : [];
+            const recHtml = recs.length
+              ? recs.slice().reverse().map((r, i) => `
+                  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px;margin-top:8px;">
+                    <div style="font-weight:700;color:#00102A;">Session ${recs.length - i} · ${esc(r.date || '—')} (${esc(r.startTime || '—')} – ${esc(r.endTime || '—')})</div>
+                    <div style="margin-top:4px;"><strong>Summary:</strong> ${esc(r.summary || '—')}</div>
+                    <div style="margin-top:2px;color:#15803d;"><strong>Assignment:</strong> ${esc(r.assignment || '—')}</div>
+                  </div>`).join('')
+              : '<div style="font-size:12.5px;color:#64748B;margin-top:6px;">No past sessions logged yet for this client.</div>';
+            const notesHtml = (c.clientNote || c.privateNote || pre.length)
+              ? `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #CBD5E1;font-size:12.5px;">
+                  ${c.clientNote ? '<div><strong>Client-Facing Note:</strong> ' + esc(c.clientNote) + '</div>' : ''}
+                  ${c.privateNote ? '<div style="color:#9A3412;margin-top:2px;"><strong>Private Practitioner Note:</strong> ' + esc(c.privateNote) + '</div>' : ''}
+                  ${pre.length ? '<div style="margin-top:2px;"><strong>Latest Pre-Session Update:</strong> ' + esc(pre[pre.length - 1].text) + '</div>' : ''}
+                </div>`
+              : '';
+            return `
+              <div style="border:1px solid #CBD5E1;border-radius:10px;padding:14px 16px;margin-bottom:12px;background:#FFFFFF;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                  <div>
+                    <strong style="font-size:15px;color:#00102A;">${esc(c.name)}</strong>
+                    <span style="font-size:12px;color:#64748B;margin-left:6px;">${esc(c.email)}</span>
+                    <div style="font-size:12px;color:#475569;margin-top:2px;">${c.usedCredits || 0} / ${c.totalCredits || 8} Completed · ${c.availableCredits || 0} Remaining · Next: ${esc(fmtPractitionerTime(c.nextSessionTime || c.firstSessionDate))}</div>
+                  </div>
+                  <button type="button" class="btn-action-sm" onclick="closeKpiHistory(); openClientDrawer('${esc(c.id)}');">Open Full Client Drawer →</button>
+                </div>
+                ${recHtml}
+                ${notesHtml}
+              </div>`;
+          }).join('');
+        }
+      } else if (tab === 'sales') {
+        bodyEl.innerHTML = clients.length ? clients.map(c => `
+          <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+            <div>
+              <strong>${esc(c.name)}</strong> <span style="color:#64748B;font-size:12px;">(${esc(c.email)})</span>
+              <div style="font-size:12px;color:#475569;margin-top:2px;">Enrolled: ${fmtDate(c.registeredAt || c.enrolledAt)} · ${c.paid ? '<span style="color:#15803d;font-weight:700;">$' + (c.amount || 500) + ' Paid</span>' : '<span style="color:#b91c1c;font-weight:700;">Pending Payment</span>'}${c.rolloverUsed ? ' + $100 Rollover' : ''}</div>
+            </div>
+            <button type="button" class="btn-action-sm" onclick="closeKpiHistory(); openClientDrawer('${esc(c.id)}');">Manage →</button>
+          </div>`).join('') : '<p style="color:#64748B;">No sales records yet.</p>';
+      } else if (tab === 'booked') {
+        const booked = clients.filter(c => (c.bookedCredits || 0) > 0 || c.nextSessionTime);
+        bodyEl.innerHTML = booked.length ? booked.map(c => `
+          <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+            <div>
+              <strong>${esc(c.name)}</strong> · <span style="color:#2563eb;font-weight:700;">${c.bookedCredits || 1} Booked</span>
+              <div style="font-size:12px;color:#15803d;margin-top:2px;">${esc(fmtPractitionerTime(c.nextSessionTime || c.firstSessionDate))}</div>
+            </div>
+            <button type="button" class="btn-action-sm" onclick="closeKpiHistory(); openClientDrawer('${esc(c.id)}');">Open Drawer →</button>
+          </div>`).join('') : '<p style="color:#64748B;">No upcoming booked sessions.</p>';
+      } else if (tab === 'liability') {
+        bodyEl.innerHTML = clients.length ? clients.map(c => `
+          <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+            <div>
+              <strong>${esc(c.name)}</strong>
+              <div style="font-size:12px;color:#475569;margin-top:2px;">Completed: <strong>${c.usedCredits || 0}</strong> · Booked: <strong>${c.bookedCredits || 0}</strong> · Remaining Credits: <strong>${c.availableCredits || 0}</strong></div>
+            </div>
+            <button type="button" class="btn-action-sm" onclick="closeKpiHistory(); openClientDrawer('${esc(c.id)}');">View Ledger →</button>
+          </div>`).join('') : '<p style="color:#64748B;">No active session liability.</p>';
+      } else if (tab === 'rollover') {
+        const rolled = clients.filter(c => c.rolloverUsed || (c.usedCredits || 0) >= 4);
+        bodyEl.innerHTML = rolled.length ? rolled.map(c => `
+          <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+            <div>
+              <strong>${esc(c.name)}</strong>
+              <div style="font-size:12px;color:#475569;margin-top:2px;">${c.rolloverUsed ? 'Rollover Applied (+30 days · $100)' : 'Eligible for Rollover (' + (c.usedCredits || 0) + ' sessions completed)'}</div>
+            </div>
+            <button type="button" class="btn-action-sm" onclick="closeKpiHistory(); openClientDrawer('${esc(c.id)}');">Manage →</button>
+          </div>`).join('') : '<p style="color:#64748B;">No rollover extensions or eligible clients yet.</p>';
+      } else if (tab === 'spec') {
+        bodyEl.innerHTML = specs.length ? specs.map(s => `
+          <div style="border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+            <strong>${esc(s.name)}</strong> · ${esc(s.focus || 'Specialist')}
+            <div style="font-size:12px;color:#475569;margin-top:2px;">Sessions: ${s.sessions || 0} · Total: $${((s.sessions || 0) * SPEC_FEE).toLocaleString()}</div>
+          </div>`).join('') : '<p style="color:#64748B;">No firm-funded specialist referrals logged yet.</p>';
+      }
+
+      modal.style.display = 'flex';
+    }
 
     async function syncClientsFromCloud() {
       try {
