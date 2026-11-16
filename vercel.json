@@ -2,5 +2,17 @@
   "framework": null,
   "buildCommand": null,
   "outputDirectory": ".",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/preview",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/preview/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
+  ]
 }

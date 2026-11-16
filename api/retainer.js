@@ -4,7 +4,7 @@ const KV_APP_KEY = 'jz4p0798';
 const KV_KEY = 'retainer_clients_v1';
 const KV_BASE = 'https://keyvalue.immanuel.co/api/KeyVal';
 const ADMIN_NOTIFY_EMAIL = 'mailjoshuaoparachukwu@gmail.com';
-const PORTAL_URL = 'https://joshuaoparachukwu.com/preview/client-portal.html';
+const PORTAL_URL = 'https://joshuaoparachukwu.com/client-portal.html';
 const DEFAULT_MEET_URL = 'https://meet.google.com/new';
 
 function normalizeEmail(email) {

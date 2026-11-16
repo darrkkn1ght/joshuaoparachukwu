@@ -183,12 +183,12 @@
       raw.indexOf('tel:') === 0 ||
       raw.indexOf('javascript:') === 0 ||
       raw.indexOf('data:') === 0 ||
-      raw.indexOf('/preview/') === 0
+      raw.indexOf('/') === 0
     ) {
       return;
     }
     var cleaned = raw.replace(/^(\.\.\/)+/, '').replace(/^\.\//, '').replace(/^\//, '');
-    a.setAttribute('href', '/preview/' + cleaned);
+    a.setAttribute('href', '/' + cleaned);
   }, true);
 
 })();

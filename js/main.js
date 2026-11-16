@@ -1142,6 +1142,13 @@ if (newsletterBtn) {
       function tick() {
         var remainingMs = state.endTime - Date.now();
         if (remainingMs <= 0) {
+          if (localStorage.getItem('drjoshua_promo_autorestart') === '1') {
+            var nowMs = Date.now();
+            var restarted = { active: true, startTime: nowMs, endTime: nowMs + 48 * 3600 * 1000 };
+            saveLocalPromoState(restarted);
+            renderServicesPromoUI(restarted);
+            return;
+          }
           clearInterval(promoTimerInterval);
           promoTimerInterval = null;
           var expiredState = { active: false, startTime: null, endTime: null };
