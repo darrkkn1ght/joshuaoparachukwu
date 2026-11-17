@@ -9142,3 +9142,106 @@ body[data-page="services"] .service-card * {
     flex-shrink: 0 !important;
   }
 }
+
+/* G. GLOBAL MOBILE PORTRAIT, LANDSCAPE & SAFE-AREA POLISH */
+html, body {
+  overflow-x: clip;
+}
+
+@media (max-width: 1120px) {
+  nav {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    gap: 10px !important;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  .nav-actions {
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+  .nav-actions .nav-client-login-btn,
+  .nav-actions .nav-cta-btn,
+  .nav-actions .nav-cta {
+    display: none !important;
+  }
+  .nav-hamburger {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  .nav-logo .name {
+    font-size: 14.5px !important;
+  }
+  .nav-logo .sub {
+    font-size: 10.5px !important;
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Prevent iOS Safari input auto-zoom */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  /* Collapse inline multi-column grids (case studies, about, etc.) */
+  body main div[style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Responsive wide tables */
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Safe-area bottom padding for floating pills */
+  #home-floating-reviews-pill,
+  #floating-reviews-pill,
+  #retainer-floating-enrol-pill {
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body main div[style*="grid-template-columns:repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Prevent floating bottom pills from overlapping on narrow phones */
+  #floating-reviews-pill {
+    display: none !important;
+  }
+  #retainer-floating-enrol-pill,
+  #home-floating-reviews-pill {
+    right: 14px !important;
+    left: auto !important;
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+    max-width: calc(100vw - 28px) !important;
+  }
+}
+
+/* Mobile Landscape Orientation Support */
+@media (max-height: 520px) and (orientation: landscape) {
+  #hero {
+    padding: 28px 24px 32px !important;
+  }
+  .retainer-hero {
+    padding: 28px 20px 28px !important;
+  }
+  #enrol-modal > div,
+  #kpi-history-modal > div,
+  #client-forgot-modal > div,
+  #admin-reset-modal > div,
+  .modal-card,
+  .enrol-modal-card {
+    max-height: 90dvh !important;
+    overflow-y: auto !important;
+  }
+}
