@@ -8970,10 +8970,10 @@ body[data-page="services"] #services .section-sub {
 
 /* 7. Testimonials dedicated page — deep royal-navy background for #testimonials slider section */
 body[data-page="testimonials"] #testimonials {
-  background: linear-gradient(155deg, #010E26 0%, #051B44 55%, #0A285E 100%) !important;
+  background: linear-gradient(180deg, #061A3A 0%, #051B44 55%, #0A285E 100%) !important;
   color: #FFFFFF !important;
-  padding-top: 4px !important;
-  padding-bottom: 18px !important;
+  padding-top: 0 !important;
+  padding-bottom: 20px !important;
 }
 body[data-page="testimonials"] #testimonials .section-label {
   color: #E2C55A !important;
