@@ -9400,4 +9400,79 @@ html, body {
   .retainer-what-grid > div > div:nth-child(3) {
     font-size: 12.5px !important;
   }
+
+  /* 4. Remove overlapping bottom sticky bar on mobile & polish #hero proportions */
+  .sticky-mobile-booking-bar {
+    display: none !important;
+  }
+  #hero {
+    background:
+      linear-gradient(180deg, rgba(1, 10, 29, 0.90) 0%, rgba(4, 21, 56, 0.86) 52%, rgba(7, 34, 86, 0.93) 100%),
+      url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1600&q=85') center/cover no-repeat !important;
+    padding: 28px 18px 46px !important;
+  }
+  #hero .hero-eyebrow,
+  #hero .vf-eyebrow-center {
+    text-align: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #hero .hero-eyebrow::before,
+  #hero .section-rule {
+    margin: 0 auto 10px !important;
+  }
+  #hero h1 {
+    font-size: 29px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 12px !important;
+  }
+  #hero .hero-sub {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+  .vf-hero-cta-group {
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+  .vf-btn-primary-gold,
+  .vf-btn-secondary-glass {
+    padding: 12px 18px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    justify-content: center !important;
+  }
+  .vf-hero-cinema-wrap {
+    margin-top: 18px !important;
+  }
+  .vf-kpi-trio-section {
+    margin: -24px auto 0 !important;
+    padding: 0 12px 10px !important;
+  }
+  .vf-kpi-trio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  .vf-kpi-card {
+    padding: 12px 8px !important;
+    border-radius: 10px !important;
+  }
+  .vf-kpi-num {
+    font-size: 20px !important;
+  }
+  .vf-kpi-label {
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+  }
+  #home-faq .cs-acc-btn,
+  .faq-q {
+    padding: 13px 14px !important;
+    font-size: 14.5px !important;
+  }
+  footer {
+    padding: 28px 18px 20px !important;
+  }
 }
