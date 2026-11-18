@@ -9190,9 +9190,15 @@ html, body {
   input, select, textarea {
     font-size: 16px !important;
   }
-  /* Collapse inline multi-column grids (case studies, about, etc.) */
-  body main div[style*="grid-template-columns:repeat(3"] {
+  /* Collapse inline multi-column grids (case studies, about, pillars, vault, etc.) */
+  .about-grid-wrap,
+  .pillars-grid,
+  body main div[style*="grid-template-columns:repeat(3"],
+  body main div[style*="grid-template-columns:repeat(4"],
+  body main div[style*="grid-template-columns:1.2fr"],
+  body main div[style*="minmax(320px"] {
     grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
   /* Responsive wide tables */
   table {
@@ -9203,6 +9209,7 @@ html, body {
   }
   /* Safe-area bottom padding for floating pills */
   #home-floating-reviews-pill,
+  #home-floating-enrol-pill,
   #floating-reviews-pill,
   #retainer-floating-enrol-pill {
     bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
@@ -9210,15 +9217,17 @@ html, body {
 }
 
 @media (max-width: 640px) {
-  body main div[style*="grid-template-columns:repeat(2"] {
+  body main div[style*="grid-template-columns:repeat(2"],
+  body main div[style*="grid-template-columns:1fr 1fr"] {
     grid-template-columns: 1fr !important;
   }
   /* Prevent floating bottom pills from overlapping on narrow phones */
-  #floating-reviews-pill {
+  #floating-reviews-pill,
+  #home-floating-reviews-pill {
     display: none !important;
   }
   #retainer-floating-enrol-pill,
-  #home-floating-reviews-pill {
+  #home-floating-enrol-pill {
     right: 14px !important;
     left: auto !important;
     padding: 10px 16px !important;
