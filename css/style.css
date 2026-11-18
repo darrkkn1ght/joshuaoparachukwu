@@ -9245,3 +9245,159 @@ html, body {
     overflow-y: auto !important;
   }
 }
+
+/* H. MOBILE PACKING & SNAP-SWIPE CAROUSELS (<= 768px, Desktop untouched) */
+@media (max-width: 768px) {
+  /* 1. Fix clipped testimonial sliders & convert to clean 1-card-at-a-time snap swipe */
+  .results-slider-outer {
+    padding: 0 !important;
+    margin-top: 12px !important;
+  }
+  .results-slider-track-wrap {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 4px 0 12px !important;
+    margin: 0 !important;
+  }
+  .results-slider-track {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    transform: none !important;
+    gap: 14px !important;
+    padding: 0 2px !important;
+  }
+  .results-slide {
+    display: contents !important;
+  }
+  .results-slide.clone-slide {
+    display: none !important;
+  }
+  .results-slider-track .result-card {
+    flex: 0 0 calc(100vw - 44px) !important;
+    width: calc(100vw - 44px) !important;
+    max-width: 350px !important;
+    min-width: 0 !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
+  }
+  .res-btn,
+  .res-dots {
+    display: none !important;
+  }
+
+  /* 2. Pack long vertical grids into smooth horizontal snap-swipe decks on mobile */
+  #why-choose .vf-bento-grid.layout-boxinbox,
+  .vf-video-grid-6,
+  .yt-shorts-quad-row,
+  .yt-masterclass-grid,
+  .feature-grid,
+  .reviews-grid-3col,
+  #written-testimonials #writtenReviewsGrid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 14px !important;
+    padding: 12px 4px 16px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #why-choose .vf-bento-grid.layout-boxinbox > .vf-bento-card,
+  .vf-video-grid-6 > .vf-video-card,
+  .yt-shorts-quad-row > .yt-card,
+  .yt-masterclass-grid > .yt-masterclass-card,
+  .feature-grid > .feature-card,
+  .reviews-grid-3col > .retainer-dossier-card,
+  #written-testimonials #writtenReviewsGrid > .written-review-card {
+    flex: 0 0 calc(100vw - 52px) !important;
+    width: calc(100vw - 52px) !important;
+    max-width: 340px !important;
+    min-width: 0 !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Add subtle swipe hint below horizontal decks */
+  .vf-bento-grid.layout-boxinbox::after,
+  .vf-video-grid-6::after,
+  .yt-masterclass-grid::after,
+  .feature-grid::after,
+  .reviews-grid-3col::after {
+    content: '';
+    flex: 0 0 4px;
+  }
+
+  /* 3. Compact section paddings & typography so mobile isn't excessively long */
+  #hero {
+    padding: 36px 18px 42px !important;
+  }
+  #testimonials,
+  #video-testimonials,
+  .vf-video-testimonials-section,
+  #why-choose,
+  #youtube,
+  .vf-youtube-split-section,
+  #about,
+  #written-testimonials,
+  #home-faq,
+  #final-cta,
+  #reviews,
+  #what-you-get-sec {
+    padding: 28px 16px !important;
+  }
+  #about img {
+    height: 280px !important;
+  }
+  .section-title,
+  h2 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+  }
+  .thankyou-hero {
+    padding: 36px 18px 42px !important;
+  }
+  .thankyou-title {
+    font-size: 27px !important;
+  }
+  .confirmed-card {
+    padding: 18px !important;
+    margin-bottom: 24px !important;
+  }
+  .step-card {
+    padding: 14px 16px !important;
+    gap: 12px !important;
+    margin-bottom: 10px !important;
+  }
+  .prep-box {
+    padding: 18px !important;
+    margin: 20px 0 !important;
+  }
+  .meta-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+  .retainer-what-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .retainer-what-grid > div {
+    padding: 14px 12px !important;
+  }
+  .retainer-what-grid > div > div:first-child {
+    font-size: 11px !important;
+  }
+  .retainer-what-grid > div > div:nth-child(2) {
+    font-size: 18px !important;
+  }
+  .retainer-what-grid > div > div:nth-child(3) {
+    font-size: 12.5px !important;
+  }
+}
