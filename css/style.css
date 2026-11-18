@@ -9525,4 +9525,18 @@ html, body {
   .result-tag {
     font-size: 11px !important;
   }
+
+  /* 6. Stack Masterclass horizontal card into clean vertical 16:9 card on mobile */
+  .yt-masterclass-card {
+    flex-direction: column !important;
+  }
+  .yt-masterclass-thumb {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+  .yt-masterclass-info {
+    padding: 14px 16px !important;
+  }
 }
