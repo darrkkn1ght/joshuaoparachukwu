@@ -9475,4 +9475,36 @@ html, body {
   footer {
     padding: 28px 18px 20px !important;
   }
+
+  /* 5. Balanced Mobile Typography Scale (Desktop >768px untouched) */
+  h1,
+  .retainer-h1,
+  .hero-title {
+    font-size: 29px !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 24px !important;
+    line-height: 1.24 !important;
+  }
+  h3 {
+    font-size: 19px !important;
+    line-height: 1.3 !important;
+  }
+  main p,
+  section p,
+  main li,
+  section li,
+  body #written-testimonials .written-review-card p,
+  body #written-testimonials .written-quote,
+  .written-review-card p,
+  .written-quote {
+    font-size: 14px !important;
+    line-height: 1.58 !important;
+  }
+  .section-label,
+  .vf-kpi-label,
+  .result-tag {
+    font-size: 11px !important;
+  }
 }
